@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `Rocket Docs`,
-    defaultTitle: `Rocket Docs`,
-    siteTitleShort: `Rocket Docs`,
-    siteDescription: `Out of the box Gatsby Theme for creating documentation websites easily and quickly`,
-    siteUrl: `https://rocketdocs.netlify.com`,
-    siteAuthor: `@rocketseat`,
-    siteImage: `/banner.png`,
+    siteTitle: `Deneb - Declarative visualization in Power BI, using the Vega language`,
+    defaultTitle: `Deneb - Declarative Visualization in Power BI`,
+    siteTitleShort: `Deneb`,
+    siteDescription: `Deneb - Declarative visualization in Power BI, using the Vega language`,
+    siteUrl: `https://deneb-viz.github.io`,
+    siteAuthor: `@dm-p`,
+    siteImage: `/banner.svg`,
     siteLanguage: `en`,
     themeColor: `#8257E6`,
     basePath: `/`,
@@ -17,8 +17,6 @@ module.exports = {
       options: {
         configPath: `src/config`,
         docsPath: `src/docs`,
-        githubUrl: `https://github.com/rocketseat/gatsby-themes`,
-        baseDir: `examples/gatsby-theme-docs`,
       },
     },
     {
@@ -43,7 +41,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://rocketdocs.netlify.com`,
+        siteUrl: `https://deneb-viz.github.io`,
       },
     },
     `gatsby-plugin-offline`,
