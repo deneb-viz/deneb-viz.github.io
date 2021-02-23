@@ -1,8 +1,22 @@
-# Sidebar navigation
-
 - label: "Getting Started"
   items:
-      - label: "Obtaining the Visual"
-        link: "/installation"
-      - label: Privacy Policy
+      # - label: "Obtaining the Visual"
+      #   link: "/installation"
+      - label: "Creating From A Template"
+        link: "/creating-from-template"
+      # - label: "Visual Dataset Binding"
+      #   link: "/visual-dataset-binding"
+      # - label: "Visual Editor"
+      #   link: "/visual-editor"
+- label: "Further Resources"
+  items:
+      - label: "Privacy Policy"
         link: "/privacy-policy"
+      - label: FAQ
+        link: "/faq"
+      - label: "Vega Documentation"
+        link: "https://vega.github.io/vega/docs/"
+      - label: "Vega-Lite Documentation"
+        link: "http://vega.github.io/vega-lite/docs/"
+      - label: "Source Code [GitHub]"
+        link: "https://github.com/deneb-viz/deneb-powerbi"

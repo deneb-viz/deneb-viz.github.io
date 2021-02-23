@@ -1,0 +1,254 @@
+---
+title: "Creating from a Template (or: Let's Make A Vega-Lite Bar Chart)"
+description: "How to add a new visual to your report."
+image: /images/favicon.png
+disableTableOfContents: false
+---
+
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+
+> _Deneb is currently undergoing active development. This site is under constructions and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+
+In the following pages, we'll create a simple bar chart, using the visual, some data, an inbuilt template and <OutboundLink href="http://vega.github.io/vega-lite" target="_blank">Vega-Lite</OutboundLink>. For reference, here's the finished product:
+
+<iframe
+    width="800"
+    height="486"
+    src="https://app.powerbi.com/view?r=eyJrIjoiYTcyMDJkZDEtODc0Yy00MDc2LWJiNDAtY2UxODhjZTU2NDBjIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9&pageName=ReportSectionc2e9778dd899bccd64ca"
+    frameborder="0"
+    allowFullScreen="true"
+></iframe>
+
+> _The sample workbook will be available for download soon!_
+
+## Sample Data
+
+From the sample workbook, we'll use a single column and measure. Here's how they look as a table:
+
+![simple-data-table.png](/images/getting-started/simple-data-table.png "A simple category column (City) and measure (Mean Temperature).")
+
+Here, the `[City]` column represents a nominal category, and `[Mean Temperature]` is a simple measure that calculates the average temperature value for the given row context.
+
+## Adding the Visual
+
+If you've added the visual to your report, you should see it in the _Visualizations_ pane, eg.:
+
+![viz-added.png](/images/getting-started/viz-added.png "The visual gets added to the 'Visualizations' pane in your report.")
+
+You can then click the visual to add it to the report canvas, e.g.:
+
+![viz-landing.png](/images/getting-started/viz-landing.png "The visual landing page.")
+
+## Adding the Data
+
+We'll now add the `[City]` column and `[Mean Temperature]` measure to Deneb's **Values** data role, e.g.:
+
+![viz-needs-spec.png](/images/getting-started/viz-needs-spec.png "The visual now indicates that a specification is required.")
+
+The visual's output now changes to indicate that a specification is required. This is required to tell Vega-Lite (or Vega) how your visualization should be rendered.
+
+## Opening the Editor
+
+We can now open the Visual Editor by cicking on the visual header (...) and selecting _Edit_, e.g.:
+
+![opening-editor.png](/images/getting-started/opening-editor.png "We can access the Visual Editor by selecting 'Edit' from the Visual Header.")
+
+This will display the Visual Editor in focus mode, and the _Create New Specification_ dialog will be shown, e.g.:
+
+![create-new-spec.png](/images/getting-started/create-new-spec.png "The Visual Editor, showing the 'Create New Specification' dialog.")
+
+> _If you accidentally dismiss the dialog, or it doesn't show then you can bring it up by clicking on the **New Specification** button on the command bar, or using **[Ctrl / Command + Alt + N]**_
+
+## Selecting the Template
+
+Using Vega or Vega-Lite requires a specification to be written using JSON. You can either select the _[empty]_ template to begin editing with a bare-minimum specification with the dataset bound to it, or use a predefined template.
+
+Let's choose the **Simple Bar Chart** template by clicking on it. Note that we now get some additional details about the template, as well as some required placeholders:
+
+![bar-chart-template-initial.png](/images/getting-started/bar-chart-template-initial.png "Selecting a template will provide any other options required to prepare it.")
+
+## Assigning Placeholders
+
+This template expects two placeholders: one for the the category axis and another for the measure axis. As we've already added our data, we can see these are already available in the dropdown lists, e.g.:
+
+![category-placeholder.png](/images/getting-started/category-placeholder.png "A placeholder displays columns or measures you've added to the visual.")
+
+Note that _Mean Temperature_ is disabled. This is because the placeholder specifies a column be added here. We'll choose _City_.
+
+> _The visual only knows about columns or measures added to it, so you can add or swap out a column or measure if it's not the one you want and the dropdown list will update accordingly._
+
+Next, we'll click on the _Measure_ placeholder:
+
+![measure-placeholder.png](/images/getting-started/measure-placeholder.png "A placeholder displays columns or measures you've added to the visual.")
+
+Similarly, as this placeholder specifies a measure, notice that _City_ is disabled here. We'll choose _Mean Temperature_ to complete our requirements.
+
+## Creating the Initial Specification
+
+Now that all placeholders have been filled, the _Create_ button is enabled:
+
+![create-button-enabled.png](/images/getting-started/create-button-enabled.png "Once all placeholders have been assigned, the 'Create' button is enabled.")
+
+We can click this and the visual specification will be present in the editor, e.g.:
+
+![created-from-template.png](/images/getting-started/created-from-template.png "After clicking on 'Create' the editor now shows the specification and the rendered visual.")
+
+## Reviewing Generated Specification
+
+In our editor's _Specification_ tab, we'll now have the following <OutboundLink href="http://vega.github.io/vega-lite/docs/spec.html" target="_blank">Vega-Lite JSON specification</OutboundLink>:
+
+```json
+{
+    "data": {
+        "name": "values"
+    },
+    "mark": {
+        "type": "bar"
+    },
+    "encoding": {
+        "y": {
+            "field": "City",
+            "type": "nominal"
+        },
+        "x": {
+            "field": "Mean Temperature",
+            "type": "quantitative"
+        }
+    }
+}
+```
+
+Here, we can see that:
+
+-   There's a `data` object, which has a mapping of `"values"`.
+
+    -   This is required for the specification, instructs that our visual's dataset should be used and should be left as-is.
+    -   Refer to the [Visual Dataset Binding](./visual-dataset-binding) page for more details on how this works.
+
+-   We're <OutboundLink href="http://vega.github.io/vega-lite/docs/bar.html" target="_blank">using a `bar` mark</OutboundLink> for our data point.
+
+-   The <OutboundLink href="http://vega.github.io/vega-lite/docs/encoding.html" target="_blank">encoding for the visual</OutboundLink> maps our data as follows:
+    -   `City` is mapped to the y-axis.
+    -   `Mean Temperature` is mapped to the x-axis.
+
+This is a simple <OutboundLink href="http://vega.github.io/vega-lite/docs/spec.html#single" target="_blank">single view specification</OutboundLink>, so once you're comfortable with the syntax, you should
+
+We also have some other stuff going on in the editor's _Config_ tab, thanks to our template...
+
+## Reviewing Generated Config
+
+In our editor's _Config_ tab, we'll have the following <OutboundLink href="http://vega.github.io/vega-lite/docs/config.html" target="_blank">Vega-Lite JSON configuration</OutboundLink>:
+
+```json
+{
+    "autosize": {
+        "type": "fit",
+        "contains": "padding"
+    }
+}
+```
+
+This is a nice feature of Vega-Lite that provides <OutboundLink href="http://vega.github.io/vega-lite/docs/size.html#autosize" target="_blank">automatic sizing for simpler (single or layered) views</OutboundLink>, so has been included in this template by default.
+
+You can extend the config significantly to customize many parts of your visual, so it's worth diving into the <OutboundLink href="http://vega.github.io/vega-lite/docs/config.html" target="_blank">documentation for this</OutboundLink> when you're ready.
+
+> _You can include your `config` in the specification JSON if you like at the top-level, but the intention here is to separate the cosmetic aspects of the visual away from its logical ones, so we have a separate tab in the editor for this for thos who wish to adopt this approach._
+
+## Adding Tooltips
+
+Back in the _Specification_ tab, let's modify the `mark` to specify that it should display a tooltip (changes highlighted):
+
+```json highlight={7}
+{
+    "data": {
+        "name": "values"
+    },
+    "mark": {
+        "type": "bar",
+        "tooltip": true
+    },
+    "encoding": {
+        "y": {
+            "field": "City",
+            "type": "nominal"
+        },
+        "x": {
+            "field": "Mean Temperature",
+            "type": "quantitative"
+        }
+    }
+}
+```
+
+Now, we can apply our changes by clicking the _Apply_ command (or pressing **[ Ctrl / Command + Enter ]**):
+
+![apply-command.png](/images/getting-started/apply-command.png "The 'Apply' command ensures your changes are applied to the visual specification.")
+
+> _Note that the **Auto-Apply** command can be used to ensure changes are applied as you type rather than manually, although this isn't recommended for complex specifications or ones that use a large number of data points._
+
+Now, we can hover over a data point in our visual and this will display a standard tooltip, e.g.:
+
+![standard-tooltip.png](/images/getting-started/standard-tooltip.png "If specifying that a mark should render a tooltip, this will display a standard Power BI tooltip when hovered.")
+
+## Super-Charging Tooltips
+
+If we were to set up a tooltip page that included one of the columns from our visual, like this one (which displays the mean temperature over time, which is a bit more useful):
+
+![tooltip-page-setup.png](/images/getting-started/tooltip-page-setup.png "Setting up a simple tooltip page for the 'City' column.")
+
+Then, the visual can resolve this, providing that you specify to use a report page tooltip instead of a default one, e.g.:
+
+![canvas-tooltip.png](/images/getting-started/canvas-tooltip.png "Report page tooltips can be displayed if a suitable match can be found for your data point.")
+
+> _Note that report page tooltips will only work if your data point hasn't been transformed or mutated from the row context passed-into your visual's dataset. In the cases where data points cannot be reconciled back to the data model, the visual will display a default tooltip instead._
+
+## Adding Further Config
+
+It's possible to make our visual look a bit more at home by adding or modifying its configuration, so let's update this as follows (changes highlighted):
+
+```json highlight={6-25}
+{
+    "autosize": {
+        "type": "fit",
+        "contains": "padding"
+    },
+    "view": {
+        "stroke": "transparent"
+    },
+    "font": "Segoe UI",
+    "bar": {
+        "color": "#CE6C47"
+    },
+    "axis": {
+        "domain": false,
+        "labelColor": "#605E5C",
+        "labelFontSize": 12,
+        "labelPadding": 5,
+        "ticks": false,
+        "tickCount": 5,
+        "titleFontSize": 14,
+        "titleFontWeight": "bold",
+        "titleColor": "#605E5C",
+        "gridDash": [1, 5],
+        "gridColor": "#605E5C"
+    }
+}
+```
+
+Click the _Apply_ button on the command bar, and our visual updates as follows:
+
+![config-applied.png](/images/getting-started/config-applied.png "Visual after config has been applied.")
+
+## Viewing the Finished Product
+
+When you're finished, click on _Back to report_ to bring you back out of focus mode and to the report canvas. Our visual will now be 'regular sized', thanks to the `autosize` configuration we applied earlier on:
+
+![regular-sized-bar.png](/images/getting-started/regular-sized-bar.png "Exiting focus mode returns the visual back to standard size.")
+
+## Where Next?
+
+We've used one of the inbuilt templates to produce a simple example, and add some integration features in the form of tooltips, and customized its appearance using config. A simple visual like this is just the tip of the iceberg and the way ahead is quite broad and expansive.
+
+The purpose of this site is to provide detail on how to make the visual work for you within Power BI, rather than repeating the wealth of great documentation that's already out there. To learn more about some of the additional things the visual can offer (or understand some of its limitations) then please continue to read on or use the menu to learn more.
+
+If you're hungry for more examples or further inspiration, then a good place to start is <OutboundLink href="http://vega.github.io/vega-lite/examples/" target="_blank">Vega-Lite's own gallery</OutboundLink>, or even <OutboundLink href="https://vega.github.io/vega/examples/" target="_blank">Vega's gallery</OutboundLink>.

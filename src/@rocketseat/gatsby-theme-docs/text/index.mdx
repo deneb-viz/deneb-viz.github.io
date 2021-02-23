@@ -1,5 +1,17 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 
-## Deneb: Declarative Visualization in Power BI
+# Declarative Visualization in Power BI
 
-Deneb is a custom visual for <OutboundLink href="https://www.powerbi.com" target="_blank">Microsoft Power BI</OutboundLink>, which allows users to build their own visualizations, using the <OutboundLink href="http://vega.github.io/vega" target="_blank">Vega</OutboundLink> and <OutboundLink href="http://vega.github.io/vega-lite" target="_blank">Vega-Lite</OutboundLink> languages.
+> _Deneb is currently undergoing active development. This site is under constructions and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+
+Deneb is a custom visual for <OutboundLink href="https://www.powerbi.com" target="_blank">Microsoft Power BI</OutboundLink>, which allows users to build their own custom designs, using the <OutboundLink href="http://vega.github.io/vega" target="_blank">Vega</OutboundLink> and <OutboundLink href="http://vega.github.io/vega-lite" target="_blank">Vega-Lite</OutboundLink> languages.
+
+It provides report developers with the ability to define a visual from the ground-up, using a declerative <OutboundLink href="https://www.json.org/json-en.html" target="_blank">JSON</OutboundLink> syntax.
+
+This is similar to the approaches used for creating <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">R</OutboundLink> and <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">Python</OutboundLink> visuals in Power BI, with the following additional benefits:
+
+-   Libraries are packaged with the visual, so no additional dependencies on local libraries or gateways for your end-users.
+-   Specifications are rendered inside the Power BI client, rather than being delegated to another location, typically resulting in faster render times for end-users.
+-   Built for the web, meaning that it's possible to integrate with Power BI's interactivity features, with some additional setup. Tooltips are currently supported, and other features are on the roadmap.
+
+Please use the menu to start learning more about the visual.
