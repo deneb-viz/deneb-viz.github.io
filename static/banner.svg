@@ -8,13 +8,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 2533.8381 552"
+   viewBox="0 0 3574.3681 468.02344"
    version="1.1"
    id="svg3741"
    sodipodi:docname="banner.svg"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
-   width="2533.8381"
-   height="552">
+   width="3574.3682"
+   height="468.02344">
   <metadata
      id="metadata3747">
     <rdf:RDF>
@@ -46,9 +46,9 @@
        xlink:href="#linearGradient868"
        id="linearGradient870"
        x1="0.31396943"
-       y1="229.11782"
-       x2="24.80487"
-       y2="229.11782"
+       y1="229.11781"
+       x2="24.804871"
+       y2="229.11781"
        gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
@@ -65,8 +65,8 @@
      id="namedview3743"
      showgrid="false"
      inkscape:zoom="0.33283737"
-     inkscape:cx="1175.7365"
-     inkscape:cy="-76.293749"
+     inkscape:cx="2668.7635"
+     inkscape:cy="-110.6022"
      inkscape:window-x="7672"
      inkscape:window-y="536"
      inkscape:window-maximized="1"
@@ -81,29 +81,29 @@
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:229.333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="541.2666"
-     y="224.06862"
+     x="528.51544"
+     y="189.76016"
      id="text3751"><tspan
        sodipodi:role="line"
        id="tspan3749"
-       x="541.2666"
-       y="224.06862"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:229.333px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Bold'">Deneb</tspan></text>
+       x="528.51544"
+       y="189.76016"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:229.333px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold'">Deneb</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="539.27557"
-     y="461.35025"
+     x="526.52441"
+     y="427.04181"
      id="text3755"><tspan
        sodipodi:role="line"
        id="tspan3753"
-       x="539.27557"
-       y="461.35025"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'">Power BI Custom Visual</tspan></text>
+       x="526.52441"
+       y="427.04181"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'">Declarative Visualization in Power BI</tspan></text>
   <g
      inkscape:label="Layer 1"
      id="layer1"
-     transform="matrix(23.27008,0,0,23.27008,23.165506,-6407.2553)">
+     transform="matrix(23.27008,0,0,23.27008,10.414357,-6441.5638)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.1475px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1"

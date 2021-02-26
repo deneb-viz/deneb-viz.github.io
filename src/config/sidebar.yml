@@ -2,12 +2,22 @@
   items:
       # - label: "Obtaining the Visual"
       #   link: "/installation"
-      - label: "Creating From A Template"
-        link: "/creating-from-template"
-      # - label: "Visual Dataset Binding"
-      #   link: "/visual-dataset-binding"
-      # - label: "Visual Editor"
-      #   link: "/visual-editor"
+      - label: "Simple Worked Example"
+        link: "/simple-worked-example"
+      - label: "Visual Dataset Binding"
+        link: "/visual-dataset-binding"
+      - label: "Visual Editor"
+        link: "/visual-editor"
+- label: "Digging Deeper"
+  items:
+      - label: "Performance Considerations"
+        link: "/performance-considerations"
+- label: "Interactivity Features"
+  items:
+      - label: "Overview"
+        link: "/interactivity-features-overview"
+      - label: "Tooltips"
+        link: "/interactivity-tooltips"
 - label: "Further Resources"
   items:
       - label: "Privacy Policy"

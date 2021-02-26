@@ -1,0 +1,111 @@
+---
+title: "Interactivity Features - Overview"
+description: "Getting started with understanding Deneb <> Power BI interactivity."
+image: /images/favicon.png
+disableTableOfContents: false
+---
+
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+
+> _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+
+Power BI provides the ability to create visuals using <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">R</OutboundLink> and <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">Python</OutboundLink>. Whilst these extend your options significantly, these are rendered as a static image and mean that it's currently not possible for you to interact back from these visuals to the rest of the report.
+
+On occasion, these visuals may also require some additional dependencies if you want to share with a wider pool of end-users, or a library may not be available in the Power BI Service when it comes to deployment.
+
+## How Deneb Can Be Different from R & Python Options
+
+In addition to the JSON-based declarative syntax, Deneb is packaged with the Vega and Vega-Lite libraries. Because they are built for the web, anything you produce should ideally be portable within the Power BI ecosystem, irrespective of which device you're using.
+
+Both <OutboundLink href="https://vega.github.io/vega/docs/event-streams/" target="_blank"> Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/docs/selection.html" target="_blank">Vega-Lite</OutboundLink> have their own approaches to interactivity and it's only logical to start thinking about how we can make use of this to make the visual "fit in" with the functionality on offer in other Power BI visuals...
+
+## Managing your Expectations
+
+The interactivity part is one of the harder elements of developing custom visuals and as such, it's going to be challenging to make this work in a visual such as Deneb in a generic way, particularly as the Vega tooling provides a lot of creative freedom.
+
+We fundamentally have two challenges when it comes to building visuals that are interactive within Power BI:
+
+1. Reconciling data and row context to other visuals or the data model when events happen in our visual.
+
+2. Prescribing how the our visual should behave and respond _visually_ when our end-users interact with it.
+
+From a roadmap perspective, we want to crack these challenges and deliver them as best we can so that you can produce visuals that look and feel at home in Power BI, and your end-users get a consistent experience with your visual vs. others.
+
+As we get to solving these features, we'll document how they are supported and how you can make them work. At this time, we're just supporting [tooltips](interactivity-tooltips) (with some caveats), and the below should help with understanding the above two points a bit more before you start diving in and wondering why things don't work how you expect.
+
+The below is going to attempt to summarize some of the considerations we need to think about and this is a challenge to do concisely. For a deeper understanding, you're welcome to dive into the <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/developer/visuals?WT.mc_id=DP-MVP-5003712" target="_blank">developer documentation for visuals</OutboundLink>.
+
+## Reconciliation of Data and/or Row Context
+
+### Getting Data from the Model
+
+-   Visuals in Power BI can't read from the model of their own volition - they are effectively ring-fenced away from the main interface for a lot of (sensible) reasons.
+
+-   When you add columns and measures to the data roles, this is part of Power BI's interface, rather than the visual's.
+
+-   Power BI looks at all of these, plus the current filter context and runs a DAX query on the visual's behalf.
+
+To illustrate, we can use the Financial sample dataset that comes with Power BI Desktop to add the `Country` column and specify a sum of `Sales` to Deneb's _Values_ data role:
+
+![simple-column-and-measure-roles.png](/images/interactivity/simple-column-and-measure-roles.png "Adding a column and an implicit measure to the data roles.")
+
+After doing this, Power BI will generate the following query against the data model (which can be verified using the <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-performance-analyzer?WT.mc_id=DP-MVP-5003712" target="_blank">Performance Analyzer</OutboundLink>):
+
+```dax
+// DAX Query
+DEFINE
+    VAR __DS0Core =
+        SUMMARIZECOLUMNS (
+            'financials'[Country],
+            "Sumv_Sales", CALCULATE ( SUM ( 'financials'[ Sales] ) )
+        )
+    VAR __DS0PrimaryWindowed =
+        TOPN ( 10001, __DS0Core, 'financials'[Country], 1 )
+EVALUATE
+__DS0PrimaryWindowed
+ORDER BY 'financials'[Country]
+```
+
+This would produce the following dataset (visualized using a table):
+
+![simple-column-and-measure-result.png](/images/interactivity/simple-column-and-measure-result.png "Results of a simple DAX query (using a table visual).")
+
+...and this dataset is pushed into the visual. At this point, Deneb's logic will process the dataset and things continue as normal.
+
+> _Refer to the [Visual Dataset Binding](visual-dataset-binding#grain--row-context) page if you want to see how this data would get represented internally._
+
+### Signaling Back to Power BI
+
+Now using the above as an example, we can talk about the following interactivity scenarios:
+
+-   Cross-filtering other visuals
+-   Drilling-through from the context menu
+-   Displaying a report page tooltip
+
+All of these situations require the visual to tell Power BI what data it needs to work with... but here's the thing: just like how visuals can't just read whatever they like from the data model, they _definitely_ can't send anything back.
+
+For these situations, Power BI provides API methods for a visual to request that Power BI try to do these things on its behalf. For Power BI to fulfil this, it needs to know which row(s) from the orginal dataset it has to resolve.
+
+-   If you have just taken the dataset as-is and created a mark using Vega or Vega-Lite, then a mark's datm still has the correct row context and identifying information that Power BI needs.
+
+-   However, if you apply an operation in your specification that mutates the data from its original dataset - for example a transform (<OutboundLink href="https://vega.github.io/vega/docs/transforms/" target="_blank">Vega</OutboundLink> | <OutboundLink href="https://vega.github.io/vega-lite/docs/transform.html" target="_blank"> Vega-Lite</OutboundLink>) - then we lose the ability to leverage this functionality and you won't be able to offer this functionality in the resulting outputs.
+
+Any functionality we can deliver needs to bear these constraints in mind.
+
+### What About..?
+
+There's a couple of interactivity scenarios we've missed out from above:
+
+-   Default tooltips are different to report page tooltips.
+    -   In these cases Deneb can pass a list of values to display and ask Power BI to display them inside a standard tooltip.
+    -   This is also the fall-back behavior if the row context cannot be resolved by Power BI, or a suitable tooltip page cannot be found.
+    -   Tooltip functionality within Deneb is covered in much more detail on the [Tooltips](interactivity-tooltips) page.
+-   Slicer filtering works differently to cross-filtering, but as Deneb is not a slicer, we're skipping that one.
+
+## Visual Effects and Behavior
+
+Whilst this section is not as large as the above one, it is still very important to consider.
+
+In defining a specification, you have control over how Vega or Vega-Lite renders the output for interaction events. You may choose to employ dimming or opacity-based effects for non-selected marks, or you may choose to alter their color, or try something completely unique and original.
+
+As such, we will need to provide the right approaches for you to take advantage of these features of the Vega tooling, while still giving you the ability to signal events to Power BI (bearing in mind the considerations above about a mark's particular datum). This will take a little bit more time to find the right way forward, but it's being actively though about.

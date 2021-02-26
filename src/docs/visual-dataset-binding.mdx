@@ -7,4 +7,103 @@ disableTableOfContents: false
 
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 
-> _Deneb is currently undergoing active development. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+> _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+
+Any data you add to the visual's _Values_ data role is automatically bound to an internal dataset named **`values`** in the Vega or Vega-Lite view. This will update dynamically as you add or remove columns and measures, or the number of rows in the dataset changes (e.g. filter context).
+
+## Linking Visual Data in A Specification
+
+Even though this is passed through from Power BI, a specification needs to contain a reference to the named dataset, otherwise the values cannot be encoded when the specification is parsed. You should always ensure that a specification contains the following for this to work:
+
+```json title=Vega-Lite
+{
+    ...
+    "data": { "name": "values" }
+    ...
+}
+```
+
+```json title=Vega
+{
+    ...
+    "data": [
+        { "name": "values" }
+    ]
+    ...
+}
+```
+
+The visual's starter templates all follow this approach, so if in doubt, create a new specification using the _[empty]_ template as a boilerpate.
+
+## Grain / Row Context
+
+Internally, the visual handles its dataset in much the same way as a core <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-tables?WT.mc_id=DP-MVP-5003712" target="_blank">table</OutboundLink>, i.e. the number of rows in the dataset is equivalent to the combination of all unique values across all columns and measures added.
+
+Let's say that we have the following data in our visual:
+
+![simple-data-table.png](/images/getting-started/simple-data-table.png "A simple category column (City) and measure (Mean Temperature).")
+
+If you're used to working with JSON, the above is synonymous to the following object:
+
+```json
+{
+    "values": [
+        { "City": "Auckland", "Mean Temperature": 14.62 }
+        { "City": "Christchurch", "Mean Temperature": 9.49 }
+        { "City": "Dunedin", "Mean Temperature": 6.83 }
+        { "City": "Hamilton", "Mean Temperature": 13.27 }
+        { "City": "Lower Hutt", "Mean Temperature": 12.12 }
+        { "City": "North Shore", "Mean Temperature": 14.62 }
+        { "City": "Tauranga", "Mean Temperature": 12.99 }
+        { "City": "Waitakere", "Mean Temperature": 14.62 }
+        { "City": "Wellington", "Mean Temperature": 12.12 }
+    ]
+}
+```
+
+## Referencing Columns and Measures
+
+Wherever you need to reference a column or a measure in your specification, you should use its **display name** from the _Values_ rather than those from the data model as illustrated in the above section). If you rename or remove a column or measure, please remember to update your specification accordingly.
+
+## Augmenting Other Datasets
+
+In the case of a Vega specification, you can potentially add further `data` objects to the array, but bear the following in mind:
+
+-   At this stage, we're working towards the production of a visual that will ideally be certified in AppSource, and certified visuals are not permitted to bring in data or resources from external locations.
+
+    -   To this end, loading external files is not permitted in the visual.
+    -   It is envisaged that further down the line, this feature will be enabled, albeit in a separately published version of the visual that will not be eligible for certification )or, if the core visual cannot be certified, we'll just switch it on 😉)
+
+-   It's generally advised to refer to data from within your model as much as possible.
+
+## Considerations for Transforming Data
+
+Both <OutboundLink href="https://vega.github.io/vega/docs/transforms/" target="_blank">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/docs/transform.html" target="_blank">Vega-Lite</OutboundLink> support the concept of transforms, which ultimately mutate the data from its initial state. Whilst this approach may be necessary to produce particular types of visual, this changes the row context and some features may no longer be available (particularly those that leverage interactivity). Please refer to the pages in the [Interactivity Features](/interactivity-features-overview) section for more details.
+
+## Data Row Limits
+
+In order to try and keep performance usable for most cases, the visual caps the row count at **10,000** by default.
+
+It is however possible to override this if you so wish, but the number of rows returned will be subject to resource limits and entirely up to Power BI. If you wish to override this, you can find the _Data Limit Options_ menu in the properties pane:
+
+![data-limit-options-initial.png](/images/dataset/data-limit-options-initial.png "The Data Limit Options property menu.")
+
+Switching on the _Override Row Limit_ property, will ask Power bI to load more rows into the dataset, in batches of 10,000, e.g.:
+
+![data-limit-override-enabled.png](/images/dataset/data-limit-override-enabled.png "Enabling the 'Override Row Limit' property will cause the visual to request more data from Power BI.")
+
+Because there's a lot to consider when enabling this property, the _Show Data Loading Notes_ property is enabled by default, and this is intended to provide creators or developers a bit more detail around the caveats around using this feature in a condensed space. Whist the information can probably be seen in the screenshot, the important details are listed here too:
+
+-   Power BI will cause the visual's data to reload when:
+
+    -   You add or remove columns or measures from the _Values_ data role.
+    -   The visual's filter context is changed.
+    -   Values in the properties pane are modified.
+
+-   Most operations in the visual editor will not trigger this behavior, so with the exception of doing anything above, there should be minimal disruption in terms of Power BI reloading the dataset.
+
+-   However **editing a specification with a lot of data can usually have negative performance implications**. Refer to the [Performance Considerations](/performance-considerations) page for further details on potential risks and mitigation approaches.
+
+When you're sufficiently used to the behavior of this feature (or when ready to publish and you don't want your users to see them), you can turn off the _Show Data Loading Notes_ property to de-clutter this:
+
+![data-loading-notes-off.png](/images/dataset/data-loading-notes-off.png "Disabling the 'Show Data Loading Notes' property results in the screen being a little more end-user centric.")

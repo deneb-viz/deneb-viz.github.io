@@ -22,8 +22,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Rocketseat Gatsby Themes`,
-        short_name: `RS Gatsby Themes`,
+        name: `Deneb - Declarative visualization in Power BI, using the Vega language`,
+        short_name: `Deneb Visual Site`,
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
