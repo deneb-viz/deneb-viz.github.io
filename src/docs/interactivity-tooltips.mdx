@@ -9,9 +9,9 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
-We saw [in the worked example](simple-worked-example#adding-tooltips), that it's fairly straightforward to add tooltips to a specification, but we'll unpack on this page ina bit more detail.
+We saw [in the worked example](simple-worked-example#adding-tooltips), that it's fairly straightforward to add tooltips to a specification, but we'll unpack on this page in a bit more detail.
 
-If you haven't read it already, it's worth reviewing the preceding page to understand some of the considerations that need to be made with integrating back to Power BI. it will certainly help with understanding the logistics around report page tooltips in particular.
+If you haven't read it already, it's worth reviewing the [preceding page](interactivity-features-overview) to understand some of the considerations that need to be made with integrating back to Power BI. it will certainly help with understanding the logistics around report page tooltips in particular.
 
 ## Tooltip Strategy
 
@@ -21,7 +21,7 @@ Both <OutboundLink href="https://github.com/vega/vega-tooltip/blob/master/docs/c
 
 2. An appropriate `tooltip` property is assigned to a mark. Refer [below](#vega-lite-syntax) for the recommended syntax for each provider.
 
-3. Tooltip handler is fired when a mark is hovered over.
+3. A tooltip-enabled mark is hovered over.
 
 ## Data Point Resolution
 
@@ -49,8 +49,9 @@ The <OutboundLink href="https://vega.github.io/vega-lite/docs/tooltip.html#encod
 {
     ...
         "mark": {
-            "type": "bar",
-            "tooltip": true
+            ...
+            "tooltip": true,
+            ...
         },
     ...
 }
@@ -65,6 +66,7 @@ With Vega, you need to specify the `tooltip` signal in your mark's `encode` prop
     ...
     "encode": {
         "enter": {
+            ...
             "tooltip": {
                 "signal": "datum"
             },
@@ -79,6 +81,6 @@ With Vega, you need to specify the `tooltip` signal in your mark's `encode` prop
 
 -   It's been mentioned countless times already, but tooltip integration with Power BI is wholy dependent on the correct row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-features-overview) page for more information about ensuring this is preserved.
 
--   Adding a tooltip oes not immediately add visual feedback. If you want to track the position of the resolved data point more visually (e.g. like for a line chart), you will need to add a suitable set of marks to do this. Both <OutboundLink href="https://vega.github.io/vega/examples/" target="_blank">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/examples/" target="_blank">Vega-Lite</OutboundLink> have examples you can refer to for this.
+-   Adding a tooltip does not automatically add visual feedback or effects. If you want to track the position of the resolved data point more visually (e.g. like for a line chart), you will need to add a suitable set of marks to do this. Both <OutboundLink href="https://vega.github.io/vega/examples/" target="_blank">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/examples/" target="_blank">Vega-Lite</OutboundLink> have examples you can refer to.
 
--   Development so far has been focused on Power BI integration. It's possible that if you deviate from the above patterns, then tooltips may not display correctly. If you find any such use cases, please <OutboundLink href="https://github.com/deneb-viz/deneb-powerbi/issues" target="_blank">create an issue</OutboundLink> with the appropriate reproduction steps (e.g. example specification and/or data).
+-   Development so far has been focused on Power BI integration. It's possible that if you deviate from the above patterns, then tooltips may not display correctly. If you find any such use cases, please <OutboundLink href="https://github.com/deneb-viz/deneb-powerbi/issues" target="_blank">create an issue</OutboundLink> with the appropriate reproduction steps (e.g. example specification and/or data) and we'll see what we can do about it.

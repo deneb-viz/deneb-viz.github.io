@@ -14,7 +14,7 @@
         link: "/performance-considerations"
 - label: "Interactivity Features"
   items:
-      - label: "Overview"
+      - label: "Interactivity Overview"
         link: "/interactivity-features-overview"
       - label: "Tooltips"
         link: "/interactivity-tooltips"

@@ -9,7 +9,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
-Power BI provides the ability to create visuals using <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">R</OutboundLink> and <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">Python</OutboundLink>. Whilst these extend your options significantly, these are rendered as a static image and mean that it's currently not possible for you to interact back from these visuals to the rest of the report.
+Power BI provides the ability to create visuals using <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-r-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">R</OutboundLink> and <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/connect-data/desktop-python-visuals?WT.mc_id=DP-MVP-5003712" target="_blank">Python</OutboundLink>. Whilst these extend your options significantly, these are typically rendered as a static image and mean that it's currently not possible for you to interact back from these visuals to the rest of the report.
 
 On occasion, these visuals may also require some additional dependencies if you want to share with a wider pool of end-users, or a library may not be available in the Power BI Service when it comes to deployment.
 
@@ -70,7 +70,7 @@ This would produce the following dataset (visualized using a table):
 
 ![simple-column-and-measure-result.png](/images/interactivity/simple-column-and-measure-result.png "Results of a simple DAX query (using a table visual).")
 
-...and this dataset is pushed into the visual. At this point, Deneb's logic will process the dataset and things continue as normal.
+...and this dataset is supplied by Power BI into the visual. At this point, Deneb's logic will process the dataset and things continue as normal.
 
 > _Refer to the [Visual Dataset Binding](visual-dataset-binding#grain--row-context) page if you want to see how this data would get represented internally._
 
@@ -86,9 +86,9 @@ All of these situations require the visual to tell Power BI what data it needs t
 
 For these situations, Power BI provides API methods for a visual to request that Power BI try to do these things on its behalf. For Power BI to fulfil this, it needs to know which row(s) from the orginal dataset it has to resolve.
 
--   If you have just taken the dataset as-is and created a mark using Vega or Vega-Lite, then a mark's datm still has the correct row context and identifying information that Power BI needs.
+-   If you have just taken the dataset as-is and created a mark using Vega or Vega-Lite, then a mark's datum still has the correct row context and identifying information that Power BI needs.
 
--   However, if you apply an operation in your specification that mutates the data from its original dataset - for example a transform (<OutboundLink href="https://vega.github.io/vega/docs/transforms/" target="_blank">Vega</OutboundLink> | <OutboundLink href="https://vega.github.io/vega-lite/docs/transform.html" target="_blank"> Vega-Lite</OutboundLink>) - then we lose the ability to leverage this functionality and you won't be able to offer this functionality in the resulting outputs.
+-   However, if you apply an operation in your specification that mutates the data from its original dataset - for example a transform (<OutboundLink href="https://vega.github.io/vega/docs/transforms/" target="_blank">Vega</OutboundLink> | <OutboundLink href="https://vega.github.io/vega-lite/docs/transform.html" target="_blank"> Vega-Lite</OutboundLink>) - then we lose the ability to leverage this functionality in the resulting outputs.
 
 Any functionality we can deliver needs to bear these constraints in mind.
 
