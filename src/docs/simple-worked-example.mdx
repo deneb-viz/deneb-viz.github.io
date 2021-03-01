@@ -103,7 +103,8 @@ In our editor's _Specification_ tab, we'll now have the following <OutboundLink 
         "name": "values"
     },
     "mark": {
-        "type": "bar"
+        "type": "bar",
+        "tooltip": true
     },
     "encoding": {
         "y": {
@@ -125,7 +126,7 @@ Here, we can see that:
     -   This is required for the specification, instructs that our visual's dataset should be used and should be left as-is.
     -   Refer to the [Visual Dataset Binding](./visual-dataset-binding) page for more details on how this works.
 
--   We're <OutboundLink href="http://vega.github.io/vega-lite/docs/bar.html" target="_blank">using a `bar` mark</OutboundLink> for our data point.
+-   We're <OutboundLink href="http://vega.github.io/vega-lite/docs/bar.html" target="_blank">using a `bar` mark</OutboundLink> for our data point and we're displaying a `tooltip` for this mark.
 
 -   The <OutboundLink href="http://vega.github.io/vega-lite/docs/encoding.html" target="_blank">encoding for the visual</OutboundLink> maps our data as follows:
     -   `City` is mapped to the y-axis.
@@ -154,39 +155,9 @@ You can extend the config significantly to customize many parts of your visual, 
 
 > _You can include your `config` in the specification JSON if you like at the top-level, but the intention here is to separate the cosmetic aspects of the visual away from its logical ones, so we have a separate tab in the editor for this for thos who wish to adopt this approach._
 
-## Adding Tooltips
+## Tooltips
 
-Back in the _Specification_ tab, let's modify the `mark` to specify that it should display a tooltip (changes highlighted):
-
-```json highlight={7}
-{
-    "data": {
-        "name": "values"
-    },
-    "mark": {
-        "type": "bar",
-        "tooltip": true
-    },
-    "encoding": {
-        "y": {
-            "field": "City",
-            "type": "nominal"
-        },
-        "x": {
-            "field": "Mean Temperature",
-            "type": "quantitative"
-        }
-    }
-}
-```
-
-Now, we can apply our changes by clicking the _Apply_ command (or pressing **[ Ctrl / Command + Enter ]**):
-
-![apply-command.png](/images/getting-started/apply-command.png "The 'Apply' command ensures your changes are applied to the visual specification.")
-
-> _Note that the **Auto-Apply** command can be used to ensure changes are applied as you type rather than manually, although this isn't recommended for complex specifications or ones that use a large number of data points._
-
-Now, we can hover over a data point in our visual and this will display a standard tooltip, e.g.:
+Our template enables tooltips by default, so we can hover over a data point in our visual and this will display a default tooltip, e.g.:
 
 ![standard-tooltip.png](/images/getting-started/standard-tooltip.png "If specifying that a mark should render a tooltip, this will display a standard Power BI tooltip when hovered.")
 
@@ -204,7 +175,7 @@ Then, the visual can resolve this, providing that you specify to use a report pa
 
 ## Adding Further Config
 
-It's possible to make our visual look a bit more at home by adding or modifying its configuration, so let's update this as follows (changes highlighted):
+It's possible to make our visual look a bit more at home by adding or modifying its configuration, so let's select the _Config_ tab and update this as follows (changes highlighted):
 
 ```json highlight={6-25}
 {
@@ -235,7 +206,13 @@ It's possible to make our visual look a bit more at home by adding or modifying 
 }
 ```
 
-Click the _Apply_ button on the command bar, and our visual updates as follows:
+Now, we can apply our changes by clicking the _Apply_ command (or pressing **[ Ctrl / Command + Enter ]**):
+
+![apply-command.png](/images/getting-started/apply-command.png "The 'Apply' command ensures your changes are applied to the visual specification.")
+
+> _Note that the **Auto-Apply** command can be used to ensure changes are applied as you type rather than manually, although this isn't recommended for complex specifications or ones that use a large number of data points._
+
+Once we've applied the changes, our visual updates as follows:
 
 ![config-applied.png](/images/getting-started/config-applied.png "Visual after config has been applied.")
 

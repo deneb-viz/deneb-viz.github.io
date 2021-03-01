@@ -43,7 +43,7 @@ Let's say that we have the following data in our visual:
 
 ![simple-data-table.png](/images/getting-started/simple-data-table.png "A simple category column (City) and measure (Mean Temperature).")
 
-If you're used to working with JSON, the above is synonymous to the following object:
+If you're used to working with JSON, a representation similar to the following JSON output is patched into the specification when it is parsed:
 
 ```json
 {
@@ -74,7 +74,7 @@ In the case of a Vega specification, you can potentially add further `data` obje
     -   To this end, loading external files is not permitted in the visual.
     -   It is envisaged that further down the line, this feature will be enabled, albeit in a separately published version of the visual that will not be eligible for certification (or, if the core visual cannot be certified, we'll just switch it on 😉)
 
--   It's generally advised to refer to data from within your model as much as possible.
+-   As such, it is recommended that you regard the named `"values"` source as where all data for your specification should come from.
 
 ## Considerations for Transforming Data
 
@@ -88,7 +88,7 @@ It is however possible to override this if you so wish, but the number of rows r
 
 ![data-limit-options-initial.png](/images/dataset/data-limit-options-initial.png "The Data Limit Options property menu.")
 
-Switching on the _Override Row Limit_ property, will ask Power bI to load more rows into the dataset, in batches of 10,000, e.g.:
+Switching on the _Override Row Limit_ property, will ask Power BI to load more rows into the dataset, in batches of 10,000, e.g.:
 
 ![data-limit-override-enabled.png](/images/dataset/data-limit-override-enabled.png "Enabling the 'Override Row Limit' property will cause the visual to request more data from Power BI.")
 
