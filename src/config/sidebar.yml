@@ -10,6 +10,8 @@
         link: "/visual-editor"
 - label: "Digging Deeper"
   items:
+      - label: "Formatting Values"
+        link: "/formatting-values"
       - label: "Performance Considerations"
         link: "/performance-considerations"
 - label: "Interactivity Features"
@@ -24,6 +26,8 @@
         link: "/privacy-policy"
       - label: FAQ
         link: "/faq"
+      - label: "Change Log"
+        link: "/changelog"
       - label: "Vega Documentation"
         link: "https://vega.github.io/vega/docs/"
       - label: "Vega-Lite Documentation"

@@ -5,6 +5,6 @@ export default {
     shape: `#eaeaea`,
     title: `#3D3D4D`,
     text: `#252423`,
-    link: `#666666`,
+    link: `#DA9A0F`,
   },
 }
