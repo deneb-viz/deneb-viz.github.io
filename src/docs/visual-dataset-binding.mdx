@@ -9,7 +9,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
-Any data you add to the visual's _Values_ data role is automatically bound to an internal dataset named **`values`** in the Vega or Vega-Lite view. This will update dynamically as you add or remove columns and measures, or the number of rows in the dataset changes (e.g. filter context).
+Any data you add to the visual's _Values_ data role is automatically bound to an internal dataset named **`dataset`** in the Vega or Vega-Lite view. This will update dynamically as you add or remove columns and measures, or the number of rows in the dataset changes (e.g. filter context).
 
 ## Linking Visual Data in A Specification
 
@@ -18,7 +18,7 @@ Even though this is passed through from Power BI, a specification needs to conta
 ```json title=Vega-Lite
 {
     ...
-    "data": { "name": "values" }
+    "data": { "name": "dataset" }
     ...
 }
 ```
@@ -27,7 +27,7 @@ Even though this is passed through from Power BI, a specification needs to conta
 {
     ...
     "data": [
-        { "name": "values" }
+        { "name": "dataset" }
     ]
     ...
 }
@@ -47,7 +47,7 @@ If you're used to working with JSON, a representation similar to the following J
 
 ```json
 {
-    "values": [
+    "dataset": [
         { "City": "Auckland", "Mean Temperature": 14.62 }
         { "City": "Christchurch", "Mean Temperature": 9.49 }
         { "City": "Dunedin", "Mean Temperature": 6.83 }
@@ -74,7 +74,7 @@ In the case of a Vega specification, you can potentially add further `data` obje
     -   To this end, loading external files is not permitted in the visual.
     -   It is envisaged that further down the line, this feature will be enabled, albeit in a separately published version of the visual that will not be eligible for certification (or, if the core visual cannot be certified, we'll just switch it on 😉)
 
--   As such, it is recommended that you regard the named `"values"` source as where all data for your specification should come from.
+-   As such, it is recommended that you regard the named `"dataset"` source as where all data for your specification should come from.
 
 ## Considerations for Transforming Data
 
