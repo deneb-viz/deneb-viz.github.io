@@ -35,7 +35,7 @@ The Visual Editor pane will be on the left and your rendered specification will 
 
 The _Visual Editor_ pane is used to carry out any operations in this screen:
 
--   It can be collapsed and expanded, much like the other panes in Power BI, which can be useful for previewing designs.
+-   It can be collapsed and expanded, much like the other panes in Power BI, which can be useful for previewing designs. _Keyboard shortcut:  `Ctrl + Alt + Space`_
 -   The pane can be resized to use a maximum of 60% of the visible canvas by click-dragging.
 -   Double-clicking the resizer will revert the pane to its default size (40% of the visible canvas).
 
@@ -49,7 +49,7 @@ The Command Bar contains the following operations (from left to right):
 
 #### Apply
 
-_Keyboard shortcut: `Ctrl/Command + Enter`_
+_Keyboard shortcut: `Ctrl + Enter`_
 
 -   Selecting this option will apply any changes you have made in either the _Specification_ or _Config_ and update your visual.
 -   This option is disabled if you have _Auto-Apply_ enabled (see below).
@@ -58,7 +58,7 @@ _Keyboard shortcut: `Ctrl/Command + Enter`_
 
 #### Toggle Auto-Apply
 
-_Keyboard shortcut: `Ctrl/Command + Shift + Enter`_
+_Keyboard shortcut: `Ctrl + Shift + Enter`_
 
 -   Selecting this option will apply changes to the _Specification_ or _Config_ editors as you type them.
 -   Enabling this option will disable the _Apply_ command.
@@ -67,7 +67,7 @@ _Keyboard shortcut: `Ctrl/Command + Shift + Enter`_
 
 #### Repair and Format JSON
 
-_Keyboard shortcut: `Ctrl/Command + \`_
+_Keyboard shortcut: `Ctrl + Alt + R`_
 
 -   Selecting this option will attempt to repair any simple typographical issues in your JSON, and re-format it with indentation.
 -   The tooling does its best to fix anything straightforward but in some cases it will not be possible to repair the JSON and manual corrections may be required and a banner will be shown above the editor.
@@ -76,7 +76,7 @@ _Keyboard shortcut: `Ctrl/Command + \`_
 
 #### New Specification
 
-_Keyboard shortcut: `Ctrl/Command + Alt + N`_
+_Keyboard shortcut: `Ctrl + Alt + N`_
 
 -   Selecting this option will open the _Create New Specification_ dialog.
 -   The dialog can be used to replace the current Specification and Config with either an bare-minimum set of JSON for each, or you can choose from a number of simple templates to get started.
@@ -86,11 +86,13 @@ _Keyboard shortcut: `Ctrl/Command + Alt + N`_
 
 #### Help
 
-_Keyboard shortcut: `Ctrl/Command + Alt + H`_
+_Keyboard shortcut: `Ctrl + Alt + H`_
 
 -   Selecting this option will cause Power BI to confirm you wish to open the link to this documentation site. Selecting _OK_ will open it in a new browser tab.
 
 ### Specification Editor Tab
+
+_Keyboard shortcut: `Ctrl + Alt + 1`_
 
 -   This tab contains an editor that you can use to enter and amend your specification's JSON as desired.
     -   The Vega JSON specification reference <OutboundLink href="https://vega.github.io/vega/docs/specification/" target="_blank">can be found here</OutboundLink>.
@@ -101,6 +103,8 @@ _Keyboard shortcut: `Ctrl/Command + Alt + H`_
     ![schema-validation-example.png](/images/editor/schema-validation-example.png "Example of a schema validation issue for an invalid Vega-Lite mark type.")
 
 ### Config Editor Tab
+
+_Keyboard shortcut: `Ctrl + Alt + 2`_
 
 -   This tab contains an editor that you can use to enter and amend any JSON you wish to add for your visual's config as desired.
     -   The Vega JSON config reference <OutboundLink href="https://vega.github.io/vega/docs/config/" target="_blank">can be found here</OutboundLink>.
@@ -113,6 +117,8 @@ _Keyboard shortcut: `Ctrl/Command + Alt + H`_
 > _You can choose to add your config to a top-level `"config": {}` object in the **Specification** tab, if you so wish._
 
 ### Settings Tab
+
+_Keyboard shortcut: `Ctrl + Alt + 3`_
 
 -   This tab is used to configure specific behavior of Deneb when generating output:
     ![settings-tab.png](/images/editor/settings-tab.png "The settings tab, which is used to configure aspects of Deneb's behavior.")

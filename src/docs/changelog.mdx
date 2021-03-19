@@ -11,11 +11,30 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 ## 0.2
 
-### 0.2.0.81-beta (TBC)
+### 0.2.0.82-beta (2021-03-19)
+
+#### Improvements
+
+- Keyboard shortcuts now available for all portions of the advanced UI; not just when a user is inside the specification or config editor (#23)
+- Editor pane toggle has keyboard shortcut - `Ctrl + Alt + Space` (#24)
+- Editor tabs now have shortcuts (#2):
+    - Specification - `Ctrl + Alt + 1`
+    - Config - `Ctrl + Alt + 2`
+    - Settings - `Ctrl + Alt + 3`
+
+#### Bugs Fixed
+
+- Toggling the editor pane lost any changes in-progress. This has been amended to apply changes prior to unmounting the 'expanded' view.
+
+### 0.2.0.81-beta (2021-03-17)
 
 #### Improvements
 -   Custom formatter added, which if specified, allows creators to use Power BI format strings instead of D3 ones. Refer to [Formatting Values](/formatting-values) page for details (#13)
 -   Added switchable locale in dev tools, which will assist with debugging formatting and other i18n stuff (#19)
+
+#### Bugs Fixed
+
+-   Vega templates had incorrect reference to `values` named dataset, rather than `dataset`. These have been re-pointed to be correct.
 
 #### Housekeeping
 
