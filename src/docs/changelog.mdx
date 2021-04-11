@@ -9,31 +9,32 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
-## 0.2
+<!--
+## 0.3.0.8x-beta (2021-mm-yy)
 
-### 0.2.0.82-beta (2021-03-19)
+#### Improvements
+
+- Internally, the data view mapping now uses `categorical` rather than `table`, which results in no net change for end-users, but will allow us potentially more functionality with selectors than the `table` data view mapping offers.
+- One such benefit is that to date, a report page tooltip could only be created and referenced using a column from the dataset; we can now use a single measure if we so want.
+
+-->
+
+## 0.2.0.82-beta (2021-03-19)
 
 #### Improvements
 
-- Keyboard shortcuts now available for all portions of the advanced UI; not just when a user is inside the specification or config editor (#23)
-- Editor pane toggle has keyboard shortcut - `Ctrl + Alt + Space` (#24)
-- Editor tabs now have shortcuts (#2):
-    - Specification - `Ctrl + Alt + 1`
-    - Config - `Ctrl + Alt + 2`
-    - Settings - `Ctrl + Alt + 3`
-
-#### Bugs Fixed
-
-- Toggling the editor pane lost any changes in-progress. This has been amended to apply changes prior to unmounting the 'expanded' view.
-
-### 0.2.0.81-beta (2021-03-17)
-
-#### Improvements
 -   Custom formatter added, which if specified, allows creators to use Power BI format strings instead of D3 ones. Refer to [Formatting Values](/formatting-values) page for details (#13)
+-   Keyboard shortcuts now available for all portions of the advanced UI; not just when a user is inside the specification or config editor (#23)
+-   Editor pane toggle has keyboard shortcut - `Ctrl + Alt + Space` (#24)
+-   Editor tabs now have shortcuts (#2):
+    -   Specification - `Ctrl + Alt + 1`
+    -   Config - `Ctrl + Alt + 2`
+    -   Settings - `Ctrl + Alt + 3`
 -   Added switchable locale in dev tools, which will assist with debugging formatting and other i18n stuff (#19)
 
 #### Bugs Fixed
 
+-   Toggling the editor pane lost any changes in-progress. This has been amended to apply changes prior to unmounting the 'expanded' view.
 -   Vega templates had incorrect reference to `values` named dataset, rather than `dataset`. These have been re-pointed to be correct.
 
 #### Housekeeping
@@ -41,8 +42,6 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 -   Fixed linting issues with chevron icon in header (#17)
 -   Renamed anything to do with editor pane sizing to be more appropriate for the current interface logic (#14)
 
-## 0.1: Initial Early Access
-
-### 0.1.0.80-beta (2021-03-15)
+## 0.1.0.80-beta (2021-03-15)
 
 Initial beta release for early access.
