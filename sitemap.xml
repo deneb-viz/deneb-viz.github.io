@@ -3,15 +3,15 @@
 <url> <loc>https://deneb-viz.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/faq</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/changelog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://deneb-viz.github.io/installation</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/interactivity-features-overview</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/formatting-values</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/interactivity-tooltips</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/performance-considerations</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/privacy-policy</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://deneb-viz.github.io/simple-worked-example</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/visual-dataset-binding</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/visual-editor</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://deneb-viz.github.io/support</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://deneb-viz.github.io/contributors</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://deneb-viz.github.io/installation</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://deneb-viz.github.io/simple-worked-example</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://deneb-viz.github.io/support</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
