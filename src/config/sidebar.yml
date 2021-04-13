@@ -8,6 +8,10 @@
         link: "/visual-dataset-binding"
       - label: "Visual Editor"
         link: "/visual-editor"
+      - label: "Vega Documentation"
+        link: "https://vega.github.io/vega/docs/"
+      - label: "Vega-Lite Documentation"
+        link: "http://vega.github.io/vega-lite/docs/"
 - label: "Digging Deeper"
   items:
       - label: "Formatting Values"
@@ -22,15 +26,15 @@
         link: "/interactivity-tooltips"
 - label: "Further Resources"
   items:
+      - label: Support
+        link: /support
       - label: "Privacy Policy"
         link: "/privacy-policy"
       - label: FAQ
         link: "/faq"
       - label: "Change Log"
         link: "/changelog"
-      - label: "Vega Documentation"
-        link: "https://vega.github.io/vega/docs/"
-      - label: "Vega-Lite Documentation"
-        link: "http://vega.github.io/vega-lite/docs/"
+      - label: Contributors
+        link: /contributors
       - label: "Source Code [GitHub]"
         link: "https://github.com/deneb-viz/deneb-powerbi"

@@ -1,6 +1,5 @@
 import React from "react"
-import { Global, css } from "@emotion/core"
-import { useTheme } from "emotion-theming"
+import { useTheme, Global, css } from '@emotion/react';
 
 export default function GlobalStyle() {
   const theme = useTheme()
@@ -23,6 +22,10 @@ export default function GlobalStyle() {
 
         .social-links p {
           margin-bottom: 4px;
+        }
+
+        .social-links a {
+          color: #252423;
         }
 
         .social-links a:hover {
