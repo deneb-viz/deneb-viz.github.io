@@ -9,7 +9,7 @@ module.exports = {
     siteImage: `/banner.svg`,
     siteLanguage: `en`,
     themeColor: `#8257E6`,
-    basePath: `/`,
+    basePath: `/`
   },
   plugins: [
     {
@@ -17,6 +17,8 @@ module.exports = {
       options: {
         configPath: `src/config`,
         docsPath: `src/docs`,
+        repositoryUrl: `https://github.com/deneb-viz/deneb-viz.github.io`,
+        branch: `source`
       },
     },
     {
@@ -37,7 +39,7 @@ module.exports = {
         // The property ID; the tracking code won't be generated without it
         trackingId: "UA-143608567-3",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
+        head: true,
         // Setting this parameter is optional
         anonymize: true,
         // Setting this parameter is also optional
