@@ -1,0 +1,145 @@
+{
+    "$ref": "#/definitions/IDenebTemplate",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "IDenebTemplate": {
+            "description": "Main template definition.",
+            "properties": {
+                "author": {
+                    "$ref": "#/definitions/ITemplateAuthor",
+                    "description": "About the author of the template, for follow-up... or kudos!"
+                },
+                "dataset": {
+                    "description": "Dataset columns or measures used by the template, that the end-user will need to supply for it to work.",
+                    "items": {
+                        "$ref": "#/definitions/ITemplateDatasetField"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "information": {
+                    "$ref": "#/definitions/ITemplateInformation",
+                    "description": "High-level information or metadata about the template."
+                },
+                "provider": {
+                    "description": "Provider details for the template.",
+                    "enum": [
+                        "vega",
+                        "vegaLite"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "author",
+                "dataset",
+                "information",
+                "provider"
+            ],
+            "type": "object"
+        },
+        "ITemplateAuthor": {
+            "properties": {
+                "name": {
+                    "description": "Name of the author of the template",
+                    "maxLength": 100,
+                    "minLength": 3,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        },
+        "ITemplateDatasetField": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "description": "Optional assistive text to display to the end-user when adding fields to the template.",
+                    "maxLength": 300,
+                    "minLength": 10,
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Unique field placeholder name. Must start and end with __ (double-underscore) and can only use alpha-numeric characters in-between.",
+                    "maxLength": 30,
+                    "minLength": 5,
+                    "pattern": "^__[a-zA-Z0-9]+__$",
+                    "type": "string"
+                },
+                "kind": {
+                    "$ref": "#/definitions/TDatasetFieldKind",
+                    "description": "Specifies whether a column or measure (or either) should be used for this placeholder."
+                },
+                "name": {
+                    "maxLength": 30,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/TDatasetFieldType",
+                    "description": "The list of data types that can be used for this placeholder, for any columns or measures in the data model."
+                }
+            },
+            "required": [
+                "key",
+                "kind",
+                "name",
+                "type"
+            ],
+            "type": "object"
+        },
+        "ITemplateInformation": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "description": "More detailed (but still short!) description of the template's purpose.",
+                    "maxLength": 300,
+                    "type": "string"
+                },
+                "generated": {
+                    "description": "Generation date and time of template.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Display name of template.",
+                    "maxLength": 100,
+                    "minLength": 10,
+                    "type": "string"
+                },
+                "uuid": {
+                    "description": "Unique identifier of template.",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "generated",
+                "name",
+                "uuid"
+            ],
+            "type": "object"
+        },
+        "TDatasetFieldKind": {
+            "enum": [
+                "any",
+                "column",
+                "measure"
+            ],
+            "type": "string"
+        },
+        "TDatasetFieldType": {
+            "enum": [
+                "bool",
+                "dateTime",
+                "numeric",
+                "other",
+                "text"
+            ],
+            "type": "string"
+        }
+    }
+}
+
