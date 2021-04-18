@@ -7,7 +7,7 @@ disableTableOfContents: false
 
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 
-> _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+> _**Deneb is currently in public preview** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
 ## Default Formatting Behavior
 
@@ -17,7 +17,7 @@ You can provide your own overrides to these wherever they are used. Both <Outbou
 
 Power BI <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-custom-format-strings?WT.mc_id=DP-MVP-5003712#supported-custom-format-syntax" target="_blank">has its own syntax</OutboundLink>, which is probably your preference for applying any customized formatting strings into a specification.
 
-To ensure correct compatibility with Vega and Vega-Lite, particularly if you're bringing examples in (or even looking to take them out!) Deneb will use the D3 convention by default, but we're working on evening the odds.
+To ensure correct compatibility with Vega and Vega-Lite, particularly if you're bringing examples in (or even looking to take them out!) Deneb will use the D3 convention by default, but there's some help at hand if that's not your preference.
 
 ## Power BI Custom Formatter ![](https://img.shields.io/badge/-%E2%89%A5%200.2-lightgrey)
 
@@ -33,22 +33,22 @@ Let's say we have a simple bar chart that uses the Power BI financial sample dat
 
 ```json
 {
-  "data": {
-    "name": "dataset"
-  },
-  "mark": {
-    "type": "bar"
-  },
-  "encoding": {
-    "y": {
-      "field": "Country",
-      "type": "nominal"
+    "data": {
+        "name": "dataset"
     },
-    "x": {
-      "field": "$ Sales",
-      "type": "quantitative"
+    "mark": {
+        "type": "bar"
+    },
+    "encoding": {
+        "y": {
+            "field": "Country",
+            "type": "nominal"
+        },
+        "x": {
+            "field": "$ Sales",
+            "type": "quantitative"
+        }
     }
-  }
 }
 ```
 
@@ -137,7 +137,7 @@ And now, we have both axes formatted as we like:
 
 ## Vega Implementation
 
-If using Vega, you'd call the custom formatter in lieu of the  <OutboundLink href="https://vega.github.io/vega/docs/expressions/#format" target="_blank">format</OutboundLink> expression, e.g. for an axis tick label:
+If using Vega, you'd call the custom formatter in lieu of the <OutboundLink href="https://vega.github.io/vega/docs/expressions/#format" target="_blank">format</OutboundLink> expression, e.g. for an axis tick label:
 
 ```json highlight={10}
 {
@@ -163,8 +163,8 @@ If using Vega, you'd call the custom formatter in lieu of the  <OutboundLink hre
 
 ## Locale-Awareness
 
-If using the `pbiFormat` formatter, Deneb currently will resolve your locale <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/fundamentals/supported-languages-countries-regions?WT.mc_id=DP-MVP-5003712#choose-the-language-or-locale-of-power-bi-desktop" target="_blank">according to your Power BI configuration</OutboundLink> for any values. 
+If using the `pbiFormat` formatter, Deneb currently will resolve your locale <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/fundamentals/supported-languages-countries-regions?WT.mc_id=DP-MVP-5003712#choose-the-language-or-locale-of-power-bi-desktop" target="_blank">according to your Power BI configuration</OutboundLink> for any values.
 
-For example, we can view the live chart example from above *en français* (fr-FR), and the formatting strings will work as expected:
+For example, we can view the live chart example from above _en français_ (fr-FR), and the formatting strings will work as expected:
 
 ![vega-lite-line-fr-FR.png](/images/formatting/vega-lite-line-fr-FR.png "If we are in a different locale, e.g. French, then our [$ Sales] and [Date] format string update to use locale-specific decimal separators and month naming.")

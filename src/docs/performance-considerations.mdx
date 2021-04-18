@@ -7,7 +7,7 @@ disableTableOfContents: false
 
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 
-> _**Deneb is currently in beta** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
+> _**Deneb is currently in public preview** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
 ## It's Early Days for Deneb
 
@@ -48,5 +48,7 @@ Any data that you add to the visual will have performance implications, specific
 -   The DAX query required by Power BI to generate the dataset for Deneb.
 
 -   The amount of resources needed by Deneb to process the dataset and for Vega or Vega-Lite to render the resulting output as per your specification.
+
+-   Creating a row context with lower granularity than you actually need, which can make producing the desired output more challenging.
 
 Therefore, only add the columns and measures (and filter context) that your visual needs to communicate its message.
