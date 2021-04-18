@@ -1,7 +1,7 @@
 - label: "Getting Started"
   items:
-      # - label: "Obtaining the Visual"
-      #   link: "/installation"
+      - label: "Getting Deneb"
+        link: "/installation"
       - label: "Simple Worked Example"
         link: "/simple-worked-example"
       - label: "Visual Dataset Binding"
@@ -37,4 +37,4 @@
       - label: Contributors
         link: /contributors
       - label: "Source Code [GitHub]"
-        link: "https://github.com/deneb-viz/deneb-powerbi"
+        link: "https://github.com/deneb-viz/deneb"
