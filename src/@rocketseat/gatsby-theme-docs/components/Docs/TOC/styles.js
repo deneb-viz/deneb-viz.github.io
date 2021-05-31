@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 200px;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     position: relative;
     top: auto;
     order: 0;
@@ -53,7 +53,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     margin: 0 0 24px 0;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(120, 117, 122, 0.2);

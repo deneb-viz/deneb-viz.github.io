@@ -9,15 +9,25 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in public preview** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
-<!--
-## 0.3.0.8x-beta (2021-mm-yy)
+## 0.3.0 (2021-05-31)
 
 #### Improvements
 
-- Internally, the data view mapping now uses `categorical` rather than `table`, which results in no net change for end-users, but will allow us potentially more functionality with selectors than the `table` data view mapping offers.
-- One such benefit is that to date, a report page tooltip could only be created and referenced using a column from the dataset; we can now use a single measure if we so want.
+-   Template import and generation added. This is covered more in the [Templates](/templates) page, but high-level features are as follows:
 
--->
+    -   When editing a specification, there is now a _Generate JSON Template_ button in the editor.
+    -   Selecting this presents a dialog that an author can use to customize aspects of the specification, prior to export to (a) provide descriptive detail for anyone wanting to import the template, and (b) make column and measure metadata more suitable for general consumption (particularly if sensitive names are used).
+    -   The template JSON is made available for you to review and then copy to the clipboard. This can then be saved as a `.json` file for import by yourself or others.
+    -   Additionally, the _Create New Specification_ dialog has an additional _Import from Template_ tab. Here you can import a valid Deneb template (generated using the above functionality) and allocate columns and measures from your _Values_ data role, in the same way as the built-in examples.
+
+-   [INTERNAL] the data view mapping has been swapped from `table` to `categorical`.
+    -   This currently results in no net change for end-users, but will potentially allow us more functionality with selectors than the `table` data view mapping offers.
+    -   One such benefit is that to date, a report page tooltip could only be created and referenced using a column from the dataset; we can now use a single measure if we so want.
+
+#### Bugs Fixed
+
+-   If overriding the visual `data` within the specification (e.g. when pasting in an example with static data), or adding custom datasets for a particular layer, then Deneb would refuse to render. This has been fixed. (#33)
+-   Columns or measures added from the data model containing characters that require special handling, now have these characters replaced in the dataset. Refer to the [documentation regarding this](visual-dataset-binding/#special-characters-in-column-and-measure-names) for further details (#38)
 
 ## 0.2.0 (2021-03-19)
 

@@ -65,6 +65,31 @@ If you're used to working with JSON, a representation similar to the following J
 
 Wherever you need to reference a column or a measure in your specification, you should use its **display name** from the _Values_ rather than those from the data model as illustrated in the above section). If you rename or remove a column or measure, please remember to update your specification accordingly.
 
+### 'Special Characters' in Column and Measure Names
+
+You might use all kinds of characters in your data model when naming columns or measures. However, <OutboundLink href="https://vega.github.io/vega/docs/types/#Field">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/docs/field.html">Vega-Lite</OutboundLink> (and JSON) have some specific considerations to make with certain characters in field binding and expressions, notably `.`, `[`, `]`, `\` and `"`.
+
+In these cases, Deneb will replace occurrences of these characters with an underscore (`_`) when they are passed into the visual dataset. By doing this, we avoid placing the onus on you, the author to remember how to escape them using the rules in the linked documentation above.
+
+To further illustrate, let's assume we have this measure:
+
+![measure-with-dot.png](/images/dataset/measure-with-dot.png "A measure in our visual's dataset containing a reserved character (a dot).")
+
+Using this in a specification's `field` encoding would need to look like this:
+
+```json
+{
+    ...
+    "x": {
+      "field": "$ Sales_Current",
+      "type": "quantitative"
+    }
+    ...
+}
+```
+
+It is recommended that if you're passing in measures or columns containing special characters and do not wish for this behavior to occur, then rename them in the **Values** data role so that they are not passed through to the dataset.
+
 ## Augmenting Other Datasets
 
 In the case of a Vega specification, you can potentially add further `data` objects to the array, but bear the following in mind:

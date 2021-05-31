@@ -16,6 +16,8 @@
   items:
       - label: "Formatting Values"
         link: "/formatting-values"
+      - label: Working With Templates
+        link: "/templates"
       - label: "Performance Considerations"
         link: "/performance-considerations"
 - label: "Interactivity Features"
