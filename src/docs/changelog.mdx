@@ -9,9 +9,44 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in public preview** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
+## 0.4.0 (2021-07-26)
+
+#### New Features & Enhancements
+
+-   Tooltip resolution has been improved:
+
+    -   Default tooltip formatting resolves better against data model (#8).
+
+    ![0.4-default-tooltip-formatting.png](/images/changelog/0.4-default-tooltip-formatting.png "Formatting is now applied to default tooltips, provided that the row context can be resolved, or the title of a tooltip field matches the display name passed-through in the visual data roles. This shows a comparison of default tooltip number formatting between version 0.3 and 0.4.")
+
+    -   Report page tooltip resolution is more thorough for `transform`s that preserve row context (#37).
+
+    Here's an example of behavior for a series of transforms that produces a _Top N + Others_ dataset. The _Top N_ results ultimately have the same grain as the source data so we can work out the correct selector for the data model. For _Others_, we cannot resolve this, but can display a default tooltip (with better formatting resolution from above):
+
+    ![0.4-context-resolution-tooltip.gif](/images/changelog/0.4-context-resolution-tooltip.gif "Some transforms will remove the additional metadata we store to identify which row in the dataset that Power BI gives us. This animation demonstrates improvements made in 0.4 to try to identify the context algorithmically, and display a report page tooltip that uses that particular row context.")
+
+-   SVG is now the default render mode for visuals rather than canvas (#68). Please refer to the [Performance Considerations](/performance-considerations#selection-of-renderer) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
+-   Editor font size is now available in the properties pane. Refer to the [Visual Editor](/visual-editor#json-editor-font-size) page for further details.
+-   Editors now track whether they are 'dirty', i.e. you've made changes but not yet applied them (#10).
+    -   The _Apply_ button will be greyed-out if no changes have been made, or changes revert to the spec currently visible.
+    -   If exiting back to report view with unapplied changes, you will now get a 'last chance' prompt to apply any pending changes. Please refer to the [Visual Editor](/visual-editor#unapplied-changes) page for more details if required.
+    -   If changes are discarded after choosing this option, they cannot be recovered.
+-   Landing and status pages have better contrast and no redundant elements or styling (#40).
+-   If you're in the JSON editor and wish to navigate out of this with the keyboard (and presuming the operation shortcut keys are not useful), you can now press _[ Esc ]_ to have Deneb set focus to the tabs above the editor (#25).
+
+#### Bugs Fixed
+
+-   If you had selected a template file to import and tried to import it again (for instance, after editing it externally and wanting to re-import), this did not work. This has now been resolved (#36).
+
+#### Performance & Stability
+
+-   Application icons have been optimized and initialization is now much more performant on first run (#77).
+-   Deneb service layer has been completely re-written as part of ongoing review and optimizations. All being well, this should result in no visible changes for you 🙂
+-   The packaged visual (.pbiviz) is ~10% smaller (1.35MB > 1.22MB).
+
 ## 0.3.0 (2021-05-31)
 
-#### Improvements
+#### New Features & Enhancements
 
 -   Template import and generation added. This is covered more in the [Templates](/templates) page, but high-level features are as follows:
 
@@ -31,7 +66,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 ## 0.2.0 (2021-03-19)
 
-#### Improvements
+#### New Features & Enhancements
 
 -   Custom formatter added, which if specified, allows creators to use Power BI format strings instead of D3 ones. Refer to [Formatting Values](/formatting-values) page for details (#13)
 -   Keyboard shortcuts now available for all portions of the advanced UI; not just when a user is inside the specification or config editor (#23)
