@@ -31,9 +31,17 @@ By default, the Visual Editor pane will be on the left and your rendered specifi
 
 > _We're showing a pre-built specification here; if this is your first time opening the editor in a new visual, then the New Specification dialog will be visible, to help you get started. Refer to the [Simple Worked Example](/simple-worked-example) page for an example of this functionality, or the [New Specification](#new-specification) section below for more details._
 
+### Editor Pane Position
+
 If you prefer your editor on the right, you can modify this in the properties pane by selecting _Editor_ > _Position_ > _Right_:
 
 ![pane-right.png](/images/editor/pane-right.png "The editor can be placed on the right (if preferred) using the visual properties.")
+
+### JSON Editor Font Size ![](https://img.shields.io/badge/-%E2%89%A5%200.4-lightgrey)
+
+The size of the font used for editing JSON can be modified by selection _Editor_ > _JSON Editor Font Size_:
+
+![json-font-size.png](/images/editor/json-font-size.png "The 'JSON Editor Font Size' property allows you to change the size of the text in the JSON editor.")
 
 ### The Visual Editor Pane
 
@@ -139,7 +147,7 @@ _Keyboard shortcut: `Ctrl + Alt + 3`_
 -   _Render Mode_ specifies whether to use either Vega's SVG renderer or Canvas renderer when compiling, parsing and producing your design.
     -   _Canvas_ renders your design as pixel graphics.
     -   _SVG_ creates your design from vector graphics, results in a number of component elements within the visual to produce the output.
-    -   Please refer to the [Performance Considerations](/performance-considerations) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
+    -   Please refer to the [Performance Considerations](/performance-considerations#selection-of-renderer) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
 -   _Vega > Power BI Interactivity_ specifies which interactivity features to enable.
     -   As these require some additional setup in your specification, as well as some internal logic to link everything together you are able to specify whether they should be set-up or not.
     -   Only the _Tooltip Handler_ feature is currently supported.
@@ -150,3 +158,11 @@ _Keyboard shortcut: `Ctrl + Alt + 3`_
 As the specification is text-based, it can be onerous to look-up or type the names for measures or columns in manually. For any that are added to the _Values_ data role, they will be offered (along with a qualifier as to their type) in the _Specification_ editor’s auto-completion, e.g.:
 
 ![completer.png](/images/editor/completer.png "Example of a completion for a column within the Specification editor.")
+
+## Unapplied Changes ![](https://img.shields.io/badge/-%E2%89%A5%200.4-lightgrey)
+
+If you've made changes in the Advanced Editor and select _Back to report_ without applying them, you will get a prompt alerting you of this:
+
+![unapplied-changes.png](/images/editor/unapplied-changes.png "If exiting the Advanced Editor with unapplied changes, you will be prompted to apply or discard these changes.")
+
+> _This is a 'last chance' to make sure that any changes you want to keep are applied. If changes are discarded, they cannot be recovered._
