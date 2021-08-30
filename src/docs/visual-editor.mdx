@@ -25,11 +25,23 @@ This will put the visual into focus mode.
 
 ## Finding your Way Around
 
-By default, the Visual Editor pane will be on the left and your rendered specification will be shown to the right, e.g.:
+By default, the Visual Editor pane will be on the left and your rendered specification will be shown in a preview area to the right, e.g.:
 
 ![editor-interface-overview.png](/images/editor/editor-interface-overview.png "Overview of Deneb in focus mode, showing the editing interface.")
 
 > _We're showing a pre-built specification here; if this is your first time opening the editor in a new visual, then the New Specification dialog will be visible, to help you get started. Refer to the [Simple Worked Example](/simple-worked-example) page for an example of this functionality, or the [New Specification](#new-specification) section below for more details._
+
+### Preview Area ![](https://img.shields.io/badge/-%E2%89%A5%200.5-lightgrey)
+
+Deneb captures the dimensions of your visual prior to opening the Advanced Editor and shows this at 100% scale. This is so that you know how your design should look within the confines of the visual viewport when you return to the report.
+
+The dashed line represents the boundaries of your visual in standard view. **Power BI does not allow visuals to resize themselves dynamically**, so if you wish to change the physical width and/or height of your visual in the report view, you will need to exit the advanced editor, resize and re-open the advanced editor.
+
+Your visual may not fit entirely into the preview area at 100% scale, so you can use the [zoom controls in the preview area toolbar](#the-preview-area-toolbar) to adjust this accordingly, [or resize (or minimize) the editor pane](#the-visual-editor-pane) to accommodate.
+
+If you would prefer to not see the boundary marker, you can disable this in the properties pane by selecting _Editor > Show Boundary Marker > OFF_:
+
+![boundary-marker.png](/images/editor/boundary-marker.png "The 'Show Boundary Marker' property allows you to toggle display of the boundary marker in the preview area.")
 
 ### Editor Pane Position
 
@@ -119,6 +131,7 @@ _Keyboard shortcut: `Ctrl + Alt + 1`_
 -   To view the results of your changes, you can either _[Apply](#apply)_ your changes, or ensure that _[Auto-Apply](#toggle-auto-apply)_ is enabled.
 -   The JSON must produce a valid specification for your selected provider (either Vega or Vega-Lite).
 -   The editor will perform validation against the schema for the specificed provider and warnings are displayed that you can inspect, e.g.:
+
     ![schema-validation-example.png](/images/editor/schema-validation-example.png "Example of a schema validation issue for an invalid Vega-Lite mark type.")
 
 ### Config Editor Tab
@@ -152,6 +165,18 @@ _Keyboard shortcut: `Ctrl + Alt + 3`_
     -   As these require some additional setup in your specification, as well as some internal logic to link everything together you are able to specify whether they should be set-up or not.
     -   Only the _Tooltip Handler_ feature is currently supported.
     -   Please refer to the [Interactivity Features](/interactivity-features-overview) and [Tooltips](/interactivity-tooltips) pages for further details on how to configure this for your specification.
+
+### The Preview Area Toolbar
+
+![preview-area-toolbar.png](/images/editor/preview-area-toolbar.png "The preview area toolbar contains additional controls for zooming in or out of your visual preview.")
+
+The preview area contains a toolbar, which provides additional controls to assist with detail work. From left to right these are:
+
+-   Zoom preview out by 10% _`[Ctrl + Alt + -]`_
+-   Zoom level slider - allows manual adjustment of zoom level from 10% to 300%.
+-   Zoom preview out by 10% _`[Ctrl + Alt + +]`_
+-   Zoom preview to actual size _`[Ctrl + Alt + 0]`_
+-   Zoom preview to fit available space _`[Ctrl + Alt + *]`_
 
 ## Column and Measure Completion (Specification Editor)
 
