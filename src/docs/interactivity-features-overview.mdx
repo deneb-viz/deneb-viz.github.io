@@ -92,6 +92,20 @@ For these situations, Power BI provides APIs for a visual to request that Power 
 
 Any functionality we can deliver needs to bear these constraints in mind.
 
+#### Additional Datum Fields
+
+Provided that there are no such mutations, a Vega or Vega-Lite datum will contain the following additional fields for reconcilitation purposes:
+
+-   `__identity__` - this is the raw identity and true row context.
+
+    -   For those familiar with Power BI visuals development, it is a <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/developer/visuals/selection-api" target="_blank">`SelectionId`</OutboundLink>, which can be passed to Power BI's Selection Manager for [delegation](/interactivity-features-overview/#signaling-back-to-power-bi).
+    -   This is a complex JavaScript object and therefore not something we can use in Vega directly. Complex objects are not comparable in the same way, say, text values are, so this should not be used for anything in your spec.
+
+-   `__key__` - this is a representation of the `__identity__` object that can be used inside a spec, as it has been suitably processed.
+-   `identityIndex` - this is the (zero-based) index of the visual dataset's corresponding entry.
+
+These may become visible to you when [inspecting a datum using tooltips](/interactivity-tooltips#debugging-with-tooltips) or similar, but they aren't currently supported for use outside of anything Deneb does for you.
+
 ### What About..?
 
 There's a couple of interactivity scenarios we've missed out from above:

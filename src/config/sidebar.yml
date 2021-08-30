@@ -8,14 +8,12 @@
         link: "/visual-dataset-binding"
       - label: "Visual Editor"
         link: "/visual-editor"
-      - label: "Vega Documentation"
-        link: "https://vega.github.io/vega/docs/"
-      - label: "Vega-Lite Documentation"
-        link: "http://vega.github.io/vega-lite/docs/"
 - label: "Digging Deeper"
   items:
       - label: "Formatting Values"
         link: "/formatting-values"
+      - label: "Pattern Fills"
+        link: "/pattern-fills"
       - label: Working With Templates
         link: "/templates"
       - label: "Performance Considerations"
@@ -38,5 +36,11 @@
         link: "/changelog"
       - label: Contributors
         link: /contributors
+      - label: Community Examples & Videos
+        link: "/community-examples"
+      - label: "Vega Documentation"
+        link: "https://vega.github.io/vega/docs/"
+      - label: "Vega-Lite Documentation"
+        link: "http://vega.github.io/vega-lite/docs/"
       - label: "Source Code [GitHub]"
         link: "https://github.com/deneb-viz/deneb"

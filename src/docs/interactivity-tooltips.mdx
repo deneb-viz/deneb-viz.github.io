@@ -79,6 +79,20 @@ With Vega, you need to specify the `tooltip` signal in your mark's `encode` prop
 }
 ```
 
+## 'Debugging' with Tooltips ![](https://img.shields.io/badge/-%E2%89%A5%200.5-lightgrey)
+
+If you're using an approach to display the underlying data point (<OutboundLink href="https://vega.github.io/vega-lite/docs/tooltip.html#data" target="_blank">e.g. Vega-Lite</OutboundLink>) rather than the resolved tooltip info that Vega provides by setting to `true`, we're able to see a bit further under the hood, .e.g:
+
+![tooltip-datum-full.png](/images/interactivity/tooltip-datum-full.png "The raw underlying tooltip datum exposes additional properties.")
+
+This can be useful to understand what additional fields or calculations may be applied to a datum for usage in expressions. It can also help to understand if a mark still [has row context](/interactivity-features-overview/#reconciliation-of-data-andor-row-context) and can be reconciled back to Power BI for interactivity purposes. If a tooltip's `datum` contains the following properties, then this is a slam-dunk:
+
+-   `__identity__`
+-   `__key__`
+-   `identityIndex`
+
+Please refer to the [interactivity documentation](/interactivity-features-overview/#additional-datum-fields) for a further explanation of what these mean.
+
 ## Limitations and Considerations
 
 -   It's been mentioned countless times already, but tooltip integration with Power BI is wholly dependent on the correct row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-features-overview) page for more information about ensuring this is preserved.
