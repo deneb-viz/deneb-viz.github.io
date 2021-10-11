@@ -23,15 +23,15 @@ Both <OutboundLink href="https://vega.github.io/vega/docs/event-streams/" target
 
 The interactivity part is one of the harder elements of developing your own custom visual and as such, it's going to be challenging to make this work in a visual like Deneb in a generic way, particularly as the Vega tooling provides a lot of creative freedom.
 
-We fundamentally have two challenges when it comes to building visuals that are interactive within Power BI:
+We fundamentally have three challenges when it comes to building visuals that are interactive within Power BI:
 
-1. Reconciling data and row context to other visuals or the data model when events happen in our visual.
+1. Ensuring that Deneb visuals can interact with the main Power BI window (which handles interactivity events on a visual's behalf).
 
-2. Prescribing how the our visual should behave and respond _visually_ when our end-users interact with it.
+2. Reconciling data and row context to other visuals or the data model when events happen in our visual.
 
-From a roadmap perspective, we want to crack these challenges and deliver them as best we can so that you can produce visuals that look and feel at home in Power BI, and your end-users get a consistent experience with your visual vs. others.
+3. Prescribing how the our visual should behave and respond _visually_ when our end-users interact with it.
 
-As we get to solving these features, we'll document how they are supported and how you can make them work. At this time, we're just supporting [tooltips](interactivity-tooltips) (with some caveats), and the below should help with understanding the above two points a bit more before you start diving in and wondering why things don't work how you expect.
+As such, we have some considerations to make when trying to deliver functionality are interactivity so that you can produce visuals that look and feel at home in Power BI, and your end-users get a consistent experience with your visual vs. others.
 
 The below is going to attempt to summarize some of the considerations we need to think about and this is a challenge to do concisely. For a deeper understanding, you're welcome to dive into the <OutboundLink href="https://docs.microsoft.com/en-us/power-bi/developer/visuals?WT.mc_id=DP-MVP-5003712" target="_blank">developer documentation for visuals</OutboundLink>.
 
@@ -80,7 +80,7 @@ Now using the above as an example, we can talk about the following interactivity
 
 -   Cross-filtering other visuals
 -   Drilling-through from the context menu
--   Displaying a report page tooltip
+-   Displaying a report page tooltip or leveraging modern tooltip features
 
 All of these situations require the visual to tell Power BI what data it needs to work with... but here's the thing: just like how visuals can't just read whatever they like from the data model, they _definitely_ can't send anything back.
 
@@ -103,6 +103,7 @@ Provided that there are no such mutations, a Vega or Vega-Lite datum will contai
 
 -   `__key__` - this is a representation of the `__identity__` object that can be used inside a spec, as it has been suitably processed.
 -   `identityIndex` - this is the (zero-based) index of the visual dataset's corresponding entry.
+-   `__selected__` - whether this particular row context is selected for [cross-filtering](/interactivity-selection).
 
 These may become visible to you when [inspecting a datum using tooltips](/interactivity-tooltips#debugging-with-tooltips) or similar, but they aren't currently supported for use outside of anything Deneb does for you.
 
@@ -110,7 +111,7 @@ These may become visible to you when [inspecting a datum using tooltips](/intera
 
 There's a couple of interactivity scenarios we've missed out from above:
 
--   Default tooltips are different to report page tooltips.
+-   Default tooltips are different to report page or modern tooltips.
     -   In these cases Deneb can pass a list of values to display and ask Power BI to display them inside a standard tooltip.
     -   This is also the fall-back behavior if the row context cannot be resolved by Power BI, or a suitable tooltip page cannot be found.
     -   Tooltip functionality within Deneb is covered in much more detail on the [Tooltips](interactivity-tooltips) page.
@@ -120,6 +121,4 @@ There's a couple of interactivity scenarios we've missed out from above:
 
 Whilst this section is not as large as the above one, it is still very important to consider.
 
-In defining a specification, you have control over how Vega or Vega-Lite renders the output for interaction events. You may choose to employ dimming or opacity-based effects for non-selected marks, or you may choose to alter their color, or try something completely unique and original.
-
-As such, we will need to provide the right approaches for you to take advantage of these features of the Vega tooling, while still giving you the ability to signal events to Power BI (bearing in mind the considerations above about a mark's particular datum). This will take a little bit more time to find the right way forward, but it's being actively thought about.
+In defining a specification, you have control over how Vega or Vega-Lite renders the output for interaction events. You may choose to employ dimming or opacity-based effects for non-selected marks, or you may choose to alter their color, or try something completely unique and original. You can read more about how to start working with these approaches on the [Cross-Filtering](/interactivity-selection) page.

@@ -24,6 +24,10 @@
         link: "/interactivity-features-overview"
       - label: "Tooltips"
         link: "/interactivity-tooltips"
+      - label: "Context Menu"
+        link: "/interactivity-context-menu"
+      - label: "Cross-Filtering (Selection)"
+        link: "/interactivity-selection"
 - label: "Further Resources"
   items:
       - label: Support
