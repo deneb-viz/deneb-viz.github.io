@@ -17,7 +17,7 @@ If you haven't read it already, it's worth reviewing the [preceding page](intera
 
 Both <OutboundLink href="https://github.com/vega/vega-tooltip/blob/master/docs/creating_your_tooltip.md#step-4-define-your-tooltip-in-vega-or-vega-lite" target="_blank">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/docs/tooltip.html" target="_blank">Vega-Lite</OutboundLink> both provide the ability to customize how their tooltip events can be interpreted. Deneb contains a tooltip handler writen specifically for Power BI, which will display under the following conditions:
 
-1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab). This is currently enabled by default.
+1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab). This is enabled by default.
 
 2. An appropriate `tooltip` property is assigned to a mark. Refer [below](#vega-lite-syntax) for the recommended syntax for each provider.
 
@@ -38,6 +38,10 @@ If there is no suitable report page for the current datum or you have specified 
 > _A default tooltip will display all values for the current mark's datum, including any other columns or measures bound to its particular row context._
 
 ![](https://img.shields.io/badge/-%E2%89%A5%200.4-lightgrey) If the title of a tooltip field matches the name of a column or measure from the **Values** data role, Deneb will attempt to see if it has a format string set in the data model and apply this automatically. If this cannot be resolved, then you can consider [applying a format manually](/formatting-values).
+
+![](https://img.shields.io/badge/-%E2%89%A5%200.6-lightgrey) If you have enabled [modern tooltip support](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-visual-tooltips) in your report, and a data point has a corresponding drill through page, this is resolved in the tooltip, e.g.:
+
+![tooltip-modern.png](/images/interactivity/tooltip-modern.png "Deneb resolving a mark's datum back to a default tooltip. In this case, modern tooltip support is enabled, and a drill through page is available.")
 
 ## Default Tooltip Styling
 
@@ -90,12 +94,13 @@ This can be useful to understand what additional fields or calculations may be a
 -   `__identity__`
 -   `__key__`
 -   `identityIndex`
+-   `__selected__`
 
 Please refer to the [interactivity documentation](/interactivity-features-overview/#additional-datum-fields) for a further explanation of what these mean.
 
 ## Limitations and Considerations
 
--   It's been mentioned countless times already, but tooltip integration with Power BI is wholly dependent on the correct row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-features-overview) page for more information about ensuring this is preserved.
+-   Tooltip integration with Power BI is wholly dependent on the correct row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-features-overview) page for more information about ensuring this is preserved.
 
 -   Adding a tooltip does not automatically add visual feedback or effects. If you want to track the position of the resolved data point more visually (e.g. like for a line chart), you will need to add a suitable set of marks to do this. Both <OutboundLink href="https://vega.github.io/vega/examples/" target="_blank">Vega</OutboundLink> and <OutboundLink href="https://vega.github.io/vega-lite/examples/" target="_blank">Vega-Lite</OutboundLink> have examples you can refer to.
 

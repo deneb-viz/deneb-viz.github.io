@@ -31,7 +31,7 @@ The selected file's JSON will be validated and if successful, the placeholder in
 
 ![import-template-details-initial.png](/images/templates/import-template-details-initial.png "Valid templates will provide options for the user to bind their dataset to template placeholders.")
 
-> Only valid Deneb templates can be imported. If you're looking to add a Vega or Vega-Lite specification from elsewhere, it's better to create a blank template for the appropriate provider. Then, paste this into the editor and correct it directly, or manually add the appropriate metadata required for Deneb and then import. [Refer below](#template-structure) for more detail on this.
+> _Only valid Deneb templates can be imported. If you're looking to add a Vega or Vega-Lite specification from elsewhere, it's better to create a blank template for the appropriate provider. Then, paste this into the editor and correct it directly, or manually add the appropriate metadata required for Deneb and then import. [Refer below](#template-structure) for more detail on this._
 
 For each placeholder, the suggested data type (that the author used in their dataset) is shown next to the name.
 
@@ -51,7 +51,7 @@ Once all placeholders have been assigned, the _Create_ button is enabled, e.g.:
 
 ![import-placeholders-assigned.png](/images/templates/import-placeholders-assigned.png "Once all placeholders have been assigned, the 'Create' button is enabled.")
 
-> If you have anything from your dataset that is unassigned, (particularly columns), it is recommended that you remove them, in order to preserve the cardinality or row context that the template author orginally intended.
+> _If you have anything from your dataset that is unassigned, (particularly columns), it is recommended that you remove them, in order to preserve the cardinality or row context that the template author orginally intended._
 
 Selecting the _Create_ button will then add the template to the advanced editor, with all placeholders filled-out as specified, e.g.:
 
@@ -61,7 +61,7 @@ Everyone's data is different, so it is highly likely that you'll need to make fu
 
 ## Generating a Template ![](https://img.shields.io/badge/-%E2%89%A5%200.3-lightgrey)
 
-> **Power BI visuals are not currently permitted to save/download files directly**, so this functionality is the best we can manage at present.
+> _**Power BI visuals are not currently permitted to save/download files directly**, so this functionality is the best we can manage at present._
 
 If you're happy with a specification and wish to share with others, or take a copy for re-use or source control, it is possible to 'export' a template.
 
@@ -79,7 +79,7 @@ In the second tab, you have the opportunity to customize your dataset requiremen
 
 ![export-enter-dataset-information.png](/images/templates/export-enter-dataset-information.png "The second tab allows you to rename and describe your dataset columns and measures for the shared template.")
 
-> Deneb assumes all columns and measures from your dataset are required. If any columns or measures are superfluous to the template, you should remove them from the **Values** data role so that they also get removed from this part of the dialog. This will ensure that they aren't included for your end users and cause potential side-effects or ambiguity as to how they should be used.
+> _Deneb assumes all columns and measures from your dataset are required. If any columns or measures are superfluous to the template, you should remove them from the **Values** data role so that they also get removed from this part of the dialog. This will ensure that they aren't included for your end users and cause potential side-effects or ambiguity as to how they should be used._
 
 Each dataset field has a text box that you can use to rename the placeholder to something more general-purpose for your template. This is also particularly useful if your names might be sensitive. It's recommended to try and use specific terms so this helps to document your template for end users.
 

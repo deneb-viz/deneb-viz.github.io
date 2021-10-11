@@ -9,6 +9,47 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 > _**Deneb is currently in public preview** and lots of things are still being actively developed. This site is under construction and the information in this page may be subject to frequent change, so please check often to ensure that you're up-to-date._
 
+## 0.6.0 (2021-10-11)
+
+#### IMPORTANT NOTES
+
+-   In preparation for AppSource submission (hopefully soon) and to leverage modern tooltips, the Power BI visual APIs have been updated to the latest versions. A such, if you're using Power BI Report Server, you will need to be running <OutboundLink href="https://powerbi.microsoft.com/en-us/blog/power-bi-report-server-september-2021-feature-summary/" target="_blank">September 2021</OutboundLink>) or later.
+-   If you are currently using external URLs in your specifications, these will not be permitted upon submission to AppSource due to certification requirements.
+    -   This feature is still enabled in 0.6 but may be switched off in future.
+    -   If and when this happens, we will make a separate version available with the feature enabled.
+
+#### New Features and Enhancements
+
+-   [Context Menu](/interactivity-context-menu) (#5) and [Cross-Filtering](/interactivity-selection) support (#6) have been added.
+
+    -   Due to the flexible nature of Vega/Vega-Lite, and how data point reconciliation works across visuals and to the data model within Power BI, there are some things to take into consideration.
+    -   Please refer to the appropriate Interactivity Features pages for more specific information.
+
+-   <OutboundLink
+        href="https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-visual-tooltips"
+        target="_blank"
+    >
+        Modern tooltip support
+    </OutboundLink> has been added. These will display instead of conventional tooltips,
+    if you have them enabled in your report. (#121)
+
+-   Loader feature is now correctly disabled, which is intended to ensure that external URLs cannot be accessed for certification purposes. Please refer to **important notes** section above regarding this feature. (#114)
+-   Tooltip ['redaction' of interactivity reserved words](/interactivity-tooltips#debugging-with-tooltips) (introduced in 0.5/#80) are now recursively applied to deeper-nested objects. (#118)
+
+#### Bugs Fixed
+
+-   If the dataset contained a date/time column with a `null`/`(blank)` value, this would cause data mapping to fail and result in an empty dataset (#126)
+-   If the height of the settings pane exceeded the visible window, it would not scroll properly (#122)
+-   If using the canvas renderer, quickly mousing-out of the visual would leave tooltips visible if they were in the process of being displayed (#16)
+-   When a template is selected in the _Create New Specification_ dialog, and provider is changed, the selected template is reset but the highlight in the list is incorrect (#3)
+
+#### Performance and Stability
+
+-   Vega builds have been updated:
+    -   Vega **5.21.0**
+    -   Vega-Lite **5.1.1**
+-   Import issue w/lodash and initial CI for contributed code - many thanks to <OutboundLink href="https://github.com/sgratzl" target="_blank">@sgratzl</OutboundLink>! (#132 & #133)
+
 ## 0.5.0 (2021-08-30)
 
 #### New Features and Enhancements

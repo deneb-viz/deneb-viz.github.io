@@ -99,9 +99,7 @@ In our editor's _Specification_ tab, we'll now have the following <OutboundLink 
 
 ```json
 {
-    "data": {
-        "name": "dataset"
-    },
+    "data": { "name": "dataset" },
     "mark": {
         "type": "bar",
         "tooltip": true
@@ -114,6 +112,15 @@ In our editor's _Specification_ tab, we'll now have the following <OutboundLink 
         "x": {
             "field": "Mean Temperature",
             "type": "quantitative"
+        },
+        "opacity": {
+            "condition": {
+                "test": {
+                    "field": "__selected__",
+                    "equal": "off"
+                },
+                "value": 0.3
+            }
         }
     }
 }
@@ -131,6 +138,7 @@ Here, we can see that:
 -   The <OutboundLink href="http://vega.github.io/vega-lite/docs/encoding.html" target="_blank">encoding for the visual</OutboundLink> maps our data as follows:
     -   `City` is mapped to the y-axis.
     -   `Mean Temperature` is mapped to the x-axis.
+    -   The opacity of our mark is linked to a special field called `__selected__`, which manages cross-filtering for us. This is explained further below, so just bear with us for now.
 
 This is a simple <OutboundLink href="http://vega.github.io/vega-lite/docs/spec.html#single" target="_blank">single view specification</OutboundLink>, so once you're comfortable with the syntax, you should be able to move onto <OutboundLink href="https://vega.github.io/vega-lite/docs/layer.html" target="_blank">layered</OutboundLink>, <OutboundLink href="https://vega.github.io/vega-lite/docs/concat.html" target="_blank">concatenated</OutboundLink> or <OutboundLink href="https://vega.github.io/vega-lite/docs/facet.html" target="_blank">faceted</OutboundLink> views in no time 😉
 
@@ -173,9 +181,34 @@ Then, the visual can resolve this, providing that you specify to use a report pa
 
 > _Note that report page tooltips will only work if your data point hasn't been transformed or mutated from the row context passed-into your visual's dataset. In the cases where data points cannot be reconciled back to the data model, the visual will display a default tooltip instead. Please refer to the [Interactivity Features](/interactivity-features-overview) or [Tooltips](/interactivity-tooltips) pages for further details._
 
+## Cross-Filtering
+
+Many Power BI visuals allow you to cross-filter others by clicking (or Ctrl-clicking data points). We can also do this with Deneb, but there are elements of user experience that we need to consider: most Power BI visuals will dim or fade the un-selected data points so that our users understand what is happening between our visual and others.
+
+This is normally opt-in, but our template already has a simple version of this set-up already. The relevant section of our specification is on lines 16 through 24:
+
+```json
+{
+    "opacity": {
+      "condition": {
+        "test": {
+          "field": "__selected__",
+          "equal": "off"
+        },
+        "value": 0.3
+    }
+}
+```
+
+Deneb uses a special field called `__selected__` to track the status of each row of our dataset. We can use this in our `encoding`, along with a `test` to set the `opacity` value of our mark to `0.3` (or 30%) if it is not one of those that we've clicked (or Ctrl-clicked) on, e.g.:
+
+![cross-filtering-opacity.png](/images/getting-started/cross-filtering-opacity.png "We can use Cross-Filtering .")
+
+> _Note that much like report page tooltips, Cross-Filtering will only work well if your data point hasn't been transformed or mutated from the row context passed-into your visual's dataset. In the cases where data points cannot be reconciled back to the data model, this may not work as intended. You also need to manage the visual effects of your selected and un-selected marks. Please refer to the [Interactivity Features](/interactivity-features-overview) or [Cross-Filtering (Selection)](/interactivity-selection) pages for further details._
+
 ## Adding Further Config
 
-It's possible to make our visual look a bit more at home by adding or modifying its configuration, so let's select the _Config_ tab and update this as follows (changes highlighted):
+It's possible to make our visual look a bit more at home, but also unique in its own right by adding or modifying its configuration, so let's select the _Config_ tab and update this as follows (changes highlighted):
 
 ```json highlight={6-25}
 {
@@ -183,12 +216,12 @@ It's possible to make our visual look a bit more at home by adding or modifying 
         "type": "fit",
         "contains": "padding"
     },
-    "view": {
-        "stroke": "transparent"
-    },
+    "view": { "stroke": "transparent" },
     "font": "Segoe UI",
     "bar": {
-        "color": "#CE6C47"
+        "color": "#605E5C",
+        "cornerRadiusTopRight": 10,
+        "cornerRadiusBottomRight": 10
     },
     "axis": {
         "domain": false,
