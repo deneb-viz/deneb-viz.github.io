@@ -101,7 +101,7 @@ The [Simple Worked Examples](#simple-worked-examples) section below shows how yo
 
 The following examples are for Vega-Lite but similar principles can be applied for Vega.
 
-This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample finanical data availabe in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__selected__` field. We've also added some additional marks to the examples to show this value explicitly as interaction events occur. We'll provide basic example JSON for each underneath.
+This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample finanical data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__selected__` field. We've also added some additional marks to the examples to show this value explicitly as interaction events occur. We'll provide basic example JSON for each underneath.
 
 <iframe
     width="800"
@@ -148,7 +148,7 @@ As per the worked example and the in-built templates for the bar chart, we can e
 
 #### Example 2: Styling Explicitly Selected Marks vs. Standard (neutral)
 
-We can extend the above example to explicitly style selected marks when `__selection__` is set to `on` rather than just having a binary state if we so wish. Here we have applied a [pattern fill](/pattern-fills) when `__selected__` for a row is `neutral`, making it more emphasized, e.g.:
+We can extend the above example to explicitly style selected marks when `__selected__` is set to `on` rather than just having a binary state if we so wish. Here we have applied a [pattern fill](/pattern-fills) when `__selected__` for a row is `neutral`, making it more emphasized, e.g.:
 
 ```json highlight={25-35}
 {
