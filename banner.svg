@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 3574.3681 468.02344"
+   version="1.1"
+   id="svg3741"
+   sodipodi:docname="banner.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   width="3574.3682"
+   height="468.02344">
+  <metadata
+     id="metadata3747">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Deneb Banner</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3745">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient868">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop864" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop866" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient868"
+       id="linearGradient870"
+       x1="0.31396943"
+       y1="229.11781"
+       x2="24.804871"
+       y2="229.11781"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview3743"
+     showgrid="false"
+     inkscape:zoom="0.33283737"
+     inkscape:cx="2668.7635"
+     inkscape:cy="-110.6022"
+     inkscape:window-x="7672"
+     inkscape:window-y="536"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3741"
+     fit-margin-top="20"
+     fit-margin-bottom="20"
+     fit-margin-left="20"
+     fit-margin-right="20"
+     inkscape:document-rotation="0" />
+  <title
+     id="title3731">Deneb Banner</title>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:229.333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="528.51544"
+     y="189.76016"
+     id="text3751"><tspan
+       sodipodi:role="line"
+       id="tspan3749"
+       x="528.51544"
+       y="189.76016"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:229.333px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold'">Deneb</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+     x="526.52441"
+     y="427.04181"
+     id="text3755"><tspan
+       sodipodi:role="line"
+       id="tspan3753"
+       x="526.52441"
+       y="427.04181"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'">Declarative Visualization in Power BI</tspan></text>
+  <g
+     inkscape:label="Layer 1"
+     id="layer1"
+     transform="matrix(23.27008,0,0,23.27008,10.414357,-6441.5638)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.1475px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1"
+       x="-0.76147848"
+       y="233.20988"
+       id="text857"
+       transform="scale(0.79860181,1.2521885)"><tspan
+         sodipodi:role="line"
+         id="tspan855"
+         x="-0.76147848"
+         y="233.20988"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1">{ }</tspan></text>
+    <rect
+       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.292053;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect859-0-5"
+       width="1.996859"
+       height="7.7637267"
+       x="5.9279842"
+       y="286.49155"
+       ry="0"
+       inkscape:transform-center-x="-1.6474088"
+       inkscape:transform-center-y="0.69990997" />
+    <rect
+       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.349318;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect859-0-5-5"
+       width="1.996859"
+       height="11.106875"
+       x="8.9831753"
+       y="283.14841"
+       ry="0"
+       inkscape:transform-center-x="-1.6474088"
+       inkscape:transform-center-y="1.0013081" />
+    <rect
+       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.396343;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect859-0-5-3"
+       width="1.996859"
+       height="14.298582"
+       x="12.038366"
+       y="279.9567"
+       ry="0"
+       inkscape:transform-center-x="-1.6474088"
+       inkscape:transform-center-y="1.28904" />
+  </g>
+</svg>
