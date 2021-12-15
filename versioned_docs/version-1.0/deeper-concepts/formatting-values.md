@@ -1,6 +1,6 @@
 ---
 id: formatting
-description: TODO
+description: Understanding how to format numeric values in Deneb
 slug: /formatting
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: changelog-001
-description: TODO
+description: Deneb Change Log - All changes prior to version 1.0
 title: Previous Releases (< 1.0)
 ---
 

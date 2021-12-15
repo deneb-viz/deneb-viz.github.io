@@ -1,6 +1,6 @@
 ---
 id: editor
-description: TODO
+description: Introduction to Deneb's visual editor
 slug: /visual-editor
 title: Visual Editor
 ---

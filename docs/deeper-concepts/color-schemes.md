@@ -1,6 +1,6 @@
 ---
 id: schemes
-description: TODO
+description: Using custom Vega schemes in Deneb to bind to the Power BI report theme
 slug: /schemes
 title: Color Schemes
 ---

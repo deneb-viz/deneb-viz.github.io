@@ -1,6 +1,6 @@
 ---
 id: changelog
-description: TODO
+description: Deneb Change Log - high-level details of new features and fixes for each version
 ---
 
 # Change Log

@@ -1,6 +1,6 @@
 ---
 id: example
-description: TODO
+description: Simple worked example using Power BI, Deneb and Vega-Lite
 slug: /simple-example
 ---
 

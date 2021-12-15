@@ -1,6 +1,6 @@
 ---
 id: templates
-description: TODO
+description: Understanding how to work with templates in Deneb
 slug: /templates
 title: Templates
 ---

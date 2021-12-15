@@ -1,6 +1,6 @@
 ---
 id: support
-description: TODO
+description: Support information for Deneb
 ---
 
 # Support Info

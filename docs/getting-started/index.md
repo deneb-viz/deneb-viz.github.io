@@ -1,6 +1,6 @@
 ---
 id: introduction
-description: TODO
+description: "Getting and installing Deneb"
 slug: /getting-started
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: dataset
-description: TODO
+description: Understanding how Deneb binds the Power BI visual dataset to your Vega specification
 slug: /dataset
 title: Dataset
 ---

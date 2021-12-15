@@ -1,7 +1,7 @@
 ---
 id: pattern-fills
 title: Pattern Fills
-description: TODO
+description: Understanding how to work with pattern fills in Deneb
 slug: /pattern-fills
 ---
 

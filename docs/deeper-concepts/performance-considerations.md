@@ -1,6 +1,6 @@
 ---
 id: performance-considerations
-description: TODO
+description: Things to consider when working with large datasets or a large quantity of marks
 slug: /performance
 title: Performance Considerations
 ---
