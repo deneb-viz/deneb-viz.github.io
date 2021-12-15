@@ -1,41 +1,48 @@
 {
-    "name": "gatsby-starter-rocket-docs",
-    "private": true,
-    "version": "1.0.0",
-    "description": "Out of the box Gatsby Starter for creating documentation websites easily and quickly. With support for MDX, code highlight, Analytics, SEO and more",
-    "author": "João Pedro Schmitz <oi@joaopedro.cc> (@jpedroschmitz)",
-    "license": "MIT",
-    "starter-name": "gatsby-starter-rocket-docs",
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.35",
-        "@fortawesome/free-brands-svg-icons": "^5.15.3",
-        "@fortawesome/free-solid-svg-icons": "^5.15.3",
-        "@fortawesome/react-fontawesome": "^0.1.14",
-        "@rocketseat/gatsby-theme-docs": "^2.3.1",
-        "gatsby": "^3.5.0",
-        "gatsby-plugin-canonical-urls": "^3.0.0",
-        "gatsby-plugin-google-analytics": "^3.0.0",
-        "gatsby-plugin-manifest": "^3.0.0",
-        "gatsby-plugin-offline": "^4.0.0",
-        "gatsby-plugin-remove-trailing-slashes": "^3.0.0",
-        "gatsby-plugin-sitemap": "^3.0.0",
-        "prop-types": "^15.7.2",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1"
-    },
-    "devDependencies": {
-        "gh-pages": "^3.1.0"
-    },
-    "keywords": [
-        "gatsby",
-        "rocketseat",
-        "gatsby-starter"
+  "name": "deneb-doc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-beta.13",
+    "@docusaurus/plugin-client-redirects": "^2.0.0-beta.13",
+    "@docusaurus/preset-classic": "2.0.0-beta.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@mdx-js/react": "^1.6.21",
+    "clsx": "^1.1.1",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.13",
+    "@tsconfig/docusaurus": "^1.0.4",
+    "typescript": "^4.5.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
     ],
-    "scripts": {
-        "build": "gatsby build",
-        "start": "gatsby develop",
-        "serve": "gatsby serve",
-        "clean": "gatsby clean",
-        "deploy": "gatsby build && gh-pages -d public -b master"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
