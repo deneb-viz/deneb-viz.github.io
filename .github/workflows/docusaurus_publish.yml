@@ -40,5 +40,6 @@ jobs:
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./build
+          publish_branch: master
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
