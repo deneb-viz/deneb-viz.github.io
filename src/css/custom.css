@@ -15,6 +15,7 @@
   --ifm-color-primary-lightest: #f2b93d;
   --ifm-code-font-size: 95%;
   --ifm-link-color: #c48b0d;
+  --ifm-background-color: white;
 }
 
 .docusaurus-highlight-code-line {
@@ -22,6 +23,11 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.theme-doc-toc-desktop,
+.col--3 {
+  background-color: var(--ifm-background-color);
 }
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
