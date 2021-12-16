@@ -169,7 +169,7 @@ The following Power BI report shows all available pre-defined patterns and their
 - The slicer at the bottom of the page can be used to observe the patterns at the specified intensity, and the SVG URL ID required to apply it.
 
 <iframe
-    width="800"
+    width="100%"
     height="486"
     src="https://app.powerbi.com/view?r=eyJrIjoiMWY0NTdlYjQtYzVlZS00ZjJmLWExMGItNzIxNmYyMjk4ZjAxIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9"
     frameborder="0"

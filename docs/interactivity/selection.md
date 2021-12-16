@@ -107,7 +107,7 @@ The following examples are for Vega-Lite but similar principles can be applied f
 This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample finanical data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__selected__` field. We've also added some additional marks to the examples to show this value explicitly as interaction events occur. We'll provide basic example JSON for each underneath.
 
 <iframe
-    width="800"
+    width="100%"
     height="486"
     src="https://app.powerbi.com/view?r=eyJrIjoiMmI5OTRhMGMtODJiMi00MTIyLTgzZDgtYjU2N2M2NWM3ZDk4IiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9"
     frameborder="0"

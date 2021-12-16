@@ -9,7 +9,7 @@ slug: /simple-example
 In the following pages, we'll create a simple bar chart, using the visual, some data, an inbuilt template and [Vega-Lite](http://vega.github.io/vega-lite). Our finished visual is the bar chart on the left:
 
 <iframe
-  width="800"
+  width="100%"
   height="486"
   src="https://app.powerbi.com/view?r=eyJrIjoiYTcyMDJkZDEtODc0Yy00MDc2LWJiNDAtY2UxODhjZTU2NDBjIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9&pageName=ReportSectionc2e9778dd899bccd64ca"
   frameborder="0"
