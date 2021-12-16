@@ -64,7 +64,7 @@ As such, the Alpha Channel Build is right on the bleeding edge of development. F
 
 The Alpha Channel Build is [published to the `alpha` release tag in Deneb's GitHub repository](https://github.com/deneb-viz/deneb/tree/alpha). It will always be the latest version for the current development effort.
 
-The shortened URL for this location is https://bit.ly/deneb-alpha
+The shortened URL for this location is https://cutt.ly/deneb-alpha
 
 The Alpha Channel Build Release page will look something like this, and the latest .pbiviz file is available from the list of assets at the bottom, e.g.:
 
@@ -90,9 +90,11 @@ With the Beta Channel, the .pbiviz is built whenever we're ready with a candidat
 
 ### Accessing the Build
 
-The Beta Channel Build is [published to the `beta` release tag in Deneb's GitHub repository](https://github.com/deneb-viz/deneb/tree/beta). It will always be the latest version for the current development effort.
+The Beta Channel Build is [published to the `beta` release tag in Deneb's GitHub repository](https://github.com/deneb-viz/deneb/releases/tag/beta). It will always be the latest version for the current development effort.
 
-The shortened URL for this location is https://bit.ly/deneb-beta
+The shortened URL for this location is https://cutt.ly/deneb-beta
+
+The means to download the .pbiviz is the same as for the Alpha Channel Build, i.e. the visual is available in the list of assets at the bottom.
 
 ### Installation and Identification
 
