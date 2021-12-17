@@ -23,4 +23,4 @@ If you're still stuck after this and require dedicated support for a particular 
 
 ## Giving Support
 
-I'm very keen to keep Deneb free and available for all, particularly as the Vega tooling is also open source and freely available. However, all development, promotion and support I do for the visual is carried out in my spare time. If you find the visual useful for your needs, or would like me to be able to spend more time developing and supporting it, [it is possible to sponsor me](https://github.com/sponsors/dm-p), or [Buy Me A Coffee](https://www.buymeacoffee.com/dmp) ☕.
+I'm very keen to keep Deneb free and available for all, particularly as the Vega tooling is also open source and freely available. However, all development, promotion and support I do for the visual is carried out in my spare time. If you find the visual useful for your needs, or would like me to be able to spend more time developing and supporting it, [it is possible to sponsor Deneb](https://github.com/sponsors/deneb-viz), or [Buy Me A Coffee](https://www.buymeacoffee.com/dmp) ☕.

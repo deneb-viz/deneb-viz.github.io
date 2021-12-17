@@ -98,6 +98,11 @@ const config = {
             position: "right",
           },
           {
+            href: "https://github.com/sponsors/deneb-viz",
+            label: "Sponsor",
+            position: "right",
+          },
+          {
             href: "https://github.com/deneb-viz/deneb",
             label: "GitHub",
             position: "right",
