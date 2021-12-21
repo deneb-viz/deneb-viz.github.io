@@ -34,7 +34,7 @@ You're ready to start creating.
 
 ## Standalone Version
 
-Because Deneb is pending certification, there are [certain restrictions](https://docs.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-certified?WT.mc_id=DP-MVP-5003712#source-code-requirements) imposed upon it. If you wish to use features such as loading images from remote URLs, you will need to download the standalone version.
+Because Deneb is certified, there are [certain restrictions](https://docs.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-certified?WT.mc_id=DP-MVP-5003712#source-code-requirements) imposed upon it. If you wish to use features such as loading images from remote URLs, you will need to download the standalone version.
 
 Note that **the standalone version is not tied to AppSource** and will require you to update manually in the event of new versions being published. This can be mitigated by setting it up as an [organizational visual](https://docs.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-organization?WT.mc_id=DP-MVP-5003712) if you are using across many reports.
 
