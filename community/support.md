@@ -16,6 +16,7 @@ If you have challenges around learning Vega/Vega-Lite or creating a specificatio
 - [Vega discussion forum](https://groups.google.com/forum/#!forum/vega-js)
 - [Vega Slack organization](http://bit.ly/vega-slack)
 - [Stack Overflow](https://stackoverflow.com/questions)
+- [Power BI Community](https://community.powerbi.com/)
 
 I maintain the visual for free, in my free time, so I cannot dedicate this time to providing specific support for the Vega and Vega-Lite languages. However, but if you still experience issues beyond the limitations detailed above or have a particular feature request, [please create an issue in the project's GitHub repository](https://github.com/deneb-viz/deneb/issues) and I will endeavour to investigate and respond as soon as possible.
 
