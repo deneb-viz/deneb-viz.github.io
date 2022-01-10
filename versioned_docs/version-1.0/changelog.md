@@ -5,6 +5,14 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
+:::caution Potential Upcoming "Breaking" Changes
+We are intending to implement cross-highlight support in an upcoming release (likely 1.2 or 1.3). Deneb will currently always apply the **filter** interaction by default (unless you have specified differently in your report configuration).
+
+Much like [Cross-Filtering](interactivity-selection), Cross-Highlight will be opt-in from a specification perspective. However, if you don't have your [interactions set to cross-filter](https://docs.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions#change-the-interaction-behavior), Power BI will try to apply the **highlight** interaction and this will make your visual appear to do nothing when filtered by other visuals.
+
+When this functionality is delivered, it is recommended that you ensure any Deneb visuals are explicitly set to **filter** or **no impact** accordingly.
+:::
+
 ## 1.0.0 (2021-11-13)
 
 ### IMPORTANT NOTES

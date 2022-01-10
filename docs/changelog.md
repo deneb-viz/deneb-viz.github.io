@@ -5,7 +5,15 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.1.0 (Alpha Channel)
+:::caution Potential Upcoming "Breaking" Changes
+We are intending to implement cross-highlight support in an upcoming release (likely 1.2 or 1.3). Deneb will currently always apply the **filter** interaction by default (unless you have specified differently in your report configuration).
+
+Much like [Cross-Filtering](interactivity-selection), Cross-Highlight will be opt-in from a specification perspective. However, if you don't have your [interactions set to cross-filter](https://docs.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions#change-the-interaction-behavior), Power BI will try to apply the **highlight** interaction and this will make your visual appear to do nothing when filtered by other visuals.
+
+When this functionality is delivered, it is recommended that you ensure any Deneb visuals are explicitly set to **filter** or **no impact** accordingly.
+:::
+
+## 1.1.0 (Alpha & Beta Channels)
 
 ### Report Theme Integration (#124)
 
@@ -23,7 +31,7 @@ Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
 - If a field is removed from the **Values** data role, the dialog will also be displayed, in order to provide a more convenient way to add and re-assign a field without having to hunt it down manually.
 - This is documented in more detail on the [Dataset](dataset#edit-specification-field-mapping) page.
 
-![Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.](/img/changelog/1.1.0/edit-mapping.png "Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.")
+  ![Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.](/img/changelog/1.1.0/edit-mapping.png "Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.")
 
 ### Template Changes
 
@@ -32,7 +40,7 @@ Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
 - Packaged templates now include preview images (#159)
 - Column/measure restrictions have been removed from placeholders (#157)
 
-![Example of template changes in 1.1.0.](/img/changelog/1.1.0/template-changes.png "Example of template changes in 1.1.0.")
+  ![Example of template changes in 1.1.0.](/img/changelog/1.1.0/template-changes.png "Example of template changes in 1.1.0.")
 
 ### Editor Properties
 
@@ -46,6 +54,11 @@ Available in the Power BI Format pane.
 - The keyboard shortcut for the Generate JSON Template was failing on some Windows environments, so this has been re-mapped to **Ctrl + Alt + T** (#153)
 - Visual scrollbars have been updated to be less intrusive (#164)
 - The font named as **DIN** in core visuals can be accessed by specifying `wf_standard-font` wherever you're able to specify the font family (#151)
+- To help with understanding when new versions have gone live in your reports, Deneb will display a notification in the Visual Editor pane if you edit an existing visual created with a prior version (#179), e.g.:
+
+  ![Example of template changes in 1.1.0.](/img/changelog/1.1.0/update-notification.png "Example of template changes in 1.1.0.")
+
+  Manually dismissing the notification or applying changes to the current specification will prevent this appearing until the next update.
 
 ### Performance and Stability
 
@@ -63,6 +76,8 @@ Available in the Power BI Format pane.
 
   - This includes an explicit value for the `opacity` encoding if a datum's `__selected__` value is not `"off"`.
   - This is to preserve logic if a creator changes the view composition to something more complex than a single mark.
+
+- The mechanism for handling interactivity events outside the main plot required unorthodox (and potentially expensive) manipulation of the Vega DOM each time the visual updates. This has been revised to work with the standard DOM (#181)
 
 - The Redux store has been replaced with [Zustand](https://github.com/pmndrs/zustand), and refactored (#147)
 
