@@ -56,7 +56,7 @@ Available in the Power BI Format pane.
 - The font named as **DIN** in core visuals can be accessed by specifying `wf_standard-font` wherever you're able to specify the font family (#151)
 - To help with understanding when new versions have gone live in your reports, Deneb will display a notification in the Visual Editor pane if you edit an existing visual created with a prior version (#179), e.g.:
 
-  ![Example of template changes in 1.1.0.](/img/changelog/1.1.0/update-notification.png "Example of template changes in 1.1.0.")
+  ![Example of version change notification in the Visual Editor pane.](/img/changelog/1.1.0/template-changes.png "Example of version change notification in the Visual Editor pane.")
 
   Manually dismissing the notification or applying changes to the current specification will prevent this appearing until the next update.
 
