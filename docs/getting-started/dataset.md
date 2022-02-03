@@ -94,8 +94,6 @@ It is recommended that if you're passing in measures or columns containing speci
 
 ### Edit Specification Field Mapping
 
-<EarlyAccessWarning />
-
 Measures or columns that are bound to specification encodings or expressions might be used all the way through. If you want to change this or you've renamed a field in the **Values** data role, it can be cumbersome to manually find and replace these values.
 
 To make this easier, you can click the **Edit Specification Field Mapping** command or press **\[ Ctrl + Alt + F ]** to open the dialog. This will display all fields from the dataset that have been detected in encodings or expressions and display them in a list, e.g.:
