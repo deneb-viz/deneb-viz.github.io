@@ -13,10 +13,6 @@ Much like [Cross-Filtering](interactivity-selection), Cross-Highlight will be op
 When this functionality is delivered, it is recommended that you ensure any Deneb visuals are explicitly set to **filter** or **no impact** accordingly.
 :::
 
-## 1.2.0 (Alpha & Beta Channels)
-
-1.2.0 changes will be documented as new alpha and beta builds are made available.
-
 ## 1.1.0 (2022-01-22)
 
 ### Report Theme Integration (#124)
