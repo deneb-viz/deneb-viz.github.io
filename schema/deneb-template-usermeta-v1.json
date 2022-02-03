@@ -20,6 +20,10 @@
                 "information": {
                     "$ref": "#/definitions/ITemplateInformation",
                     "description": "High-level information or metadata about the template."
+                },
+                "interactivity": {
+                    "$ref": "#/definitions/ITemplateInteractivityOptions",
+                    "description": "Any interactivity settings that we want to explicitly set."
                 }
             },
             "required": [
@@ -33,8 +37,7 @@
             "additionalProperties": false,
             "properties": {
                 "build": {
-                    "description": "Which version the visual was built with. Uses semantic versioning. Can be spoofed but might be handy at some point.",
-                    "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+                    "description": "Which version the visual was built with. Uses semantic versioning internally, but we don't want to enforce this when validating as it's for information only. Can be spoofed but might be handy at some point.",
                     "type": "string"
                 },
                 "metaVersion": {
@@ -46,12 +49,17 @@
                 "provider": {
                     "$ref": "#/definitions/TProvider",
                     "description": "Provider details for the template."
+                },
+                "providerVersion": {
+                    "description": "Which version of the provider library was used to create the specification.",
+                    "type": "string"
                 }
             },
             "required": [
                 "build",
                 "metaVersion",
-                "provider"
+                "provider",
+                "providerVersion"
             ],
             "type": "object"
         },
@@ -114,7 +122,7 @@
                     "type": "string"
                 },
                 "previewImageBase64PNG": {
-                    "description": "Base64-encoded image/png string, representing a preview image for the template in external tools.",
+                    "description": "Base64-encoded image/png string, representing a preview image for the template in external tools.\nShould be a maximum of 150 x 150 pixels.",
                     "type": "string"
                 },
                 "supportUri": {
@@ -138,6 +146,37 @@
                 "generated",
                 "name",
                 "uuid"
+            ],
+            "type": "object"
+        },
+        "ITemplateInteractivityOptions": {
+            "additionalProperties": false,
+            "description": "Interactivity properties for specification.",
+            "properties": {
+                "contextMenu": {
+                    "description": "Enable context menu for data points.",
+                    "type": "boolean"
+                },
+                "dataPointLimit": {
+                    "description": "Maximum number of data points to allow when selecting.",
+                    "maximum": 250,
+                    "minimum": 1,
+                    "type": "number"
+                },
+                "selection": {
+                    "description": "Enable cross-filtering from data point click events.",
+                    "type": "boolean"
+                },
+                "tooltip": {
+                    "description": "Enable tooltip handler.",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "contextMenu",
+                "dataPointLimit",
+                "selection",
+                "tooltip"
             ],
             "type": "object"
         },
