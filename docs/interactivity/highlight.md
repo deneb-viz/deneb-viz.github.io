@@ -6,7 +6,7 @@ sidebar_label: Cross-Highlighting
 
 # Cross-Highlighting
 
-It is possible to make your visual respond to cross-highlight interactions from other visuals. Much like [Cross-Filtering](./selection), this requires some additional work to implement the necessary visual effects that you want your visual to have, so as such the properties are **disabled** by default. This page shows how to enable this, and provides some guidance on how you can work with the data that gets sent to the visual dataset.
+It is possible to make your visual respond to cross-highlight interactions from other visuals. Much like [Cross-Filtering](interactivity-selection), this requires some additional work to implement the necessary visual effects that you want your visual to have, so as such the properties are **disabled** by default. This page shows how to enable this, and provides some guidance on how you can work with the data that gets sent to the visual dataset.
 
 :::info This is A Deep and Info-Dense Topic
 This whole page provides valuable knowledge about how cross-highlighting works in Power BI, and the theory you need to consider how to approach it in your own visuals.
