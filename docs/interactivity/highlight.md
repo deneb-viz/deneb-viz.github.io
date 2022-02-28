@@ -220,7 +220,7 @@ This report shows the three examples below how they would be rendered in Power B
     allowFullScreen="true"
 ></iframe>
 
-&nbsp;&nbsp;&nbsp;&nbsp;_[Download this workbook](/pbix/Deneb-Simple-Cross-Highlighting-Examples.pbix)_
+&nbsp;&nbsp;&nbsp;&nbsp;_Download this workbook (will be provided later)_
 
 #### Example 1: Simple Cross-Highlight Handling Using Layers
 
