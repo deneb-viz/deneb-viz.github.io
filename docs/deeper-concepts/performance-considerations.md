@@ -50,3 +50,18 @@ Any data that you add to the visual will have performance implications, specific
 - Creating a row context with lower granularity than you actually need, which can make producing the desired output more challenging.
 
 Therefore, only add the columns and measures (and filter context) that your visual needs to communicate its message.
+
+## The Performance Tuning Property Menu
+
+The **Performance Tuning** menu in the Power BI format pane is used to expose additional properties that you can use to alter performance of your specification. Where possible, these properties are set to what makes the most sense for optimal performance.
+
+### Recalculate During Resize
+
+:::info OFF By Default
+:::
+
+Due to the dynamic nature of Power BI visual containers, any change to the sizing can trigger an update to a visual's logic and this can cause your visual specification to get re-calculated during the process. This may not be noticeable for visuals that use a small amount of marks, but for those that are more complex, this might create more overhead than you need for something you don't do frequently.
+
+If enabled, the **Recalculate during resize** property will continue to calculate any changes to the specification while a visual is in the process of being resized. If disabled, Deneb will delay any further updates until you have completed the resize operation by releasing the mouse button, e.g.:
+
+![recalculate-during-resize.gif.](./img/recalculate-during-resize.gif "Our raincloud plot example contains many data points and calculations, which can be computationally expensive if resizing the visual container. By turning off the 'Recalculate during resize' property, you can delay any calculations until you have finished resizing your visual.")

@@ -77,9 +77,10 @@ Refer to the [Dataset](/dataset#grain--row-context) page if you want to see how 
 
 Now using the above as an example, we can talk about the following interactivity scenarios:
 
-- Cross-filtering other visuals
-- Drilling-through from the context menu
 - Displaying a report page tooltip or leveraging modern tooltip features
+- Drilling-through from the context menu
+- Cross-filtering other visuals
+- Having other visuals cross-highlight ours
 
 All of these situations require the visual to tell Power BI what data it needs to work with... but here's the thing: just like how visuals can't just read whatever they like from the data model, they _definitely_ can't send anything back.
 
@@ -93,7 +94,7 @@ Any functionality we can deliver needs to bear these constraints in mind.
 
 #### Additional Datum Fields
 
-Provided that there are no such mutations, a Vega or Vega-Lite datum will contain the following additional fields for reconcilitation purposes:
+Provided that there are no such mutations, a Vega or Vega-Lite datum will contain the following additional fields for reconcilitation purposes. These field values represent the row of your dataset as a whole:
 
 - `__identity__` - this is the raw identity and true row context.
 
@@ -105,6 +106,18 @@ Provided that there are no such mutations, a Vega or Vega-Lite datum will contai
 - `__selected__` - whether this particular row context is selected for [cross-filtering](interactivity-selection).
 
 These may become visible to you when [inspecting a datum using tooltips](interactivity-tooltips#debugging-with-tooltips) or similar, but they aren't currently supported for use outside of anything Deneb does for you.
+
+#### Additional Cross-Highlighting Fields for Measures
+
+The following additional entries will get created for all measures in your dataset in the event of having [cross-highlighting](interactivity-highlight) enabled on your visual:
+
+- `[measure name]__highlight` - this is the highlight value for the measure, as opposed to its original value, which is stored in the regular measure field. This provides a way of being able to encode original vs. highlight.
+
+- `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context has a higlight applied or not (like the `__selected__` field, but more-specific).
+
+- `[measure_name]__highlightComparator` - this provides a pre-calculated way of determining if a highlight value is equal to its original value or not.
+
+These are covered in more detail on the [Cross-Highlighting](interactivity-highlight#special-__highlight__-fields) page.
 
 ### What About..?
 
@@ -120,4 +133,4 @@ There's a couple of interactivity scenarios we've missed out from above:
 
 Whilst this section is not as large as the above one, it is still very important to consider.
 
-In defining a specification, you have control over how Vega or Vega-Lite renders the output for interaction events. You may choose to employ dimming or opacity-based effects for non-selected marks, or you may choose to alter their color, or try something completely unique and original. You can read more about how to start working with these approaches on the [Cross-Filtering](interactivity-selection) page.
+In defining a specification, you have control over how Vega or Vega-Lite renders the output for interaction events. You may choose to employ dimming or opacity-based effects for non-selected marks, or you may choose to alter their color, or try something completely unique and original. You can read more about how to start working with these approaches on the [Cross-Filtering](interactivity-selection) and [Cross-Highlighting](interactivity-highlight) pages.

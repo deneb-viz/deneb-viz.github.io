@@ -39,7 +39,26 @@ Your visual may not fit entirely into the preview area at 100% scale, so you can
 
 If you would prefer to not see the boundary marker, you can disable this in the properties pane by selecting **Editor > Show Boundary Marker > OFF** in the Power BI Format pane:
 
-![The Show Boundary Marker property in the Format pane.](./img/boundary-marker.png "The Show Boundary Marker property in the Format pane.")
+![The Show Boundary Marker property in the Format pane.](./img/boundary-marker.png "The Show Boundary Marker property in the Format pane.
+")
+
+#### Toolbar
+
+![The preview area toolbar, in the bottom-right of the Visual Editor's preview pane.](./img/preview-area-toolbar.png "The preview area toolbar, in the bottom-right of the Visual Editor's preview pane.")
+
+The preview area also contains a toolbar, which provides additional controls to assist with detail work. From left to right these are:
+
+- Specification provider and version.
+
+  :::tip Check the Provider Version Can Do What You're Looking Up
+  Deneb doesn't automatically support new releases of Vega or Vega-Lite. Because the runtimes are embedded, any new releases need to be be tested, implemented and deployed to AppSource, which can take some time. As such, you can use this information in the toolbar to confirm if the embedded version might be behind any new features published by the Vega team.
+  :::
+
+- Zoom preview out by 10% **( Ctrl + Alt + - )**
+- Zoom level slider - allows manual adjustment of zoom level from 10% to 300%.
+- Zoom preview out by 10% **( Ctrl + Alt + + )**
+- Zoom preview to actual size **( Ctrl + Alt + 0 )**
+- Zoom preview to fit available space **( Ctrl + Alt + \* )**
 
 ### Editor Pane Position
 
@@ -184,19 +203,7 @@ This dialog is also displayed by default if this is the first time opening the V
   - Please refer to the [Performance Considerations](performance#selection-of-renderer) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
 - The **Vega > Power BI Interactivity** section specifies which interactivity features to enable.
   - As these require some additional setup in your specification, as well as some internal logic to link everything together you are able to specify whether they should be set-up or not.
-  - Please refer to the [Interactivity Features](interactivity-overview) and related pages ([Tooltips](interactivity-tooltips) | [Context-Menu](interactivity-context-menu) | [Cross-Filtering](interactivity-selection)) for further details on how to configure these for your specification.
-
-### The Preview Area Toolbar
-
-![The preview area toolbar, in the bottom-right of the Visual Editor's preview pane.](./img/preview-area-toolbar.png "The preview area toolbar, in the bottom-right of the Visual Editor's preview pane.")
-
-The preview area contains a toolbar, which provides additional controls to assist with detail work. From left to right these are:
-
-- Zoom preview out by 10% **( Ctrl + Alt + - )**
-- Zoom level slider - allows manual adjustment of zoom level from 10% to 300%.
-- Zoom preview out by 10% **( Ctrl + Alt + + )**
-- Zoom preview to actual size **( Ctrl + Alt + 0 )**
-- Zoom preview to fit available space **( Ctrl + Alt + \* )**
+  - Please refer to the [Interactivity Features](interactivity-overview) and related pages ([Tooltips](interactivity-tooltips) | [Context-Menu](interactivity-context-menu) | [Cross-Filtering](interactivity-selection) | [Cross-Highlighting](interactivity-highlight)) for further details on how to configure these for your specification.
 
 ## Column and Measure Completion
 

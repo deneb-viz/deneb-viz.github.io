@@ -15,4 +15,8 @@ This is similar to the approaches used for creating [R](https://docs.microsoft.c
 - Specifications are rendered inside the Power BI client, rather than being delegated to another location, typically resulting in faster render times for end-users.
 - Built for the web, meaning that it's possible to integrate with Power BI's interactivity features, with some additional setup.
 
-Please use the menu to start learning more about the visual.
+#### Starting Out?
+
+- You can use the menu to start learning more about Deneb and how to build visuals with the Vega languages in Power BI.
+
+- For community resources and examples, follow the **[Community](/community/support)** link at the top of the page.

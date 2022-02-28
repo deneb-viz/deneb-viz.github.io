@@ -56,6 +56,7 @@ const sidebars = {
         "interactivity/tooltips",
         "interactivity/context-menu",
         "interactivity/selection",
+        "interactivity/highlight",
       ],
     },
     {

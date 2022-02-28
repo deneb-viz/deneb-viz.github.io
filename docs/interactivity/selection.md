@@ -14,7 +14,9 @@ However, cross-filtering is a bit of a special case vs. [tooltips](interactivity
 
 Both [Vega](https://vega.github.io/vega/docs/event-streams/) (with Signals and Events) and [Vega-Lite](https://vega.github.io/vega-lite/docs/parameter.html) (with Parameters) both have their own ways of managing interactivity internally when it comes to clicking on marks. However we also have to think about [how Power BI manages selection state between visuals](https://docs.microsoft.com/en-us/power-bi/developer/visuals/selection-api?WT.mc_id=DP-MVP-5003712) and apply this in a generic manner, so Deneb again bridges this particular gap as much as possible. Therefore, cross-filtering works as follows:
 
-- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Cross-Filtering (Selection) of Data Points** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab). This is **disabled** by default.
+- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Cross-Filtering (Selection) of Data Points** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab).
+
+- This setting is **disabled** by default.
 
 - For each row in the visual `"dataset"`, Deneb will generate a [special field for each row](#the-__selected__-field) called `"__selected__"`, and will update this based on click events, or eligible external events to your visual, such as restoring a bookmark with an active selection state.
 
@@ -120,7 +122,7 @@ This report shows the three examples below how they would be rendered in Power B
 
 As per the worked example and the in-built templates for the bar chart, we can encode our `opacity` based on the value of `__selected__` being set to `"off"`, e.g.:
 
-```json highlight={16-24}
+```json highlight={16-25}
 {
   "data": { "name": "dataset" },
   "mark": {
@@ -143,7 +145,8 @@ As per the worked example and the in-built templates for the bar chart, we can e
           "equal": "off"
         },
         "value": 0.3
-      }
+      },
+      "value": 1
     }
   }
 }
