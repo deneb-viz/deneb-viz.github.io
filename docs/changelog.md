@@ -47,9 +47,17 @@ The documentation for this feature has also been added to the [Performance Consi
 
 ### Bugs Fixed
 
-- Exported templates cannot be re-imported without manual corrections (#198)
+#### Templates
+
 - Specification Field Mapping will replace property keys if they match a dataset field name (#190)
+- Exported templates cannot be re-imported without manual corrections (#198)
+- Successful import of a template would show the 'Deneb has been updated' prompt (#207)
+- When importing a template, if a dataset field name matches a placeholder name, it will now be flagged as allocated, without needing to manually select it (#210)
+
+#### Tooltips
+
 - If using `"tooltip": false` against a Vega-Lite mark (instead of omitting the `tooltip` property), an empty tooltip would be displayed (#191)
+- Tooltip signals that are single values rather than field/value pairs are not being correctly converted to Power BI tooltips (#201)
 
 ## 1.1.0 (2022-01-22)
 
