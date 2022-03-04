@@ -8,7 +8,15 @@ slug: /getting-started
 
 ## Installing from AppSource
 
-Deneb is [available in AppSource](https://appsource.microsoft.com/en-us/product/power-bi-visuals/coacervolimited1596856650797.deneb), and this is the most straightforward way of getting started and staying up-to-date with the latest versions. It can be added directly in Power BI as follows:
+Deneb is [available in AppSource](https://deneb.link/appsource?source=website&mktcmpid=getstarted), and this is the most straightforward way of getting started and staying up-to-date with the latest versions.
+
+<a href="https://deneb.link/appsource?source=website&mktcmpid=getstarted"><img src="/img/MS_AppSource.png" width="200" title ="Deneb is available from Microsoft AppSource, and is certified"/></a>
+
+If you like Deneb, please leave us a review - we'd love to know how you're getting on!
+
+### Within Power BI Desktop
+
+It can be added directly in Power BI as follows:
 
 1.  To add: in Power BI Desktop, choose _Insert > More visuals > From AppSource_ in the ribbon, e.g.:
 

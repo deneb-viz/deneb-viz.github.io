@@ -17,6 +17,10 @@ This is similar to the approaches used for creating [R](https://docs.microsoft.c
 
 #### Starting Out?
 
+- Deneb is [available in AppSource](https://deneb.link/appsource?source=website&mktcmpid=homepage), and this is the most straightforward way of getting started and staying up-to-date with the latest versions.
+
+  <a href="https://deneb.link/appsource?source=website&mktcmpid=homepage"><img src="/img/MS_AppSource.png" width="200" title ="Deneb is available from Microsoft AppSource, and is certified"/></a>
+
 - You can use the menu to start learning more about Deneb and how to build visuals with the Vega languages in Power BI.
 
 - For community resources and examples, follow the **[Community](/community/support)** link at the top of the page.
