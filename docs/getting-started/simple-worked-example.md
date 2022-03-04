@@ -110,31 +110,54 @@ Clicking on this will show the visual specification in the Visual Editor with ou
 
 In our editor's **Specification** tab, we'll now have the following [Vega-Lite JSON specification](http://vega.github.io/vega-lite/docs/spec.html):
 
-```json title=Generated Specification
+```json title="Generated Specification"
 {
   "data": { "name": "dataset" },
-  "mark": {
-    "type": "bar",
-    "tooltip": true
-  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 0.3,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Mean Temperature"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Mean Temperature__highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        }
+      }
+    }
+  ],
   "encoding": {
     "y": {
       "field": "City",
       "type": "nominal"
     },
     "x": {
-      "field": "Mean Temperature",
-      "type": "quantitative"
-    },
-    "opacity": {
-      "condition": {
-        "test": {
-          "field": "__selected__",
-          "equal": "off"
-        },
-        "value": 0.3
-      },
-      "value": 1
+      "type": "quantitative",
+      "axis": {
+        "title": "Mean Temperature"
+      }
     }
   }
 }
@@ -145,13 +168,23 @@ This breaks down as follows:
 - There's a `data` object, which has a mapping of `"dataset"` (line 2).
   - This is required for the specification, instructs that our visual's dataset should be used and should be left as-is.
   - Refer to the [Dataset](dataset) page for more details on how this works.
-- We're [using a `bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for our data point and we're displaying a `tooltip` for this mark (lines 3-6).
-- The [encoding for the visual](http://vega.github.io/vega-lite/docs/encoding.html) (lines 7-26) maps our data as follows:
-  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 8-11).
-  - `Mean Temperature` is mapped to the x-axis and is a quantitative/linear field (lines 12-15).
-  - The opacity of our mark is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 16-25). This is explained further below, so just bear with us for now.
+- We have a [`layer`](http://vega.github.io/vega-lite/docs/layer.html) view, which allows us to superimpose chart elements (lines 3-37). Within this layer, we have:
 
-This is a simple [single view specification](http://vega.github.io/vega-lite/docs/spec.html#single), so once you're comfortable with the syntax, you should be able to move onto [layered](https://vega.github.io/vega-lite/docs/layer.html), [concatenated](https://vega.github.io/vega-lite/docs/concat.html) or [faceted](https://vega.github.io/vega-lite/docs/facet.html) views in no time 😉
+  - One [`bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for each data point (lines 4-15).
+
+    - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure.
+    - We're displaying a `tooltip` for this mark (lines 4-15).
+    - This is used to display orginal values in the event of a cross-highlight from another visual (more on this below)
+
+  - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 16-36).
+
+    - The `opacity` of our mark (how 'solid' the color appears) is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 16-25). This is also explained further below, so just bear with us for now.
+
+- The [encoding for the visual's top-level](http://vega.github.io/vega-lite/docs/encoding.html) (lines 38-49) maps our data as follows:
+  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 39-42).
+  - Our x-axis is a quantitative/linear (lines 43-48).
+
+As noted above, this is a [layered](https://vega.github.io/vega-lite/docs/layer.html) view, so that we can try and show you how to make your visual work with Power BI's interactivity features in as simple a way as possible. Vega-Lite also has [single](http://vega.github.io/vega-lite/docs/spec.html#single), [concatenated](https://vega.github.io/vega-lite/docs/concat.html) or [faceted](https://vega.github.io/vega-lite/docs/facet.html) views as well, wo it's worht checking those out (with their associated examples) to learn more.
 
 We also have some other stuff going on in the editor's **Config** tab, thanks to our template...
 
@@ -159,7 +192,7 @@ We also have some other stuff going on in the editor's **Config** tab, thanks to
 
 In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configuration](http://vega.github.io/vega-lite/docs/config.html). There's a lot going on here, and the intention is to provide you with a fleshed-out set of properties so that you can see how things can look with a fleshed-out set of properties. You don't need to worry too much about this for the moment.
 
-```json title=Generated Config
+```json title="Generated Config"
 {
   "autosize": {
     "type": "fit",
@@ -257,30 +290,80 @@ If we were to set up a tooltip page that included one of the columns from our vi
 Note that report page tooltips will only work if your data point hasn't been transformed or mutated from the row context passed-into your visual's dataset. In the cases where data points cannot be reconciled back to the data model, the visual will display a default tooltip instead. Please refer to the [Interactivity Features](interactivity-overview) or [Tooltips](interactivity-tooltips) pages for further details.
 :::
 
+## Cross-Highlighting
+
+Creators often have their visuals enabled for cross-highlighting, which means that if another visual is clicked, then other visuals will adjust their display to show the highlighted values in context with their original ones.
+
+- In our visual, we show the original values with our first mark.
+
+  ```json title="Cross-Highlighting: first (less opaque) mark"
+  {
+    "mark": {
+      "type": "bar",
+      "opacity": 0.3,
+      "tooltip": true
+    },
+    "encoding": {
+      "x": {
+        "field": "Mean Temperature"
+      }
+    }
+  }
+  ```
+
+  This is 30% opaque and is displayed underneath the second mark...
+
+- ...and the second mark is used to show the cross-highlight values.
+
+  ```json title="Cross-Highlighting: second (solid) mark"
+  {
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
+    "encoding": {
+      "x": {
+        "field": "Mean Temperature__highlight"
+      },
+      ...
+    }
+  }
+  ```
+
+  If there is no cross-highlight applied, the data point values are the same as the original, and this obscures the mark behind it. This encoding uses the same measure, but with a `__highlight` suffix, which Deneb uses to supply the value we need to show this. The rest of the `encoding` section has been omitted as it's used for the next section.
+
+:::caution Cross-Highlight Takes A Bit Of Work
+It normally might be a bit much for a simple walkthrough, but it's likely that you're heare because you want to build your own visual that looks and feels at home in Power BI. Cross-highlighting is a part of this journey, so we want to give you a simple way in to this. You can read in more detail in the [Interactivity Features](interactivity-overview) or [Cross-Highlighting](interactivity-highlight) pages for further details.
+:::
+
 ## Cross-Filtering
 
 Many Power BI visuals allow you to cross-filter others by clicking (or Ctrl-clicking data points). We can also do this with Deneb, but there are elements of user experience that we need to consider: most Power BI visuals will dim or fade the un-selected data points so that our users understand what is happening between our visual and others.
 
-This is normally opt-in, but our template already has a simple version of this set-up already. The relevant section of our specification is on lines 16 through 2*5*:
+This is normally opt-in, but our template already has a simple version of this set-up already. The relevant section of our specification is on lines 25 through 35:
 
-```json
+```json title="Cross-Filtering: second mark encoding"
 {
-  "opacity": {
-    "condition": {
-      "test": {
-        "field": "__selected__",
-        "equal": "off"
+  "mark": { ... },
+  "encoding": {
+    ...
+    "opacity": {
+      "condition": {
+        "test": {
+          "field": "__selected__",
+          "equal": "off"
+        },
+        "value": 0
       },
-      "value": 0.3
-    },
-    "value": 1
+      "value": 1
+    }
   }
 }
 ```
 
-Deneb uses a special field called `__selected__` to track the status of each row of our dataset. We can use this in our `encoding`, along with a `test` to set the `opacity` value of our mark to `0.3` (or 30%) if it is not one of those that we've clicked (or Ctrl-clicked) on, e.g.:
+Deneb uses a special field called `__selected__` to track the status of each row of our dataset. We can use this in our `encoding`, along with a `test` to set the `opacity` value of our mark to `0` (or hidden) if it is not one of those that we've clicked (or Ctrl-clicked) on, e.g.:
 
-![The opacity encoding changes based on whether a mark has been flagged as selected or not.](./img/cross-filtering-opacity.png)
+![cross-filtering-opacity.png](./img/cross-filtering-opacity.png "The opacity encoding changes based on whether a mark has been flagged as selected or not.")
 
 :::caution Context _Really_ is Key
 Note that much like report page tooltips, Cross-Filtering will only work well if your data point hasn't been transformed or mutated from the row context passed-into your visual's dataset. In the cases where data points cannot be reconciled back to the data model, this may not work as intended. You also need to manage the visual effects of your selected and un-selected marks. Please refer to the [Interactivity Features](interactivity-overview) or [Cross-Filtering (Selection)](interactivity-selection) pages for further details.
