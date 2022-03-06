@@ -190,7 +190,7 @@ We also have some other stuff going on in the editor's **Config** tab, thanks to
 
 ## Reviewing Generated Config
 
-In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configuration](http://vega.github.io/vega-lite/docs/config.html). There's a lot going on here, and the intention is to provide you with a fleshed-out set of properties so that you can see how things can look with a fleshed-out set of properties. You don't need to worry too much about this for the moment.
+In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configuration](http://vega.github.io/vega-lite/docs/config.html). There's a lot going on here, and the intention is to provide you with a more "feature-cpmplete" set of config so that you can see how things can look with a fleshed-out set of properties (and this is based on the [`powerbi` vega theme](https://vega.github.io/vega-themes/?theme=powerbi)). You don't need to worry too much about this for the moment.
 
 ```json title="Generated Config"
 {
