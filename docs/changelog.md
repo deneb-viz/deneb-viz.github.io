@@ -58,6 +58,7 @@ The documentation for this feature has also been added to the [Performance Consi
 
 - If using `"tooltip": false` against a Vega-Lite mark (instead of omitting the `tooltip` property), an empty tooltip would be displayed (#191)
 - Tooltip signals that are single values rather than field/value pairs are not being correctly converted to Power BI tooltips (#201)
+- Updates would trigger an initial console error/warning with tooltip handler enabled (#218)
 
 ## 1.1.0 (2022-01-22)
 
