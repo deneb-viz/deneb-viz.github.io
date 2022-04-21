@@ -1,8 +1,3 @@
----
-id: support
-description: Support information for Deneb
----
-
 # Support Info
 
 Firstly, thanks very much for using Deneb! I hope that you are able to use it to create some amazing visualizations within Power BI 😊
@@ -14,7 +9,7 @@ Deneb is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_Lice
 If you have challenges around learning Vega/Vega-Lite or creating a specification to suit your use case then I would suggest to following resources to discuss with other users:
 
 - [Vega discussion forum](https://groups.google.com/forum/#!forum/vega-js)
-- [Vega Slack organization](http://bit.ly/vega-slack)
+- [Vega Slack organization](https://bit.ly/join-vega-slack-2020)
 - [Stack Overflow](https://stackoverflow.com/questions)
 - [Power BI Community](https://community.powerbi.com/)
 

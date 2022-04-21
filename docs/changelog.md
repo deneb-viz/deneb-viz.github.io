@@ -5,9 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.2.0 (Alpha Channel)
-
-[Refer here for information on how to work with early access builds](/community/early-access).
+## 1.2.0 (Pending Deployment)
 
 ### Cross-Highlighting Support (#134)
 
@@ -17,7 +15,7 @@ In this version, we have enabled support for the **Highlight** interaction. Much
 
 ![Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.](/img/changelog/1.2.0/cross-highlight-example.gif "Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.")
 
-To see more about how you can get started, please check out the [Cross-Highlighting](interactivity-highlight) page for details. TODO: ~~The **Simple Bar Chart** template for both Vega and Vega-Lite has been updated with a sample binding and encoding (as well as the [Simple Worked Example](simple-example))~~.
+To see more about how you can get started, please check out the [Cross-Highlighting](interactivity-highlight) page for details. The built-in **Simple Bar Chart** template for both Vega and Vega-Lite has been updated with a sample binding and encoding (as well as the [Simple Worked Example](simple-example)).
 
 :::caution Check Default Interactions
 Because this change affects the dataset that the main window sends to a visual, this may make your visuals appear differently that prior to the update if your default interaction is set to **Highlight** (as this is now an option on a Deneb visual when setting interactions). We do try our best to manage this in Deneb if not, but it is recommended that you do this the "Power BI way" and explicitly set interactions to **Filter**.

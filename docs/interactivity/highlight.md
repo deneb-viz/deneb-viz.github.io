@@ -220,7 +220,7 @@ This report shows the three examples below how they would be rendered in Power B
     allowFullScreen="true"
 ></iframe>
 
-&nbsp;&nbsp;&nbsp;&nbsp;_Download this workbook (will be provided later)_
+_[Download this workbook](/pbix/Deneb-Simple-Cross-Highlighting-Examples.pbix)_
 
 #### Example 1: Simple Cross-Highlight Handling Using Layers
 
@@ -231,7 +231,7 @@ Here, we're altering the approach of our bar chart slightly, using [layers](http
   "data": { "name": "dataset" },
   "layer": [
     {
-      "name": "Original Value",
+      "description": "Original Value",
       "mark": {
         "type": "bar",
         "opacity": 0.3
@@ -241,7 +241,7 @@ Here, we're altering the approach of our bar chart slightly, using [layers](http
       }
     },
     {
-      "name": "Highlight Value",
+      "description": "Highlight Value",
       "mark": {
         "type": "bar"
       },
@@ -271,7 +271,7 @@ Example 1 will work for cross-highlight only; in order to ensure that our design
   "data": { "name": "dataset" },
   "layer": [
     {
-      "name": "Original Value",
+      "description": "Original Value",
       "mark": {
         "type": "bar",
         "opacity": 0.3
@@ -281,7 +281,7 @@ Example 1 will work for cross-highlight only; in order to ensure that our design
       }
     },
     {
-      "name": "Highlight Value",
+      "description": "Highlight Value",
       "mark": {
         "type": "bar"
       },

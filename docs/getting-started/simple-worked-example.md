@@ -11,12 +11,12 @@ In the following pages, we'll create a simple bar chart, using the visual, some 
 <iframe
   width="100%"
   height="486"
-  src="https://app.powerbi.com/view?r=eyJrIjoiYTcyMDJkZDEtODc0Yy00MDc2LWJiNDAtY2UxODhjZTU2NDBjIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9&pageName=ReportSectionc2e9778dd899bccd64ca"
+  src="https://app.powerbi.com/view?r=eyJrIjoiNGI4MWQ4OTgtMjUzNi00ODlmLWFjMjItMzQ5NjA1YjZmMzcwIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9"
   frameborder="0"
   allowFullScreen="true"
 ></iframe>
 
-&nbsp;&nbsp;&nbsp;&nbsp;_[Download this workbook](/pbix/Deneb-Simple-Vega-Lite-Bar-Chart-Example.pbix)_
+&nbsp;&nbsp;&nbsp;&nbsp;_[Download this workbook](/pbix/Deneb-Simple-Vega-Lite-Bar-Chart-Example-1.2.0.pbix)_
 
 ## Our Starting Data
 

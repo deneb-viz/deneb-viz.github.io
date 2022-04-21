@@ -83,14 +83,19 @@ const config = {
             position: "left",
           },
           {
+            type: "docsVersionDropdown",
+            position: "left",
+            dropdownActiveClassDisabled: true,
+          },
+          {
             label: "Community",
-            to: "/community/support",
+            to: "/community/resources",
             position: "left",
           },
           {
-            type: "docsVersionDropdown",
+            label: "Support",
+            href: "/community/support",
             position: "right",
-            dropdownActiveClassDisabled: true,
           },
           {
             href: "/privacy-policy",

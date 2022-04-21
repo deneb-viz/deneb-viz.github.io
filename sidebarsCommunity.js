@@ -14,7 +14,6 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   community: [
-    "support",
     "resources",
     "early-access",
     "contributors",
