@@ -23,4 +23,4 @@ This is similar to the approaches used for creating [R](https://docs.microsoft.c
 
 - You can use the menu to start learning more about Deneb and how to build visuals with the Vega languages in Power BI.
 
-- For community resources and examples, follow the **[Community](/community/support)** link at the top of the page.
+- For community resources and examples, follow the **[Community](/community/resources)** link at the top of the page.

@@ -54,17 +54,6 @@ const config = {
         sidebarPath: require.resolve("./sidebarsCommunity.js"),
       },
     ],
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: "/community/support",
-            from: ["/support"],
-          },
-        ],
-      },
-    ],
   ],
 
   themeConfig:
@@ -94,7 +83,7 @@ const config = {
           },
           {
             label: "Support",
-            href: "/community/support",
+            href: "/support",
             position: "right",
           },
           {
