@@ -39,6 +39,9 @@ Deneb utilises Ace Editor, [which comes with its own keyboard shortcuts](https:/
 
 | Function                            | Shortcut                          |
 | ----------------------------------- | --------------------------------- |
+| Set view to Data Pane               | **Ctrl** + **Alt** + **7**        |
+| Set view to Signals Pane            | **Ctrl** + **Alt** + **8**        |
+| Set view to Logs Pane               | **Ctrl** + **Alt** + **9**        |
 | Expand or collapse pane             | **Ctrl** + **`**                  |
 | Zoom preview out by 10%             | **Ctrl** + **Alt** + **Minus(-)** |
 | Zoom preview in by 10%              | **Ctrl** + **Alt** + **Plus(+)**  |
