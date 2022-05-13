@@ -79,7 +79,7 @@ To further illustrate, let's assume we have this measure:
 
 Using this in a specification's `field` encoding would need to substitute the `.` with an underscore as follows:
 
-```json {4}
+```json {4} showLineNumbers
 {
     ...
     "x": {

@@ -110,7 +110,7 @@ Clicking on this will show the visual specification in the Visual Editor with ou
 
 In our editor's **Specification** tab, we'll now have the following [Vega-Lite JSON specification](http://vega.github.io/vega-lite/docs/spec.html):
 
-```json title="Generated Specification"
+```json title="Generated Specification" showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [
@@ -121,9 +121,7 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
         "tooltip": true
       },
       "encoding": {
-        "x": {
-          "field": "Mean Temperature"
-        }
+        "x": { "field": "Mean Temperature" }
       }
     },
     {
@@ -155,9 +153,7 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
     },
     "x": {
       "type": "quantitative",
-      "axis": {
-        "title": "Mean Temperature"
-      }
+      "axis": { "title": "Mean Temperature" }
     }
   }
 }
@@ -168,23 +164,23 @@ This breaks down as follows:
 - There's a `data` object, which has a mapping of `"dataset"` (line 2).
   - This is required for the specification, instructs that our visual's dataset should be used and should be left as-is.
   - Refer to the [Dataset](dataset) page for more details on how this works.
-- We have a [`layer`](http://vega.github.io/vega-lite/docs/layer.html) view, which allows us to superimpose chart elements (lines 3-37). Within this layer, we have:
+- We have a [`layer`](http://vega.github.io/vega-lite/docs/layer.html) view, which allows us to superimpose chart elements (lines 3-35). Within this layer, we have:
 
-  - One [`bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for each data point (lines 4-15).
+  - One [`bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for each data point (lines 4-13).
 
-    - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure.
-    - We're displaying a `tooltip` for this mark (lines 4-15).
+    - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure (line 11).
+    - We're displaying a `tooltip` for this mark (line 8).
     - This is used to display orginal values in the event of a cross-highlight from another visual (more on this below)
 
-  - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 16-36).
+  - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 14-34).
 
-    - The `opacity` of our mark (how 'solid' the color appears) is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 16-25). This is also explained further below, so just bear with us for now.
+    - The `opacity` of our mark (how 'solid' the color appears) is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 23-32). This is also explained further below, so just bear with us for now.
 
-- The [encoding for the visual's top-level](http://vega.github.io/vega-lite/docs/encoding.html) (lines 38-49) maps our data as follows:
-  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 39-42).
-  - Our x-axis is a quantitative/linear (lines 43-48).
+- The [encoding for the visual's top-level](http://vega.github.io/vega-lite/docs/encoding.html) (lines 36-45) maps our data as follows:
+  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 37-40).
+  - Our x-axis is a quantitative/linear (lines 41-44).
 
-As noted above, this is a [layered](https://vega.github.io/vega-lite/docs/layer.html) view, so that we can try and show you how to make your visual work with Power BI's interactivity features in as simple a way as possible. Vega-Lite also has [single](http://vega.github.io/vega-lite/docs/spec.html#single), [concatenated](https://vega.github.io/vega-lite/docs/concat.html) or [faceted](https://vega.github.io/vega-lite/docs/facet.html) views as well, wo it's worht checking those out (with their associated examples) to learn more.
+As noted above, this is a [layered](https://vega.github.io/vega-lite/docs/layer.html) view, so that we can try and show you how to make your visual work with Power BI's interactivity features in as simple a way as possible. Vega-Lite also has [single](http://vega.github.io/vega-lite/docs/spec.html#single), [concatenated](https://vega.github.io/vega-lite/docs/concat.html) or [faceted](https://vega.github.io/vega-lite/docs/facet.html) views as well, wo it's worth checking those out (with their associated examples) to learn more.
 
 We also have some other stuff going on in the editor's **Config** tab, thanks to our template...
 
@@ -192,12 +188,8 @@ We also have some other stuff going on in the editor's **Config** tab, thanks to
 
 In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configuration](http://vega.github.io/vega-lite/docs/config.html). There's a lot going on here, and the intention is to provide you with a more "feature-complete" set of config so that you can see how things can look with a fleshed-out set of properties (and this is based on the [`powerbi` vega theme](https://vega.github.io/vega-themes/?theme=powerbi)). You don't need to worry too much about this for the moment.
 
-```json title="Generated Config"
+```json title="Generated Config" showLineNumbers
 {
-  "autosize": {
-    "type": "fit",
-    "contains": "padding"
-  },
   "view": { "stroke": "transparent" },
   "font": "Segoe UI",
   "arc": {},
@@ -242,7 +234,6 @@ In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configu
     "gridDash": [1, 5],
     "labelFlush": false
   },
-  "axisBand": { "tickExtra": true },
   "axisX": { "labelPadding": 5 },
   "axisY": { "labelPadding": 10 },
   "header": {
@@ -266,7 +257,7 @@ In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configu
 }
 ```
 
-Config is a nice feature of the Vega languages that provides us with the ability to style and set out the cosmetic elements of our visual design away from the main "logic" (which we have in the **Specification** tab). One thing that's handy for Power BI - due to the ability to dynamically size visuals - is [automatic sizing for simpler (single or layered) views](http://vega.github.io/vega-lite/docs/size.html#autosize), so has been included in this template by default.
+Config is a nice feature of the Vega languages that provides us with the ability to style and set out the cosmetic elements of our visual design away from the main "logic" (which we have in the **Specification** tab). One thing that's handy for Power BI - due to the ability to dynamically size visuals - is [automatic sizing for simpler (single or layered) views](http://vega.github.io/vega-lite/docs/size.html#autosize) - and this is automatically applied for you without needing to specify it.
 
 You can include your config in the specification's JSON at the top-level if you like, but the intention here is to separate the cosmetic aspects of the visual away from its logical ones, so we have a separate tab in the editor for this for those who wish to adopt this approach.
 
@@ -296,7 +287,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
 
 - In our visual, we show the original values with our first mark.
 
-  ```json title="Cross-Highlighting: first (less opaque) mark"
+  ```json title="Cross-Highlighting: first (less opaque) mark" showLineNumbers
   {
     "mark": {
       "type": "bar",
@@ -304,9 +295,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
       "tooltip": true
     },
     "encoding": {
-      "x": {
-        "field": "Mean Temperature"
-      }
+      "x": { "field": "Mean Temperature" }
     }
   }
   ```
@@ -315,7 +304,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
 
 - ...and the second mark is used to show the cross-highlight values.
 
-  ```json title="Cross-Highlighting: second (solid) mark"
+  ```json title="Cross-Highlighting: second (solid) mark" showLineNumbers
   {
     "mark": {
       "type": "bar",
@@ -342,7 +331,7 @@ Many Power BI visuals allow you to cross-filter others by clicking (or Ctrl-clic
 
 This is normally opt-in, but our template already has a simple version of this set-up already. The relevant section of our specification is on lines 25 through 35:
 
-```json title="Cross-Filtering: second mark encoding"
+```json title="Cross-Filtering: second mark encoding" showLineNumbers
 {
   "mark": { ... },
   "encoding": {
@@ -373,7 +362,7 @@ Note that much like report page tooltips, Cross-Filtering will only work well if
 
 The config that's present in the loaded template should already make the chart look quite at home in our report, but we'll make some small changes to the bar mark we're using. Update the `bar` property (on line 13) as follows:
 
-```json
+```json showLineNumbers
   "bar": {
     "color": "#605E5C",
     "cornerRadiusTopRight": 10,

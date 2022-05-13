@@ -226,7 +226,7 @@ _[Download this workbook](/pbix/Deneb-Simple-Cross-Highlighting-Examples.pbix)_
 
 Here, we're altering the approach of our bar chart slightly, using [layers](http://vega.github.io/vega-lite/docs/layer.html) to draw 2 bars - one for the original values and another for the highlights. The `x` position of each bar is bound accordingly, e.g.:
 
-```json highlight={5-12,15-22}
+```json highlight={5-12,15-22} showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [
@@ -266,7 +266,7 @@ Here, we're altering the approach of our bar chart slightly, using [layers](http
 
 Example 1 will work for cross-highlight only; in order to ensure that our design allows our visual to cross-filter other visuals _and_ handle incoming cross-highlight, we extend the `opacity` encoding in our highlights layer to effectively toggle visibility of the mark if the `__selected__` field is off. This will utilise the underlying mark for the orignal values for the 'dimmed' value, e.g.:
 
-```json highlight={23-32}
+```json highlight={23-32} showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [

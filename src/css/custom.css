@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%;
   --ifm-link-color: #c48b0d;
   --ifm-background-color: white;
+  --docusaurus-highlighted-code-line-bg: rgb(200, 201, 204);
 }
 
 .docusaurus-highlight-code-line {
@@ -34,20 +35,9 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.prism-code {
-  counter-reset: line-number;
-}
-
 .prism-code .token-line::marker {
   color: var(--ifm-color-gray-700);
   content: counter(line-number);
-}
-
-.prism-code .token-line {
-  counter-increment: line-number;
-  display: list-item;
-  padding-left: var(--ifm-pre-padding);
-  margin-left: var(--ifm-global-spacing);
 }
 
 .social-links {

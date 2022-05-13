@@ -57,6 +57,12 @@ If you're used to working with JSON, a representation similar to the following J
 }
 ```
 
+## Additional Fields
+
+When using the [Data Pane](visual-editor#data-pane) to inspect your dataset, or [looking at a mark's datum with tooltips](interactivity-tooltips#debugging-with-tooltips), you will see additional fields that are not present in your data model.
+
+Deneb will create these additional fields when processing your data, [to provide assistance with interactivity scenarios](interactivity-overview#additional-datum-fields), particularly when it comes to working with [Cross-Filtering](interactivity-selection) or [Cross-Highlighting](interactivity-highlight). To understand more about what they mean, and how you can work with them, please refer to the appropriate section of documentation.
+
 ## Referencing Columns and Measures
 
 Wherever you need to reference a column or a measure in your specification, you should use its **display name** from the **Values** data role rather than those from the data model.
@@ -79,7 +85,7 @@ To further illustrate, let's assume we have this measure:
 
 Using this in a specification's `field` encoding would need to substitute the `.` with an underscore as follows:
 
-```json {4}
+```json {4} showLineNumbers
 {
     ...
     "x": {

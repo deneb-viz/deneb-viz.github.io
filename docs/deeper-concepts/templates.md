@@ -73,9 +73,30 @@ In the advanced editor, select the [Generate JSON Template](/visual-editor#gener
 
 ![export-enter-template-information.png](./img/export-enter-template-information.png "The 'Generate JSON Template' dialog allows you to create and customize a version of your specification that is suitable for sharing.")
 
-In the first tab, fill in a suitable, descriptive name for the template and a more detailed description. This will be displayed to any users when importing it and should help then with filling it in. The author details are currently not shown on import, but will be later on.
+In the first tab, fill in a suitable, descriptive name for the template and a more detailed description. This will be displayed to any users when importing it and should help then with filling it in. The author details are currently not shown on import, but may be later on.
 
-### Template Information
+#### Including a Preview Image
+
+You have the option to include a preview image in your generated template's output.
+
+:::danger Preview Images Can Potentially Contain Sensitive Information
+
+- By generating a preview image, you are including visual information about your data into the template.
+- Including a preview image can substantially increase the size of your JSON template.
+- Because of these factors, you need to manually opt-in each time the dialog is opened.
+
+**If your data is sensitive, or you don't know whether your data is sensitive or not, do not include a preview image in your template.**
+
+:::
+
+By checking this box, Deneb will do the following:
+
+- Use the [Vega View APIs](https://vega.github.io/vega/docs/api/view/#image-export) to generate a PNG-encoded image of the current view in the editor.
+- Constrain this to a maximum of 150 x 150 pixels (which helps to keep the physical size of the template lower).
+- The aspect ratio will be preserved, using the largest dimension of the image (either width or height).
+- Include the base64 representation of this image in the template's `usermeta.information.previewImageBase64PNG` property ([refer below](#:~:text=can%20be%20found.-,previewImageBase64PNG,-%3A%20Placeholder%20for%20a) for more details).
+
+### Template Dataset
 
 In the second tab, you have the opportunity to customize your dataset requirements for your users:
 

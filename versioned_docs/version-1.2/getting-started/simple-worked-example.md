@@ -110,7 +110,7 @@ Clicking on this will show the visual specification in the Visual Editor with ou
 
 In our editor's **Specification** tab, we'll now have the following [Vega-Lite JSON specification](http://vega.github.io/vega-lite/docs/spec.html):
 
-```json title="Generated Specification"
+```json title="Generated Specification" showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [
@@ -192,7 +192,7 @@ We also have some other stuff going on in the editor's **Config** tab, thanks to
 
 In our editor's **Config** tab, we'll have the following [Vega-Lite JSON configuration](http://vega.github.io/vega-lite/docs/config.html). There's a lot going on here, and the intention is to provide you with a more "feature-complete" set of config so that you can see how things can look with a fleshed-out set of properties (and this is based on the [`powerbi` vega theme](https://vega.github.io/vega-themes/?theme=powerbi)). You don't need to worry too much about this for the moment.
 
-```json title="Generated Config"
+```json title="Generated Config" showLineNumbers
 {
   "autosize": {
     "type": "fit",
@@ -296,7 +296,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
 
 - In our visual, we show the original values with our first mark.
 
-  ```json title="Cross-Highlighting: first (less opaque) mark"
+  ```json title="Cross-Highlighting: first (less opaque) mark" showLineNumbers
   {
     "mark": {
       "type": "bar",
@@ -315,7 +315,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
 
 - ...and the second mark is used to show the cross-highlight values.
 
-  ```json title="Cross-Highlighting: second (solid) mark"
+  ```json title="Cross-Highlighting: second (solid) mark" showLineNumbers
   {
     "mark": {
       "type": "bar",
@@ -342,7 +342,7 @@ Many Power BI visuals allow you to cross-filter others by clicking (or Ctrl-clic
 
 This is normally opt-in, but our template already has a simple version of this set-up already. The relevant section of our specification is on lines 25 through 35:
 
-```json title="Cross-Filtering: second mark encoding"
+```json title="Cross-Filtering: second mark encoding" showLineNumbers
 {
   "mark": { ... },
   "encoding": {
@@ -373,7 +373,7 @@ Note that much like report page tooltips, Cross-Filtering will only work well if
 
 The config that's present in the loaded template should already make the chart look quite at home in our report, but we'll make some small changes to the bar mark we're using. Update the `bar` property (on line 13) as follows:
 
-```json
+```json showLineNumbers
   "bar": {
     "color": "#605E5C",
     "cornerRadiusTopRight": 10,

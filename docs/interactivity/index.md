@@ -102,7 +102,7 @@ Provided that there are no such mutations, a Vega or Vega-Lite datum will contai
   - This is a complex JavaScript object and therefore not something we can use in Vega directly. Complex objects are not comparable in the same way, say, text values are, so this should not be used for anything in your spec.
 
 - `__key__` - this is a representation of the `__identity__` object that can be used inside a spec, as it has been suitably processed.
-- `identityIndex` - this is the (zero-based) index of the visual dataset's corresponding entry.
+- `__row__` - this is the (zero-based) index of the visual dataset's corresponding entry.
 - `__selected__` - whether this particular row context is selected for [cross-filtering](interactivity-selection).
 
 These may become visible to you when [inspecting a datum using tooltips](interactivity-tooltips#debugging-with-tooltips) or similar, but they aren't currently supported for use outside of anything Deneb does for you.

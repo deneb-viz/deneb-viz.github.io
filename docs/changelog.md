@@ -5,6 +5,68 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
+## 1.3.0 (Alpha Channel)
+
+:::info Under Active Development
+[Refer here for information on how to work with early access builds](/community/early-access)
+:::
+
+### Debug Area (#7, #217)
+
+The Visual Editor interface has been modified to accommodate viewers for Data, Signals and Logs in what was formerly known as the Preview Area Toolbar. Similar to [vega-editor](https://vega.github.io/editor/#/), these expose more information about the underlying Vega view and will provide creators with more information when designing and debugging specifications within Power BI.
+
+![The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.](/img/changelog/1.3.0/debug-area.png "The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.")
+
+These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now grealty increased from before, this is being renamed as the [**Debug Pane**](visual-editor#debug-pane).
+
+As this change affects a lot of the existing documentation, the relevant areas are updated with sections pertinent to the Debug Pane, but a short overview is as follows:
+
+- The **Data** pane provides visibility of data sets from the Vega view.
+
+- The **Signals** pane exposes signal details from the Vega view, which will also include things like parameter bindings.
+
+- The **Logs** pane exposes anything that the Vega logger records for the specified log level.
+
+  - Valid levels are **None**, **Error**, **Warn** (default) and **Info**.
+  - As a result of this work, it was discovered that some scenarios - such as duplicating params by putting them at the top level for layered plots - were not being correctly trapped and Deneb would 'white out'.
+  - The resilience around trapping these errors has been improved and they should display an appropriate error state in the visual (and may expose more details around in the Logs pane).
+
+### Individual Report Theme Colors (#197)
+
+A new expression, `pbiColor` has been added. This allows you to access your report theme's colors by a (zero-based) index. There is also an optional parameter, which will allow you to darken or lighten the color by this value (allowing similar results):
+
+![The pbiColor function allows you to access individual theme colors using a zero-based index.](deeper-concepts/img/pbiColor-simple-grid.png "The pbiColor function allows you to access individual theme colors using a zero-based index.")
+
+Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for further details.
+
+### Preview Image in Exported Template (#228)
+
+When exporting a template, you can now opt to include a preview image, e.g.:
+
+![Templates can now provide the option to include a base64-encoded preview image of the current window.](/img/changelog/1.3.0/export-enter-template-information-preview-image.png "Templates can now provide the option to include a base64-encoded preview image of the current window.")
+
+Images are generated [using the Vega View APIs](https://vega.github.io/vega/docs/api/view/#image-export). The generated image will be how the image currently looks in the editor, and are capped at a maximum of 150 x 150 pixels (using the largest dimension to constrain the aspect ratio within this area). This is documented in more detail on the [Templates](templates#including-a-preview-image) page, but the high-level overview is as follows:
+
+The generated image will be encoded in your template using base64, so there's a couple of things to consider here:
+
+- This can potentially increase the size of your JSON template considerably.
+- This image may potentially expose information about your data if included.
+
+As such, the option is disabled by default and you will need to opt-in.
+
+### Other Minor Enhancements
+
+- Deneb will now retain Cross-Filter and/or Cross-Highlight context for multiple charts when Ctrl+clicking (#213)
+
+### Performance and Stability
+
+- Vega has been upgraded to version **5.22.1**, from 5.21.0 (#221). You can read more about the changes in the Vega release notes:
+
+  - [5.22.0](https://github.com/vega/vega/releases/tag/v5.22.0)
+  - [5.22.1](https://github.com/vega/vega/releases/tag/v5.22.1)
+
+- Code and events have been reviewed and refactored to ensure that Vega re-renders are only done when absolutely necessary (#222). This should have an appreciable effect on general UI performance.
+
 ## 1.2.0 (2022-04-21)
 
 ### Cross-Highlighting Support (#134)

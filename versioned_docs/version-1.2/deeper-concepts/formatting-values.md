@@ -28,7 +28,7 @@ In Vega-Lite, we can specify `"pbiFormat"` as a `formatType` wherever you're spe
 
 Let's say we have a simple bar chart that uses the Power BI financial sample dataset, which shows `[$ Sales]` for each `[Country]`:
 
-```json
+```json showLineNumbers
 {
   "data": {
     "name": "dataset"
@@ -55,7 +55,7 @@ And this will result in the following output:
 
 That's a lot of zeroes! What might be nicer is if his were a little easier to read. If we want to use a Power BI format string for this, we can modify the specification as follows to show values in $bn to one decimal place (changes highlighted):
 
-```json highlight={8-11}
+```json highlight={8-11} showLineNumbers
 {
   ...
   "encoding": {
@@ -80,7 +80,8 @@ This results in something a little more human-readable:
 
 If instead, we had a line chart using the same dataset, but this time we wanted to plot `[$ Sales]` by `[Date]` then we could express this as follows:
 
-```json{
+```json showLineNumbers
+{
   "data": {
     "name": "dataset"
   },
@@ -106,7 +107,7 @@ And here's how it looks out of the gate:
 
 We could use a similar approach as above for both axes, to get them how we want (changes highlighted):
 
-```json {6-9,13-16}
+```json highlight={6-9,13-16} showLineNumbers
 {
   ...
   "encoding": {
@@ -136,7 +137,7 @@ And now, we have both axes formatted as we like:
 
 If using Vega, you'd call the custom formatter in lieu of the [format](https://vega.github.io/vega/docs/expressions/#format) expression, e.g. for an axis tick label:
 
-```json highlight={10}
+```json highlight={10} showLineNumbers
 {
   ...
   "axes": [

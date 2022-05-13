@@ -75,7 +75,7 @@ In the advanced editor, select the [Generate JSON Template](/visual-editor#gener
 
 In the first tab, fill in a suitable, descriptive name for the template and a more detailed description. This will be displayed to any users when importing it and should help then with filling it in. The author details are currently not shown on import, but will be later on.
 
-### Template Information
+### Template Dataset
 
 In the second tab, you have the opportunity to customize your dataset requirements for your users:
 

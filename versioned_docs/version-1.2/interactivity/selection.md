@@ -122,7 +122,7 @@ This report shows the three examples below how they would be rendered in Power B
 
 As per the worked example and the in-built templates for the bar chart, we can encode our `opacity` based on the value of `__selected__` being set to `"off"`, e.g.:
 
-```json highlight={16-25}
+```json highlight={16-25} showLineNumbers
 {
   "data": { "name": "dataset" },
   "mark": {
@@ -156,7 +156,7 @@ As per the worked example and the in-built templates for the bar chart, we can e
 
 We can extend the above example to explicitly style selected marks when `__selected__` is set to `on` rather than just having a binary state if we so wish. Here we have applied a [pattern fill](pattern-fills) when `__selected__` for a row is `neutral`, making it more emphasized, e.g.:
 
-```json highlight={25-35}
+```json highlight={25-35} showLineNumbers
 {
   "data": { "name": "dataset" },
   "mark": {
@@ -207,7 +207,7 @@ As mentioned above, Deneb will attempt a simple reconciliation against the origi
    - A `bar` with reduced opacity that is the total sum of the primary measure.
    - A fully opaque `bar` based on the `sum` of the calculated value in step 1. As this is drawn after the dimmed bar above, it will be zero-width if the value is `0`; otherwise it will have the same width as our primary measure and sit over the top of the underlying mark.
 
-```json
+```json showLineNumbers
 {
   "data": { "name": "dataset" },
   "transform": [

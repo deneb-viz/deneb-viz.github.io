@@ -26,8 +26,9 @@ const sidebars = {
       },
       items: [
         "getting-started/example",
-        "getting-started/dataset",
         "getting-started/editor",
+        "getting-started/dataset",
+        "getting-started/keyboard",
       ],
     },
     {

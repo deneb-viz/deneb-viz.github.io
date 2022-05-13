@@ -36,7 +36,7 @@ url(#diagonal-stripe-1)
 
 So, instead of shading our example bar chart from the formatting page with a color, we could use this instead, e.g.:
 
-```json {5}
+```json {5} showLineNumbers
 {
   "data": { "name": "dataset" },
   "mark": {
@@ -62,7 +62,7 @@ And instead of a solid fill, we would now get the following rendered visual:
 
 We could augment this with a `stroke` to provide a boundary to the mark, e.g.:
 
-```json highlight={6}
+```json highlight={6} showLineNumbers
 {
   "data": { "name": "dataset" },
   "mark": {
@@ -89,7 +89,7 @@ We could augment this with a `stroke` to provide a boundary to the mark, e.g.:
 
 Default patterns have a transparent background, and this can be observed in the above example with the x-axis gridlines. If you want to provide a solid background, you can either use the [dynamic pattern variation expression](#dynamic-variations), or layer a mark behind it with a solid fill, e.g.:
 
-```json highlight={3-10,16-17}
+```json highlight={3-10,16-17} showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [
@@ -128,7 +128,7 @@ Default patterns also have a modifier suffix that can be added to reduce the int
 
 So, for our above example, if we wish to reduce the stroke intensity down to 30%, we can use `url(#diagonal-stripe-1-30)`, e.g.:
 
-```json highlight={13}
+```json highlight={13} showLineNumbers
 {
   "data": { "name": "dataset" },
   "layer": [
@@ -209,7 +209,7 @@ Where:
 
 If we wanted to apply a custom foreground and background, we could use `pbiPatternSVG` in an expression function as follows:
 
-```json highlight={5-7}
+```json highlight={5-7} showLineNumbers
 {
   "data": { "name": "dataset" },
   "mark": {

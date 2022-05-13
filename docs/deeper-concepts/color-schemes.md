@@ -1,17 +1,60 @@
 ---
 id: schemes
-description: Using custom Vega schemes in Deneb to bind to the Power BI report theme
+description: Using custom Vega schemes in Deneb to bind to the Power BI report theme, as well as accessing Power BI report theme colors in-general.
 slug: /schemes
-title: Color Schemes
+title: Theme Colors & Schemes
 ---
 
-Deneb offers four custom [Vega Color schemes](https://vega.github.io/vega/docs/schemes/) that are tied to the current report theme and will update at run-time. This allows you to keep your visual's color scheme in-sync with your report, if you so wish.
+Deneb provides some means to bind to your report's current theme, in the form of:
 
-## Usage
+- Expression-based access using a custom function
+- Custom [Vega Color schemes](https://vega.github.io/vega/docs/schemes/)
+
+This functionality will dynamically reference the theme are run-time, meaning that if you change your colors, Deneb will keep these references in-sync.
+
+## Expression-Based Access Using `pbiColor`
+
+Deneb provides a custom function, named `pbiColor` that you can use in [Vega or Vega-Lite expressions](https://vega.github.io/vega/docs/expressions/):
+
+```
+pbiColor(index, shadePercent = 0)
+```
+
+- `index` is a [zero-based](https://en.wikipedia.org/wiki/Zero-based_numbering) reference to the Power BI theme palette. This means that:
+
+  - `0` = Theme color 1
+  - `1` = Theme color 2
+  - `2` = Theme color 3
+  - ...and so on
+
+- `shadePercent` is optional, and is a decimal value between `-1` (-100%) and `1` (100%).
+
+  - If supplied, this will darken (< 0) or lighten (> 0) the color by the specificed amount.
+  - This is to provide variants of the theme colors, much like how Power BI does in its color picker.
+
+For example, to specify a `bar` mark's `color` to use Theme color 1, you could use the following in your mark's properties:
+
+```json
+{
+  ...
+  "mark": {
+    ...
+    "color": {
+      "expr": "pbiColor(0)"
+    }
+  }
+}
+```
+
+Assuming that you are using the standard theme, output should look like the following for the theme's first two colors (`#118DFF` and `#12239E`):
+
+![The pbiColor function allows you to access individual theme colors using a zero-based index.](img/pbiColor-simple-grid.png "The pbiColor function allows you to access individual theme colors using a zero-based index.")
+
+## Power BI Schemes
 
 The schemes can be used wherever you might reference a color scheme in a Vega or Vega-Lite scale, e.g.:
 
-```json title=Vega-Lite
+```json title=Vega-Lite showLineNumbers
 {
   ...
   "encoding": {
@@ -25,7 +68,7 @@ The schemes can be used wherever you might reference a color scheme in a Vega or
 }
 ```
 
-```json title=Vega
+```json title=Vega showLineNumbers
 {
   ...
   "scales": [
@@ -46,7 +89,7 @@ The schemes can be used wherever you might reference a color scheme in a Vega or
 }
 ```
 
-## Available Schemes
+The available schemes are detailed further below.
 
 ### `pbiColorNominal`
 
