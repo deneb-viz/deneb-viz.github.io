@@ -17,7 +17,7 @@ The Visual Editor interface has been modified to accommodate viewers for Data, S
 
 ![The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.](/img/changelog/1.3.0/debug-area.png "The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.")
 
-These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now grealty increased from before, this is being renamed as the [**Debug Pane**](visual-editor#debug-pane).
+These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now greatly increased from before, this is being renamed as the [**Debug Pane**](visual-editor#debug-pane).
 
 As this change affects a lot of the existing documentation, the relevant areas are updated with sections pertinent to the Debug Pane, but a short overview is as follows:
 
