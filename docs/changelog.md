@@ -57,6 +57,7 @@ As such, the option is disabled by default and you will need to opt-in.
 ### Other Minor Enhancements
 
 - Deneb will now retain Cross-Filter and/or Cross-Highlight context for multiple charts when Ctrl+clicking (#213)
+- When creating a new Vega-Lite visual using the _[empty]_ template, this will now provide a specification with empty layers (`[]`) rather than a `null` mark. This prevents the display of errors and should serve as a more friendly state for the new user (#51).
 
 ### Performance and Stability
 
