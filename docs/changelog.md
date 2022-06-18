@@ -5,11 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.3.0 (Alpha Channel)
-
-:::info Under Active Development
-[Refer here for information on how to work with early access builds](/community/early-access)
-:::
+## 1.3.0 (certification passed; pending deployment)
 
 ### Debug Area (#7, #217)
 
