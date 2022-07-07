@@ -30,7 +30,7 @@ const config = {
             "https://github.com/deneb-viz/deneb-viz.github.io/edit/source/",
           versions: {
             current: {
-              label: "1.3 🚧",
+              label: "vNext 🚧",
             },
           },
         },
