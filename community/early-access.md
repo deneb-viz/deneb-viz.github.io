@@ -18,7 +18,7 @@ This process might sound cool, but have a read of the following to determine if 
 - Early access builds are provided on the basis for giving feedback to maintainers.
 - They are not supported for production use.
 - Formal documentation is not complete until we're ready to publish, so there may be some degree of discovery required from your end to ascertain changes between builds.
-<!-- - We will do our best to keep up with documenting major things, which is [made available through the 'next' version](/next) on this site. This version of the [Change Log](/next/changelog) will be the best place to start for a simplified digest of what's going on. -->
+- We will do our best to keep up with documenting major things, which is [made available through the 'next' version](/next) on this site. This version of the [Change Log](/next/changelog) will be the best place to start for a simplified digest of what's going on.
 - Early access builds are de-coupled from AppSource, are not certified and do not self-update.
 - Please provide feedback! The privilege of getting access to early builds is a two-way street - and you can really help other users get a better experience when we publish to AppSource by letting us know about things.
 
