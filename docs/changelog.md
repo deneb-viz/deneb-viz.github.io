@@ -37,6 +37,8 @@ Deneb 1.x is in a state of maintenance, and this release focuses on minor improv
 
 - Checkbox and radio button param elements could not change state with cross-filtering enabled (#254).
 
+- `null` dates were causing an infinite rendering loop (#259).
+
 ## 1.3.0 (2022-07-06)
 
 ### Debug Area (#7, #217)
