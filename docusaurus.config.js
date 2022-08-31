@@ -28,11 +28,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/deneb-viz/deneb-viz.github.io/edit/source/",
-          versions: {
-            current: {
-              label: "1.4 🚧",
-            },
-          },
+          includeCurrentVersion: false,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
