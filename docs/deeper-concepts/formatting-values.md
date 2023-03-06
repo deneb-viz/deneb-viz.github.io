@@ -166,3 +166,39 @@ If using the `pbiFormat` formatter, Deneb currently will resolve your locale [ac
 For example, we can view the live chart example from above _en français_ (fr-FR), and the formatting strings will work as expected:
 
 ![vega-lite-line-fr-FR.png](./img/vega-lite-line-fr-FR.png "If we are in a different locale, e.g. French, then our [$ Sales] and [Date] format string update to use locale-specific decimal separators and month naming.")
+
+### Overriding User Locale
+
+If you wish to specify a different local to Power BI's one (for example, you wish values to be norrmalized to the same currency for your users irrespective of location), you can either override this using the `locale` property of a specification's config ([V](https://vega.github.io/vega/docs/config/#:~:text=%22strokeWidth%22.-,locale,-Object) | [VL](https://vega.github.io/vega-lite/docs/config.html#aria-config)), or manually specify a valid Power BI locale within the `options.cultureSelector` property in an expression function for `pbiFormat` (more on this below).
+
+## `pbiFormat` Expression Function Full Implementation Details
+
+When using `pbiFormat` in an expression function, you have a bit more versatility over using in the encoding properties directly. The full signature for this function when used in expressions is as follows:
+
+```
+pbiFormat(value, format, options = {})
+```
+
+- The `value` parameter is the number value that you wish to format.
+
+- The `format` parameter is a [valid Power BI format string](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-custom-format-strings?WT.mc_id=DP-MVP-5003712#supported-custom-format-syntax).
+
+- The `options` parameter is an optional object, where you can supply any of the optional `ValueFormatterOptions` properties from [Microsoft's formatting library for custom visuals](https://learn.microsoft.com/en-us/power-bi/developer/visuals/utils-formatting?WT.mc_id=DP-MVP-5003712#valueformatteroptions).
+
+  Not all properties will translate to useful functionality within Deneb, so the key ones that you might find useful are:
+
+  - `format` - format string to use **\***
+
+  - `precision` - the maximum number of decimal places to show **\***
+
+  - `value` - the value to use when formatting. For example:
+
+    - `1e3` for values to be formatted as thousands.
+    - `1e6` for values to be formatted as millions.
+    - `1e9` for values to be formatted as billions.
+    - `1e12` for values to be formatted as trillions.
+    - A dynamic value (e.g. that of your measure) to auto format to thouands, millions, etc., like Power BI does.
+
+  - `cultureSelector` - a valid Power BI culture code, which will enforce formatting to a specific locale, e.g. `en-GB`, `fr-FR`.
+
+  _**\*** will override the `format` parameter if specified_
