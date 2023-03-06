@@ -5,9 +5,55 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.4.0 (2022-08-31)
+## 1.5.0 (In Development)
 
 Deneb 1.x is in a state of maintenance, and this release focuses on minor improvements and bug fixes. Any significant new features should be expected in version 2 (which is currently being scoped and planned).
+
+### Enhancements
+
+- The field name limit for template fields has been increased from 30 to 150 characters.
+
+  :::danger Field name limit relaxations are not backwards compatible
+  If exporting a template with > 30 characters in a field name in version 1.5, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
+  :::
+
+- The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.
+
+  Please refer to the [Formatting Values](formatting#pbiformat-expression-function-full-implementation-details) page for more information.
+
+- The `pbiColor` expression function now supports the following named color values:
+
+  ![The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.](deeper-concepts/img/pbiColor-named.png "The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.")
+
+  Color names should be surrounded with single quotes and valid values are as follows:
+
+  - Divergent colors:
+
+    - `min`
+    - `middle`
+    - `max`
+
+  - Sentiment colors:
+    - `negative` (or `bad`)
+    - `neutral`
+    - `positive` (or `good`)
+
+  Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for more information.
+
+### Bugs Fixed
+
+- When importing templates created using Vega, the provider would be incorrectly set to Vega-Lite (#278).
+- The theme color binding for "middle" divergent color was actually using "neutral" (#283).
+
+### Performance and Stability
+
+- Vega has been updated to version **5.23.0** (from 5.22.1). You can read more about the changes in the [Vega release notes](https://github.com/vega/vega/releases/tag/v5.23.0).
+
+- Vega-Lite has been updated to version **5.6.1** (from 5.4.0). As there have been many small and incremental changes between these versions, it may be easier to review [the commit history for this span](https://github.com/vega/vega-lite/compare/v5.4.0...v5.6.1) rather than inspecting each individual release if you wish to catch up on what's new.
+
+- Published visual size reduced by 8% (down from 1.42MB to 1.32MB).
+
+## 1.4.0 (2022-08-31)
 
 ### Enhancements
 
