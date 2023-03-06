@@ -17,15 +17,25 @@ This functionality will dynamically reference the theme are run-time, meaning th
 Deneb provides a custom function, named `pbiColor` that you can use in [Vega or Vega-Lite expressions](https://vega.github.io/vega/docs/expressions/):
 
 ```
-pbiColor(index, shadePercent = 0)
+pbiColor(index|name, shadePercent = 0)
 ```
 
-- `index` is a [zero-based](https://en.wikipedia.org/wiki/Zero-based_numbering) reference to the Power BI theme palette. This means that:
+- The first parameter (`index` or `name`) provides access to the associated theme color:
 
-  - `0` = Theme color 1
-  - `1` = Theme color 2
-  - `2` = Theme color 3
-  - ...and so on
+  - `index` is a [zero-based](https://en.wikipedia.org/wiki/Zero-based_numbering) reference to the Power BI theme palette. This means that:
+
+    - `0` = Theme color 1
+    - `1` = Theme color 2
+    - `2` = Theme color 3
+    - ...and so on
+
+  - `name` is a string value (surrounded by single quotes) that specifies a named color from the theme configuration. Valid names are:
+
+    - `min` / `middle` / `max` for divergent colors.
+    - `negative` / `neutral` / `positive` for sentiment colors.
+    - Power BI also exposes `bad` and `good` for sentiment colors, which can also be used instead of `negative` or `positive`, should you prefer to use these instead.
+
+    ![Valid color names for the `pbiColor` expression function (as detailed above).](img/pbiColor-named.png "Valid color names for the `pbiColor` expression function (as detailed above).")
 
 - `shadePercent` is optional, and is a decimal value between `-1` (-100%) and `1` (100%).
 
