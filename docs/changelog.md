@@ -7,6 +7,10 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 ## 1.5.0 (In Development)
 
+:::info Under Active Development
+[Refer here on how to work with early access builds](/community/early-access)
+:::info
+
 Deneb 1.x is in a state of maintenance, and this release focuses on minor improvements and bug fixes. Any significant new features should be expected in version 2 (which is currently being scoped and planned).
 
 ### Enhancements
