@@ -14,7 +14,7 @@ Deneb 1.x is in a state of maintenance, and this release focuses on minor improv
 - The field name limit for template fields has been increased from 30 to 150 characters.
 
   :::danger Field name limit relaxations are not backwards compatible
-  If exporting a template with > 30 characters in a field name in version 1.5, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
+  If exporting a template with > 30 characters in a field name, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
   :::
 
 - The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.
