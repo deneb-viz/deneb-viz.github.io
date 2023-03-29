@@ -73,7 +73,7 @@ const config = {
             dropdownActiveClassDisabled: true,
           },
           {
-            label: "Community",
+            label: "Community & Resources",
             to: "/community/resources",
             position: "left",
           },
