@@ -5,9 +5,26 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.5.0 (2023-03-29)
+:::info Deneb v1 is in a state of maintenance
+Any releases under 1.x focus on minor improvements and bug fixes. Significant new features should be expected in version 2 (which is currently being scoped and planned).
+:::info
 
-Deneb 1.x is in a state of maintenance, and this release focuses on minor improvements and bug fixes. Any significant new features should be expected in version 2 (which is currently being scoped and planned).
+## 1.5.1 (2023-04-26)
+
+### Enhancements
+
+- When fetching additional data, the number of loaded rows now includes a thousands separator.
+
+### Bugs Fixed
+
+- Visual dataset not always readily available when parsing specification (#289)
+
+  - Creators would often see errors when attempting particular transformations or expressions.
+  - This appears to be due to how the dataset is injected into the react-vega component and it would seem that it is not always present in the visual when these are evaluated.
+  - As such, the workflow has been modified to merge the specification and dataset at parse time rather than render time.
+  - This should have no negative effects on your existing work, but please create an issue with as much detail as possible if you observe any regressions.
+
+## 1.5.0 (2023-03-29)
 
 ### Enhancements
 
