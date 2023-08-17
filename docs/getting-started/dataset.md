@@ -61,7 +61,7 @@ If you're used to working with JSON, a representation similar to the following J
 
 When using the [Data Pane](visual-editor#data-pane) to inspect your dataset, or [looking at a mark's datum with tooltips](interactivity-tooltips#debugging-with-tooltips), you will see additional fields that are not present in your data model.
 
-Deneb will create these additional fields when processing your data, [to provide assistance with interactivity scenarios](interactivity-overview#additional-datum-fields), particularly when it comes to working with [Cross-Filtering](interactivity-selection) or [Cross-Highlighting](interactivity-highlight). To understand more about what they mean, and how you can work with them, please refer to the appropriate section of documentation.
+Deneb will create these additional fields when processing your data. This can be [to provide assistance with interactivity scenarios](interactivity-overview#additional-datum-fields), particularly when it comes to working with [Cross-Filtering](interactivity-selection) or [Cross-Highlighting](interactivity-highlight) as well as [for giving you access to dynamic format strings](formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups) that might be applied at a row level. To understand more about what they mean, and how you can work with them, please refer to the appropriate section of documentation.
 
 ## Referencing Columns and Measures
 

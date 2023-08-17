@@ -202,3 +202,13 @@ pbiFormat(value, format, options = {})
   - `cultureSelector` - a valid Power BI culture code, which will enforce formatting to a specific locale, e.g. `en-GB`, `fr-FR`.
 
   _**\*** will override the `format` parameter if specified_
+
+## Working with Dynamic Format Strings (for Measures and Calculation Groups)
+
+Power BI has the capability for dynamic format strings to be applied for [calculation groups](https://learn.microsoft.com/en-us/analysis-services/tabular-models/calculation-groups#dynamic-format-strings) (and as of May 2023) [for regular measures](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-dynamic-format-strings). This now means that in some cases, formatting for a measure (or calculation item) may be applied at the row level rather than measure level.
+
+When numeric or date/time-based measures are present in the dataset, Deneb will create support fields for these at a row level:
+
+- `[measure name]__format` - the format string for the measure. This is in case you need direct access to it for use in the `pbiFormat` function, or using the `pbiFormat` custom format type.
+
+- `[measure_name]__formatted` - the measure value formatted according to the format string in the same row.
