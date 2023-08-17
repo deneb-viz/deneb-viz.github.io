@@ -5,9 +5,148 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.5.0 (2023-03-29)
+## 1.6.0 (Under Development)
 
-Deneb 1.x is in a state of maintenance, and this release focuses on minor improvements and bug fixes. Any significant new features should be expected in version 2 (which is currently being scoped and planned).
+This update concentrates on making changes that improve performance and architecture for the next planned updates. A lot of these were slated for version 2, but this has become too large of a task to do in one go. As such, version 2's scope will change to focus on features that may result in breaking changes for templates and the next few updates will focus on delivering long-awaited or commonly requested features that will improve the UI and productivity experience for creators.
+
+### Supported Power BI Versions
+
+In order to improve visual loading time and access new features, the Power BI Visuals API has been updated to 5.3.0. This will require a minimum of **April 2023** of Power BI Desktop (or **May 2023** of Power BI Desktop for Report Server).
+
+For older versions Power BI Desktop, you can install previous versions of Deneb as an [organizational visual in your Power BI tenant](https://learn.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-organization). Builds of Deneb are included as assets under the appropriate release [in the GitHub repository](https://github.com/deneb-viz/deneb/releases) and follow the pattern `Deneb_AppSource*.pbiviz`.
+
+### Vega Updates
+
+- Vega updated to **5.25.0** (from 5.23.0).
+- Vega-Lite updated to **5.14.1** (from 5.6.1).
+
+### Parsing and Validation Workflow Changes
+
+These would normally be listed under _Performance and Stability_, but there have been significant changes to how Deneb parses the editor content and renders specifications. This will result in much faster output, improve synchronization between the Debug Pane and the rendered output, and stop superfluous rendering of specifications in the UI in-general.
+
+:::caution Please check your specs!
+It is anticipated that changes will have a positive effect. However, if you find a use case that is negatively impacted, then please let us know so that we can investigate as soon as possible.
+:::
+
+The key impacts on creators and viewers are as follows:
+
+- Transition time between the report canvas and the Advanced Editor (and back again) has significantly improved.
+
+- In conjunction with the visual dataset, specifications and config are memoized, so they are only (re)parsed when a suitable change occurs. The full list of events that can affect memoization are:
+
+  - Specification or Config content is applied (and is different to the last saved values).
+  - Changes to the visual dataset, including adding and removing columns or measures and filters being applied (essentially anything that causes the visual to be re-queried, resulting in a change of resulting dataset).
+  - Enabling or disabling cross-filtering of data points or cross-highlight values (as these affect the visual dataset).
+  - A change to the [Discrete ordinal colors](schemes#discrete-ordinal-colors) property in the _Report theme integration_ menu (as this requires re-generation of the custom Vega ordinal scale that is bound to that value).
+  - Enabling or disabling the Power BI tooltip handler.
+  - Changing the provider (e.g. from _Vega-Lite_ to _Vega_).
+  - Changing the render mode (e.g. from _SVG_ to _Canvas_).
+  - Changing the log level in the _Logs_ viewer.
+  - When you have finished resizing the visual container in the report canvas.
+
+- If any errors are encountered when parsing (or by the Vega view post-render), the visual is no longer replaced with an error status and shows as blank. All issues will be present in the _Logs_ viewer (providing the level is not set to _None_).
+
+- Vega parsing would not previously catch errors in the _Logs_ viewer. This has been fixed.
+
+### General UI Changes
+
+![Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.](/img/changelog/1.6.0/new-ui-layout.png "Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.")
+
+Deneb's Advanced Editor UI has been updated from Fluent UI v8 to v9. Some of these changes will be detailed in below sections where necessary, but the overview is as follows:
+
+- The menu in the settings pane has been moved out to the top of the visual and encompasses the entire width. This provides ~11% more vertical space for the JSON editor at the cost of a bit less vertical space for the visual preview.
+- The landing page has been redesigned to provide more detailed onboarding for new users.
+- Theme brand color has been updated to match Power BI's recent changes.
+
+### Create New Specification Dialog and Packaged Template Changes
+
+![The 'Create or import new specification' dialog has been modified to provide some further resources for thos elooking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.](/img/changelog/1.6.0/new-create-dialog.png "The 'Create or import new specification' dialog has been modified to provide some further resources for thos elooking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.")
+
+As part of the UI changes, the **Create new specification** dialog has received some enhancements:
+
+- The layout has changed to allow more room on the right for template content when it is selected or loaded.
+- Using an existing template is the default option.
+- For an existing template, the import button has been swapped for a drop zone:
+
+  - You can click this to manually select a template file, or you can drag and drop a valid file to this area for Deneb to import it (if WebView2 is enabled).
+  - This will also support copy and paste for files and clipboard text, providing that they are valid Deneb templates.
+  - For Vega and Vega-Lite specifications without Deneb metadata, it's recommended that you create a blank specification for the appropriate language and paste these into the editor.
+
+- Links to Deneb's community page, the Vega examples gallery and the Vega-Lite examples gallery have been added to the initial screen, to assist with discoverability of existing examples or ideas.
+
+- Packaged templates have been refactored:
+
+  - By default, templates no longer use Power BI theming for their look and feel, as this is not necessarily data visualization best practice.
+  - A new template named _\[empty (with Power BI theming)]_ has been added for both Vega and Vega-Lite, which will include the relevant config to simulate the default Power BI look and feel.
+  - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivty can be set up.
+  - The other simple templates have been removed.
+
+- A link has been added to Deneb's [community page](/community/resources), to help with discovery of community-created content.
+
+### Generate JSON Template Changes
+
+![The 'Generate JSON template' dialog has now been condensed into a single pane and has the option to download templates to files directly (provided that your tenant administrator has enabled this).](/img/changelog/1.6.0/new-export-dialog.png "The 'Generate JSON template' dialog has now been condensed into a single pane and has the option to download templates to files directly (provided that your tenant administrator has enabled this).")
+
+- The dialog for this operation has been consolidated into a single pane, rather than having three panes as part of the workflow to export a template.
+- You can also download the template directly to a `.deneb.json` file, provided that your tenant administrator has allowed [downloads from custom visuals](https://learn.microsoft.com/en-us/power-bi/admin/organizational-visuals#export-data-to-file).
+- If you aren't permitted to download, you can still copy the template to the clipboard.
+
+### Debug Pane Enhancements
+
+In conjunction with the parsing and rendering changes above, the Debug Pane has been re-written with updated logic and UI.
+
+![The Debug Pane has undergone many enhancements, including space optimization, a pagination toolbar for data tables and increased zoom capabilities.](/img/changelog/1.6.0/new-debug-pane.png "The Debug Pane has undergone many enhancements, including space optimization, a pagination toolbar for data tables and increased zoom capabilities.")
+
+Key changes are as follows:
+
+- The option to select the data set (Data viewer) or the log level (Logs viewer) has been moved to the bottom status bar of the debug pane, which frees up some vertical space.
+- Tables in the Data and Signals viewers use a new component, have improved pagination, plus the ability to choose from either 10, 25, 50 or 100 rows per page.
+- The algorithm for monitoring changes of the data and signals in the Vega view has been improved and this should result in Data and Signal values being correctly up to date (in some cases they might previously have been one update behind).
+- The maximum zoom level has been increased to **400%**.
+- The _Reset Zoom_ button has been removed and replaced with a popover on the zoom level - this allows you to choose a pre-defined or custom zoom level:
+
+  ![The zoom level indicator on the toolbar allow smore finer-grained setting of zoom level of the visual preview.](/img/changelog/1.6.0/new-zoom-popover.png "The zoom level indicator on the toolbar allow smore finer-grained setting of zoom level of the visual preview.")
+
+  Note that the 'reset zoom to 100%' hotkey ([Ctrl+Alt+0]) will still work as intended.
+
+### Dynamic Format String Support Fields for Calculation Groups and Measures
+
+Deneb has always been able to accommodate calculation groups in its dataset, but access to dynamic format strings has not been part of its feature set. As Power BI now introduces dynamic format string support [for measures as of April 2023](https://powerbi.microsoft.com/en-cy/blog/power-bi-april-2023-feature-summary/#post-23001-_Toc433340751), then this is now becoming less niche and more commonplace.
+
+In this release, new fields are introduced into the dataset to provide additional access to these values if they are present in the query result from Power BI.
+
+See the section in the [Formatting Values](formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups) page for a detailed explanation as to how these work.
+
+### Scrollbar Appearance Configuration
+
+Some new properties have been introduced to the **Rendered visual** menu in the formatting pane, which give you a bit more control over the display of scrollbars in the rendered output:
+
+- Scrollbar color: allows you to adjust the displayed color of the scrollbar. This is black (_#000000_) by default.
+- Scrollbar opacity (%): allows you to adjust the opacity of the scrollbar. This is _20%_ by default, to ensure that the underlying visual can still be seen through the overlaid scrollbar.
+- Scrollbar radius (px): allows you to change the curvature of the end of the scrollbars. This is _0_ (square) by default.
+
+Additionally, there is a **Show scrollbars on overflow** in the **Advanced editor** menu, that will allow you to preview the scrollbars in the advanced editor, if your visual will overflow the boundaries of the viewport.
+
+### Other Enhancements
+
+- The properties pane has been converted to use the new formatting cards that were recently introduced in core visuals.
+- The DIN font has had a more sensible alias assigned (this is known internally as `wf_standard-font`) and can now be specified as 'DIN' wherever you're using it.
+- As Segoe UI has CSS fallbacks added by default in core visuals, using 'Segoe UI' as a font can cause portability issues on Mac devices (as posted about [here by Meagan Longoria](https://datasavvy.me/2023/08/17/quick-tip-about-fonts-in-deneb-visuals-in-power-bi/)). These fallbacks have been added into Deneb so that just using 'Segoe UI' will now fall back automatically to the fonts specified by Microsoft.
+
+### Bugs Fixed
+
+- Tooltip with signal of item will no longer cause call 'stack size exceeded' errors (#273)
+- Vega specifications are restored with the correct visual dimensions upon exiting the Advanced Editor (#286)
+- The landing page will no longer be temporarily displayed when a visual is initialized in the Service (#325)
+- Handler for keyboard shortcuts should no longer trigger modal dialogs when Alt+F or Alt+N are used in Czech locales (#262)
+
+### Performance and Stability
+
+- The Data viewer in the debug pane now processes data asynchronously. This prevents the whole UI waiting for the processing to complete and will again improve the responsiveness of the editor UI overall.
+- Data and Signals viewers now use a monospace font. This is to improve readability of the content, but also to improve performance of calculating the table content (as column widths need to be computed each time the content changes).
+- The **Performance Tuning** and **Recalculate during resize** property have been removed from the formatting pane, due to the above enhancements.
+
+## 1.5.0 (2023-03-29)
 
 ### Enhancements
 
@@ -80,211 +219,3 @@ Deneb 1.x is in a state of maintenance, and this release focuses on minor improv
 - Checkbox and radio button param elements could not change state with cross-filtering enabled (#254).
 
 - `null` dates were causing an infinite rendering loop (#259).
-
-## 1.3.0 (2022-07-06)
-
-### Debug Area (#7, #217)
-
-The Visual Editor interface has been modified to accommodate viewers for Data, Signals and Logs in what was formerly known as the Preview Area Toolbar. Similar to [vega-editor](https://vega.github.io/editor/#/), these expose more information about the underlying Vega view and will provide creators with more information when designing and debugging specifications within Power BI.
-
-![The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.](/img/changelog/1.3.0/debug-area.png "The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.")
-
-These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now greatly increased from before, this is being renamed as the [**Debug Pane**](visual-editor#debug-pane).
-
-As this change affects a lot of the existing documentation, the relevant areas are updated with sections pertinent to the Debug Pane, but a short overview is as follows:
-
-- The **Data** pane provides visibility of data sets from the Vega view.
-
-- The **Signals** pane exposes signal details from the Vega view, which will also include things like parameter bindings.
-
-- The **Logs** pane exposes anything that the Vega logger records for the specified log level.
-
-  - Valid levels are **None**, **Error**, **Warn** (default) and **Info**.
-  - As a result of this work, it was discovered that some scenarios - such as duplicating params by putting them at the top level for layered plots - were not being correctly trapped and Deneb would 'white out'.
-  - The resilience around trapping these errors has been improved and they should display an appropriate error state in the visual (and may expose more details around in the Logs pane).
-
-### Individual Report Theme Colors (#197)
-
-A new expression, `pbiColor` has been added. This allows you to access your report theme's colors by a (zero-based) index. There is also an optional parameter, which will allow you to darken or lighten the color by this value (allowing similar results):
-
-![The pbiColor function allows you to access individual theme colors using a zero-based index.](deeper-concepts/img/pbiColor-simple-grid.png "The pbiColor function allows you to access individual theme colors using a zero-based index.")
-
-Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for further details.
-
-### Preview Image in Exported Template (#228)
-
-When exporting a template, you can now opt to include a preview image, e.g.:
-
-![Templates can now provide the option to include a base64-encoded preview image of the current window.](/img/changelog/1.3.0/export-enter-template-information-preview-image.png "Templates can now provide the option to include a base64-encoded preview image of the current window.")
-
-Images are generated [using the Vega View APIs](https://vega.github.io/vega/docs/api/view/#image-export). The generated image will be how the image currently looks in the editor, and are capped at a maximum of 150 x 150 pixels (using the largest dimension to constrain the aspect ratio within this area). This is documented in more detail on the [Templates](templates#including-a-preview-image) page, but the high-level overview is as follows:
-
-The generated image will be encoded in your template using base64, so there's a couple of things to consider here:
-
-- This can potentially increase the size of your JSON template considerably.
-- This image may potentially expose information about your data if included.
-
-As such, the option is disabled by default and you will need to opt-in.
-
-### Other Minor Enhancements
-
-- Deneb will now retain Cross-Filter and/or Cross-Highlight context for multiple charts when Ctrl+clicking (#213)
-- When creating a new Vega-Lite visual using the _[empty]_ template, this will now provide a specification with empty layers (`[]`) rather than a `null` mark. This prevents the display of errors and should serve as a more friendly state for the new user (#51).
-
-### Performance and Stability
-
-- Vega has been upgraded to version **5.22.1**, from 5.21.0 (#221). You can read more about the changes in the Vega release notes:
-
-  - [5.22.0](https://github.com/vega/vega/releases/tag/v5.22.0)
-  - [5.22.1](https://github.com/vega/vega/releases/tag/v5.22.1)
-
-- Code and events have been reviewed and refactored to ensure that Vega re-renders are only done when absolutely necessary (#222). This should have an appreciable effect on general UI performance.
-
-## 1.2.0 (2022-04-21)
-
-### Cross-Highlighting Support (#134)
-
-To date, Deneb has only had two supported [interactions](https://docs.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions#change-the-interaction-behavior) from other visuals: **Filter** (default) and **None**.
-
-In this version, we have enabled support for the **Highlight** interaction. Much like [Cross-Filtering](interactivity-selection), it is opt-in - as you will need to ensure that marks have the necessary encodings for orginal vs. highlight values for any active interactions, e.g.:
-
-![Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.](/img/changelog/1.2.0/cross-highlight-example.gif "Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.")
-
-To see more about how you can get started, please check out the [Cross-Highlighting](interactivity-highlight) page for details. The built-in **Simple Bar Chart** template for both Vega and Vega-Lite has been updated with a sample binding and encoding (as well as the [Simple Worked Example](simple-example)).
-
-:::caution Check Default Interactions
-Because this change affects the dataset that the main window sends to a visual, this may make your visuals appear differently that prior to the update if your default interaction is set to **Highlight** (as this is now an option on a Deneb visual when setting interactions). We do try our best to manage this in Deneb if not, but it is recommended that you do this the "Power BI way" and explicitly set interactions to **Filter**.
-:::
-
-### Improved Visibility of Vega Versions (#185)
-
-Because Deneb embeds the Vega and Vega-Lite libraries, any new releases are not automatically available to you; these need to be packaged, tested and published via AppSource. As such, there can be a lag between what Deneb supports and any language features in the Vega or Vega-Lite documentation. A good example of this was Vega-Lite 5.2.0 releasing very shortly after Deneb 1.0.0 went live.
-
-To assist with checking compatability of the embedded runtimes vs. their documentation, we previously included the embedded Vega and or Vega-Lite versions on the landing page. However once you began editing your visual, this became hard to (re) discover. To assist with this, the version of the selected language provider is now displayed in the Preview Area toolbar, e.g.:
-
-![The current runtime version is now shown in the Visual Editor toolbar.](/img/changelog/1.2.0/preview-toolbar-vega-version.png "The current runtime version is now shown in the Visual Editor toolbar.")
-
-### Recalculate During Resize (#180)
-
-Due to the dynamic nature of Power BI visual containers, any change to the sizing can trigger an update to a visual's logic and this can cause your visual specification to get re-calculated during the process. This may not be noticeable for visuals that use a small amount of marks, but for those that are more complex, this might create more overhead than you need for something you don't do frequently.
-
-To assist with this, a **Performance Tuning** property menu has been made available, with the option to toggle **Recalculate during resize**. When version 1.2.0 becomes active, the default for this property is **OFF**, which means that Deneb will delay any further calculations until you have finished resizing your visual, e.g.:
-
-![recalculate-during-resize.gif.](/img/changelog/1.2.0/recalculate-during-resize.gif "Our raincloud plot example contains many data points and calculations, which can be computationally expensive if resizing the visual container. By turning off the 'Recalculate during resize' property, you can delay any calculations until you have finished resizing your visual.")
-
-The documentation for this feature has also been added to the [Performance Considerations](performance#recalculate-during-resize) page.
-
-### Other Minor Enhancements
-
-- Deneb will now persist the visual container size, as viewed in the report as of the last change. This means that if Deneb is re-initialized while the Visual Editor is open (e.g. by changing to another visual and back again), then it won't "forget" the size of the visual as viewed normally (#178).
-
-### Bugs Fixed
-
-#### Templates
-
-- Specification Field Mapping will replace property keys if they match a dataset field name (#190)
-- Exported templates cannot be re-imported without manual corrections (#198)
-- Successful import of a template would show the 'Deneb has been updated' prompt (#207)
-- When importing a template, if a dataset field name matches a placeholder name, it will now be flagged as allocated, without needing to manually select it (#210)
-
-#### Tooltips
-
-- If using `"tooltip": false` against a Vega-Lite mark (instead of omitting the `tooltip` property), an empty tooltip would be displayed (#191)
-- Tooltip signals that are single values rather than field/value pairs are not being correctly converted to Power BI tooltips (#201)
-- Updates would trigger an initial console error/warning with tooltip handler enabled (#218)
-
-## 1.1.0 (2022-01-22)
-
-### Report Theme Integration (#124)
-
-Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
-
-- When encoding a `scale`, there are 4 schemes available for inclusion that will bind to the current report theme at run time.
-- If you change any colors in your report theme matching these schemes, then the specification will update to match.
-- This is documented in more detail on the [Color Schemes](schemes) page.
-
-![If using the new schemes when encoding a color scale, these will live-bind to the currently selected report theme.](/img/changelog/1.1.0/theme-changes.gif "If using the new schemes when encoding a color scale, these will live-bind to the currently selected report theme.")
-
-### Specification Field Mapping (#160)
-
-- This provides means to re-map any columns or measures that have been bound to encodings or expressions.
-- If a field is removed from the **Values** data role, the dialog will also be displayed, in order to provide a more convenient way to add and re-assign a field without having to hunt it down manually.
-- This is documented in more detail on the [Dataset](dataset#edit-specification-field-mapping) page.
-
-  ![Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.](/img/changelog/1.1.0/edit-mapping.png "Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.")
-
-### Template Changes
-
-- Placeholders have been changed to a more compact layout, making better use of available space (#156)
-- If a template's `usermeta.information.previewImageBase64PNG` property is populated with a valid base64 representation, this will now be rendered in the **Create New Specification** dialog (#159)
-- Packaged templates now include preview images (#159)
-- Column/measure restrictions have been removed from placeholders (#157)
-
-  ![Example of template changes in 1.1.0.](/img/changelog/1.1.0/template-changes.png "Example of template changes in 1.1.0.")
-
-### Editor Properties
-
-Available in the Power BI Format pane.
-
-- Visual Editor [**Word Wrap** property](visual-editor#word-wrap) added (#154)
-- Visual Editor [**Line Gutter** and **Line Numbers** properties](visual-editor#line-gutter--line-numbers) added (#155)
-
-### Other Minor Enhancements
-
-- The keyboard shortcut for the Generate JSON Template was failing on some Windows environments, so this has been re-mapped to **Ctrl + Alt + T** (#153)
-- Visual scrollbars have been updated to be less intrusive (#164)
-- The font named as **DIN** in core visuals can be accessed by specifying `wf_standard-font` wherever you're able to specify the font family (#151)
-- To help with understanding when new versions have gone live in your reports, Deneb will display a notification in the Visual Editor pane if you edit an existing visual created with a prior version (#179), e.g.:
-
-  ![Example of version change notification in the Visual Editor pane.](/img/changelog/1.1.0/update-notification.png "Example of version change notification in the Visual Editor pane.")
-
-  Manually dismissing the notification or applying changes to the current specification will prevent this appearing until the next update.
-
-### Performance and Stability
-
-- Vega-Lite has been upgraded to **5.2.0** (#158)
-
-  - You can read about the changes in the [Vega-Lite release notes](https://github.com/vega/vega-lite/releases/tag/v5.2.0).
-  - A Vega-Lite **Grouped Bar Chart** template has also been added to Deneb to help illustrate usage of the `xOffset` / `yOffset` encoding changes.
-
-- Dataset field references in expressions are re-coded for template generation (#139)
-
-  - When generating a JSON template, or re-mapping fields, any expression using a `datum.Field` reference will be Automatically re-coded to use `datum['Field']` syntax.
-  - This is to ensure that replacing (or tokenizing) fields can support changes for fields that contain whitespace.
-
-- The Vega-Lite **Simple Bar Chart** template `opacity` encoding has been improved (#152)
-
-  - This includes an explicit value for the `opacity` encoding if a datum's `__selected__` value is not `"off"`.
-  - This is to preserve logic if a creator changes the view composition to something more complex than a single mark.
-
-- The mechanism for handling interactivity events outside the main plot required unorthodox (and potentially expensive) manipulation of the Vega DOM each time the visual updates. This has been revised to work with the standard DOM (#181)
-
-- The Redux store has been replaced with [Zustand](https://github.com/pmndrs/zustand), and refactored (#147)
-
-### Known Issues
-
-All current known issues are scheduled to be fixed in version 1.2. Workarounds for each are detailed on its linked GitHub issue.
-
-- Exported templates cannot be re-imported without manual corrections ([#198](https://github.com/deneb-viz/deneb/issues/198))
-- Specification Field Mapping will replace property keys if they match a dataset field name ([#190](https://github.com/deneb-viz/deneb/issues/190))
-
-## 1.0.0 (2021-11-13)
-
-### IMPORTANT NOTES
-
-- This is the promotion of the preview codebase into [the official AppSource release](https://appsource.microsoft.com/en-us/product/power-bi-visuals/coacervolimited1596856650797.deneb) 🎉🎉🎉🎉
-- Fetching via remote URLs (e.g. for image marks) has been disabled to comply with Power BI certification requirements. This can be mitigated by [downloading the standalone build](getting-started#standalone-version).
-- There a no major changes in this release; just those that help with QA.
-
-### Bugs Fixed
-
-- Swapping editor position causes editor UI to crash (#137)
-
-### Performance and Stability
-
-- Improved target area of whitespace for clearing an active selection (#140)
-- Visual rendering events synced-up with Vega View API (#141)
-
-## Older Versions
-
-To keep the change log (reasonably) tidy, the details of older versions get archived from time to time. Each archive can be found as a sub-page of this section (and you can follow the navigation below to continue reading).
