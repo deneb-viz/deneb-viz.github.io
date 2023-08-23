@@ -72,7 +72,7 @@ As part of the UI changes, the **Create new specification** dialog has received 
   - This will also support copy and paste for files and clipboard text, providing that they are valid Deneb templates.
   - For Vega and Vega-Lite specifications without Deneb metadata, it's recommended that you create a blank specification for the appropriate language and paste these into the editor.
 
-- Links to Deneb's community page, the Vega examples gallery and the Vega-Lite examples gallery have been added to the initial screen, to assist with discoverability of existing examples or ideas.
+- Links to Deneb's [community page](/community/resources), the Vega examples gallery and the Vega-Lite examples gallery have been added to the initial screen, to assist with discoverability of existing examples or ideas.
 
 - Packaged templates have been refactored:
 
@@ -80,8 +80,6 @@ As part of the UI changes, the **Create new specification** dialog has received 
   - A new template named _\[empty (with Power BI theming)]_ has been added for both Vega and Vega-Lite, which will include the relevant config to simulate the default Power BI look and feel.
   - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivty can be set up.
   - The other simple templates have been removed.
-
-- A link has been added to Deneb's [community page](/community/resources), to help with discovery of community-created content.
 
 ### Generate JSON Template Changes
 
@@ -131,11 +129,11 @@ Additionally, there is a **Show scrollbars on overflow** in the **Advanced edito
 
 - The properties pane has been converted to use the new formatting cards that were recently introduced in core visuals.
 - The DIN font has had a more sensible alias assigned (this is known internally as `wf_standard-font`) and can now be specified as 'DIN' wherever you're using it.
-- As Segoe UI has CSS fallbacks added by default in core visuals, using 'Segoe UI' as a font can cause portability issues on Mac devices (as posted about [here by Meagan Longoria](https://datasavvy.me/2023/08/17/quick-tip-about-fonts-in-deneb-visuals-in-power-bi/)). These fallbacks have been added into Deneb so that just using 'Segoe UI' will now fall back automatically to the fonts specified by Microsoft.
+<!-- - As Segoe UI has CSS fallbacks added by default in core visuals, using 'Segoe UI' as a font can cause portability issues on Mac devices (as posted about [here by Meagan Longoria](https://datasavvy.me/2023/08/17/quick-tip-about-fonts-in-deneb-visuals-in-power-bi/)). These fallbacks have been added into Deneb so that just using 'Segoe UI' will now fall back automatically to the fonts specified by Microsoft. -->
 
 ### Bugs Fixed
 
-- Tooltip with signal of item will no longer cause call 'stack size exceeded' errors (#273)
+- Tooltip with signal of `item` will no longer cause call 'stack size exceeded' errors (#273)
 - Vega specifications are restored with the correct visual dimensions upon exiting the Advanced Editor (#286)
 - The landing page will no longer be temporarily displayed when a visual is initialized in the Service (#325)
 - Handler for keyboard shortcuts should no longer trigger modal dialogs when Alt+F or Alt+N are used in Czech locales (#262)
