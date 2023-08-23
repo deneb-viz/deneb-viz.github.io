@@ -52,7 +52,7 @@ The key impacts on creators and viewers are as follows:
 
 ![Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.](/img/changelog/1.6.0/new-ui-layout.png "Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.")
 
-Deneb's Advanced Editor UI has been updated from Fluent UI v8 to v9. Some of these changes will be detailed in below sections where necessary, but the overview is as follows:
+Deneb's Advanced Editor UI has been completely migrated from Fluent UI v8 to v9. Some of these changes will be detailed in below sections where necessary, but the overview is as follows:
 
 - The menu in the settings pane has been moved out to the top of the visual and encompasses the entire width. This provides ~11% more vertical space for the JSON editor at the cost of a bit less vertical space for the visual preview.
 - The landing page has been redesigned to provide more detailed onboarding for new users.
