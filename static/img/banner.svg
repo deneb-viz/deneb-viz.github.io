@@ -1,163 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   viewBox="0 0 3279.989 468.02338"
+   width="2260"
+   height="330"
+   viewBox="0 0 597.95826 87.312489"
    version="1.1"
-   id="svg3741"
+   id="svg5"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    sodipodi:docname="banner.svg"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   width="3279.989"
-   height="468.02338"
+   inkscape:export-filename="banner.png"
+   inkscape:export-xdpi="19.512196"
+   inkscape:export-ydpi="19.512196"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <metadata
-     id="metadata3747">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Deneb Banner</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs3745">
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient868">
-      <stop
-         style="stop-color:#000000;stop-opacity:1;"
-         offset="0"
-         id="stop864" />
-      <stop
-         style="stop-color:#000000;stop-opacity:0;"
-         offset="1"
-         id="stop866" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient868"
-       id="linearGradient870"
-       x1="0.31396943"
-       y1="229.11781"
-       x2="24.804871"
-       y2="229.11781"
-       gradientUnits="userSpaceOnUse" />
-  </defs>
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview7"
      pagecolor="#ffffff"
      bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="3840"
-     inkscape:window-height="2089"
-     id="namedview3743"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.662699"
-     inkscape:cx="589.81508"
-     inkscape:cy="215.38297"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
-     fit-margin-top="20"
-     fit-margin-bottom="20"
-     fit-margin-left="20"
-     fit-margin-right="20"
-     inkscape:document-rotation="0"
-     inkscape:pagecheckerboard="0" />
-  <title
-     id="title3731">Deneb Banner</title>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:229.333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="528.51544"
-     y="189.76016"
-     id="text3751"><tspan
-       sodipodi:role="line"
-       id="tspan3749"
-       x="528.51544"
-       y="189.76016"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:229.333px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold'">Deneb</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:173.333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="526.52441"
-     y="427.04181"
-     id="text3755"><tspan
-       sodipodi:role="line"
-       id="tspan3753"
-       x="526.52441"
-       y="427.04181"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:173.333px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'">Declarative Visualization in Power BI</tspan></text>
-  <g
+     inkscape:zoom="0.32346812"
+     inkscape:cx="1717.3253"
+     inkscape:cy="95.836338"
+     inkscape:window-width="1911"
+     inkscape:window-height="1017"
+     inkscape:window-x="1915"
+     inkscape:window-y="1059"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" /><defs
+     id="defs2"><radialGradient
+       id="_Radial1"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1389.8,-1331.25,1331.25,-1389.8,1567.21,1493.56)"><stop
+         offset="0"
+         style="stop-color:rgb(255,147,74);stop-opacity:1"
+         id="stop324" /><stop
+         offset="0.35"
+         style="stop-color:rgb(255,141,77);stop-opacity:1"
+         id="stop326" /><stop
+         offset="0.47"
+         style="stop-color:rgb(255,128,83);stop-opacity:1"
+         id="stop328" /><stop
+         offset="0.58"
+         style="stop-color:rgb(255,115,90);stop-opacity:1"
+         id="stop330" /><stop
+         offset="0.83"
+         style="stop-color:rgb(226,86,147);stop-opacity:1"
+         id="stop332" /><stop
+         offset="1"
+         style="stop-color:rgb(168,52,119);stop-opacity:1"
+         id="stop334" /></radialGradient></defs><g
      inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
      id="layer1"
-     transform="matrix(23.27008,0,0,23.27008,10.414357,-6441.5638)">
-    <text
+     transform="translate(-6.5928768,-5.6086726)"><g
+       transform="matrix(0.04656874,0,0,0.04656874,-8.4341259,4.2728788)"
+       id="g314"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2">
+        <g
+   transform="translate(264.5,-25.5)"
+   id="g304">
+            <path
+   d="m 1110.75,111 v 0.002 c 417.15,1.923 754.71,392.483 754.1,872.641 -0.62,477.767 -335.95,864.837 -751.08,866.937 l -2.45,-454.12 c 166.59,-0.74 300.64,-187.45 299.4,-417.031 -1.23,-227.554 -134.98,-412.108 -299.97,-414.295 v 0.045 H 115.19 V 111 Z"
+   style="fill:url(#_Radial1)"
+   id="path302" />
+        </g>
+        <g
+   transform="translate(264.5,-25.5)"
+   id="g308">
+            <path
+   d="m 1739.92,1461.27 c -134.3,233.46 -364.07,387.76 -625.56,389.32 v 0.67 H 142.355 v -455 h 972.005 v 0.17 c 99.01,-1.78 186.25,-69.27 239.99,-172.2 l 385.74,236.75 c -0.05,0.09 -0.11,0.19 -0.17,0.29 z"
+   style="fill:#ffa448"
+   id="path306" />
+        </g>
+        <g
+   transform="translate(-15.5,-359.5)"
+   id="g312">
+            <path
+   d="M 849,2185 H 395.171 c -0.469,-286.76 0.298,-691.51 -0.171,-978.28 248.711,-114.1 66.121,-20.69 454,-199.72 z"
+   style="fill:#ffc000"
+   id="path310" />
+        </g>
+    </g><g
+       transform="matrix(0.33539376,0,0,0.33539376,97.333489,47.445703)"
+       id="g322"
+       style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2">
+        <g
+   id="g320"
+   transform="translate(-2.4387991,39.020785)">
+            <text
+   x="0"
+   y="0"
+   style="font-size:174px;font-family:aAreaKilometer50, 'a Area Kilometer 50 ';fill:#7a7170"
+   id="text318">D<tspan
+   x="94.655998 184.092 279.61801 369.05399"
+   y="0 0 0 0"
+   id="tspan316">ENEB</tspan></text>
+        </g>
+    </g><text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16.1475px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1"
-       x="-0.76147848"
-       y="233.20988"
-       id="text857"
-       transform="scale(0.79860181,1.2521885)"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:31.75px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-dasharray:none"
+       x="98.876091"
+       y="88.531425"
+       id="text428"><tspan
          sodipodi:role="line"
-         id="tspan855"
-         x="-0.76147848"
-         y="233.20988"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1">{</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16.1475px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1"
-       x="17.205416"
-       y="233.20908"
-       id="text857-6"
-       transform="scale(0.79860181,1.2521885)"><tspan
-         sodipodi:role="line"
-         id="tspan855-4"
-         x="17.205416"
-         y="233.20908"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.403689;stroke-opacity:1">}</tspan></text>
-    <rect
-       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.292053;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect859-0-5"
-       width="1.996859"
-       height="7.7637267"
-       x="5.9279842"
-       y="286.49155"
-       ry="0"
-       inkscape:transform-center-x="-1.6474088"
-       inkscape:transform-center-y="0.69990997" />
-    <rect
-       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.349318;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect859-0-5-5"
-       width="1.996859"
-       height="11.106875"
-       x="8.9831753"
-       y="283.14841"
-       ry="0"
-       inkscape:transform-center-x="-1.6474088"
-       inkscape:transform-center-y="1.0013081" />
-    <rect
-       style="fill:#da9a0f;fill-opacity:1;stroke:#da9a0f;stroke-width:0.396343;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect859-0-5-3"
-       width="1.996859"
-       height="14.298582"
-       x="12.038366"
-       y="279.9567"
-       ry="0"
-       inkscape:transform-center-x="-1.6474088"
-       inkscape:transform-center-y="1.28904" />
-  </g>
-</svg>
+         id="tspan426"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:31.75px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#292929;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="98.876091"
+         y="88.531425">Declarative visualization in <tspan
+   style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:31.75px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold';fill:#292929;fill-opacity:1"
+   id="tspan1034">Power BI</tspan></tspan></text></g></svg>

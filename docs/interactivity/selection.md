@@ -60,15 +60,15 @@ As you can see from the above screenshot, this defaults at **50**, but can be se
 
 When interacting with your visual, if you accumulate enough data points in the current selection list, you will see this message in the visual header:
 
-![selection-data-limit-exceeded.png](./img/selection-data-limit-exceeded.png "If a selection exceeds the maximum limit, Deneb will prompt with a warning and prohibit further selection (but keep the current selection active).").
+![selection-data-limit-exceeded.png](./img/selection-data-limit-exceeded.png "If a selection exceeds the maximum limit, Deneb will prompt with a warning and prohibit further selection (but keep the current selection active).")
 
 In this situation, Deneb will keep the current selection active, but will not add any more rows to it.
 
 This warning can then be dismissed by either:
 
-- Clicking the close icon (continuing to preserve the current selection)
-- Clicking on anothe mark (initializing a new selection, if eligible)
-- Clicking elsewhere in the visual (clearing the selection)
+- Clicking the **Dismiss** option (continuing to preserve the current selection)
+- Clicking on another mark (initializing a new selection, if eligible)
+- Clicking elsewhere in the visual, or on the **Clear selection** option (clearing the current selection)
 
 ## The `__selected__` Field
 

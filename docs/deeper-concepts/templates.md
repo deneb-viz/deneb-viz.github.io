@@ -19,7 +19,13 @@ In the advanced editor's _Create New Specification_ dialog, you have the option 
 
 ![import-template-location.png](./img/import-template-location.png "The 'Import Template' option can be found in the 'Create New Specification' dialog in Deneb's advanced editor.")
 
-Navigate to or click **Select JSON Template**, browse to your template's `.json` file and click **Open**.
+Ensure that **Existing template** is selected as the method, and either click the area under **Import your file** to browse to your template's `.json` file. Click **Open** when ready.
+
+If you have the content of your Deneb template copied to your clipboard (either as plain text or from a file in Explorer), you can past into this dialog with [Ctrl + V] and it will be imported if Deneb recognizes it as a valid template.
+
+:::info Only valid Deneb templates can be imported
+Deneb templates contain [special metadata](#template-structure) that are typically not present in Vega or Vega-Lite examples you may find elsewhere. For these examples, it's better to create an empty specification for your desired language and then paste in the JSON to the editor.
+:::
 
 ### Dataset Placeholders
 
@@ -61,10 +67,6 @@ Everyone's data is different, so it is highly likely that you'll need to make fu
 
 ## Generating a Template
 
-:::note Direct Downloads are Not Possible
-**Power BI visuals are not currently permitted to save/download files directly**, so this functionality is the best we can manage at present.
-:::
-
 If you're happy with a specification and wish to share with others, or take a copy for re-use or source control, it is possible to 'export' a template.
 
 In the advanced editor, select the [Generate JSON Template](/visual-editor#generate-json-template-ctrl--alt--e) command. This will open the dialog.
@@ -73,7 +75,7 @@ In the advanced editor, select the [Generate JSON Template](/visual-editor#gener
 
 ![export-enter-template-information.png](./img/export-enter-template-information.png "The 'Generate JSON Template' dialog allows you to create and customize a version of your specification that is suitable for sharing.")
 
-In the first tab, fill in a suitable, descriptive name for the template and a more detailed description. This will be displayed to any users when importing it and should help then with filling it in. The author details are currently not shown on import, but may be later on.
+Fill in a suitable, descriptive name for the template and a more detailed description. This will be displayed to any users when importing it and should help then with filling it in. The author details are currently not shown on import, but may be later on.
 
 #### Including a Preview Image
 
@@ -98,7 +100,7 @@ By checking this box, Deneb will do the following:
 
 ### Template Dataset
 
-In the second tab, you have the opportunity to customize your dataset requirements for your users:
+Beneath the information and preview image, you have the opportunity to customize your dataset requirements for your users:
 
 ![export-enter-dataset-information.png](./img/export-enter-dataset-information.png "The second tab allows you to rename and describe your dataset columns and measures for the shared template.")
 
@@ -108,26 +110,19 @@ Deneb assumes all columns and measures from your dataset are required. If any co
 
 Each dataset field has a text box that you can use to rename the placeholder to something more general-purpose for your template. This is also particularly useful if your names might be sensitive. It's recommended to try and use specific terms so this helps to document your template for end users.
 
-If you leave a box empty or delete its contents the original name from your dataset will be used. This can also be seen underneath the box for comparison purposes.
+If you leave a box empty or delete its contents the original name from your dataset will be used. This can also be seen in the **Original field** column for comparison purposes.
 
-Each field has an optional description. In here, you can type more information for your end users, should it be required. This description will be displayed in the information box next to the field placeholder when used for import.
+Each field has an optional **Author's notes** field. In here, you can type more information for your end users, should it be required. This description will be displayed next to the field placeholder when used for import.
 
-### Review and Copy to Clipboard
+### Review and Export
 
-In the final tab, you will see what the JSON for your generated template will look like, including the Deneb-specific metadata:
+When you're happy to proceed, you can either download the template file, or copy it to the clipboard. If copying, you can paste into your editor of choice and save it with an extension if `.json`.
 
-![export-review-template-content.png](./img/export-review-template-content.png "The final tab allows you to review your specification template and copy it to the clipboard.")
+:::note Direct Downloads May Not Be Possible
+Power BI visuals are only permitted to download a file **if your tenant admin has enabled downloading from custom visuals**. [You can learn more about this here](https://learn.microsoft.com/en-us/power-bi/admin/organizational-visuals#export-data-to-file).
 
-You cannot modify the data in this box, so if there are aspects of the template that you need to change, then you will need to edit in the appropriate place:
-
-- For the specification and config, this needs to be done in the main editors.
-- For the placeholders, navigate back to the appropriate tab and correct information accordingly.
-
-When ready, you can either click the **Copy** button to the right of the dialog, or manually select the template text and copy it with **[ Ctrl + C ]**.
-
-### Saving the Template File
-
-Paste the template into your editor of choice and name it with an extension of `.json`.
+If downloading is disabled, you will typically receive a warning once you click the **Download** button and in these cases, you can use the **Copy** button to copy the template definition to the clipboard.
+:::
 
 ## Template Structure
 

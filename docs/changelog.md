@@ -5,7 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.6.0 (Under Development)
+## 1.6.0 (Pending Certification Approval)
 
 This update concentrates on making changes that improve performance and architecture for the next planned updates. A lot of these were slated for version 2, but this has become too large of a task to do in one go. As such, version 2's scope will change to focus on features that may result in breaking changes for templates and the next few updates will focus on delivering long-awaited or commonly requested features that will improve the UI and productivity experience for creators.
 
@@ -18,7 +18,7 @@ For older versions Power BI Desktop, you can install previous versions of Deneb 
 ### Vega Updates
 
 - Vega updated to **5.25.0** (from 5.23.0).
-- Vega-Lite updated to **5.14.1** (from 5.6.1).
+- Vega-Lite updated to **5.16.1** (from 5.6.1).
 
 ### Parsing and Validation Workflow Changes
 
@@ -47,6 +47,15 @@ The key impacts on creators and viewers are as follows:
 - If any errors are encountered when parsing (or by the Vega view post-render), the visual is no longer replaced with an error status and shows as blank. All issues will be present in the _Logs_ viewer (providing the level is not set to _None_).
 
 - Vega parsing would not previously catch errors in the _Logs_ viewer. This has been fixed.
+
+:::info Parsing Changes and Effect on Vega Lite Specifications
+If you created a visual from the previous internal templates, you may see warnings in the **Logs** viewer. This is due to an issue with the way that the previous templates were configured. If you wish to remove these warnings, remove the following objects from your Config (as they relate to Vega only):
+
+- `path`
+- `shape`
+- `symbol`
+
+:::
 
 ### General UI Changes
 
@@ -103,7 +112,7 @@ Key changes are as follows:
 - The maximum zoom level has been increased to **400%**.
 - The _Reset Zoom_ button has been removed and replaced with a popover on the zoom level - this allows you to choose a pre-defined or custom zoom level:
 
-  ![The zoom level indicator on the toolbar allow smore finer-grained setting of zoom level of the visual preview.](/img/changelog/1.6.0/new-zoom-popover.png "The zoom level indicator on the toolbar allow smore finer-grained setting of zoom level of the visual preview.")
+  ![The zoom level indicator on the toolbar allows more finer-grained setting of zoom level of the visual preview.](/img/changelog/1.6.0/new-zoom-popover.png "The zoom level indicator on the toolbar allows more finer-grained setting of zoom level of the visual preview.")
 
   Note that the 'reset zoom to 100%' hotkey ([Ctrl+Alt+0]) will still work as intended.
 
