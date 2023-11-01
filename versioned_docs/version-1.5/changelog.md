@@ -7,7 +7,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 :::info Deneb v1 is in a state of maintenance
 Any releases under 1.x focus on minor improvements and bug fixes. Significant new features should be expected in version 2 (which is currently being scoped and planned).
-:::info
+:::
 
 ## 1.5.1 (2023-04-26)
 
