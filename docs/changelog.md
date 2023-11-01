@@ -138,7 +138,6 @@ Additionally, there is a **Show scrollbars on overflow** in the **Advanced edito
 
 - The properties pane has been converted to use the new formatting cards that were recently introduced in core visuals.
 - The DIN font has had a more sensible alias assigned (this is known internally as `wf_standard-font`) and can now be specified as 'DIN' wherever you're using it.
-<!-- - As Segoe UI has CSS fallbacks added by default in core visuals, using 'Segoe UI' as a font can cause portability issues on Mac devices (as posted about [here by Meagan Longoria](https://datasavvy.me/2023/08/17/quick-tip-about-fonts-in-deneb-visuals-in-power-bi/)). These fallbacks have been added into Deneb so that just using 'Segoe UI' will now fall back automatically to the fonts specified by Microsoft. -->
 
 ### Bugs Fixed
 
@@ -159,9 +158,9 @@ Additionally, there is a **Show scrollbars on overflow** in the **Advanced edito
 
 - The field name limit for template fields has been increased from 30 to 150 characters.
 
-  :::danger Field name limit relaxations are not backwards compatible
-  If exporting a template with > 30 characters in a field name, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
-  :::
+:::danger Field name limit relaxations are not backwards compatible
+If exporting a template with > 30 characters in a field name, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
+:::
 
 - The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.
 

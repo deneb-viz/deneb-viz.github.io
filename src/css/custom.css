@@ -40,13 +40,19 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   content: counter(line-number);
 }
 
-.social-links {
-  float: left;
-  margin-left: 16px;
+.profile-section {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 24px;
 }
 
-.social-links p {
-  margin-bottom: 4px;
+.social-links {
+  margin-left: 24px;
+  padding: 8px;
+}
+
+.social-link {
+  height: 2.5em;
 }
 
 .social-links a {
@@ -55,17 +61,4 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .social-links a:hover {
   text-decoration: none;
-}
-
-.follow {
-  padding: 4px;
-}
-
-.profile {
-  float: left;
-}
-
-.biography {
-  clear: both;
-  padding-top: 16px;
 }
