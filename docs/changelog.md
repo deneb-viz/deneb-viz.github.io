@@ -134,6 +134,8 @@ Some new properties have been introduced to the **Rendered visual** menu in the 
 
 Additionally, there is a **Show scrollbars on overflow** in the **Advanced editor** menu, that will allow you to preview the scrollbars in the advanced editor, if your visual will overflow the boundaries of the viewport.
 
+This is covered in more detail in the [Scrolling and Overflow](scrolling-overflow) page.
+
 ### Other Enhancements
 
 - The properties pane has been converted to use the new formatting cards that were recently introduced in core visuals.
