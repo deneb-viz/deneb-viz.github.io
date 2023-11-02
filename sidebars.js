@@ -38,6 +38,7 @@ const sidebars = {
       collapsed: false,
       items: [
         "deeper-concepts/formatting",
+        "deeper-concepts/scrolling-overflow",
         "deeper-concepts/schemes",
         "deeper-concepts/pattern-fills",
         "deeper-concepts/templates",

@@ -6,15 +6,15 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #da9a0f;
-  --ifm-color-primary-dark: #c48b0d;
-  --ifm-color-primary-darker: #b9830d;
-  --ifm-color-primary-darkest: #996c0a;
-  --ifm-color-primary-light: #efa912;
-  --ifm-color-primary-lighter: #efad1d;
-  --ifm-color-primary-lightest: #f2b93d;
+  --ifm-color-primary: #e23692;
+  --ifm-color-primary-dark: #c83382;
+  --ifm-color-primary-darker: #af2f72;
+  --ifm-color-primary-darkest: #972c62;
+  --ifm-color-primary-light: #e8559e;
+  --ifm-color-primary-lighter: #ee70aa;
+  --ifm-color-primary-lightest: #f387b7;
   --ifm-code-font-size: 95%;
-  --ifm-link-color: #c48b0d;
+  --ifm-link-color: #c83382;
   --ifm-background-color: white;
   --docusaurus-highlighted-code-line-bg: rgb(200, 201, 204);
 }
@@ -40,13 +40,19 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   content: counter(line-number);
 }
 
-.social-links {
-  float: left;
-  margin-left: 16px;
+.profile-section {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 24px;
 }
 
-.social-links p {
-  margin-bottom: 4px;
+.social-links {
+  margin-left: 24px;
+  padding: 8px;
+}
+
+.social-link {
+  height: 2.5em;
 }
 
 .social-links a {
@@ -55,17 +61,4 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .social-links a:hover {
   text-decoration: none;
-}
-
-.follow {
-  padding: 4px;
-}
-
-.profile {
-  float: left;
-}
-
-.biography {
-  clear: both;
-  padding-top: 16px;
 }
