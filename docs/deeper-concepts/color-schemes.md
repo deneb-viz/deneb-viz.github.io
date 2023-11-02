@@ -2,7 +2,7 @@
 id: schemes
 description: Using custom Vega schemes in Deneb to bind to the Power BI report theme, as well as accessing Power BI report theme colors in-general.
 slug: /schemes
-title: Theme Colors & Schemes
+title: Theme Colors and Schemes
 ---
 
 Deneb provides some means to bind to your report's current theme, in the form of:
