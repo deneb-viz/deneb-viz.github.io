@@ -5,7 +5,11 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.6.0 (Pending Certification Approval)
+## 1.6.0 (2023-11-01)
+
+:::info Pending Deployment
+Deneb 1.6 has been approved and certified by Microsoft but may take a few days to reach your reports.
+:::
 
 This update concentrates on making changes that improve performance and architecture for the next planned updates. A lot of these were slated for version 2, but this has become too large of a task to do in one go. As such, version 2's scope will change to focus on features that may result in breaking changes for templates and the next few updates will focus on delivering long-awaited or commonly requested features that will improve the UI and productivity experience for creators.
 
