@@ -25,66 +25,36 @@ This will put the visual into focus mode and display the Visual Editor for you t
 
 The Visual Editor has 3 main components, or panes:
 
-1. Editor Pane - for creating your visual.
-2. Preview Pane - for seeing what your visual will look like in your report.
-3. Debug Pane - for assisting with the development process.
+1. Command Bar - for performing actions on your visual and the editor.
+2. Editor Pane - for creating your visual's definitions.
+3. Preview Area - for seeing what your visual will look like in your report.
+4. Debug Pane - for assisting with the development and refinement process.
 
-![Overview of the Visual Editor.](img/editor-interface-overview.png "Overview of the Visual Editor.")
+![Overview of the Visual Editor.](img/editor-interface-overview.svg "Overview of the Visual Editor.")
 
 :::info Here's One We Made Earlier
 We're showing a pre-built specification here; if this is your first time opening the editor in a new visual, then the **New Specification** dialog will be visible, to help you get started. Refer to the [Simple Worked Example](simple-example) page for an example of this functionality, or the [New Specification](#new-specification-ctrl--alt--n) section below for more details.
 :::
 
-## Editor Pane
-
-The Editor Pane is where you will edit your specification, config and apply any other settings you need to. There are some additional options for working with templates also, e.g.:
-
-![The Editor Pane is where you will edit your specification, config and apply any other settings you need to.](./img/editor-interface-editor-pane.png "The Editor Pane is where you will edit your specification, config and apply any other settings you need to.")
-
-### Resizing the Editor Pane
-
-The Editor Pane can be resized, or collapsed if you wish to allocate more space on the screen for your Preview and/or Debug panes, e.g.:
-
-<ReactPlayer
-  controls
-  url="/mp4/1.3.0/editor-interface-editor-pane-resize.mp4"
-/>
-
-Some points to note:
-
-- The pane can be resized to use a maximum of 60% of the visible canvas by click-dragging.
-- Double-clicking the resizer will revert the pane to its default size (40% of the visible canvas).
-
-### Editor Pane Position
-
-If you prefer your editor on the right, you can modify this in the properties pane by selecting **Editor > Position > Right** in the Power BI Format pane:
-
-![The editor Position property in the Format pane.](img/pane-right.png "The editor Position property in the Format pane.")
-
-### JSON Editor Font Size
-
-The size of the font used for editing JSON can be modified by selecting **Editor > JSON Editor Font Size** in the Power BI Format pane:
-
-![The JSON Editor Font Size property in the Format pane.](./img/json-font-size.png "The JSON Editor Font Size property in the Format pane.")
-
-### Word Wrap
-
-By default, any content in the editor that overflows the width will wrap onto a new line. By disabling the **Editor > Word Wrap** property in the Power BI Format pane, you can keep content on a single line, and the editor will display a horizontal scrollbar as appropriate.
-
-### Line Gutter & Line Numbers
-
-By default, the editor will show line numbers in the left-hand gutter.
-
-- You can disable this gutter by disabling the **Editor > Line Gutter** property in the Power BI Format pane.
-- Alternatively, you can keep the gutter (so that sections of JSON can still be expanded and collapsed as needed) but hide the line numbers by disabling the **Editor > Line Numbers** property.
-
-### The Command Bar
+## The Command Bar
 
 ![Command bar icons.](./img/command-bar.png "Command bar icons.")
 
 The Command Bar contains the following operations (from left to right):
 
-#### Apply (Ctrl + Enter)
+#### Specification Editor pane (Ctrl + Alt + 1)
+
+- Selecting this option will display the Specification Editor pane. You can read more about this in the [Specification Editor Pane section below](#specification-editor-pane).
+
+#### Config Editor pane (Ctrl + Alt + 2)
+
+- Selecting this option will display the Config Editor pane. You can read more about this in the [Config Editor Pane section below](#config-editor-pane).
+
+#### Settings pane (Ctrl + Alt + 3)
+
+- Selecting this option will display the Settings pane. You can read more about this in the [Settings Pane section below](#settings-pane).
+
+#### Apply Changes (Ctrl + Enter)
 
 - Selecting this option will apply any changes you have made in either the _Specification_ or _Config_ and update your visual.
 - This option is disabled if you have _Auto-Apply_ enabled (see below).
@@ -93,7 +63,7 @@ The Command Bar contains the following operations (from left to right):
 If you exit focus mode (and out of the Visual Editor) **any unapplied changes may not be saved**, so please ensure that you apply changes before returning to the standard view. Refer to the [Unapplied Changes](#unapplied-changes) section below for more details as to how you can mitigate this.
 :::
 
-#### Toggle Auto-Apply (Ctrl + Shift + Enter)
+#### Auto-Apply Changes as you Type (Ctrl + Shift + Enter)
 
 - Selecting this option will apply changes to the _Specification_ or _Config_ editors as you type them.
 - Enabling this option will disable the _Apply_ command.
@@ -102,16 +72,11 @@ If you exit focus mode (and out of the Visual Editor) **any unapplied changes ma
 Whilst this option is convenient for seeing changes take effect immediately, it can have negative performance implications if you're working with a large number of data points or elements within your visualization. Please refer to the [Performance Considerations](performance) page for further details on potential risks and mitigation approaches.
 :::
 
-#### **Repair and Format JSON (Ctrl + Alt + R)**
+#### **Format JSON (Ctrl + Alt + R)**
 
 - Selecting this option will attempt to repair any simple typographical issues in your JSON, and re-format it with indentation.
 - The tooling does its best to fix anything straightforward but in some cases it will not be possible to repair the JSON and manual corrections may be required and a banner will be shown above the editor.
-- In these cases, you can select the error details in the bottom-right to investigate further and use this information to correct, e.g.:
-
-<ReactPlayer
-  controls
-  url="/mp4/1.3.0/editor-interface-editor-pane-repair.mp4"
-/>
+- In these cases, you can select the error details in the bottom-right to investigate further and use this information to correct it.
 
 #### **Edit Specification Field Mapping (Ctrl + Alt + F)**
 
@@ -137,6 +102,45 @@ This dialog is also displayed by default if this is the first time opening the V
 
 - Selecting this option will cause Power BI to confirm you wish to open the link to this documentation site. Selecting **OK** will open it in a new browser tab.
 
+## Editor Pane
+
+The Editor Pane is where you will edit your specification, config and apply any other settings you need to.
+
+### Resizing the Editor Pane
+
+The Editor Pane can be resized, or collapsed if you wish to allocate more space on the screen for your Preview and/or Debug panes.
+
+Some points to note:
+
+- Use [Ctrl + Alt + Space] to toggle the editor pane between collapsed and expanded.
+- The pane can be resized to use a maximum of 60% of the visible canvas by click-dragging.
+- Double-clicking the resizer will revert the pane to its default size (40% of the visible canvas).
+
+### JSON Editor Properties
+
+The **Advanced editor > JSON editor** property card in Power BI's formatting pane lets you modify the following properties of the JSON editor:
+
+![JSON editor properties](img/json-editor-settings.png "The Power BI formatting pane exposes some additional properties for formatting the JSON editor, under the Advanced editor menu.")
+
+#### Position
+
+Allows you to toggle the position of the Editor Pane between the left and right-hand sides of the screen. By default, the editor is on the left.
+
+#### JSON Editor Font Size
+
+Allows you to modify the size of the font used in the JSON editor. By default, this is set to 10px.
+
+#### Word Wrap
+
+By default, any content in the editor that overflows the width will wrap onto a new line. By disabling this property, you can keep content on a single line, and the editor will display a horizontal scrollbar as appropriate.
+
+#### Line Gutter & Line Numbers
+
+By default, the editor will show line numbers in the left-hand gutter.
+
+- You can disable this gutter by disabling the **Line gutter** property.
+- Alternatively, you can keep the gutter (so that sections of JSON can still be expanded and collapsed as needed) but hide the line numbers by disabling the **Line numbers** property.
+
 ### Specification Editor Pane
 
 :::note Keyboard shortcut
@@ -148,7 +152,7 @@ This dialog is also displayed by default if this is the first time opening the V
   - The Vega JSON specification reference [can be found here](https://vega.github.io/vega/docs/specification/).
   - The Vega-Lite JSON specification reference [can be found here](https://vega.github.io/vega-lite/docs/spec.html).
 
-- To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-Apply** is enabled.
+- To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-apply changes as you type** is enabled.
 - The JSON must produce a valid specification for your selected provider (either Vega or Vega-Lite).
 - The editor will perform validation against the schema for the specified provider and warnings are displayed that you can inspect, e.g.:
 
@@ -163,11 +167,9 @@ This dialog is also displayed by default if this is the first time opening the V
 - This pane contains an editor that you can use to enter and amend any JSON you wish to add for your visual's config as desired.
   - The Vega JSON config reference [can be found here](https://vega.github.io/vega/docs/config/).
   - The Vega-Lite JSON config reference [can be found here](https://vega.github.io/vega-lite/docs/config.html).
-- To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-Apply** is enabled.
+- To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-apply changes as you type** is enabled.
 - The JSON must produce a valid config for your selected provider (either Vega or Vega-Lite).
-- It's generally advised to try and use the config for anything that can "theme" your chart and keep this separate from the specification. This makes easier to port across to other instances of the visual, e.g.:
-
-![Example of Config editor content. This allows you to alter cosmetic aspects of your visual specification.](./img/config-example.png "Example of Config editor content. This allows you to alter cosmetic aspects of your visual specification.")
+- It's generally advised to try and use the config for anything that can "theme" your chart and keep this separate from the specification. This makes easier to port across to other instances of the visual.
 
 ### Settings Pane
 
@@ -177,18 +179,18 @@ This dialog is also displayed by default if this is the first time opening the V
 
 - This pane is used to configure specific behavior of Deneb when generating output:
 
-![The Settings pane in the Visual Editor.](./img/settings-tab.png "The Settings pane in the Visual Editor.")
+  ![The Settings pane in the Visual Editor.](./img/settings-tab.png "The Settings pane in the Visual Editor.")
 
 - The **Provider** section allows you to specify whether to use Vega or Vega-Lite for your Specification and Config.
 
   - Vega-Lite is much simpler for newcomers as it is much more concise and abstracts away a lot of the things that you would normally need to prescribe when using Vega.
   - Vega does provide a lot more in the way of control over your visualization at the cost of a higher-learning curve.
 
-- _The_ **Render Mode** section specifies whether to use either Vega's SVG renderer or Canvas renderer when compiling, parsing and producing your design.
+- _The_ **Render mode** section specifies whether to use either Vega's SVG renderer or Canvas renderer when compiling, parsing and producing your design.
   - _Canvas_ renders your design as pixel graphics.
   - _SVG_ creates your design from vector graphics, results in a number of component elements within the visual to produce the output.
   - Please refer to the [Performance Considerations](performance#selection-of-renderer) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
-- The **Vega > Power BI Interactivity** section specifies which interactivity features to enable.
+- The **Vega > Power BI interactivity** section specifies which interactivity features to enable.
   - As these require some additional setup in your specification, as well as some internal logic to link everything together you are able to specify whether they should be set-up or not.
   - Please refer to the [Interactivity Features](interactivity-overview) and related pages ([Tooltips](interactivity-tooltips) | [Context-Menu](interactivity-context-menu) | [Cross-Filtering](interactivity-selection) | [Cross-Highlighting](interactivity-highlight)) for further details on how to configure these for your specification.
 
@@ -211,22 +213,31 @@ If you've made changes in the Visual Editor and select _Back to report_ without 
 This is a 'last chance' to make sure that any changes you want to keep are applied. If changes are discarded, they cannot be recovered.
 :::
 
-## Preview Pane
+## Preview Area
 
 Deneb captures the dimensions of your visual prior to opening the Visual Editor and shows this at 100% scale. This is so that you know how your design should look within the confines of the visual viewport when you return to the report, e.g.:
 
-![The Preview Pane shows a preview of your visual, using the dimensions of the container on the Power BI report canvas.](./img/editor-interface-preview-pane.png "The Preview Pane shows a preview of your visual, using the dimensions of the container on the Power BI report canvas.")
+![The Preview Area shows a preview of your visual, using the dimensions of the container on the Power BI report canvas.](./img/editor-interface-preview-pane.png "The Preview Area shows a preview of your visual, using the dimensions of the container on the Power BI report canvas.")
 
 Your visual may not fit entirely into the preview area at 100% scale, so you can use the [Zoom Controls in the Debug Pane](#zoom-controls) (or collapse it) to adjust this accordingly, [or resize (or collapse) the editor pane](#the-visual-editor-pane) to accommodate.
 
-#### Boundary Marker
+The **Advenced editor > Preview area** property card in Power BI's formatting pane lets you modify the following properties of the Preview Area:
 
-The dashed line represents the boundaries of your visual in standard view. **Power BI does not allow visuals to resize themselves dynamically**, so if you wish to change the physical width and/or height of your visual in the report view, you will need to exit the Visual Editor, resize your visual, and then re-open the Visual Editor.
+![Preview area properties](img/preview-area-settings.png "The Power BI formatting pane exposes some additional properties for formatting the Preview area, under the Advanced editor menu.")
 
-If you would prefer to not see the boundary marker, you can disable this in the properties pane by selecting **Editor > Show Boundary Marker > OFF** in the Power BI Format pane:
+#### Viewport Marker
 
-![The Show Boundary Marker property in the Format pane.](./img/boundary-marker.png "The Show Boundary Marker property in the Format pane.
-")
+The dashed line represents the viewport (boundaries) of your visual in standard view. **Power BI does not allow visuals to resize themselves dynamically**, so if you wish to change the physical width and/or height of your visual in the report view, you will need to exit the Visual Editor, resize your visual, and then re-open the Visual Editor.
+
+If you would prefer to not see the viewport marker, you can disable this in the properties pane by selecting **Show viewport marker > Off**.
+
+#### Show Scrollbars
+
+If your visual specification overflows the viewport, the default behavior of the preview area is to show the output overflowing the content. This is so that you can see the full output of your specification and what might get truncated in the report view.
+
+If you wish to mimic the behavior of the report view, you can enable the **Show scrollbars on overflow** property. This will cause the preview area to use scrollbars as appropriate rather than overflowing the content outside the viewport marker area.
+
+To learn more about scrolling and overflow behavior, please refer to the [Scrolling and Overflow](scrolling-overflow) page.
 
 ## Debug Pane
 
@@ -278,9 +289,15 @@ Deneb doesn't automatically support new releases of Vega or Vega-Lite. Because t
 The Zoom Controls are intended to assist you with detail work; particularly as Power BI custom visuals can only occupy a certain amount of the main interface. These functions are:
 
 - Zoom preview out by 10%
-- Zoom level slider - allows manual adjustment of zoom level from 10% to 300%.
+
+- Zoom level slider - allows manual adjustment of zoom level from 10% to 400%.
+
 - Zoom preview in by 10%
-- Zoom preview to actual size
+
+- Current zoom level - click to set a specific zoom level:
+
+  ![Clicking the zoom level indicator allows you to choose a specific zoom level for the preview area.](img/editor-interface-zoom-level-popover.png "Clicking the zoom level indicator allows you to choose a specific zoom level for the preview area.")
+
 - Zoom preview to fit available space
 
 ### Collapse or Expand Debug Pane
