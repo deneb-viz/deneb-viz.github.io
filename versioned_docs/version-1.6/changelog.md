@@ -5,6 +5,14 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
+## 1.6.2 (Pending Certification)
+
+### Bugs Fixed
+
+- If a dataset emits too many updates, this can cause UI issues while they are processed (#391)
+- Enabling or disabling cross-filtering doesn't update the dataset in the debug view (#396)
+- Datasets in the debug area with a `vega_id` crash the editor (#397)
+
 ## 1.6.1 (2023-11-27)
 
 ### Bugs Fixed
