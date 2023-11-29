@@ -36,7 +36,7 @@ If there is no suitable report page for the current datum or you have specified 
 A default tooltip will display all values for the current mark's datum, including any other columns or measures bound to its particular row context.
 :::
 
-If the title of a tooltip field matches the name of a column or measure from the **Values** data role, Deneb will attempt to see if it has a format string set in the data model and apply this automatically. If this cannot be resolved, then you can consider [applying a format manually](formatting).
+If the title of a tooltip field matches the name of a column or measure from the **Values** data role, Deneb will attempt to see if it has a format string set in the data model and apply this automatically. If this cannot be resolved, then you can consider [applying a format manually](/formatting).
 
 If you have enabled [modern tooltip support](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-visual-tooltips) in your report, and a data point has a corresponding drill through page, this is resolved in the tooltip, e.g.:
 
