@@ -5,6 +5,19 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
+## 1.7.0 (Under Development)
+
+:::info Early Access Availability
+The change log is updated as features are added to the main development branch. They are available in [alpha builds](/community/early-access) until such a time as the version is ready for beta testing, and eventual submission to AppSource.
+:::
+
+### Debug Pane Changes
+
+- The _Rows per page_ value in the status bar is now persisted, meaning that it will remain across editing sessions, and when navigating between different datasets or the Signals view.
+- The value is also available in the **Editor > Debug pane** formatting card in Power BI's properties pane.
+- The default number of _Rows per page_ has been increased to **50**.
+- Further options for **100** and **200** rows per page has been added to the _Rows per page_ list.
+
 ## 1.6.2 (Pending Certification)
 
 ### Bugs Fixed
