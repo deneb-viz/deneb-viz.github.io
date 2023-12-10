@@ -13,6 +13,11 @@ The change log is updated as features are added to the main development branch. 
 
 ## 1.6.2 (2023-12-08)
 
+### Vega Updates
+
+- Vega updated to **5.26.1** (from 5.25.0).
+- Vega-Lite updated to **5.16.3** (from 5.16.1).
+
 ### Debug Pane Changes
 
 - The _Rows per page_ value in the status bar is now persisted, meaning that it will remain across editing sessions, and when navigating between different datasets or the Signals view.

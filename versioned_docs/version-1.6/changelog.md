@@ -11,6 +11,11 @@ description: Deneb Change Log - high-level details of new features and fixes for
 This release has been approved for certification by Microsoft, but may take aslightly longer to deploy due to the holiday period. We don't have any control over this, but MS has been great in helping push this through quickly for users. If you need something in the interim, the standalone build can be [downloaded from Deneb's GitHub repository](https://github.com/deneb-viz/deneb/releases/tag/1.6.1.2).
 :::
 
+### Vega Updates
+
+- Vega updated to **5.26.1** (from 5.25.0).
+- Vega-Lite updated to **5.16.3** (from 5.16.1).
+
 ### Debug Pane Changes
 
 - The _Rows per page_ value in the status bar is now persisted, meaning that it will remain across editing sessions, and when navigating between different datasets or the Signals view.
