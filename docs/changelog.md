@@ -11,6 +11,8 @@ description: Deneb Change Log - high-level details of new features and fixes for
 The change log is updated as features are added to the main development branch. They are available in [alpha builds](/community/early-access) until such a time as the version is ready for beta testing, and eventual submission to AppSource.
 :::
 
+## 1.6.2 (2023-12-08)
+
 ### Debug Pane Changes
 
 - The _Rows per page_ value in the status bar is now persisted, meaning that it will remain across editing sessions, and when navigating between different datasets or the Signals view.
@@ -18,10 +20,9 @@ The change log is updated as features are added to the main development branch. 
 - The default number of _Rows per page_ has been increased to **50**.
 - Further options for **100** and **200** rows per page has been added to the _Rows per page_ list.
 
-## 1.6.2 (Pending Certification)
-
 ### Bugs Fixed
 
+- Power BI tooltips will now show again, due to a packaging/publication issue in 1.6.1 (#407)
 - If a dataset emits too many updates, this can cause UI issues while they are processed (#391)
 - Enabling or disabling cross-filtering doesn't update the dataset in the debug view (#396)
 - Datasets in the debug area with a `vega_id` crash the editor (#397)
