@@ -5,7 +5,8 @@
 > — *Daniel Marsh-Patrick*
 
 ## Getting Support
-Deneb is released under the MIT License, is free of charge, and is open source.
+Deneb is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License), is free of charge, and is [open source](https://github.com/deneb-viz/deneb).
+
 
 Do you need assistance with a Vega-Lite or Vega specification? Do you require help migrating your specification into Deneb? We have folks in the community that are willing to assist you. **Please keep in mind that these individuals are giving their free time**. Consider the size of your request. If your requirements are significant, consulting may be more appropriate. If unsure whether your inquiry falls under the umbrella of "free assistance," the experts can assess feasibility and determine the level of effort involved.
 
