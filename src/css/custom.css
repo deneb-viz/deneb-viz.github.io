@@ -62,3 +62,19 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 .social-links a:hover {
   text-decoration: none;
 }
+
+table.support * {
+  background-color: transparent
+}
+
+table.support img.community-expert-image {
+  align-content: center;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  width: 150px;
+  height: 150px;
+}
+
+table.support span.name {
+  text-align: center;
+}

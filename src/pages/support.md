@@ -36,23 +36,19 @@ More on providing sample data can be found [here](https://community.powerbi.com/
 
 Create a post with the details of your request and tag a community expert.
 
-<table style={{ border: "none", borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
-  <thead>
-    <tr>
-      <th style={{ padding: "10px" }}><img src="https://media.licdn.com/dms/image/D4E03AQFXzzel_tq1ng/profile-displayphoto-shrink_800_800/0/1669749059995?e=1709164800&v=beta&t=CwfEWW5oeGrTt_3w--qTWqqur9vQAGItZ-G7H4w-EVQ" width={150} height={150} style={{ "-webkit-filter": "grayscale(100%)", "filter": "grayscale(100%)" }} /></th>
-      <th style={{ padding: "10px" }}><img src="https://media.licdn.com/dms/image/D4E03AQEqSPLb0Bk5Tg/profile-displayphoto-shrink_800_800/0/1677252858603?e=1709164800&v=beta&t=yh7M69_HmOiMFzfcKbK7_z0a8VZvoj9rNhflbbMaTN0" width={150} height={150} style={{ "-webkit-filter": "grayscale(100%)", "filter": "grayscale(100%)" }} /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style={{ backgroundColor: "transparent" }}>
-      <td style={{ backgroundColor: "transparent", padding: "10px" }}>Davide Bacci</td>
-      <td style={{ backgroundColor: "transparent", padding: "10px" }}>Madison Giammaria</td>
-    </tr>
-    <tr style={{ backgroundColor: "transparent" }}>
-      <td style={{ backgroundColor: "transparent", padding: "10px" }}>Stack Overflow: <a href="https://stackoverflow.com/users/18345037/davide-bacci">Davide Bacci</a></td>
-      <td style={{ backgroundColor: "transparent", padding: "10px" }}>Power BI Forums: <a href="https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852">giammariam</a></td>
-    </tr>
-  </tbody>
+<table class="support">
+   <thead>
+      <tr>
+         <th><img class="community-expert-image" src="/img/support/community-expert-davide-bacci.jpg"/><br /><span class="name">Davide Bacci</span></th>
+         <th><img class="community-expert-image" src="/img/support/community-expert-madison-giammaria.jpg"/><br /><span class="name">Madison Giammaria</span></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>Stack Overflow: <a href="https://stackoverflow.com/users/18345037/davide-bacci">Davide Bacci</a></td>
+         <td>Power BI Forums: <a href="https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852">giammariam</a></td>
+      </tr>
+   </tbody>
 </table>
 
 ‎
