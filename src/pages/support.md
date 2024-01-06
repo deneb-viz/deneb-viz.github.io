@@ -10,7 +10,7 @@ Deneb is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_Lice
 
 Do you need assistance with a Vega-Lite or Vega specification? Do you require help migrating your specification into Deneb? We have folks in the community that are willing to assist you. **Please keep in mind that these individuals are giving their free time**. Consider the size of your request. If your requirements are significant, consulting may be more appropriate. If unsure whether your inquiry falls under the umbrella of "free assistance," the experts can assess feasibility and determine the level of effort involved.
 
-:::info NOTE
+:::info Before you consider creating a GitHub issue
 The [_issues_](https://github.com/deneb-viz/deneb/issues) area on Deneb's GitHub repository should be reserved for topics involving bugs, testing feedback, or feature requests directly related to Deneb. It is not intended to be a place to request assistance with respect to implementation.
 :::
 
