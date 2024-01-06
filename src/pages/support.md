@@ -55,7 +55,7 @@ Create a post with the details of your request and tag a community expert.
 ‎
 
 ### Want to be added as a community expert?
-Open an [issue in the documentation repository](https://github.åç/deneb-viz/deneb-viz.github.io/issues) and include:
+Open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) and include:
 - your name
 - your preferred method of contact
 - contact information
