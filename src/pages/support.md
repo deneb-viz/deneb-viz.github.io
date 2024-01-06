@@ -56,10 +56,11 @@ Create a post with the details of your request and tag a community expert.
 
 ### Want to be added as a community expert?
 Open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) and include:
-- your name
-- your preferred method of contact
-- contact information
-  - for forums, please include the forum name and a link to your profile
+- Your name
+- Your preferred method of contact
+- Contact information
+  - For forums, please include the forum name and a link to your profile.
+- Optionally, include a profile photo suitable for display on this site if you wish to have your image displayed. 
 
 ### Want to be removed from the list of community experts?
 Thank you for contributing to the Deneb community. We greatly appreciate your valuable time and expertise to help others learn and grow. Please open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) asking us to remove you, and we will take care of this as soon as possible. While we remove your photo and community link from the active page, this information will be visible in the site's version history in GitHub.
