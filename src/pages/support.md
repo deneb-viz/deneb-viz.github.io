@@ -62,4 +62,4 @@ Open an [issue in the documentation repository](https://github.com/deneb-viz/den
   - for forums, please include the forum name and a link to your profile
 
 ### Want to be removed from the list of community experts?
-First, thank you for your contributions thus far. To be removed, open an [issue in the documentation repository](https://github.åç/deneb-viz/deneb-viz.github.io/issues) with your name and indicate that you would like to be removed.
+Thank you for contributing to the Deneb community. We greatly appreciate your valuable time and expertise to help others learn and grow. Please open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) asking us to remove you, and we will take care of this as soon as possible. While we remove your photo and community link from the active page, this information will be visible in the site's version history in GitHub.
