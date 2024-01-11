@@ -1,12 +1,12 @@
 # Support Info
 
 > Firstly, thanks very much for using Deneb! I hope that you are able to use it to create some amazing visualizations within Power BI 😊
-> 
-> — *Daniel Marsh-Patrick*
+>
+> — _Daniel Marsh-Patrick_
 
 ## Getting Support
-Deneb is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License), is free of charge, and is [open source](https://github.com/deneb-viz/deneb).
 
+Deneb is released under the [MIT License](https://en.wikipedia.org/wiki/MIT_License), is free of charge, and is [open source](https://github.com/deneb-viz/deneb).
 
 Do you need assistance with a Vega-Lite or Vega specification? Do you require help migrating your specification into Deneb? We have folks in the community that are willing to assist you. **Please keep in mind that these individuals are giving their free time**. Consider the size of your request. If your requirements are significant, consulting may be more appropriate. If unsure whether your inquiry falls under the umbrella of "free assistance," the experts can assess feasibility and determine the level of effort involved.
 
@@ -55,12 +55,15 @@ Create a post with the details of your request and tag a community expert.
 ‎
 
 ### Want to be added as a community expert?
+
 Open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) and include:
+
 - Your name
 - Your preferred method of contact
 - Contact information
   - For forums, please include the forum name and a link to your profile.
-- Optionally, include a profile photo suitable for display on this site if you wish to have your image displayed. 
+- Optionally, include a profile photo suitable for display on this site if you wish to have your image displayed.
 
 ### Want to be removed from the list of community experts?
+
 Thank you for contributing to the Deneb community. We greatly appreciate your valuable time and expertise to help others learn and grow. Please open an [issue in the documentation repository](https://github.com/deneb-viz/deneb-viz.github.io/issues) asking us to remove you, and we will take care of this as soon as possible. While we remove your photo and community link from the active page, this information will be visible in the site's version history in GitHub.
