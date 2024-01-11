@@ -19,6 +19,11 @@ const sidebars = {
     "contributors",
     {
       type: "link",
+      label: "Code of Conduct",
+      href: "https://github.com/deneb-viz/.github?tab=coc-ov-file",
+    },
+    {
+      type: "link",
       label: "Vega Examples",
       href: "https://vega.github.io/vega/examples/",
     },
