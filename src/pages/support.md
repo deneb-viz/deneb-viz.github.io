@@ -20,7 +20,7 @@ The community experts are listed below. Before reaching out, please execute the 
 
 ### Do some research
 
-Before posting in one of the forums listed below, be sure to check and see if someone else has solved a similar issue. Use the search functionality on [Stack Overflow](https://stackoverflow.com/), the [Power BI forums](https://community.fabric.microsoft.com/t5/Power-BI-forums/ct-p/powerbi), the [Vega-Lite](https://github.com/vega/vega-lite/issues)/[Vega](https://github.com/vega/vega/) GitHub _issues_ section, etc. There is a high likelihood that a scenario similar to yours has already been resolved.
+Before posting in one of the forums listed below, be sure to check and see if someone else has solved a similar issue. Use the search functionality on [Stack Overflow](https://stackoverflow.com/), the [Power BI forums](https://community.fabric.microsoft.com/t5/Power-BI-forums/ct-p/powerbi), the [Vega-Lite](https://github.com/vega/vega-lite/issues)/[Vega](https://github.com/vega/vega/) GitHub _issues_ section or [Slack channel](https://bit.ly/join-vega-slack-2020), etc. There is a high likelihood that a scenario similar to yours has already been resolved.
 
 ### Come prepared
 
