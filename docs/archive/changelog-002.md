@@ -1,14 +1,42 @@
 ---
 id: changelog-002
-description: Deneb Change Log - Version 1.0 - 1.3
-title: Previous Releases (1.0 - 1.3)
+description: Deneb Change Log - Version 1.0 - 1.4
+title: Previous Releases (1.0 - 1.4)
 ---
 
-# Previous Release Change Log (1.0 - 1.3)
+# Previous Release Change Log (1.0 - 1.4)
 
 :::caution Archived Page
-This page is an archive of the change log from version 1.0 to 1.3.
+This page is an archive of the change log from versions 1.0 to 1.4.
 :::
+
+## 1.4.0 (2022-08-31)
+
+### Enhancements
+
+- When using the AppSource visual, there's now a warning in the visual header if you're attempting to load external resources such as images or geojson (#244).
+
+  ![If your specification contains URLs to remote resources the AppSource (certified) version will display a warning in the visual header, confirming that these cannot be loaded.](/img/changelog/1.4.0/external-resources-header.png "If your specification contains URLs to remote resources the AppSource (certified) version will display a warning in the visual header, confirming that these cannot be loaded.")
+
+  ![Clicking on the warning message in the visual header will provide further information as to why resources cannot be loaded.](/img/changelog/1.4.0/external-resources-dialog.png "Clicking on the warning message in the visual header will provide further information as to why resources cannot be loaded.")
+
+- If a mark contains a hyperlink to an external URL, Deneb will request that Power BI perform navigation to the specified location (#177).
+
+  - Note that hyperlinks in custom visuals are consent-based, so Power BI will always display an alert to the user asking if they wish to navigate to the specified URL.
+
+- Vega-Lite has been updated to **5.4.0**, from 5.2.0 (#257). You can read more about the changes [in the Vega-Lite release notes](https://github.com/vega/vega-lite/releases/tag/v5.4.0).
+
+- The **Visual Editor** heading text has been removed when the Editor Pane is expanded, and the Command Bar has been moved up to fill the space (#230). This provides a little bit more vertical space for the JSON editor.
+
+### Bugs Fixed
+
+- When using Vega, the Cross-Filtering checkbox was disabled. Cross-filtering would work, but could not easily be toggled (#251).
+
+- The _Data Point Limit_ property for cross-filtering was being ignored (#252).
+
+- Checkbox and radio button param elements could not change state with cross-filtering enabled (#254).
+
+- `null` dates were causing an infinite rendering loop (#259).
 
 ## 1.3.0 (2022-07-06)
 
