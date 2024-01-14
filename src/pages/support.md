@@ -63,7 +63,7 @@ Open an [issue in the documentation repository](https://github.com/deneb-viz/den
 
 - Your name.
 - Your preferred method of contact.
-- You agree to our [Code of Conduct](https://github.com/deneb-viz/.github?tab=coc-ov-file).
+- Confirmation that you agree to our [Code of Conduct](https://github.com/deneb-viz/.github?tab=coc-ov-file).
 - Contact information.
   - For forums, please include the forum name and a link to your profile.
 - Optionally, include a profile photo suitable for display on this site if you wish to have your image displayed.
