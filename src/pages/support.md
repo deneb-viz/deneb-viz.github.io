@@ -36,23 +36,25 @@ More on providing sample data can be found [here](https://community.powerbi.com/
 
 Create a post with the details of your request and tag a community expert.
 
-<table class="support">
-   <thead>
-      <tr>
-         <th><img class="community-expert-image" src="/img/support/community-expert-davide-bacci.jpg"/><br /><span class="name">Davide Bacci</span></th>
-         <th><img class="community-expert-image" src="/img/support/community-expert-madison-giammaria.jpg"/><br /><span class="name">Madison Giammaria</span></th><th><img class="community-expert-image" src="/img/support/community-expert-andrzej-leszkiewicz.png"/><br /><span class="name">Andrzej Leszkiewicz</span></th>
-         <th><img class="community-expert-image" src="/img/support/community-expert-isin-kosemen.png"/><br /><span class="name">Isin Kosemen</span></th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td>Stack Overflow:<br /><a href="https://stackoverflow.com/users/18345037/davide-bacci">Davide Bacci</a></td>
-         <td>Power BI Forums:<br /><a href="https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852">GiammariaM</a></td>
-          <td>GitHub:<br /><a href="https://github.com/avatorl/Deneb-Vega-Help">Repository</a></td>
-           <td>GitHub:<br /><a href="https://github.com/isinkosemen/Deneb-Vega-Vega-Lite-help/issues">Repository</a></td>
-      </tr>
-   </tbody>
-</table>
+
+<div class="support-container">
+   <div>
+      <img class="community-expert-image" src="/img/support/community-expert-davide-bacci.jpg"/><br /><span class="name">Davide Bacci</span> <br />Stack Overflow:<br /><a href="https://stackoverflow.com/users/18345037/davide-bacci">Davide Bacci</a>
+   </div>
+   <div>
+      <img class="community-expert-image" src="/img/support/community-expert-madison-giammaria.jpg"/><br /><span class="name">Madison Giammaria</span><br />Power BI Forums:<br /><a href="https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852">GiammariaM</a>
+   </div>
+   <div>
+      <img class="community-expert-image" src="/img/support/community-expert-andrzej-leszkiewicz.png"/><br /><span class="name">Andrzej Leszkiewicz</span><br />GitHub:<br /><a href="https://github.com/avatorl/Deneb-Vega-Help">Repository</a>
+   </div>
+   <div>
+      <img class="community-expert-image" src="/img/support/community-expert-isin-kosemen.png"/><br /><span class="name">Isin Koseme</span><br />GitHub:<br /><a href="https://github.com/isinkosemen/Deneb-Vega-Vega-Lite-help/issues">Repository</a>
+   </div>
+   <div>
+      <img class="community-expert-image" src="/img/support/community-expert-greg-philips.jpeg"/><br /><span class="name">Greg Philips</span><br />Enterprise DNA Forums:<br /><a href="https://forum.enterprisedna.co/u/greg/summary">Greg</a>
+   </div>
+</div>
+
 
 ‎
 ‎

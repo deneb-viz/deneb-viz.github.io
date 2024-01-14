@@ -63,20 +63,26 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   text-decoration: none;
 }
 
-table.support * {
-  background-color: transparent;
+div.support-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1em;
+  align-content: center;
+  text-align: center;
 }
 
-table.support img.community-expert-image {
+div.support-container img.community-expert-image {
   align-content: center;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   max-width: 150px;
   max-height: 150px;
+  border-radius: 2.5%;
   width: auto;
   height: auto;
 }
 
-table.support span.name {
-  text-align: center;
+div.support-container span.name {
+  font-weight: 800;
 }
