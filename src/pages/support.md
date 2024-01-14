@@ -51,7 +51,7 @@ Create a post with the details of your request and tag a community expert.
       <img class="community-expert-image" src="/img/support/community-expert-isin-kosemen.png"/><br /><span class="name">Isin Koseme</span><br />GitHub:<br /><a href="https://github.com/isinkosemen/Deneb-Vega-Vega-Lite-help/issues">Repository</a>
    </div>
    <div>
-      <img class="community-expert-image" src="/img/support/community-expert-greg-philips.jpeg"/><br /><span class="name">Greg Philips</span><br />Enterprise DNA Forums:<br /><a href="https://forum.enterprisedna.co/u/greg/summary">Greg</a>
+      <img class="community-expert-image" src="/img/support/community-expert-greg-philips.jpeg"/><br /><span class="name">Greg Philps</span><br />Enterprise DNA Forums:<br /><a href="https://forum.enterprisedna.co/u/greg/summary">Greg</a>
    </div>
 </div>
 
