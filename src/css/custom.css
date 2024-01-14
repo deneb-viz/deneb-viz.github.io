@@ -64,15 +64,17 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 }
 
 table.support * {
-  background-color: transparent
+  background-color: transparent;
 }
 
 table.support img.community-expert-image {
   align-content: center;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  width: 150px;
-  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
 }
 
 table.support span.name {
