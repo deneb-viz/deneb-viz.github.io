@@ -46,10 +46,8 @@ const SupportContainer = () => {
           <br />
           {expert.channelName && (
             <>
-              {expert.channelName}:
-              <br />
               <a href={expert.channelExpertSrc} target="_blank" rel="noopener noreferrer">
-                {expert.channelExpertName}
+                {expert.channelName}
               </a>
             </>
           )}
