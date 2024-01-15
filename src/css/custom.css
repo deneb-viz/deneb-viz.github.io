@@ -70,6 +70,7 @@ div.support-container {
   grid-gap: 1em;
   align-content: center;
   text-align: center;
+  line-height: 130%;
 }
 
 div.support-container img.community-expert-image {
@@ -82,6 +83,12 @@ div.support-container img.community-expert-image {
   width: auto;
   height: auto;
 }
+
+div.support-container span.contribution-area {
+  font-style: italic;
+  font-size: small;
+}
+
 
 div.support-container span.name {
   font-weight: 800;

@@ -3,6 +3,7 @@
   "extends": "@docusaurus/tsconfig",
   "include": ["src/"],
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "resolveJsonModule": true
   }
 }
