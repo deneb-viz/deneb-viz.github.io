@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Davide Bacci",
+        "imageSrc": "/img/support/community-expert-davide-bacci.jpg",
+        "channelName": "Stack Overflow",
+        "channelExpertName": "Davide Bacci",
+        "channelExpertSrc": "https://stackoverflow.com/users/18345037/davide-bacci",
+        "contributionAreas": [
+            {"name": "Deneb", "abbreviation": "D"},
+            {"name": "Vega-Lite", "abbreviation": "VL"},
+            {"name": "Vega", "abbreviation": "V"}
+        ]
+    },
+    {
+        "name": "Madison Giammaria",
+        "imageSrc": "/img/support/community-expert-madison-giammaria.jpg",
+        "channelName": "Power BI Forums",
+        "channelExpertName": "GiammariaM",
+        "channelExpertSrc": "https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852",
+        "contributionAreas": [
+            {"name": "Deneb", "abbreviation": "D"},
+            {"name": "Vega-Lite", "abbreviation": "VL"},
+            {"name": "Vega", "abbreviation": "V"}
+        ]
+    },
+    {
+        "name": "Andrzej Leszkiewicz",
+        "imageSrc": "/img/support/community-expert-andrzej-leszkiewicz.png",
+        "channelName": "GitHub",
+        "channelExpertName": "Repository",
+        "channelExpertSrc": "https://github.com/avatorl/Deneb-Vega-Help",
+        "contributionAreas": [
+            {"name": "Deneb", "abbreviation": "D"},
+            {"name": "Vega", "abbreviation": "V"}
+        ]
+    },
+    {
+        "name": "Isin Kosemen",
+        "imageSrc": "/img/support/community-expert-isin-kosemen.png",
+        "channelName": "GitHub",
+        "channelExpertName": "Repository",
+        "channelExpertSrc": "https://github.com/isinkosemen/Deneb-Vega-Vega-Lite-help/issues",
+        "contributionAreas": [
+            {"name": "Deneb", "abbreviation": "D"},
+            {"name": "Vega-Lite", "abbreviation": "VL"},
+            {"name": "Vega", "abbreviation": "V"}
+        ]
+    },
+    {
+        "name": "Greg Philps",
+        "imageSrc": "/img/support/community-expert-greg-philips.jpeg",
+        "channelName": "Enterprise DNA Forum",
+        "channelExpertName": "Greg",
+        "channelExpertSrc": "https://forum.enterprisedna.co/u/greg/summary",
+        "contributionAreas": [
+            {"name": "Deneb", "abbreviation": "D"},
+            {"name": "Vega-Lite", "abbreviation": "VL"}
+        ]
+    }
+]
+
