@@ -5,9 +5,9 @@
         "channelName": "Stack Overflow",
         "channelExpertSrc": "https://stackoverflow.com/users/18345037/davide-bacci",
         "contributionAreas": [
-            {"name": "Deneb", "abbreviation": "D"},
-            {"name": "Vega-Lite", "abbreviation": "VL"},
-            {"name": "Vega", "abbreviation": "V"}
+            "D",
+            "VL",
+            "V"
         ]
     },
     {
@@ -16,9 +16,9 @@
         "channelName": "Power BI Forums",
         "channelExpertSrc": "https://community.fabric.microsoft.com/t5/user/viewprofilepage/user-id/124852",
         "contributionAreas": [
-            {"name": "Deneb", "abbreviation": "D"},
-            {"name": "Vega-Lite", "abbreviation": "VL"},
-            {"name": "Vega", "abbreviation": "V"}
+            "D",
+            "VL",
+            "V"
         ]
     },
     {
@@ -27,8 +27,8 @@
         "channelName": "GitHub",
         "channelExpertSrc": "https://github.com/avatorl/Deneb-Vega-Help",
         "contributionAreas": [
-            {"name": "Deneb", "abbreviation": "D"},
-            {"name": "Vega", "abbreviation": "V"}
+            "D",
+            "V"
         ]
     },
     {
@@ -37,9 +37,9 @@
         "channelName": "GitHub",
         "channelExpertSrc": "https://github.com/isinkosemen/Deneb-Vega-Vega-Lite-help/issues",
         "contributionAreas": [
-            {"name": "Deneb", "abbreviation": "D"},
-            {"name": "Vega-Lite", "abbreviation": "VL"},
-            {"name": "Vega", "abbreviation": "V"}
+            "D",
+            "VL",
+            "V"
         ]
     },
     {
@@ -48,9 +48,8 @@
         "channelName": "Enterprise DNA Forum",
         "channelExpertSrc": "https://forum.enterprisedna.co/u/greg/summary",
         "contributionAreas": [
-            {"name": "Deneb", "abbreviation": "D"},
-            {"name": "Vega-Lite", "abbreviation": "VL"}
+            "D",
+            "VL"
         ]
     }
 ]
-

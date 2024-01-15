@@ -8,7 +8,7 @@ import expertsData from "../../static/data/community-experts.json";
 // Component to render community experts and their metadata
 const SupportContainer = () => {
   // State management
-  const [experts, setExperts] = useState([]);
+  const [experts, setExperts] = useState<IExpert[]>([]);
 
   // useEffect hook to perform shuffling and data fetching after the component renders
   // state update will trigger a re-render
@@ -44,14 +44,14 @@ const SupportContainer = () => {
             </>
           )}
           <br />
-          {expert.contributionAreas.map(
-            (area: IContributionArea, i: number) => (
-              <span className="contribution-area" key={area.name}>
-                {area.abbreviation +
-                  (i < expert.contributionAreas.length - 1 ? " | " : "")}
-              </span>
-            )
-          )}
+          {expert.contributionAreas.map((area, i) => (
+            <span
+              className="contribution-area"
+              key={CONTRIBUTION_AREA_MAP[area]}
+            >
+              {area + (i < expert.contributionAreas.length - 1 ? " | " : "")}
+            </span>
+          ))}
         </div>
       ))}
     </div>
@@ -60,20 +60,27 @@ const SupportContainer = () => {
 
 export default SupportContainer;
 
+type ContributionAreaName = "Deneb" | "Vega" | "Vega-Lite";
+type ContributionAreaAbbreviation = "D" | "V" | "VL";
+
 // Community expert interface to be used with expertsData array
 interface IExpert {
   name: string;
   imageSrc: string;
   channelName: string;
   channelExpertSrc: string;
-  contributionAreas: IContributionArea[];
+  contributionAreas: ContributionAreaAbbreviation[];
 }
 
-// Community expert contribution area interface to be used within experts
-interface IContributionArea {
-  name: "Deneb" | "Vega" | "Vega-Lite";
-  abbreviation: "D" | "V" | "VL";
-}
+// Map to convert contribution area abbreviation to full name (if needed)
+const CONTRIBUTION_AREA_MAP: Record<
+  ContributionAreaAbbreviation,
+  ContributionAreaName
+> = {
+  D: "Deneb",
+  V: "Vega",
+  VL: "Vega-Lite",
+};
 
 // Function to shuffle the array using Fisher-Yates algorithm
 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
