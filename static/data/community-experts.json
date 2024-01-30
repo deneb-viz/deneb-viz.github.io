@@ -51,5 +51,15 @@
             "D",
             "VL"
         ]
+    },
+    {
+        "name": "Valeria Breveglieri",
+        "imageSrc": "/img/support/community-expert-placeholder.svg",
+        "channelName": "Email",
+        "channelExpertSrc": "mailto:valeriabreveglieri@yahoo.fr",
+        "contributionAreas": [
+            "D",
+            "VL"
+        ]
     }
 ]
