@@ -10,6 +10,9 @@ const SupportContainer = () => {
   // State management
   const [experts, setExperts] = useState<IExpert[]>([]);
 
+  // relative path for the placeholder image
+  const defaultImagePath: string = "/img/support/community-expert-placeholder.svg";
+
   // useEffect hook to perform shuffling and data fetching after the component renders
   // state update will trigger a re-render
   // empty dependency array to ensure that this effect only runs once
@@ -26,7 +29,7 @@ const SupportContainer = () => {
         <div key={expert.name}>
           <img
             className="community-expert-image"
-            src={expert.imageSrc}
+            src={expert.imageSrc ? expert.imageSrc : defaultImagePath}
             alt={expert.name}
           />
           <br />
