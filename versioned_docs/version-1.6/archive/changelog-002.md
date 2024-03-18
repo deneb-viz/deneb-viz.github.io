@@ -18,7 +18,7 @@ The Visual Editor interface has been modified to accommodate viewers for Data, S
 
 ![The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.](/img/changelog/1.3.0/debug-area.png "The Preview Area toolbar now includes a debugging pane, which exposes information on Vega datasets, signals and logs.")
 
-These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now greatly increased from before, this is being renamed as the [**Debug Pane**](visual-editor#debug-pane).
+These changes also make the Preview Area toolbar resizable and collapsible, much like the Editor Pane. As this functionality is now greatly increased from before, this is being renamed as the [**Debug Pane**](../getting-started/visual-editor.mdx#debug-pane).
 
 As this change affects a lot of the existing documentation, the relevant areas are updated with sections pertinent to the Debug Pane, but a short overview is as follows:
 
@@ -38,7 +38,7 @@ A new expression, `pbiColor` has been added. This allows you to access your repo
 
 ![The pbiColor function allows you to access individual theme colors using a zero-based index.](../deeper-concepts/img/pbiColor-simple-grid.png "The pbiColor function allows you to access individual theme colors using a zero-based index.")
 
-Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for further details.
+Please refer to the [Theme Colors & Schemes](../deeper-concepts/color-schemes.md#expression-based-access-using-pbicolor) page for further details.
 
 ### Preview Image in Exported Template (#228)
 
@@ -46,7 +46,7 @@ When exporting a template, you can now opt to include a preview image, e.g.:
 
 ![Templates can now provide the option to include a base64-encoded preview image of the current window.](/img/changelog/1.3.0/export-enter-template-information-preview-image.png "Templates can now provide the option to include a base64-encoded preview image of the current window.")
 
-Images are generated [using the Vega View APIs](https://vega.github.io/vega/docs/api/view/#image-export). The generated image will be how the image currently looks in the editor, and are capped at a maximum of 150 x 150 pixels (using the largest dimension to constrain the aspect ratio within this area). This is documented in more detail on the [Templates](templates#including-a-preview-image) page, but the high-level overview is as follows:
+Images are generated [using the Vega View APIs](https://vega.github.io/vega/docs/api/view/#image-export). The generated image will be how the image currently looks in the editor, and are capped at a maximum of 150 x 150 pixels (using the largest dimension to constrain the aspect ratio within this area). This is documented in more detail on the [Templates](../deeper-concepts/templates.md#including-a-preview-image) page, but the high-level overview is as follows:
 
 The generated image will be encoded in your template using base64, so there's a couple of things to consider here:
 
@@ -75,11 +75,11 @@ As such, the option is disabled by default and you will need to opt-in.
 
 To date, Deneb has only had two supported [interactions](https://docs.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions#change-the-interaction-behavior) from other visuals: **Filter** (default) and **None**.
 
-In this version, we have enabled support for the **Highlight** interaction. Much like [Cross-Filtering](interactivity-selection), it is opt-in - as you will need to ensure that marks have the necessary encodings for orginal vs. highlight values for any active interactions, e.g.:
+In this version, we have enabled support for the **Highlight** interaction. Much like [Cross-Filtering](../interactivity/selection.md), it is opt-in - as you will need to ensure that marks have the necessary encodings for orginal vs. highlight values for any active interactions, e.g.:
 
 ![Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.](/img/changelog/1.2.0/cross-highlight-example.gif "Cross-Highlight functionality can now be leveraged, so you can bind encodings for original and highlight values.")
 
-To see more about how you can get started, please check out the [Cross-Highlighting](interactivity-highlight) page for details. The built-in **Simple Bar Chart** template for both Vega and Vega-Lite has been updated with a sample binding and encoding (as well as the [Simple Worked Example](simple-example)).
+To see more about how you can get started, please check out the [Cross-Highlighting](../interactivity/highlight.md) page for details. The built-in **Simple Bar Chart** template for both Vega and Vega-Lite has been updated with a sample binding and encoding (as well as the [Simple Worked Example](../getting-started/simple-worked-example.md)).
 
 :::caution Check Default Interactions
 Because this change affects the dataset that the main window sends to a visual, this may make your visuals appear differently that prior to the update if your default interaction is set to **Highlight** (as this is now an option on a Deneb visual when setting interactions). We do try our best to manage this in Deneb if not, but it is recommended that you do this the "Power BI way" and explicitly set interactions to **Filter**.
@@ -101,7 +101,7 @@ To assist with this, a **Performance Tuning** property menu has been made availa
 
 ![recalculate-during-resize.gif.](/img/changelog/1.2.0/recalculate-during-resize.gif "Our raincloud plot example contains many data points and calculations, which can be computationally expensive if resizing the visual container. By turning off the 'Recalculate during resize' property, you can delay any calculations until you have finished resizing your visual.")
 
-The documentation for this feature has also been added to the [Performance Considerations](performance#recalculate-during-resize) page.
+The documentation for this feature has also been added to the [Performance Considerations](../deeper-concepts/performance-considerations.md#recalculate-during-resize) page.
 
 ### Other Minor Enhancements
 
@@ -130,7 +130,7 @@ Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
 
 - When encoding a `scale`, there are 4 schemes available for inclusion that will bind to the current report theme at run time.
 - If you change any colors in your report theme matching these schemes, then the specification will update to match.
-- This is documented in more detail on the [Color Schemes](schemes) page.
+- This is documented in more detail on the [Color Schemes](../deeper-concepts/color-schemes.md) page.
 
 ![If using the new schemes when encoding a color scale, these will live-bind to the currently selected report theme.](/img/changelog/1.1.0/theme-changes.gif "If using the new schemes when encoding a color scale, these will live-bind to the currently selected report theme.")
 
@@ -138,7 +138,7 @@ Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
 
 - This provides means to re-map any columns or measures that have been bound to encodings or expressions.
 - If a field is removed from the **Values** data role, the dialog will also be displayed, in order to provide a more convenient way to add and re-assign a field without having to hunt it down manually.
-- This is documented in more detail on the [Dataset](dataset#edit-specification-field-mapping) page.
+- This is documented in more detail on the [Dataset](../getting-started/dataset.md#edit-specification-field-mapping) page.
 
   ![Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.](/img/changelog/1.1.0/edit-mapping.png "Example of the Edit Specification Field Mapping dialog, which allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.")
 
@@ -155,8 +155,8 @@ Provided via [Vega Color Schemes](https://vega.github.io/vega/docs/schemes/).
 
 Available in the Power BI Format pane.
 
-- Visual Editor [**Word Wrap** property](visual-editor#word-wrap) added (#154)
-- Visual Editor [**Line Gutter** and **Line Numbers** properties](visual-editor#line-gutter--line-numbers) added (#155)
+- Visual Editor [**Word Wrap** property](../getting-started/visual-editor.mdx#word-wrap) added (#154)
+- Visual Editor [**Line Gutter** and **Line Numbers** properties](../getting-started/visual-editor.mdx#line-gutter--line-numbers) added (#155)
 
 ### Other Minor Enhancements
 
@@ -202,7 +202,7 @@ All current known issues are scheduled to be fixed in version 1.2. Workarounds f
 ### IMPORTANT NOTES
 
 - This is the promotion of the preview codebase into [the official AppSource release](https://appsource.microsoft.com/en-us/product/power-bi-visuals/coacervolimited1596856650797.deneb) 🎉🎉🎉🎉
-- Fetching via remote URLs (e.g. for image marks) has been disabled to comply with Power BI certification requirements. This can be mitigated by [downloading the standalone build](getting-started#standalone-version).
+- Fetching via remote URLs (e.g. for image marks) has been disabled to comply with Power BI certification requirements. This can be mitigated by [downloading the standalone build](../getting-started/index.md#standalone-version).
 - There a no major changes in this release; just those that help with QA.
 
 ### Bugs Fixed

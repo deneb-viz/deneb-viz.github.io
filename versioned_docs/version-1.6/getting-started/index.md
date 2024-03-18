@@ -49,7 +49,7 @@ The latest version is published via _Releases_ in [Deneb's GitHub repository](ht
 You can also use this link to [jump straight to the latest release page](https://github.com/deneb-viz/deneb/releases/latest).
 
 :::caution Trust Your Sources
-**Please be careful when installing custom visuals from unknown or unsolicited sources**. I can assure you that [our intentions are honorable](privacy-policy) but you should exercise caution around your data. If you have any doubts, then work with your admins to ensure that all the necessary checks and balances are carried out.
+**Please be careful when installing custom visuals from unknown or unsolicited sources**. I can assure you that [our intentions are honorable](/privacy-policy) but you should exercise caution around your data. If you have any doubts, then work with your admins to ensure that all the necessary checks and balances are carried out.
 :::
 
 #### Identification
