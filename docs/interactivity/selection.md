@@ -6,7 +6,7 @@ sidebar_label: Cross-Filtering (Selection)
 
 # Cross-Filtering (Selection)
 
-It is possible to enable cross-filtering of other visuals when a mark containing a resolvable datum is clicked (or Ctrl-Clicked for multi-select).
+It is possible to enable cross-filtering of other visuals when a mark containing a resolvable datum is clicked (or Ctrl/Shift-Clicked for multi-select).
 
 However, cross-filtering is a bit of a special case vs. [tooltips](interactivity-tooltips) and the [context menu](interactivity-context-menu). As such, this is **disabled** by default, so as not to create potential UX issues prior to ensuring your visual effects are applied based on selection state. We'll explain on this page what you need to think about if you want to enable this for your visuals, and what to think about from an implementation perspective when creating your specification.
 
@@ -14,13 +14,25 @@ However, cross-filtering is a bit of a special case vs. [tooltips](interactivity
 
 Both [Vega](https://vega.github.io/vega/docs/event-streams/) (with Signals and Events) and [Vega-Lite](https://vega.github.io/vega-lite/docs/parameter.html) (with Parameters) both have their own ways of managing interactivity internally when it comes to clicking on marks. However we also have to think about [how Power BI manages selection state between visuals](https://docs.microsoft.com/en-us/power-bi/developer/visuals/selection-api?WT.mc_id=DP-MVP-5003712) and apply this in a generic manner, so Deneb again bridges this particular gap as much as possible. Therefore, cross-filtering works as follows:
 
-- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Cross-Filtering (Selection) of Data Points** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab).
+- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Expose cross-filtering values for dataset rows** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab).
 
 - This setting is **disabled** by default.
 
 - For each row in the visual `"dataset"`, Deneb will generate a [special field for each row](#the-__selected__-field) called `"__selected__"`, and will update this based on click events, or eligible external events to your visual, such as restoring a bookmark with an active selection state.
 
-- If multiple data points are selected (i.e. by holding the Ctrl key), Deneb will add these to the current list of selected data points and update the `__selected__` value accordingly.
+### Management Mode of Cross-Filtering Events
+
+With the **Expose cross-filtering values for dataset rows** property enabled, Deneb will then display a **Cross-filtering management** setting, with two options:
+
+![selection-mode-settings.png](./img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb present stwo additional modes for management: Simple (default) and Advanced.")
+
+:::caution 'Advanced' Really Means Advanced
+The documentation on this page continues under the assumption that you will be working with the _Simple_ (default) management mode. It is worth starting with this mode to allow Deneb to handle as much as it can for you, although you will still need to do some work. If you are using Vega and have a need to do more than the _Simple_ mode can offer (and are comfortable with how things work), then you can explore [Advanced Cross-Filtering](interactivity-selection-advanced).
+:::
+
+### Additional Strategy for the _Simple_ Management Mode
+
+- If multiple data points are selected (i.e. by holding the Ctrl or Shift key), Deneb will add these to the current list of selected data points and update the `__selected__` value accordingly.
 
 - Clicking anything other than a mark within the visual canvas (or a mark that cannot be resolved to one or more data points) will clear the current selection from the visual, and signal to Power BI to do the same for other visuals on the page.
 
@@ -28,7 +40,7 @@ Both [Vega](https://vega.github.io/vega/docs/event-streams/) (with Signals and E
 
 ## Data Point Resolution
 
-With the **Cross-Filtering (Selection) of Data Points** property enabled, Deneb will monitor marks for click events. If the mark represents an un-transformed row's datum from your `"dataset"` (or has enough information for Deneb to resolve it), it will be added to the list of currently selected data points and delegated to Power BI for handling other visuals in a page, e.g.:
+With the **Expose cross-filtering values for dataset rows** property enabled, Deneb will monitor marks for click events. If the mark represents an un-transformed row's datum from your `"dataset"` (or has enough information for Deneb to resolve it), it will be added to the list of currently selected data points and delegated to Power BI for handling other visuals in a page, e.g.:
 
 ![selection-simple-single-point.png](./img/selection-simple-single-point.png "Enabling cross-filtering and clicking a resolvable data point will trigger selection in other visuals on the page.")
 
@@ -36,9 +48,9 @@ With the **Cross-Filtering (Selection) of Data Points** property enabled, Deneb 
 Note that the above is based on the visual produced [in the worked example](simple-example#adding-cross-filtering). As such this has an encoding applied to add an effect to marks that are in the current list of selected data points and is to help illustrate the concept. You will need to [manage such encodings yourself](#managing-selection-state-visually-through-encodings). The card to the right of the visual is merely for illustrative purposes: it helps us to re-state the selected values via another measure and confirm selections are propagated.
 :::
 
-Holding the Ctrl key and clicking additional marks that contain resolvable data points will add these to the current list and affect other visuals, e.g.:
+Holding the Ctrl or Shift key and clicking additional marks that contain resolvable data points will add these to the current list and affect other visuals, e.g.:
 
-![selection-simple-multiple-point.png](./img/selection-simple-multiple-point.png "Ctrl-clicking additional resolvable data points will add these to the list of selected data points and update other visuals accordingly.")
+![selection-simple-multiple-point.png](./img/selection-simple-multiple-point.png "Ctrl/Shift-clicking additional resolvable data points will add these to the list of selected data points and update other visuals accordingly.")
 
 ### Primitive Aggregate Resolution
 

@@ -11,6 +11,49 @@ description: Deneb Change Log - high-level details of new features and fixes for
 The change log is updated as features are added to the main development branch. They are available in [alpha builds](/community/early-access) until such a time as the version is ready for beta testing, and eventual submission to AppSource.
 :::
 
+### JSON Editor Changes
+
+_Currently under development._
+
+### Commenting
+
+_Currently under development._
+
+### Auto-Completion
+
+_Currently under development._
+
+### Inline Documentation
+
+_Currently under development._
+
+### Dark Mode
+
+_Currently under development._
+
+### Advanced Cross-Filtering
+
+- Advanced cross-filtering provides developers using **Vega** to have more control over cross-filtering behavior between their specification and Power BI.
+
+- From this version, we have renamed the _Cross-filtering (selection) of data points_ setting to _Expose cross-filtering values for dataset rows_. With this enabled, you will now have two further options:
+
+  ![selection-mode-settings.png](interactivity/img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb present stwo additional modes for management: Simple (default) and Advanced.")
+
+  - _Simple:_
+    - This is the functionality you will already have been using, and Deneb attempts to resolve data points from marks and delegates them to Power BI.
+    - This option supported for both Vega and Vega-Lite, and is recommended if you just want simple management of cross-filtering.
+    - However, [the limitations still apply](interactivity-selection#limitations-and-considerations), as this is a fairly simple modification applied to the Vega view by Deneb.
+  - _Advanced:_
+    - This will not attempt to help you by monitoring marks for clicks and all cross-filter events must be managed by you.
+    - The option cannot be selected for Vega-Lite specifications.
+
+- With the _Advanced_ mode enabled, there are two new expression functions available in Vega signals:
+
+  - `pbiCrossFilterApply(event, filter?, options?)`: for the current event target, filter the original dataset (as sent from Power BI) as instructed and ask Power BI to apply cross-filtering based on this result set.
+  - `pbiCrossFilterClear()`: explicitly tell Power BI to clear the current cross-filter selection.
+
+- This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
+
 ### Other Enhancements
 
 - Signal names in the Debug Pane now have more proportional space and are less likely to truncate when viewing. If a signal name does truncate, you can now hover over it to see the full name in a tooltip (#400).
