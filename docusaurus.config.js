@@ -18,7 +18,10 @@ const config = {
   projectName: "deneb-viz.github.io",
   trailingSlash: false,
   staticDirectories: ["static"],
-
+  markdown: {
+    mermaid: true,
+  },
+  themes: ["@docusaurus/theme-mermaid"],
   presets: [
     [
       "classic",
