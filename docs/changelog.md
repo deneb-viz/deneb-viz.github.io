@@ -11,25 +11,64 @@ description: Deneb Change Log - high-level details of new features and fixes for
 The change log is updated as features are added to the main development branch. They are available in [alpha builds](/community/early-access) until such a time as the version is ready for beta testing, and eventual submission to AppSource.
 :::
 
+### Vega Updates
+
+- Vega updated to **5.28.0** (from 5.26.1).
+- Vega-Lite updated to **5.18.0** (from 5.16.3).
+
 ### JSON Editor Changes
 
-_Currently under development._
+In order to support a number of changes to the editing experience and improving productivity for developers, the The JSON editor component has been swapped out. This was previously using Jos de Jong's excellent [JSONEditor](https://github.com/josdejong/jsoneditor) library, but as we were effectively using this as a wrapper for [Ace editor](https://ace.c9.io/) and simpler JSON schema validation, we've stripped this back down to just use Ace Editor with a higher degree of customization.
+
+The key changes resulting from this swapout are long-awaited and significant enough to warrant their own sections, so these are detailed below.
 
 ### Commenting
 
-_Currently under development._
+The editor now supports **JSON with comments** (jsonc)! 🎉🎉
+
+![You can now comment your content using JavaScript-style comment markers](/img/changelog/1.7.0/json-comments.png "You can now comment your content using JavaScript-style comment markers")
+
+- You can now use comments to either document your specifications or disable portions for debugging purposes.
+- You can use single line (`//`) or block (`/* */`) comment format.
+- The editor also has shortcuts for these operations:
+  - [Ctrl + /] to toggle a line comment
+  - [Ctrl + Shift + /] to toggle a block comment
 
 ### Auto-Completion
 
-_Currently under development._
+The JSON schemas for Vega and Vega-Lite have been integrated into the editor's autocompletion function, making discovery of the correct properties much more straightforward.
+
+- Completion will trigger when typing, or when you press [Ctrl + Space] to invoke manually.
+
+:::info We're Keen to Keep Moving this Forward
+Auto-completion is currently set up in its simplest form and I'm sure that we can reduce the friction further for developers as we learn more about how Deneb is used. We have made many changes under the hood as to how JSON is processed and parsed, so there are opportunities to refine and tune the experience for developers. If you have suggestions on how to improve what should trigger and when, please let us know by [creating an issue](https://github.com/deneb-viz/deneb/issues) and we can take a look.
+:::
 
 ### Inline Documentation
 
-_Currently under development._
+For Vega-Lite, the developers have built-in a lot of additional support for language keywords. You can now hover your mouse over any item that contains such documentation and see this rendered in a pop-up, e.g.:
+
+![For Vega-Lite, you can now hover your mouse over language keywords, to receive the inbuild documentation provided by the authors.](/img/changelog/1.7.0/doc-on-hover.png "For Vega-Lite, you can now hover your mouse over language keywords, to receive the inbuild documentation provided by the authors.")
+
+Any links in the displayed documentation can be clicked, top open the destination in a browser tab.
 
 ### Dark Mode
 
-_Currently under development._
+You now have the choice of the Deneb Advancd Editor UI to be displayed in light (default) or dark mode.
+
+:::warning Currently only available via the property menu
+Right now you can only choose the theme setting from _Properties > Advanced editor > Interface > Theme_. We're in the process of adding an on-surface button to allow toggling it directly in the UI before 1.7 is submitted to AppSource.
+:::
+
+- Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
+
+  ![You can now set the theme to 'Dark', to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to 'Dark', to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
+
+- The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.
+
+- If you wish for the preview area to be dark also - **bearing in mind that this may potentially cause accessibility issues while editing** - you can change this behavior by setting _Advanced editor > Preview area > Apply background settings to preview area_ to **Off**, e.g.:
+
+  ![You can disable the report background being passed through to the preview area by setting the 'Apply background settings to preview area' property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the 'Apply background settings to preview area' property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas.")
 
 ### Advanced Cross-Filtering
 
@@ -61,6 +100,11 @@ _Currently under development._
 ### Performance and Stability
 
 - Schema validation against the specification is now only performed when the editor is open. This typically improves initial render time in the report canvas view by 400-500ms for Vega-Lite visuals and 200-300ms for Vega visuals.
+
+### Bug fixes
+
+- If you have multiple fields starting with the same characters (e.g. _Sales PY_, _Sales FC_) they should be uniquely identified when generating a template (#276)
+- The Power BI tooltip provider will incorrectly show `false` instead of a number, if that number should be text (#429)
 
 ## 1.6.2 (2023-12-08)
 
