@@ -31,8 +31,8 @@ The editor now supports **JSON with comments** (jsonc)! 🎉🎉
 - You can now use comments to either document your specifications or disable portions for debugging purposes.
 - You can use single line (`//`) or block (`/* */`) comment format.
 - The editor also has shortcuts for these operations:
-  - [Ctrl + /] to toggle a line comment
-  - [Ctrl + Shift + /] to toggle a block comment
+  - [Ctrl + /] to toggle a line comment.
+  - [Ctrl + Shift + /] to toggle a block comment.
 
 ### Auto-Completion
 
@@ -52,9 +52,41 @@ For Vega-Lite, the developers have built-in a lot of additional support for lang
 
 Any links in the displayed documentation can be clicked, top open the destination in a browser tab.
 
+### Improved Highlighting
+
+Any schema warnings and/or errors are now more direclty annotated in the editor, e.g.:
+
+![The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.](/img/changelog/1.7.0/json-editor-highlighting.png "The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.")
+
+Both the lines containing an issue are highlighted in the line gutter area, and underlined in the appropriate color:
+
+- Warnings are shown in the gutter with a yellow triangle and underlined in yellow.
+- Errors are shown in the gutter with a red circle and underlined in red.
+
+:::warning Errors need to be fixed for some operations
+As errors do not produce valid JSON, you cannot format JSON or export your work as a template until anny issues are corrected and re-parsed successfully.
+:::
+
+### Code Folding Memoization
+
+Previously, if folded sections of code in the editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reiniitalize the visual).
+
+### Keyboard Navigation Away from Editor
+
+The editor toolbar now shows the function of the Tab key. This has two modes:
+
+- _indent_: normal operation (indents JSON).
+- _navigate_: allows the user to use the Tab key to navigate to other UI elements using [Tab] of [Shift + Tab].
+
+You can press [Ctrl + M] to change the tab behavior when inside the JSON editor, allowing you to indent or navigate as needed.
+
+:::info Tab behavior reverts to 'Navigate' when you focus back to the editor
+This occurs when either using the Tab key or the mouse.
+:::
+
 ### Dark Mode
 
-You now have the choice of the Deneb Advancd Editor UI to be displayed in light (default) or dark mode.
+You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
 
 :::warning Currently only available via the property menu
 Right now you can only choose the theme setting from _Properties > Advanced editor > Interface > Theme_. We're in the process of adding an on-surface button to allow toggling it directly in the UI before 1.7 is submitted to AppSource.
