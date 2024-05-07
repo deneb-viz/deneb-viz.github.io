@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143608567-3"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-143608567-3",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.56051159.css">
-<script src="/assets/js/runtime~main.9aaeff84.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.3b0e1b31.js" defer="defer"></script>
 <script src="/assets/js/main.01e5d273.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -66,18 +66,25 @@
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Tab behavior reverts to &#x27;Navigate&#x27; when you focus back to the editor</div><div class="admonitionContent_BuS1"><p>This occurs when either using the Tab key or the mouse.</p></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="dark-mode">Dark Mode<a href="#dark-mode" class="hash-link" aria-label="Direct link to Dark Mode" title="Direct link to Dark Mode">​</a></h3>
 <p>You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.</p>
-<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Currently only available via the property menu</div><div class="admonitionContent_BuS1"><p>Right now you can only choose the theme setting from <em>Properties &gt; Advanced editor &gt; Interface &gt; Theme</em>. We&#x27;re in the process of adding an on-surface button to allow toggling it directly in the UI before 1.7 is submitted to AppSource.</p></div></div>
 <ul>
 <li>
+<p>This can be changed by either:</p>
+<ul>
+<li>Clicking the theme button in the top-right of the Advanced Editor toolbar.</li>
+<li>Using the [Ctrl + Shift + Alt + T] keyboard shortcut.</li>
+<li>Setting the <em>Advanced editor &gt; Interface &gt; Theme</em> property in the format pane.</li>
+</ul>
+</li>
+<li>
 <p>Setting the <em>Theme</em> to <em>Dark</em> will update the interface appearance, e.g.:</p>
-<p><img decoding="async" loading="lazy" alt="You can now set the theme to &amp;#39;Dark&amp;#39;, to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." src="/assets/images/dark-theme-standard-0eac4b11a46c7940d0f637a547dcd845.png" title="You can now set the theme to &amp;#39;Dark&amp;#39;, to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." width="1654" height="852" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="You can now set the theme to &amp;#39;Dark&amp;#39;, to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." src="/assets/images/dark-theme-standard-fffc5f13ae3297cec143b1ecef014f24.png" title="You can now set the theme to &amp;#39;Dark&amp;#39;, to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." width="1434" height="785" class="img_ev3q"></p>
 </li>
 <li>
 <p>The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.</p>
 </li>
 <li>
 <p>If you wish for the preview area to be dark also - <strong>bearing in mind that this may potentially cause accessibility issues while editing</strong> - you can change this behavior by setting <em>Advanced editor &gt; Preview area &gt; Apply background settings to preview area</em> to <strong>Off</strong>, e.g.:</p>
-<p><img decoding="async" loading="lazy" alt="You can disable the report background being passed through to the preview area by setting the &amp;#39;Apply background settings to preview area&amp;#39; property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas." src="/assets/images/dark-theme-background-off-1296e22d20f708fc77c29ce9c00082b6.png" title="You can disable the report background being passed through to the preview area by setting the &amp;#39;Apply background settings to preview area&amp;#39; property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas." width="1795" height="851" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="You can disable the report background being passed through to the preview area by setting the &amp;#39;Apply background settings to preview area&amp;#39; property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas." src="/assets/images/dark-theme-background-off-3ecc0ba30a7df5bca5698c45b03ffe30.png" title="You can disable the report background being passed through to the preview area by setting the &amp;#39;Apply background settings to preview area&amp;#39; property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas." width="1652" height="844" class="img_ev3q"></p>
 </li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="advanced-cross-filtering">Advanced Cross-Filtering<a href="#advanced-cross-filtering" class="hash-link" aria-label="Direct link to Advanced Cross-Filtering" title="Direct link to Advanced Cross-Filtering">​</a></h3>
