@@ -88,9 +88,11 @@ This occurs when either using the Tab key or the mouse.
 
 You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
 
-:::warning Currently only available via the property menu
-Right now you can only choose the theme setting from _Properties > Advanced editor > Interface > Theme_. We're in the process of adding an on-surface button to allow toggling it directly in the UI before 1.7 is submitted to AppSource.
-:::
+- This can be changed by either:
+
+  - Clicking the theme button in the top-right of the Advanced Editor toolbar.
+  - Using the [Ctrl + Shift + Alt + T] keyboard shortcut.
+  - Setting the _Advanced editor > Interface > Theme_ property in the format pane.
 
 - Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
 
