@@ -69,7 +69,7 @@ As errors do not produce valid JSON, you cannot format JSON or export your work 
 
 ### Preservation of Code Folding
 
-Previously, if folded sections in the JSON editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
+Previously, if you were folding/collapsing sections in the JSON editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
 
 ### Keyboard Navigation Away from Editor
 
