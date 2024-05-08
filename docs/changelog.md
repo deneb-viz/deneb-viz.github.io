@@ -67,9 +67,9 @@ Both the lines containing an issue are highlighted in the line gutter area, and 
 As errors do not produce valid JSON, you cannot format JSON or export your work as a template until anny issues are corrected and re-parsed successfully.
 :::
 
-### Code Folding Memoization
+### Preservation of Code Folding
 
-Previously, if folded sections of code in the editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reiniitalize the visual).
+Previously, if folded sections in the JSON editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
 
 ### Keyboard Navigation Away from Editor
 
