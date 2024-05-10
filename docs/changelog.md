@@ -127,6 +127,31 @@ You now have the choice of the Deneb Advanced Editor UI to be displayed in light
 
 - This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
 
+### `pbiContainer` Signal
+
+This is a new signal that is added to the view and can be referenced in expressions, e.g.:
+
+![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
+
+- This is an object with 6 properties:
+
+  - `height` - the height of the visual container.
+  - `width` - the width of the visual container.
+  - `scrollHeight` - the scrollable height of the container.
+  - `scrollWidth` - the scrollable width of the container.
+  - `scrollTop` the current vertical scroll position.
+  - `scrollLeft` the current horizonal scroll position.
+
+- If the generated visual overflows the preview area and enables [Scrolling](scrolling-overflow), Deneb will update the `scrollHeight` and `scrollLeft` values as the user scrolls the visible area and re-run the view, meaning that you can assign these values to marks or expressions and they will update.
+- Scroll event monitoring has a defult throttle time of **5ms**. This can be changed in the _Rendered visual > Container scroll events > Throttle time_ property:
+
+  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the intenral `pbiContainer` signal with new values.")
+
+  This has a minium value of **0ms** and a maximum of **1000ms**, and you can use this to tune the performance of scroll event updates as needed.
+
+- To be able to develop using this feature in the Advanced Editor, it's recommended that you enable [Show scrollbars on overflow](scrolling-overflow#confirming-and-configuring-scrollbar-report-canvas-appearance-in-the-editor), to apply this, otherwise the scroll event is not fired.
+- For backwards compatibility purposes, the `pbiContainerHeight` and `pbiContainerWidth` signals that Deneb adds for Vega specifications will remain available, but if you rely on these signals, it's recommended that you move to `pbiContainer.height` and `pbiContainer.width` accordingly, as these values will update on container changes rather than when the specification is parsed.
+
 ### Other Enhancements
 
 - Signal names in the Debug Pane now have more proportional space and are less likely to truncate when viewing. If a signal name does truncate, you can now hover over it to see the full name in a tooltip (#400).
