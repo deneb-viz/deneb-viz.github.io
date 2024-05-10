@@ -129,7 +129,7 @@ You now have the choice of the Deneb Advanced Editor UI to be displayed in light
 
 ### `pbiContainer` Signal
 
-This is a new signal that is added to the view and can be referenced in expressions, e.g.:
+The Vega view now has a new signal named `pbiContainer`, which provides access to information about the visual container in expressions, e.g.:
 
 ![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
 
