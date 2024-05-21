@@ -64,7 +64,7 @@ Both the lines containing an issue are highlighted in the line gutter area, and 
 - Errors are shown in the gutter with a red circle and underlined in red.
 
 :::warning Errors need to be fixed for some operations
-As errors do not produce valid JSON, you cannot format JSON or export your work as a template until anny issues are corrected and re-parsed successfully.
+As errors do not produce valid JSON, you cannot format JSON or export your work as a template until any issues are corrected and re-parsed successfully.
 :::
 
 ### Preservation of Code Folding
