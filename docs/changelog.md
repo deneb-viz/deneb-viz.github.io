@@ -78,11 +78,7 @@ The editor toolbar now shows the function of the Tab key. This has two modes:
 - _indent_: normal operation (indents JSON).
 - _navigate_: allows the user to use the Tab key to navigate to other UI elements using [Tab] of [Shift + Tab].
 
-You can press [Ctrl + M] to change the tab behavior when inside the JSON editor, allowing you to indent or navigate as needed.
-
-:::info Tab behavior reverts to 'Navigate' when you focus back to the editor
-This occurs when either using the Tab key or the mouse.
-:::
+You can press [Ctrl + M] or click on the toolbar indicator to change the tab behavior when inside the JSON editor, allowing you to indent or navigate as needed.
 
 ### Dark Mode
 
@@ -164,6 +160,7 @@ The Vega view now has a new signal named `pbiContainer`, which provides access t
 
 - If you have multiple fields starting with the same characters (e.g. _Sales PY_, _Sales FC_) they should be uniquely identified when generating a template (#276)
 - The Power BI tooltip provider will incorrectly show `false` instead of a number, if that number should be text (#429)
+- The scrollbar color no longer reverts when changing the visual container padding (#384)
 
 ## 1.6.2 (2023-12-08)
 
