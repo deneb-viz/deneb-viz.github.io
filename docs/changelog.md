@@ -160,7 +160,8 @@ The Vega view now has a new signal named `pbiContainer`, which provides access t
 
 - If you have multiple fields starting with the same characters (e.g. _Sales PY_, _Sales FC_) they should be uniquely identified when generating a template (#276)
 - The Power BI tooltip provider will incorrectly show `false` instead of a number, if that number should be text (#429)
-- The scrollbar color no longer reverts when changing the visual container padding (#384)
+- The scrollbar color reverts when changing the visual container padding (#384)
+- `null` values for `datetime` fields are not being casted correctly when processed (#446)
 
 ## 1.6.2 (2023-12-08)
 
