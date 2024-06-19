@@ -76,6 +76,31 @@ This results in something a little more human-readable:
 
 ![vega-lite-billions.png](./img/vega-lite-billions.png "After applying a Power BI format string and specifying our custom formatter, the axis becomes much more human readable. This updates to show tick values as $bn, to one decimal place.")
 
+:::info Vega-Lite's format property is extensible
+The `format` property can also expect an object instead of a string. If you use an object for the `pbiFormat` or `pbiFormatAutoUnit` format types, you can use an object that can include any of the optional `ValueFormatterOptions` properties from [Microsoft's formatting library for custom visuals](https://learn.microsoft.com/en-us/power-bi/developer/visuals/utils-formatting?WT.mc_id=DP-MVP-5003712#valueformatteroptions). The following example is synonymous with the above one:
+
+```json highlight={9-12} showLineNumbers
+{
+  ...
+  "encoding": {
+    ...
+    "x": {
+      "field": "$ Sales",
+      "type": "quantitative",
+      "axis": {
+        "format": {
+          "format": "#0.0",
+          "value": 1e9        // 1 billion
+        },
+        "formatType": "pbiFormat"
+      }
+    }
+  }
+}
+```
+
+:::
+
 #### Quantitative & Temporal Axes Example
 
 If instead, we had a line chart using the same dataset, but this time we wanted to plot `[$ Sales]` by `[Date]` then we could express this as follows:

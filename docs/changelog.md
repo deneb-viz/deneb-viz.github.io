@@ -13,72 +13,66 @@ The change log is updated as features are added to the main development branch. 
 
 ### Vega Updates
 
-- Vega updated to **5.28.0** (from 5.26.1).
-- Vega-Lite updated to **5.18.0** (from 5.16.3).
+- Vega updated to **5.30.0** (from 5.26.1).
+- Vega-Lite updated to **5.19.0** (from 5.16.3).
 
-### JSON Editor Changes
+### Monaco Editor for JSON
 
-In order to support a number of changes to the editing experience and improving productivity for developers, the The JSON editor component has been swapped out. This was previously using Jos de Jong's excellent [JSONEditor](https://github.com/josdejong/jsoneditor) library, but as we were effectively using this as a wrapper for [Ace editor](https://ace.c9.io/) and simpler JSON schema validation, we've stripped this back down to just use Ace Editor with a higher degree of customization.
+Power BI custom visuals have some very challenging constraints in terms of what can be integrated. The work done in 1.6 and this release now allows us to include [Monaco Editor](https://microsoft.github.io/monaco-editor/) (the component from [Vega Editor](https://vega.github.io/editor), [Visual Studio Code](https://code.visualstudio.com/) and many parts of Power BI Desktop) for JSON Editing.
 
-The key changes resulting from this swapout are long-awaited and significant enough to warrant their own sections, so these are detailed below.
+This will now give us many of the benefits that Vega Editor has for editing specifications, including, some key benefits which are highlighted below.
 
-### Commenting
+#### Commenting
 
-The editor now supports **JSON with comments** (jsonc)! 🎉🎉
+The editor and template system now supports **JSON with comments** (JSONC)! 🎉🎉
 
-![You can now comment your content using JavaScript-style comment markers](/img/changelog/1.7.0/json-comments.png "You can now comment your content using JavaScript-style comment markers")
+![JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor.](/img/changelog/1.7.0/json-comments.png "JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor.")
 
 - You can now use comments to either document your specifications or disable portions for debugging purposes.
 - You can use single line (`//`) or block (`/* */`) comment format.
 - The editor also has shortcuts for these operations:
   - [Ctrl + /] to toggle a line comment.
-  - [Ctrl + Shift + /] to toggle a block comment.
+  - [Ctrl + Alt + A] to toggle a block comment.
 
-### Auto-Completion
+#### Auto-Completion
 
-The JSON schemas for Vega and Vega-Lite have been integrated into the editor's autocompletion function, making discovery of the correct properties much more straightforward.
+The JSON schemas for Vega and Vega-Lite have been integrated into the editor's autocompletion function, making discovery of the correct properties much more straightforward. Completion will trigger when typing, or when you press [Ctrl + Space] to invoke manually.
 
-- Completion will trigger when typing, or when you press [Ctrl + Space] to invoke manually.
+![Valid matching entries for language keywords are now available via auto-completion.](/img/changelog/1.7.0/auto-completion.png "Valid matching entries for language keywords are now available via auto-completion.")
 
-:::info We're Keen to Keep Moving this Forward
-Auto-completion is currently set up in its simplest form and I'm sure that we can reduce the friction further for developers as we learn more about how Deneb is used. We have made many changes under the hood as to how JSON is processed and parsed, so there are opportunities to refine and tune the experience for developers. If you have suggestions on how to improve what should trigger and when, please let us know by [creating an issue](https://github.com/deneb-viz/deneb/issues) and we can take a look.
-:::
-
-### Inline Documentation
+#### Inline Documentation
 
 For Vega-Lite, the developers have built-in a lot of additional support for language keywords. You can now hover your mouse over any item that contains such documentation and see this rendered in a pop-up, e.g.:
 
-![For Vega-Lite, you can now hover your mouse over language keywords, to receive the inbuild documentation provided by the authors.](/img/changelog/1.7.0/doc-on-hover.png "For Vega-Lite, you can now hover your mouse over language keywords, to receive the inbuild documentation provided by the authors.")
+![Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation.](/img/changelog/1.7.0/doc-on-hover.png "Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation.")
 
 Any links in the displayed documentation can be clicked, top open the destination in a browser tab.
 
-### Improved Highlighting
+#### Improved Highlighting
 
 Any schema warnings and/or errors are now more direclty annotated in the editor, e.g.:
 
 ![The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.](/img/changelog/1.7.0/json-editor-highlighting.png "The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.")
 
-Both the lines containing an issue are highlighted in the line gutter area, and underlined in the appropriate color:
-
-- Warnings are shown in the gutter with a yellow triangle and underlined in yellow.
-- Errors are shown in the gutter with a red circle and underlined in red.
+You can also hover the mouse over any such annotation to see the details of the issue.
 
 :::warning Errors need to be fixed for some operations
 As errors do not produce valid JSON, you cannot format JSON or export your work as a template until any issues are corrected and re-parsed successfully.
 :::
 
-### Preservation of Code Folding
+#### Formatting Has Moved
 
-Previously, if you were folding/collapsing sections in the JSON editor to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
+Formatting was previously available via the toolbar - this has now moved to use Monaco's own formatter, available in the context menu, or with the new shortcut of [Ctrl + Shift + I]:
 
-### Keyboard Navigation Away from Editor
+![JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using [Ctrl + Shift + I].](/img/changelog/1.7.0/format-context-menu.png "JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using [Ctrl + Shift + I].")
 
-The editor toolbar now shows the function of the Tab key. This has two modes:
+#### 'Escape Hatch' for UI Navigation
 
-- _indent_: normal operation (indents JSON).
-- _navigate_: allows the user to use the Tab key to navigate to other UI elements using [Tab] of [Shift + Tab].
+In the editor you can change tab key behavior from standard tabbing to UI navigation (allowing you to tab out to other parts of the UI) by using [Ctrl + M].
 
-You can press [Ctrl + M] or click on the toolbar indicator to change the tab behavior when inside the JSON editor, allowing you to indent or navigate as needed.
+### Improved Editor State Preservation
+
+Previously, any specific editor changes you'd made, such as folding/collapsing sections to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
 
 ### Dark Mode
 
@@ -92,13 +86,29 @@ You now have the choice of the Deneb Advanced Editor UI to be displayed in light
 
 - Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
 
-  ![You can now set the theme to 'Dark', to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to 'Dark', to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
+  ![You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
 
 - The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.
 
 - If you wish for the preview area to be dark also - **bearing in mind that this may potentially cause accessibility issues while editing** - you can change this behavior by setting _Advanced editor > Preview area > Apply background settings to preview area_ to **Off**, e.g.:
 
-  ![You can disable the report background being passed through to the preview area by setting the 'Apply background settings to preview area' property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the 'Apply background settings to preview area' property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viwing your design as intended on the canvas.")
+  ![You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.")
+
+### `pbiFormat` Changes
+
+As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the Formatting Values page for further details.
+
+### `pbiFormatAutoUnit` Format Type
+
+This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the Formatting Values page for further details.
+
+### `pbiContainer` Signal
+
+The Vega view now has a new signal named `pbiContainer`, which provides access to information about the visual container in expressions, e.g.:
+
+![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
+
+This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](scrolling-overflow#using-pbicontainer-to-track-scrolling-events) page for more details on the internals of this feature.
 
 ### Advanced Cross-Filtering
 
@@ -123,31 +133,6 @@ You now have the choice of the Deneb Advanced Editor UI to be displayed in light
 
 - This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
 
-### `pbiContainer` Signal
-
-The Vega view now has a new signal named `pbiContainer`, which provides access to information about the visual container in expressions, e.g.:
-
-![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
-
-- This is an object with 6 properties:
-
-  - `height` - the height of the visual container.
-  - `width` - the width of the visual container.
-  - `scrollHeight` - the scrollable height of the container.
-  - `scrollWidth` - the scrollable width of the container.
-  - `scrollTop` the current vertical scroll position.
-  - `scrollLeft` the current horizonal scroll position.
-
-- If the generated visual overflows the preview area and enables [Scrolling](scrolling-overflow), Deneb will update the `scrollHeight` and `scrollLeft` values as the user scrolls the visible area and re-run the view, meaning that you can assign these values to marks or expressions and they will update.
-- Scroll event monitoring has a defult throttle time of **5ms**. This can be changed in the _Rendered visual > Container scroll events > Throttle time_ property:
-
-  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the intenral `pbiContainer` signal with new values.")
-
-  This has a minium value of **0ms** and a maximum of **1000ms**, and you can use this to tune the performance of scroll event updates as needed.
-
-- To be able to develop using this feature in the Advanced Editor, it's recommended that you enable [Show scrollbars on overflow](scrolling-overflow#confirming-and-configuring-scrollbar-report-canvas-appearance-in-the-editor), to apply this, otherwise the scroll event is not fired.
-- For backwards compatibility purposes, the `pbiContainerHeight` and `pbiContainerWidth` signals that Deneb adds for Vega specifications will remain available, but if you rely on these signals, it's recommended that you move to `pbiContainer.height` and `pbiContainer.width` accordingly, as these values will update on container changes rather than when the specification is parsed.
-
 ### Other Enhancements
 
 - Signal names in the Debug Pane now have more proportional space and are less likely to truncate when viewing. If a signal name does truncate, you can now hover over it to see the full name in a tooltip (#400).
@@ -155,12 +140,14 @@ The Vega view now has a new signal named `pbiContainer`, which provides access t
 ### Performance and Stability
 
 - Schema validation against the specification is now only performed when the editor is open. This typically improves initial render time in the report canvas view by 400-500ms for Vega-Lite visuals and 200-300ms for Vega visuals.
+- Some recursives function were identified as not needing to run for each dataset row during dataset processing. These have been refactored and hoisted to only run when necessary, improving overall processing time.
 
 ### Bug fixes
 
 - If you have multiple fields starting with the same characters (e.g. _Sales PY_, _Sales FC_) they should be uniquely identified when generating a template (#276)
 - The Power BI tooltip provider will incorrectly show `false` instead of a number, if that number should be text (#429)
 - The scrollbar color reverts when changing the visual container padding (#384)
+- Re-importing a template with auto field assignment does not correctly verify assignment state (#445)
 - `null` values for `datetime` fields are not being casted correctly when processed (#446)
 
 ## 1.6.2 (2023-12-08)
