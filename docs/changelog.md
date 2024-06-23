@@ -5,10 +5,10 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.7.0 (Under Development)
+## 1.7.0 (In Beta Testing)
 
 :::info Early Access Availability
-The change log is updated as features are added to the main development branch. They are available in [alpha builds](/community/early-access) until such a time as the version is ready for beta testing, and eventual submission to AppSource.
+The change log is updated as features are added to the main development branch. They are available in [beta builds](/community/early-access) until such a time as the version is ready for submission to AppSource.
 :::
 
 ### Vega Updates
@@ -16,9 +16,29 @@ The change log is updated as features are added to the main development branch. 
 - Vega updated to **5.30.0** (from 5.26.1).
 - Vega-Lite updated to **5.19.0** (from 5.16.3).
 
+### Dark Mode
+
+You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
+
+- This can be changed by either:
+
+  - Clicking the theme button in the top-right of the Advanced Editor toolbar.
+  - Using the [Ctrl + Shift + Alt + T] keyboard shortcut.
+  - Setting the _Advanced editor > Interface > Theme_ property in the format pane.
+
+- Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
+
+  ![You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
+
+- The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.
+
+- If you wish for the preview area to be dark also - **bearing in mind that this may potentially cause accessibility issues while editing** - you can change this behavior by setting _Advanced editor > Preview area > Apply background settings to preview area_ to **Off**, e.g.:
+
+  ![You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.")
+
 ### Monaco Editor for JSON
 
-Power BI custom visuals have some very challenging constraints in terms of what can be integrated. The work done in 1.6 and this release now allows us to include [Monaco Editor](https://microsoft.github.io/monaco-editor/) (the component from [Vega Editor](https://vega.github.io/editor), [Visual Studio Code](https://code.visualstudio.com/) and many parts of Power BI Desktop) for JSON Editing.
+Power BI custom visuals have some very challenging constraints in terms of what can be integrated. The work done in 1.6 and this release now allows us to include [Monaco Editor](https://microsoft.github.io/monaco-editor/) (the component from [Vega Editor](https://vega.github.io/editor), [Visual Studio Code](https://code.visualstudio.com/) and many parts of Power BI Desktop) for JSON editing! 🚀
 
 This will now give us many of the benefits that Vega Editor has for editing specifications, including, some key benefits which are highlighted below.
 
@@ -50,14 +70,14 @@ Any links in the displayed documentation can be clicked, top open the destinatio
 
 #### Improved Highlighting
 
-Any schema warnings and/or errors are now more direclty annotated in the editor, e.g.:
+Any schema warnings and/or errors are now more directly annotated in the editor, e.g.:
 
 ![The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.](/img/changelog/1.7.0/json-editor-highlighting.png "The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.")
 
 You can also hover the mouse over any such annotation to see the details of the issue.
 
 :::warning Errors need to be fixed for some operations
-As errors do not produce valid JSON, you cannot format JSON or export your work as a template until any issues are corrected and re-parsed successfully.
+As errors do not produce valid JSON, you cannot export your work as a template until any issues are corrected and re-parsed successfully.
 :::
 
 #### Formatting Has Moved
@@ -73,26 +93,6 @@ In the editor you can change tab key behavior from standard tabbing to UI naviga
 ### Improved Editor State Preservation
 
 Previously, any specific editor changes you'd made, such as folding/collapsing sections to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
-
-### Dark Mode
-
-You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
-
-- This can be changed by either:
-
-  - Clicking the theme button in the top-right of the Advanced Editor toolbar.
-  - Using the [Ctrl + Shift + Alt + T] keyboard shortcut.
-  - Setting the _Advanced editor > Interface > Theme_ property in the format pane.
-
-- Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
-
-  ![You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
-
-- The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.
-
-- If you wish for the preview area to be dark also - **bearing in mind that this may potentially cause accessibility issues while editing** - you can change this behavior by setting _Advanced editor > Preview area > Apply background settings to preview area_ to **Off**, e.g.:
-
-  ![You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.")
 
 ### `pbiFormat` Changes
 
@@ -140,7 +140,7 @@ This can also be used to monitor scrolling events in the visual container and yo
 ### Performance and Stability
 
 - Schema validation against the specification is now only performed when the editor is open. This typically improves initial render time in the report canvas view by 400-500ms for Vega-Lite visuals and 200-300ms for Vega visuals.
-- Some recursives function were identified as not needing to run for each dataset row during dataset processing. These have been refactored and hoisted to only run when necessary, improving overall processing time.
+- Some recursive functions were identified as not needing to run for each dataset row during dataset processing. These have been refactored and hoisted to only run when necessary, improving overall processing time.
 
 ### Bug fixes
 

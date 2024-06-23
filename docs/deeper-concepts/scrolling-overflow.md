@@ -67,7 +67,7 @@ Deneb adds a signal named `pbiContainer` to the Vega view, which provides access
 
   ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the intenral `pbiContainer` signal with new values.")
 
-  This has a minium value of **0ms** and a maximum of **1000ms**, and you can use this to tune the performance of scroll event updates as needed.
+  This has a minimum value of **0ms** and a maximum of **1000ms**, and you can use this to tune the performance of scroll event updates as needed.
 
 - To be able to develop using this feature in the Advanced Editor, it's recommended that you enable [Show scrollbars on overflow](#confirming-and-configuring-scrollbar-report-canvas-appearance-in-the-editor), to apply this, otherwise the scroll event is not fired.
 - For backwards compatibility purposes, the `pbiContainerHeight` and `pbiContainerWidth` signals that Deneb adds for Vega specifications will remain available, but if you rely on these signals, it's recommended that you move to `pbiContainer.height` and `pbiContainer.width` accordingly, as these values will update on container changes rather than when the specification is parsed.
