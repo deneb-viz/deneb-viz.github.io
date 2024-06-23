@@ -80,6 +80,7 @@ const config = {
             position: "left",
             dropdownActiveClassDisabled: true,
           },
+          { to: "blog", label: "Blog", position: "left" },
           {
             label: "Community & Resources",
             to: "/community/resources",
