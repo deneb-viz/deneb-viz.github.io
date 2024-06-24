@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeneb_doc=self.webpackChunkdeneb_doc||[]).push([[2535],{45641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Deneb 1.7 Available for Beta Testing","permalink":"/blog/1-7-beta","unlisted":false}]}')}}]);

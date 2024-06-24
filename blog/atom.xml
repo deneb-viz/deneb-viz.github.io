@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://deneb-viz.github.io/blog</id>
+    <title>Deneb Blog</title>
+    <updated>2024-06-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://deneb-viz.github.io/blog"/>
+    <subtitle>Deneb Blog</subtitle>
+    <icon>https://deneb-viz.github.io/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Deneb 1.7 Available for Beta Testing]]></title>
+        <id>https://deneb-viz.github.io/blog/1-7-beta</id>
+        <link href="https://deneb-viz.github.io/blog/1-7-beta"/>
+        <updated>2024-06-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Deneb 1.7 is a significant update, and we're excited to submit it to AppSource! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.]]></summary>
+        <content type="html"><![CDATA[<p>Deneb 1.7 is a significant update, and we're excited to submit it to AppSource! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-beta-testing">Why Beta Testing?<a class="hash-link" aria-label="Direct link to Why Beta Testing?" title="Direct link to Why Beta Testing?" href="https://deneb-viz.github.io/blog/1-7-beta#why-beta-testing">​</a></h2>
+<p>For Deneb, this is a critical phase of development that we can't do without broader assistance. Here are a few important reasons why:</p>
+<ul>
+<li>
+<p>Deneb's user base has grown significantly since its launch, and in the last three months alone, we have had nearly <strong>11,000</strong> downloads by more than <strong>6,000</strong> developers. And there will be many more people than this experiencing the visuals these folks develop in their deployed Power BI reports.</p>
+</li>
+<li>
+<p>Because Deneb is a certified visual, we can't monitor visual usage via telemetry for trust and privacy reasons. We only know about the kinds of use cases Deneb fulfills based on examples that people generously choose to share on social media channels or by a small portion who choose to make their templates available for others to use, or by those who help improve Deneb by reporting issues and making feature requests 🙏</p>
+</li>
+<li>
+<p>So, while we take great care to ensure that all functionality works as well as possible, we can only explore a limited number of use cases ourselves. We want to make sure that those out there who will be using Deneb in unique and innovative ways get a chance to make sure that their solutions will continue to work.</p>
+</li>
+<li>
+<p>Once we submit a new version of Deneb to AppSource, <strong>we're committed to the publication process</strong>: if someone finds a bug, we may be able to fix it very quickly, but it can take anywhere between <strong>3 and 5 weeks</strong> for a visual update to go through the certification process and fully deploy to all reports. This can be a long time for people to wait.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="this-is-where-your-help-is-invaluable">This is where your help is invaluable.<a class="hash-link" aria-label="Direct link to This is where your help is invaluable." title="Direct link to This is where your help is invaluable." href="https://deneb-viz.github.io/blog/1-7-beta#this-is-where-your-help-is-invaluable">​</a></h4>
+<p>If you have some time to dedicate to validating your existing specifications and checking the functionality of the new features, you're going to be (a) getting to play with new features and validating that they're going to help elevate your reports and your productivity processes when using Deneb, and (b) ensuring that not just you and your stakeholders are going to have continuity of service when the update deploys, but we can be confident that our wider community will, too 😀</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-changes-can-i-expect">What Changes Can I Expect?<a class="hash-link" aria-label="Direct link to What Changes Can I Expect?" title="Direct link to What Changes Can I Expect?" href="https://deneb-viz.github.io/blog/1-7-beta#what-changes-can-i-expect">​</a></h2>
+<p>We said that 1.7 is a big release, and we mean it! Here are the big-ticket items that may pique your interest further:</p>
+<ul>
+<li>
+<p><strong>Dark mode</strong>—you can now toggle between the traditional light theme and a darker one to reduce eye strain.</p>
+<p><img decoding="async" loading="lazy" alt="You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." src="https://deneb-viz.github.io/assets/images/dark-theme-standard-5157f71369108f81bd4a691af0e7af52.png" title="You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors." width="1498" height="777" class="img_ev3q"></p>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Commenting</strong>—you can now add comments to your JSON for documentation and debugging purposes.</p>
+<p><img decoding="async" loading="lazy" alt="JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor." src="https://deneb-viz.github.io/assets/images/json-comments-d885451e472344fdd83eadcf54f5ae70.png" title="JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor." width="619" height="312" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Auto-completion improvements</strong>—suggestions will now be recommended based on the details in the Vega and Vega-Lite schemas.</p>
+<p><img decoding="async" loading="lazy" alt="Valid matching entries for language keywords are now available via auto-completion." src="https://deneb-viz.github.io/assets/images/auto-completion-d209f488f486a019024117c26062fcfc.png" title="Valid matching entries for language keywords are now available via auto-completion." width="609" height="254" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Inline language documentation</strong> (for Vega-Lite)—the documentation the Vega team makes available for Vega-Lite in its language schema is now available when you hover your mouse over an appropriate location in your JSON. This will help you discover more language features within Deneb itself, and any hyperlinks will navigate you to the correct location on the Vega-Lite documentation site for further reading.</p>
+<p><img decoding="async" loading="lazy" alt="Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation." src="https://deneb-viz.github.io/assets/images/doc-on-hover-04ab2ff955e44c2f8033ff42d021a26a.png" title="Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation." width="609" height="217" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Clearer JSON error and warning indications</strong>—any parsing issues are better highlighted closer to their location in the JSON editor.</p>
+<p><img decoding="async" loading="lazy" alt="The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly." src="data:image/png;base64,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" title="The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly." width="588" height="126" class="img_ev3q"></p>
+</li>
+<li>
+<p><strong>Improved JSON editor state preservation</strong>—Deneb will track the state of anything you've done in the JSON editor to make your specification easier to navigate, such as code folding, for the current editing session. This will include when you exit and re-enter the advanced editor (provided you don't leave the current report page).</p>
+</li>
+<li>
+<p><strong>Auto unit formatting</strong>—a new format type that applies the same logic as Power BI format numbers in K, M, Bn, etc., with less effort than the existing Power BI value formatter.</p>
+</li>
+<li>
+<p><strong>Advanced cross-filtering</strong> (for Vega)—new expression functions to help generate cross-filtering of report items based on a filter against the original dataset sent to Deneb before any transformations may have been applied.</p>
+</li>
+<li>
+<p>Improved tracking of dataset field allocation within JSON for dataset changes and templating purposes.</p>
+</li>
+<li>
+<p>New signals that track the visual container scroll position.</p>
+</li>
+<li>
+<p>Many performance enhancements and bug fixes.</p>
+</li>
+</ul>
+<p>Check the <a href="https://deneb-viz.github.io/next/changelog">Change Log</a> for a more complete list and links to more detailed documentation.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-help">How Can I Help?<a class="hash-link" aria-label="Direct link to How Can I Help?" title="Direct link to How Can I Help?" href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-help">​</a></h2>
+<p>As mentioned above, there are two key things we need to ensure:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-everything-youve-already-made-continues-to-work">1. Everything you've already made continues to work.<a class="hash-link" aria-label="Direct link to 1. Everything you've already made continues to work." title="Direct link to 1. Everything you've already made continues to work." href="https://deneb-viz.github.io/blog/1-7-beta#1-everything-youve-already-made-continues-to-work">​</a></h4>
+<p>This is perhaps the most straightforward thing you can do, but it's the most important. Even if you do the following bare-minimum tests and everything looks good, this is incredibly helpful in validating things:</p>
+<ul>
+<li>
+<p>Update a Deneb visual to the latest version and ensure it continues working as expected for your users.</p>
+</li>
+<li>
+<p>Update a Deneb visual to the latest version and ensure it continues working as you expect as a developer.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-the-new-features-work-as-you-expect-them-to">2. The new features work as you expect them to.<a class="hash-link" aria-label="Direct link to 2. The new features work as you expect them to." title="Direct link to 2. The new features work as you expect them to." href="https://deneb-viz.github.io/blog/1-7-beta#2-the-new-features-work-as-you-expect-them-to">​</a></h4>
+<p>Again, we try to cover as much as possible ahead of time, but beta testing helps us confirm that the features and fixes we're implementing cover your use cases. You might even find use cases we didn't think of that can make Deneb even better in the long run or might possibly cause some unintended side effects in the shorter term.</p>
+<p>With anything that comes up here, we can decide if a feature needs additional tweaks before submission (if it's simple), or we might learn that a feature isn't ready for all users. This is, again, all valuable feedback that is best to know before we begin the submission and certification process.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-download-and-use-the-beta-release">How Can I Download And Use the Beta Release?<a class="hash-link" aria-label="Direct link to How Can I Download And Use the Beta Release?" title="Direct link to How Can I Download And Use the Beta Release?" href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-download-and-use-the-beta-release">​</a></h2>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Use a copy of any production reports!</div><div class="admonitionContent_BuS1"><p>If you are testing a production report, it is strongly suggested that you save a copy of your workbook and work with that for testing purposes before converting a visual over to a beta build instance. This means that you don’t have to worry about reverting your existing production visual back to 1.6 and losing any functionality that may be present in 1.7.</p></div></div>
+<p>The latest version is always published and available for download on our GitHub repository's beta channel page:</p>
+<ul>
+<li>
+<p>The visual (.pbiviz) file is available from the list of assets at the bottom, e.g.:</p>
+<p><img decoding="async" loading="lazy" alt="The GitHub repository contains a Beta Release page, where you can download the Power BI visual file (.pbiviz) for the latest beta version." src="https://deneb-viz.github.io/assets/images/beta-download-page-github-e996a0dd2de204ac1490bc1a03f86c9d.png" title="The GitHub repository contains a Beta Release page, where you can download the Power BI visual file (.pbiviz) for the latest beta version." width="744" height="383" class="img_ev3q"></p>
+</li>
+</ul>
+<ul>
+<li>
+<p>With the file downloaded, you can then <a href="https://learn.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals?WT.mc_id=DP-MVP-5003712#custom-visual-files" target="_blank" rel="noopener noreferrer">manually import it into your report</a>.</p>
+</li>
+<li>
+<p>To begin testing, create a visual using the new beta version or change an existing one from the current AppSource version to the installed beta version.</p>
+</li>
+</ul>
+<p><strong>Note that you should always exercise care when downloading and installing Power BI visual files from unknown/untrusted sources</strong>. Any visuals published and made available from Deneb's GitHub repository will conform to Deneb's <a href="https://deneb-viz.github.io/privacy-policy">privacy policy</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="i-checked-and-somethings-not-right-what-now">I Checked, and Something's Not Right. What Now?<a class="hash-link" aria-label="Direct link to I Checked, and Something's Not Right. What Now?" title="Direct link to I Checked, and Something's Not Right. What Now?" href="https://deneb-viz.github.io/blog/1-7-beta#i-checked-and-somethings-not-right-what-now">​</a></h2>
+<p>The best thing you can do is let us know. Don't assume someone else has already found it and told us! We can manage duplicate issues if they occur, but it's always good to check to see if the <a href="https://github.com/deneb-viz/deneb/issues" target="_blank" rel="noopener noreferrer">list of open issues</a> has what you're planning to tell us about.</p>
+<p>If you find a bug 🐛or have an enhancement 🌟 you'd like, you can <a href="https://github.com/deneb-viz/deneb/issues" target="_blank" rel="noopener noreferrer">create an issue in our GitHub repository</a> if it does not exist or add your voice to an existing issue if it's there.</p>
+<p>Because everyone's setup is always unique to them, a lot of the time we spend on bugs is spent understanding things that may be specific to the situation. Anything we can do to cut this time down means we can find and fix things faster. As such, the following information is always going to be helpful if you can provide it:</p>
+<ul>
+<li>
+<p>The version build (please <a href="https://deneb-viz.github.io/community/early-access#providing-feedback-on-early-access-builds">refer here</a> to find out how to obtain this).</p>
+</li>
+<li>
+<p>Prescribed steps to reproduce the issue.</p>
+</li>
+<li>
+<p>Expected outcome.</p>
+</li>
+<li>
+<p>Actual outcome.</p>
+</li>
+<li>
+<p>Supporting screenshots or a short video.</p>
+</li>
+<li>
+<p>Specification and/or sample workbook that can reproduce the issue.</p>
+</li>
+</ul>
+<p>Unfortunately, .pbix files aren’t a valid file type for attaching a workbook to your GitHub issue, but you can change the extension (e.g., to .zip), and this will work. In reproducing issues and sharing the above, <strong>please use public or anonymized data</strong>, as we cannot be held responsible for the data you share with us.</p>
+<p>If you have a suggestion for improvement, it would be great if you could be as descriptive as possible about how you think this should work. Again, the following should help provide you with some ideas for helping me get on your wavelength:</p>
+<ul>
+<li>
+<p>User stories or short narratives.</p>
+</li>
+<li>
+<p>Mockups (taking existing screenshots and annotating them is totally fine).</p>
+</li>
+</ul>
+<p>Note that enhancements will likely not be candidates for implementation during the beta testing phase but will help us understand what you need from Deneb and help us improve things in future releases.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource">When Will Beta Testing Be Finished and Deneb Submitted to AppSource?<a class="hash-link" aria-label="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?" title="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?" href="https://deneb-viz.github.io/blog/1-7-beta#when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource">​</a></h2>
+<p>We want to get to AppSource as quickly as possible, but we want to be sure not to rush if things are not fully ready.</p>
+<p>The timeline will depend on what is found. We are planning an initial two-week phase of validation, identifying key issues and triaging them, which is due to be completed on <strong>Monday, July 8th</strong>.</p>
+<p>If no significant or blocking issues occur, we'll submit it as soon as possible after this date. If we have things to fix, we will issue a new beta release with a tighter time loop for feedback and continue this until we're ready to go. This should ideally be done and ready before the end of July. Assuming the normal AppSource submission and certification timelines apply, Deneb should be live in reports by the end of August.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you">Thank You<a class="hash-link" aria-label="Direct link to Thank You" title="Direct link to Thank You" href="https://deneb-viz.github.io/blog/1-7-beta#thank-you">​</a></h2>
+<p>We say this a lot, but we rely incredibly on the Power BI and Deneb community to help promote, test, and support Deneb so everyone can benefit. We're also so fortunate that the Vega development team continues to support and update Vega and Vega-Lite, which provide a fantastic set of tools for bespoke data visualization. Without these people and their commitment to the community, we would not be where we are today. 🙏</p>
+<p>We look forward to bringing 1.7 to a Power BI near you soon!</p>]]></content>
+        <author>
+            <name>Daniel Marsh-Patrick</name>
+            <uri>https://github.com/dm-p</uri>
+        </author>
+        <category label="releases" term="releases"/>
+        <category label="testing" term="testing"/>
+        <category label="beta" term="beta"/>
+    </entry>
+</feed>
