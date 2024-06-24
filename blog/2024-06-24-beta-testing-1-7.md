@@ -17,7 +17,7 @@ Deneb 1.7 is a significant update, and we're excited to submit it to AppSource v
 
 For Deneb, this is a critical phase of development that we can't do without broader assistance. Here are a few important reasons why:
 
-- Deneb's user base has grown significantly since its launch, and in the last three months alone, we have had nearly **11,000** downloads by more than **6,000** developers. And there will be many more people than this experiencing the visuals these folks develop in their deployed Power BI reports.
+- Deneb's user base has grown significantly since its launch, and in the last three months alone, we have had nearly **13,000** downloads by more than **6,500** developers. And there will be many more people than this experiencing the visuals these folks develop in their deployed Power BI reports.
 
 - Because Deneb is a certified visual, we can't monitor visual usage via telemetry for trust and privacy reasons. We only know about the kinds of use cases Deneb fulfills based on examples that people generously choose to share on social media channels or by a small portion who choose to make their templates available for others to use, or by those who help improve Deneb by reporting issues and making feature requests 🙏
 
