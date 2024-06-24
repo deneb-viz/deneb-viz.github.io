@@ -1,6 +1,6 @@
 ---
 title: Deneb 1.7 Available for Beta Testing
-description: Deneb 1.7 is a significant update, and we're excited to submit it to AppSource! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.
+description: Deneb 1.7 is a significant update, and we're excited to submit it to AppSource very soon! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.
 slug: 1-7-beta
 authors:
   - daniel
@@ -9,7 +9,7 @@ image: /img/blog/blog-header-beta-1-7.png
 hide_table_of_contents: false
 ---
 
-Deneb 1.7 is a significant update, and we're excited to submit it to AppSource! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.
+Deneb 1.7 is a significant update, and we're excited to submit it to AppSource very soon! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.
 
 <!-- truncate -->
 
