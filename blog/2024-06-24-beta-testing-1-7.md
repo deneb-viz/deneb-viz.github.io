@@ -91,7 +91,7 @@ With anything that comes up here, we can decide if a feature needs additional tw
 If you are testing a production report, it is strongly suggested that you save a copy of your workbook and work with that for testing purposes before converting a visual over to a beta build instance. This means that you don’t have to worry about reverting your existing production visual back to 1.6 and losing any functionality that may be present in 1.7.
 :::
 
-The latest version is always published and available for download on our GitHub repository's beta channel page:
+The latest version is always published and available for download on our GitHub [repository's beta channel page](https://deneb.link/beta-build):
 
 - The visual (.pbiviz) file is available from the list of assets at the bottom, e.g.:
 
