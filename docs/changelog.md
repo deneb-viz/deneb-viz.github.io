@@ -96,11 +96,11 @@ Previously, any specific editor changes you'd made, such as folding/collapsing s
 
 ### `pbiFormat` Changes
 
-As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the Formatting Values page for further details.
+As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the [Formatting Values](formatting#object-example) page for further details.
 
 ### `pbiFormatAutoUnit` Format Type
 
-This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the Formatting Values page for further details.
+This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the [Formatting Values](formatting#auto-formatting-with-pbiformatautounit) page for further details.
 
 ### `pbiContainer` Signal
 

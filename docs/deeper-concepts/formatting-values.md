@@ -76,6 +76,7 @@ This results in something a little more human-readable:
 
 ![vega-lite-billions.png](./img/vega-lite-billions.png "After applying a Power BI format string and specifying our custom formatter, the axis becomes much more human readable. This updates to show tick values as $bn, to one decimal place.")
 
+<div id="object-example"></div>
 :::info Vega-Lite's format property is extensible
 The `format` property can also expect an object instead of a string. If you use an object for the `pbiFormat` or `pbiFormatAutoUnit` format types, you can use an object that can include any of the optional `ValueFormatterOptions` properties from [Microsoft's formatting library for custom visuals](https://learn.microsoft.com/en-us/power-bi/developer/visuals/utils-formatting?WT.mc_id=DP-MVP-5003712#valueformatteroptions). The following example is synonymous with the above one:
 
@@ -224,6 +225,8 @@ When using `pbiFormat` in an expression function, you have a bit more versatilit
 
 ```
 pbiFormat(value, format, options = {})
+
+pbiFormat(value, options = {})
 ```
 
 - The `value` parameter is the number value that you wish to format.
