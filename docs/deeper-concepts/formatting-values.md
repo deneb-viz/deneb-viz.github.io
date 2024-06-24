@@ -18,7 +18,7 @@ To ensure correct compatibility with Vega and Vega-Lite, particularly if you're 
 
 ## Power BI Custom Formatter
 
-If you prefer working with Power BI format strings, Deneb has a [custom format type](https://vega.github.io/vega-lite/docs/config.html#custom-format-type) named `pbiFormat` that you can use in lieu of the D3 format convention.
+If you prefer working with Power BI format strings, Deneb has [custom format types](https://vega.github.io/vega-lite/docs/config.html#custom-format-type) named `pbiFormat` and `pbiFormatAutoUnit` that you can use in lieu of the D3 format convention.
 
 ## Vega-Lite Implementation
 
@@ -75,6 +75,31 @@ That's a lot of zeroes! What might be nicer is if his were a little easier to re
 This results in something a little more human-readable:
 
 ![vega-lite-billions.png](./img/vega-lite-billions.png "After applying a Power BI format string and specifying our custom formatter, the axis becomes much more human readable. This updates to show tick values as $bn, to one decimal place.")
+
+:::info Vega-Lite's format property is extensible
+The `format` property can also expect an object instead of a string. If you use an object for the `pbiFormat` or `pbiFormatAutoUnit` format types, you can use an object that can include any of the optional `ValueFormatterOptions` properties from [Microsoft's formatting library for custom visuals](https://learn.microsoft.com/en-us/power-bi/developer/visuals/utils-formatting?WT.mc_id=DP-MVP-5003712#valueformatteroptions). The following example is synonymous with the above one:
+
+```json highlight={9-12} showLineNumbers
+{
+  ...
+  "encoding": {
+    ...
+    "x": {
+      "field": "$ Sales",
+      "type": "quantitative",
+      "axis": {
+        "format": {
+          "format": "#0.0",
+          "value": 1e9        // 1 billion
+        },
+        "formatType": "pbiFormat"
+      }
+    }
+  }
+}
+```
+
+:::
 
 #### Quantitative & Temporal Axes Example
 
@@ -171,6 +196,28 @@ For example, we can view the live chart example from above _en français_ (fr-FR
 
 If you wish to specify a different local to Power BI's one (for example, you wish values to be norrmalized to the same currency for your users irrespective of location), you can either override this using the `locale` property of a specification's config ([V](https://vega.github.io/vega/docs/config/#:~:text=%22strokeWidth%22.-,locale,-Object) | [VL](https://vega.github.io/vega-lite/docs/config.html#aria-config)), or manually specify a valid Power BI locale within the `options.cultureSelector` property in an expression function for `pbiFormat` (more on this below).
 
+## Auto Formatting with `pbiFormatAutoUnit`
+
+Many Power BI visuals contain an _Auto_ unit type when applying properties. Deneb also contains `pbiFormatAutoUnit` as a type that mimics this behavior, e.g.:
+
+```json highlight={9} showLineNumbers
+{
+  ...
+  "encoding": {
+    ...
+    "x": {
+      "field": "$ Sales",
+      "type": "quantitative",
+      "axis": {
+        "formatType": "pbiFormatAutoUnit"
+      }
+    }
+  }
+}
+```
+
+You can still use a `format` property as normal to specify a specific format string to use in conjunction with the resolved value; this just illustrates that you can omit it and get numbers formatted to their nearest degree of scale with minimal overhead with this format type.
+
 ## `pbiFormat` Expression Function Full Implementation Details
 
 When using `pbiFormat` in an expression function, you have a bit more versatility over using in the encoding properties directly. The full signature for this function when used in expressions is as follows:
@@ -202,6 +249,8 @@ pbiFormat(value, format, options = {})
   - `cultureSelector` - a valid Power BI culture code, which will enforce formatting to a specific locale, e.g. `en-GB`, `fr-FR`.
 
   _**\*** will override the `format` parameter if specified_
+
+`pbiFormatAutoUnit` is a convenience function for `pbiFormat` with the `value` property automatically set to the current data value, coercing Power BI to use the nearest sensible unit. As such, the signature is the same as for `pbiFormat`, but would make sense to not set the `value` property to something else.
 
 ## Working with Dynamic Format Strings (for Measures and Calculation Groups)
 
