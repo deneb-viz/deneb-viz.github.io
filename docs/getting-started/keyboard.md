@@ -21,7 +21,6 @@ Please [create an issue in the GitHub repo with what you're missing](https://git
 | Navigate to Settings pane        | **Ctrl** + **Alt** + **3**       |
 | Apply Changes                    | **Ctrl** + **Enter**             |
 | Toggle Auto-Apply                | **Ctrl** + **Shift** + **Enter** |
-| Repair and Format JSON           | **Ctrl** + **Alt** + **R**       |
 | Edit Specification Field Mapping | **Ctrl** + **Alt** + **F**       |
 | New Specification                | **Ctrl** + **Alt** + **N**       |
 | Generate JSON Template           | **Ctrl** + **Alt** + **E**       |
@@ -29,11 +28,25 @@ Please [create an issue in the GitHub repo with what you're missing](https://git
 
 ## In-Editor
 
-Deneb utilises Ace Editor, [which comes with its own keyboard shortcuts](https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts) and can help you quite considerably in-terms of productivity. Any Deneb-specific ones are detailed here.
+Deneb utilises Monaco Editor for JOSN editing, which comes with its own keyboard shortcuts and can help you quite considerably in-terms of productivity. You can view a list of shortcut keys by accessing the command palette, either from the context menu (right-clicking the editor), or pressing **Ctrl + F1**, e.g.:
 
-| Function                 | Shortcut |
-| ------------------------ | -------- |
-| Focus out to Command Bar | **Esc**  |
+##### Context menu
+
+![monaco-context-menu.png](./img/monaco-context-menu.png "Right-clicking the JSON editor shows the context menu.")
+
+##### Command Palette
+
+![monaco-command-palette.png](./img/monaco-command-palette.png "the Command Palette (Ctrl + F1) shows all available commands and their keystrokes.")
+
+Some useful commands are:
+
+| Function             | Shortcut            |
+| -------------------- | ------------------- |
+| Format document      | **Ctrl + Alt + R**  |
+| Toggle line comment  | **Ctrl + /**        |
+| Toggle block comment | **Shift + Alt + A** |
+| Find                 | **Ctrl + F**        |
+| Replace              | **Ctrl + H**        |
 
 ## Debug Pane
 
