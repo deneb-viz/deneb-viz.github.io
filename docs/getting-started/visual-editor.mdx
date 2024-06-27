@@ -72,12 +72,6 @@ If you exit focus mode (and out of the Visual Editor) **any unapplied changes ma
 Whilst this option is convenient for seeing changes take effect immediately, it can have negative performance implications if you're working with a large number of data points or elements within your visualization. Please refer to the [Performance Considerations](performance) page for further details on potential risks and mitigation approaches.
 :::
 
-#### **Format JSON (Ctrl + Alt + R)**
-
-- Selecting this option will attempt to repair any simple typographical issues in your JSON, and re-format it with indentation.
-- The tooling does its best to fix anything straightforward but in some cases it will not be possible to repair the JSON and manual corrections may be required and a banner will be shown above the editor.
-- In these cases, you can select the error details in the bottom-right to investigate further and use this information to correct it.
-
 #### **Edit Specification Field Mapping (Ctrl + Alt + F)**
 
 - Selecting this option allows you to re-assign any columns or measures that are bound to an encoding or expression in your specification.
@@ -97,6 +91,11 @@ This dialog is also displayed by default if this is the first time opening the V
 
 - Selecting this option will open the **Generate JSON Template** dialog.
 - The dialog can be used to create an exportable version of the your specification. Refer to the [appropriate section in the Templates page](templates#generating-a-template) for more information on usage.
+
+#### Theme Toggle (Ctrl + Shift + Alt + T)
+
+- Selecting this option will toggle the theme of the Visual Editor between light and dark modes.
+- By default, this will not affect the preview area, which will always attempt to mimic the background color of the report canvas. You can disable this in the [Preview Area settings](#preview-area) if you wish to see the visual in a consistent theme.
 
 #### **Help (Ctrl + Alt + H)**
 
@@ -134,12 +133,13 @@ Allows you to modify the size of the font used in the JSON editor. By default, t
 
 By default, any content in the editor that overflows the width will wrap onto a new line. By disabling this property, you can keep content on a single line, and the editor will display a horizontal scrollbar as appropriate.
 
-#### Line Gutter & Line Numbers
+#### Line Numbers
 
-By default, the editor will show line numbers in the left-hand gutter.
+By default, the editor will show line numbers in the left-hand gutter. You can disable this property to hide them.
 
-- You can disable this gutter by disabling the **Line gutter** property.
-- Alternatively, you can keep the gutter (so that sections of JSON can still be expanded and collapsed as needed) but hide the line numbers by disabling the **Line numbers** property.
+#### Change Event Detect Interval
+
+This property allows you to specify the interval (in milliseconds) at which the editor will check for changes. By default, this is set to 700ms. It's recommended that you don't change this setting unless you're experiencing performance issues with the editor.
 
 ### Specification Editor Pane
 
@@ -171,6 +171,16 @@ By default, the editor will show line numbers in the left-hand gutter.
 - The JSON must produce a valid config for your selected provider (either Vega or Vega-Lite).
 - It's generally advised to try and use the config for anything that can "theme" your chart and keep this separate from the specification. This makes easier to port across to other instances of the visual.
 
+### Status Bar
+
+The status bar at the bottom of each editor re-states which provider you are using (Vega or Vega-Lite) and which version is embedded.
+
+:::tip Check the Provider Version Can Do What You're Looking Up
+Deneb doesn't automatically support new releases of Vega or Vega-Lite. Because the runtimes are embedded, any new releases need to be be tested, implemented and deployed to AppSource, which can take some time. As such, you can use this information in the toolbar to confirm if the embedded version might be behind any new features published by the Vega team.
+:::
+
+The staus bar also shows the current cursor position.
+
 ### Settings Pane
 
 :::note Keyboard shortcut
@@ -199,7 +209,7 @@ By default, the editor will show line numbers in the left-hand gutter.
 :::note Specification editor only
 :::
 
-As the specification is text-based, it can be onerous to look-up or type the names for measures or columns in manually. For any that are added to the **Values** data role, they will be offered (along with a qualifier as to their type) in the Specification editor’s auto-completion, e.g.:
+Deneb offers auto-completion based on the Vega and Vega-Lite language schemas. In addition to this, any columns or measures that are added to the **Values** data role, will be offered in the Specification editor’s auto-completion, e.g.:
 
 ![Example of auto-completion from the visual dataset.](./img/completer.png "Example of auto-completion from the visual dataset.")
 
@@ -221,7 +231,7 @@ Deneb captures the dimensions of your visual prior to opening the Visual Editor 
 
 Your visual may not fit entirely into the preview area at 100% scale, so you can use the [Zoom Controls in the Debug Pane](#zoom-controls) (or collapse it) to adjust this accordingly, [or resize (or collapse) the editor pane](#the-visual-editor-pane) to accommodate.
 
-The **Advenced editor > Preview area** property card in Power BI's formatting pane lets you modify the following properties of the Preview Area:
+The **Advanced editor > Preview area** property card in Power BI's formatting pane lets you modify the following properties of the Preview Area:
 
 ![Preview area properties](img/preview-area-settings.png "The Power BI formatting pane exposes some additional properties for formatting the Preview area, under the Advanced editor menu.")
 
@@ -238,6 +248,10 @@ If your visual specification overflows the viewport, the default behavior of the
 If you wish to mimic the behavior of the report view, you can enable the **Show scrollbars on overflow** property. This will cause the preview area to use scrollbars as appropriate rather than overflowing the content outside the viewport marker area.
 
 To learn more about scrolling and overflow behavior, please refer to the [Scrolling and Overflow](scrolling-overflow) page.
+
+#### Background Settings
+
+This setting attempts to mimic the background color of the report canvas, so that you can see how your visual will look in the report. If this is not to your liking (for instance, you would like dark mode to affect the entire interface, noting that your visual preview might not truly represent how it looks in your report), you can disable this property.
 
 ## Debug Pane
 
@@ -275,14 +289,6 @@ The Logs pane is used to monitor [logging](https://vega.github.io/vega/docs/api/
 
 - The default logging level is `warn`.
 - Note that due to the verbosity of the output created by the `debug` level, this is not available in Deneb.
-
-### Provider and Version
-
-This are provides re-statement as to which provider you're using (Vega or Vega-Lite) and which version is embedded.
-
-:::tip Check the Provider Version Can Do What You're Looking Up
-Deneb doesn't automatically support new releases of Vega or Vega-Lite. Because the runtimes are embedded, any new releases need to be be tested, implemented and deployed to AppSource, which can take some time. As such, you can use this information in the toolbar to confirm if the embedded version might be behind any new features published by the Vega team.
-:::
 
 ### Zoom Controls
 
