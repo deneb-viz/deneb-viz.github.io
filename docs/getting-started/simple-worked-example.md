@@ -114,7 +114,9 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
 
 ```json title="Generated Specification" showLineNumbers
 {
-  "data": { "name": "dataset" },
+  "data": {
+    "name": "dataset"
+  },
   "layer": [
     {
       "mark": {
@@ -123,7 +125,9 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
         "tooltip": true
       },
       "encoding": {
-        "x": { "field": "Mean Temperature" }
+        "x": {
+          "field": "Mean Temperature"
+        }
       }
     },
     {
@@ -155,7 +159,9 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
     },
     "x": {
       "type": "quantitative",
-      "axis": { "title": "Mean Temperature" }
+      "axis": {
+        "title": "Mean Temperature"
+      }
     }
   }
 }
@@ -163,24 +169,24 @@ In our editor's **Specification** tab, we'll now have the following [Vega-Lite J
 
 This breaks down as follows:
 
-- There's a `data` object, which has a mapping of `"dataset"` (line 2).
+- There's a `data` object, which has a mapping of `"dataset"` (lines 2-4).
   - This is required for the specification, instructs that our visual's dataset should be used and should be left as-is.
   - Refer to the [Dataset](dataset) page for more details on how this works.
-- We have a [`layer`](http://vega.github.io/vega-lite/docs/layer.html) view, which allows us to superimpose chart elements (lines 3-35). Within this layer, we have:
+- We have a [`layer`](http://vega.github.io/vega-lite/docs/layer.html) view, which allows us to superimpose chart elements (lines 5-39). Within this layer, we have:
 
-  - One [`bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for each data point (lines 4-13).
+  - One [`bar` mark](http://vega.github.io/vega-lite/docs/bar.html) for each data point (lines 6-17).
 
-    - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure (line 11).
-    - We're displaying a `tooltip` for this mark (line 8).
+    - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure (lines 13-15).
+    - We're displaying a `tooltip` for this mark (line 10).
     - This is used to display orginal values in the event of a cross-highlight from another visual (more on this below)
 
-  - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 14-34).
+  - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 18-38).
 
-    - The `opacity` of our mark (how 'solid' the color appears) is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 23-32). This is also explained further below, so just bear with us for now.
+    - The `opacity` of our mark (how 'solid' the color appears) is linked to a special field called `__selected__`, which manages cross-filtering for us (lines 27-36). This is also explained further below, so just bear with us for now.
 
-- The [encoding for the visual's top-level](http://vega.github.io/vega-lite/docs/encoding.html) (lines 36-45) maps our data as follows:
-  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 37-40).
-  - Our x-axis is a quantitative/linear (lines 41-44).
+- The [encoding for the visual's top-level](http://vega.github.io/vega-lite/docs/encoding.html) (lines 40-51) maps our data as follows:
+  - `City` is mapped to the y-axis and is a nominal/categorical field (lines 41-44).
+  - Our x-axis is a quantitative/linear (lines 45-49).
 
 As noted above, this is a [layered](https://vega.github.io/vega-lite/docs/layer.html) view, so that we can try and show you how to make your visual work with Power BI's interactivity features in as simple a way as possible. Vega-Lite also has [single](http://vega.github.io/vega-lite/docs/spec.html#single), [concatenated](https://vega.github.io/vega-lite/docs/concat.html) or [faceted](https://vega.github.io/vega-lite/docs/facet.html) views as well, wo it's worth checking those out (with their associated examples) to learn more.
 
@@ -308,7 +314,9 @@ Creators often have their visuals enabled for cross-highlighting, which means th
       "tooltip": true
     },
     "encoding": {
-      "x": { "field": "Mean Temperature" }
+      "x": {
+        "field": "Mean Temperature"
+      }
     }
   }
   ```
