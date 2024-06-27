@@ -28,7 +28,7 @@ Please [create an issue in the GitHub repo with what you're missing](https://git
 
 ## In-Editor
 
-Deneb utilises Monaco Editor for JOSN editing, which comes with its own keyboard shortcuts and can help you quite considerably in-terms of productivity. You can view a list of shortcut keys by accessing the command palette, either from the context menu (right-clicking the editor), or pressing **Ctrl + F1**, e.g.:
+Deneb utilises Monaco Editor for JSON editing, which comes with its own keyboard shortcuts and can help you quite considerably in-terms of productivity. You can view a list of shortcut keys by accessing the command palette, either from the context menu (right-clicking the editor), or pressing **Ctrl + F1**, e.g.:
 
 ##### Context menu
 
