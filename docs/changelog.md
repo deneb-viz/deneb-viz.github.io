@@ -82,9 +82,9 @@ As errors do not produce valid JSON, you cannot export your work as a template u
 
 #### Formatting Has Moved
 
-Formatting was previously available via the toolbar - this has now moved to use Monaco's own formatter, available in the context menu, or with the new shortcut of [Ctrl + Shift + I]:
+Formatting was previously available via the toolbar - this has now moved to use Monaco's own formatter, available in the context menu, or with the existing keyboard shortcut of [Ctrl + Alt + R]:
 
-![JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using [Ctrl + Shift + I].](/img/changelog/1.7.0/format-context-menu.png "JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using [Ctrl + Shift + I].")
+![JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using the existing keyboard shortcut of [Ctrl + Alt + R].](/img/changelog/1.7.0/format-context-menu.png "JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using the existing keyboard shortcut of [Ctrl + Alt + R].")
 
 #### 'Escape Hatch' for UI Navigation
 
