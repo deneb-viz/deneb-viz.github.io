@@ -5,6 +5,8 @@ sidebar_position: 0
 sidebar_label: Introduction
 ---
 
+![landing_banner.png](/img/landing_banner.png "Deneb: Declarative Visualization in Power BI site banner")
+
 # Declarative Visualization in Power BI
 
 Deneb is a [certified custom visual](https://docs.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-certified?WT.mc_id=DP-MVP-5003712) for [Microsoft Power BI](https://www.powerbi.com), which allows developers to use the declarative [JSON](https://www.json.org/json-en.html) syntax of the [Vega](http://vega.github.io/vega) or [Vega-Lite](http://vega.github.io/vega-lite) languages to create their own data visualizations.
