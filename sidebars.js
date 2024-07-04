@@ -66,6 +66,7 @@ const sidebars = {
       type: "category",
       label: "Change Log",
       collapsible: true,
+      collapsed: true,
       link: {
         type: "doc",
         id: "changelog",
