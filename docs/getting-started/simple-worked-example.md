@@ -16,7 +16,7 @@ In the following pages, we'll create a simple bar chart, using the visual, some 
   allowFullScreen="true"
 ></iframe>
 
-&nbsp;&nbsp;&nbsp;&nbsp;_[Download this workbook](/pbix/Deneb-Simple-Vega-Lite-Bar-Chart-Example-1.6.0.pbix)_
+&nbsp;&nbsp;&nbsp;&nbsp;_[Download this workbook](/pbix/Deneb-Simple-Vega-Lite-Bar-Chart-Example-1.7.0.pbix)_
 
 ## Our Starting Data
 
