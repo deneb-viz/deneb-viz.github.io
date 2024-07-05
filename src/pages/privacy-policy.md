@@ -24,7 +24,7 @@ Our Power BI custom visual is available via [Microsoft Appsource](https://appsou
 
 ### Use of Collected Information
 
-The information collected by Microsoft is used solely by us for the purpose of analyzing download metrics. This helps us understand how our custom visual is being used and improve its functionality. Please note the following:
+The information collected by Microsoft is used by us solely for the purpose of analyzing download metrics. This helps us understand how our custom visual is being used and improve its functionality. Please note the following:
 
 - **No Marketing Use**: We do not use this information for marketing purposes.
 
