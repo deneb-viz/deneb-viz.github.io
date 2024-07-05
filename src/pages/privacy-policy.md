@@ -22,9 +22,9 @@ If the [standalone version](/getting-started#standalone-version) of the visual i
 
 Our Power BI custom visual is available via [Microsoft Appsource](https://appsource.microsoft.com/). When you acquire the visual, certain user information is captured by Microsoft. We recommend reviewing Microsoft's [Privacy Policy](https://privacy.microsoft.com/en-us/privacystatement) for detailed information on their data collection practices.
 
-### Use of Collected Information
+### Our Use of Collected Information
 
-The information collected by Microsoft is used by us solely for the purpose of analyzing download metrics. This helps us understand how our custom visual is being used and improve its functionality. Please note the following:
+We solely use the information collected by Microsoft for the purpose of analyzing download metrics. This helps us understand how our custom visual is being used and improve its functionality. Please note the following:
 
 - **No Marketing Use**: We do not use this information for marketing purposes.
 
