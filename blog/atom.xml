@@ -2,11 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://deneb-viz.github.io/blog</id>
     <title>Deneb Blog</title>
-    <updated>2024-06-24T00:00:00.000Z</updated>
+    <updated>2024-07-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://deneb-viz.github.io/blog"/>
     <subtitle>Deneb Blog</subtitle>
     <icon>https://deneb-viz.github.io/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Deneb 1.7 is AppSource Certified!]]></title>
+        <id>https://deneb-viz.github.io/blog/1-7-certified</id>
+        <link href="https://deneb-viz.github.io/blog/1-7-certified"/>
+        <updated>2024-07-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[It's a big day - Deneb 1.7 has passed certification! 🎉🎉]]></summary>
+        <content type="html"><![CDATA[<p>It's a big day - Deneb 1.7 has passed certification! 🎉🎉</p>
+<p>It should take around two weeks for the new version to fully deploy to your reports. In the meantime, you can see the full list of changes in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>. For users of the standalone (non-AppSource) version, this has also been made available, so you can <a href="https://deneb.link/latest-release" target="_blank" rel="noopener noreferrer">download it from GitHub</a>.</p>
+<p>To help with the wait for AppSource users, we've recorded some short videos to help you get to know the new features and will be releasing a new one each day. The first feature we're showcasing is dark mode 🌙 But we'll add new videos to the playlist below, so keep checking, or like and subscribe (if that's your thing) to stay up to date.</p>
+<iframe width="600" height="325" src="https://www.youtube.com/embed/videoseries?list=PLenEqp5HifcRASUPYL6Nj-a2YtfCBmjz6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<p>We extend our heartfelt thanks to our community, and especially our dedicated beta testers, for their invaluable contributions that have led us to this momentous occasion!</p>]]></content>
+        <author>
+            <name>Daniel Marsh-Patrick</name>
+            <uri>https://github.com/dm-p</uri>
+        </author>
+        <category label="releases" term="releases"/>
+        <category label="certification" term="certification"/>
+        <category label="production" term="production"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Deneb 1.7 Available for Beta Testing]]></title>
         <id>https://deneb-viz.github.io/blog/1-7-beta</id>

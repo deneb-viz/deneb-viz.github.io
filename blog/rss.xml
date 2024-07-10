@@ -4,10 +4,25 @@
         <title>Deneb Blog</title>
         <link>https://deneb-viz.github.io/blog</link>
         <description>Deneb Blog</description>
-        <lastBuildDate>Mon, 24 Jun 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Jul 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Deneb 1.7 is AppSource Certified!]]></title>
+            <link>https://deneb-viz.github.io/blog/1-7-certified</link>
+            <guid>https://deneb-viz.github.io/blog/1-7-certified</guid>
+            <pubDate>Thu, 11 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[It's a big day - Deneb 1.7 has passed certification! 🎉🎉]]></description>
+            <content:encoded><![CDATA[<p>It's a big day - Deneb 1.7 has passed certification! 🎉🎉</p>
+<p>It should take around two weeks for the new version to fully deploy to your reports. In the meantime, you can see the full list of changes in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>. For users of the standalone (non-AppSource) version, this has also been made available, so you can <a href="https://deneb.link/latest-release" target="_blank" rel="noopener noreferrer">download it from GitHub</a>.</p>
+<p>To help with the wait for AppSource users, we've recorded some short videos to help you get to know the new features and will be releasing a new one each day. The first feature we're showcasing is dark mode 🌙 But we'll add new videos to the playlist below, so keep checking, or like and subscribe (if that's your thing) to stay up to date.</p>
+<iframe width="600" height="325" src="https://www.youtube.com/embed/videoseries?list=PLenEqp5HifcRASUPYL6Nj-a2YtfCBmjz6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<p>We extend our heartfelt thanks to our community, and especially our dedicated beta testers, for their invaluable contributions that have led us to this momentous occasion!</p>]]></content:encoded>
+            <category>releases</category>
+            <category>certification</category>
+            <category>production</category>
+        </item>
         <item>
             <title><![CDATA[Deneb 1.7 Available for Beta Testing]]></title>
             <link>https://deneb-viz.github.io/blog/1-7-beta</link>
