@@ -5,11 +5,24 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.7.0 (2024-07-10)
+## 1.7.1 (In Development)
 
-:::info Pending deployment to AppSource
-Deneb 1.7 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-:::
+### Vega Updates
+
+- Vega-Lite updated to **5.20.1** (from 5.19.0)
+
+### Minor Enhancements
+
+- The `pbiContainer` signal is now available abnd updated on scroll events for faceted and repeated specifications (#474)
+
+### Bugs Fixed
+
+- `pbiFormat` not resolving correctly for some numeric tooltip fields (#483)
+- Viewport not updating in focus mode for Vega specifications (#481)
+- Monospaced hyperlinks not opening in documentation tooltips (#473)
+- `pbiContainer` signal height and width getting set to scroll height/width on scroll (#475)
+
+## 1.7.0 (2024-07-10)
 
 ### Vega Updates
 
