@@ -2,11 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://deneb-viz.github.io/blog</id>
     <title>Deneb Blog</title>
-    <updated>2024-07-11T00:00:00.000Z</updated>
+    <updated>2024-08-05T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://deneb-viz.github.io/blog"/>
     <subtitle>Deneb Blog</subtitle>
     <icon>https://deneb-viz.github.io/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Deneb 1.7.1 Standalone Available (and submitted to AppSource)]]></title>
+        <id>https://deneb-viz.github.io/blog/1-7-1-submission</id>
+        <link href="https://deneb-viz.github.io/blog/1-7-1-submission"/>
+        <updated>2024-08-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[1.7.1 is a minor update that fixes initial issues observed in the 1.7 release. The standalone build is available now, and the AppSource version is currently undergoing certification.]]></summary>
+        <content type="html"><![CDATA[<p>1.7.1 is a minor update that fixes initial issues observed in the 1.7 release. The standalone build is available now, and the AppSource version is currently undergoing certification.</p>
+<hr>
+<p>The rollout of 1.7 seems to be going well, and thanks very much to you all for your fantastic feedback. It's great to hear how well you're progressing with the new changes!</p>
+<p>Thanks also to those who found and reported some minor issues. You provided excellent reproduction details and helped immensely with testing and validating these fixes, meaning that we could resolve them really quickly.</p>
+<p>I've taken the opportunity to incorporate some other quality-of-life improvements, plus an update to Vega-Lite, into this version 1.7.1. You can view what's included in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>.</p>
+<p>The <a href="https://deneb-viz.github.io/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
+<p>Thanks, as always,</p>
+<p>DM-P</p>]]></content>
+        <author>
+            <name>Daniel Marsh-Patrick</name>
+            <uri>https://github.com/dm-p</uri>
+        </author>
+        <category label="releases" term="releases"/>
+        <category label="standalone" term="standalone"/>
+        <category label="fixes" term="fixes"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Deneb 1.7 is AppSource Certified!]]></title>
         <id>https://deneb-viz.github.io/blog/1-7-certified</id>
