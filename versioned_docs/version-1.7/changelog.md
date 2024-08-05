@@ -73,7 +73,7 @@ The editor and template system now supports **JSON with comments** (JSONC)! 🎉
 - You can use single line (`//`) or block (`/* */`) comment format.
 - The editor also has shortcuts for these operations:
   - [Ctrl + /] to toggle a line comment.
-  - [Ctrl + Alt + A] to toggle a block comment.
+  - [Shift + Alt + A] to toggle a block comment.
 
 #### Auto-Completion
 
