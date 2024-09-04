@@ -4,10 +4,26 @@
         <title>Deneb Blog</title>
         <link>https://deneb-viz.github.io/blog</link>
         <description>Deneb Blog</description>
-        <lastBuildDate>Mon, 05 Aug 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Sep 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Deneb 1.7.2 Standalone Available (and submitted to AppSource)]]></title>
+            <link>https://deneb-viz.github.io/blog/1-7-2-submission</link>
+            <guid>https://deneb-viz.github.io/blog/1-7-2-submission</guid>
+            <pubDate>Tue, 03 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[1.7.2 is a minor update that fixes initial issues observed in the 1.7 release. The standalone build is available now, and the AppSource version is currently undergoing certification.]]></description>
+            <content:encoded><![CDATA[<p>1.7.2 is the next minor update that fixes initial issues observed in the 1.7 release. As usual, the standalone build is available now, and the AppSource version is currently undergoing certification.</p>
+<hr>
+<p>We've had another couple of minor changes to make as a result of version 1.7, so a new minor version has been submitted to AppSource, to assist affected users. You can view what's included in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>.</p>
+<p>The <a href="https://deneb-viz.github.io/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
+<p>Thanks, as always,</p>
+<p>DM-P</p>]]></content:encoded>
+            <category>releases</category>
+            <category>standalone</category>
+            <category>fixes</category>
+        </item>
         <item>
             <title><![CDATA[Deneb 1.7.1 Standalone Available (and submitted to AppSource)]]></title>
             <link>https://deneb-viz.github.io/blog/1-7-1-submission</link>
