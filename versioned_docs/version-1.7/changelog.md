@@ -5,7 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.7.1 (2024-08-05)
+## 1.7.2 (2024-09-04)
 
 :::info Submitted for certification
 Deneb 1.7 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
@@ -14,6 +14,17 @@ Deneb 1.7 has been submitted to AppSource for certification and may take some ti
 <!-- :::info Pending deployment to AppSource
 Deneb 1.7 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
+
+### Minor Enhancements
+
+- Input widget styling matches that of Vega-Editor, improving their layout
+
+### Bugs Fixes
+
+- Internal Monaco `command://` hyperlinks no longer trigger the MS launch URL API (#491)
+- If you are running Deneb in an insecure (HTTP) environment, it wil now work (#488, #493)
+
+## 1.7.1 (2024-08-05)
 
 ### Vega Updates
 
