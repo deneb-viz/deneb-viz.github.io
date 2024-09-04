@@ -32,7 +32,7 @@ Deneb 1.7 has passed certification and is currently undergoing deployment to you
 
 ### Minor Enhancements
 
-- The `pbiContainer` signal is now available abnd updated on scroll events for faceted and repeated specifications (#474)
+- The `pbiContainer` signal is now available and updated on scroll events for faceted and repeated specifications (#474)
 
 ### Bugs Fixed
 
