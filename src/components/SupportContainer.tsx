@@ -3,7 +3,8 @@
 // React modules
 import React, { useEffect, useState } from "react";
 // array of expert data
-import expertsData from "../../static/data/community-experts.json";
+import expertsData from "@site/src/data/community-experts.json";
+import { shuffleArray } from "../utils/shuffleArray";
 
 // Component to render community experts and their metadata
 const SupportContainer = () => {
@@ -11,7 +12,8 @@ const SupportContainer = () => {
   const [experts, setExperts] = useState<IExpert[]>([]);
 
   // relative path for the placeholder image
-  const defaultImagePath: string = "/img/support/community-expert-placeholder.svg";
+  const defaultImagePath: string =
+    "/img/support/community-expert-placeholder.svg";
 
   // useEffect hook to perform shuffling and data fetching after the component renders
   // state update will trigger a re-render
@@ -83,28 +85,4 @@ const CONTRIBUTION_AREA_MAP: Record<
   D: "Deneb",
   V: "Vega",
   VL: "Vega-Lite",
-};
-
-// Function to shuffle the array using Fisher-Yates algorithm
-// https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-const shuffleArray = (array: IExpert[]) => {
-  // variables to track the current index and current random index
-  let currentIndex = array.length,
-    randomIndex: number;
-
-  // while there are remaining elements
-  while (currentIndex !== 0) {
-    //assign randomIndex a random number that is >= 0 && < currentIndex
-    randomIndex = Math.floor(Math.random() * currentIndex);
-
-    currentIndex--;
-
-    //swap positions between currentIndex and randomIndex
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
 };
