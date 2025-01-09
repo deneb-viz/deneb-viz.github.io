@@ -71,14 +71,9 @@ const config = {
         },
         items: [
           {
-            href: "/",
             label: "Docs",
+            to: "docs/",
             position: "left",
-          },
-          {
-            type: "docsVersionDropdown",
-            position: "left",
-            dropdownActiveClassDisabled: true,
           },
           { to: "blog", label: "Blog", position: "left" },
           {
@@ -89,16 +84,21 @@ const config = {
           {
             label: "Support",
             href: "/support",
+            position: "left",
+          },
+          {
+            type: "docsVersionDropdown",
+            position: "right",
+            dropdownActiveClassDisabled: true,
+          },
+          {
+            href: "https://github.com/sponsors/deneb-viz",
+            label: "Sponsor",
             position: "right",
           },
           {
             href: "/privacy-policy",
             label: "Privacy Policy",
-            position: "right",
-          },
-          {
-            href: "https://github.com/sponsors/deneb-viz",
-            label: "Sponsor",
             position: "right",
           },
           {
