@@ -1,0 +1,37 @@
+.section {
+  padding: 40px 0;
+}
+
+.sectionAlt {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.sectionInner {
+  margin: 0 auto;
+}
+
+.reviewSection > :global(.col) > * {
+  margin-bottom: 2rem;
+}
+
+.reviewFooter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewLink {
+  text-align: center;
+  padding: 1em 0;
+}
+
+@media (max-width: 996px) {
+  .reviewSection > :global(.col:last-child) > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 997px) {
+  .reviewSection > :global(.col) > *:last-child {
+    margin-bottom: 0;
+  }
+}

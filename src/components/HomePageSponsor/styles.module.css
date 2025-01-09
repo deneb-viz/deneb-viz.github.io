@@ -1,0 +1,49 @@
+:root {
+  --sponsors-avatar-size-platinum: 75px;
+  --sponsors-avatar-size-gold: 65px;
+  --sponsors-avatar-size-silver: 60px;
+  --sponsors-avatar-size-bronze: 55px;
+}
+
+.avatar {
+  background: white;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.platinum-width {
+  background-color: white;
+  width: var(--sponsors-avatar-size-platinum);
+}
+
+.platinum-height {
+  height: var(--sponsors-avatar-size-platinum);
+}
+
+.gold-width {
+  width: var(--sponsors-avatar-size-gold);
+}
+
+.gold-height {
+  height: var(--sponsors-avatar-size-gold);
+}
+
+.silver-width {
+  width: var(--sponsors-avatar-size-silver);
+}
+
+.silver-height {
+  height: var(--sponsors-avatar-size-silver);
+}
+
+.bronze-width {
+  width: var(--sponsors-avatar-size-bronze);
+}
+
+.bronze-height {
+  height: var(--sponsors-avatar-size-bronze);
+}
+
+.github {
+  border-radius: 50%;
+}

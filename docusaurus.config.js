@@ -28,7 +28,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/deneb-viz/deneb-viz.github.io/edit/source/",
@@ -37,6 +36,17 @@ const config = {
               label: "1.8 🚧",
             },
           },
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ["rss", "atom"],
+            xslt: true,
+          },
+          // Useful options to enforce blogging best practices
+          onInlineTags: "warn",
+          onInlineAuthors: "warn",
+          onUntruncatedBlogPosts: "warn",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

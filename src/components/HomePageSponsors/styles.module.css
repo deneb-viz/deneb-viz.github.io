@@ -1,0 +1,47 @@
+:root {
+  --sponsors-color-platinum: #e5e4e2;
+  --sponsors-color-gold: #ffd700;
+  --sponsors-color-silver: #bcc6cc;
+  --sponsors-color-bronze: #cd7f32;
+}
+
+.section {
+  padding: 40px 0;
+}
+
+.sectionInner {
+  margin: 0 auto;
+}
+
+.sponsorsLink {
+  text-align: center;
+  padding: 1em 0;
+}
+
+.sponsorsContainer {
+  border: 1px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: left;
+  margin-bottom: 0.25em;
+  padding: 1em;
+}
+
+.platinum {
+  border-width: 2px;
+  border-color: var(--sponsors-color-platinum);
+}
+
+.gold {
+  border-color: var(--sponsors-color-gold);
+}
+
+.silver {
+  border-color: var(--sponsors-color-silver);
+}
+
+.bronze {
+  border-color: var(--sponsors-color-bronze);
+}

@@ -1,0 +1,36 @@
+{
+    "platinum": [
+        {
+            "source": "repo",
+            "name": "PowerBI.Tips",
+            "url": "https://powerbi.tips/",
+            "image_url": "/img/sponsors/powerbi.tips.svg",
+            "image_sizing": "height"
+        }
+    ],
+    "gold": [],
+    "silver": [],
+    "bronze": [
+        {
+            "source": "repo",
+            "name": "Analytic Endeavors",
+            "url": "https://analyticendeavors.com/",
+            "image_url": "/img/sponsors/analytic-endeavors.png",
+            "image_sizing": "height"
+        },
+        {
+            "source": "github",
+            "name": "AleksandraGodlewska",
+            "url": "https://github.com/AleksandraGodlewska",
+            "image_url": "https://avatars.githubusercontent.com/u/161143574",
+            "image_sizing": "height"
+        },
+        {
+            "source": "github",
+            "name": "PBIQueryous",
+            "url": "https://github.com/PBIQueryous",
+            "image_url": "https://avatars.githubusercontent.com/u/95970959",
+            "image_sizing": "height"
+        }
+    ]
+}
