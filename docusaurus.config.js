@@ -108,7 +108,62 @@ const config = {
           },
         ],
       },
-      footer: {},
+      footer: {
+        links: [
+          {
+            title: "Documentation",
+            items: [
+              {
+                label: "Docs",
+                to: "docs/",
+              },
+              {
+                label: "Vega Documentation",
+                href: "https://vega.github.io/vega/docs/",
+              },
+              {
+                label: "Vega-Lite Documentation",
+                href: "https://vega.github.io/vega-lite/docs/",
+              },
+            ],
+          },
+          {
+            title: "Community",
+            items: [
+              {
+                label: "Resources and Examples",
+                href: "/community/resources",
+              },
+              {
+                label: "Support",
+                href: "/support",
+              },
+            ],
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "Privacy Policy",
+                href: "/privacy-policy",
+              },
+              {
+                label: "Blog",
+                to: "blog",
+              },
+              {
+                label: "Sponsor",
+                href: "https://github.com/sponsors/deneb-viz",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/deneb-viz/deneb",
+              },
+            ],
+          },
+        ],
+        copyright: `Deneb is released under the MIT License.`,
+      },
       prism: {
         additionalLanguages: ["json"],
         theme: lightTheme,
