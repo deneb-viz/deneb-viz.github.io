@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Deneb Blog</title>
@@ -16,8 +16,8 @@
             <description><![CDATA[1.7.2 is a minor update that fixes initial issues observed in the 1.7 release. The standalone build is available now, and the AppSource version is currently undergoing certification.]]></description>
             <content:encoded><![CDATA[<p>1.7.2 is the next minor update that fixes initial issues observed in the 1.7 release. As usual, the standalone build is available now, and the AppSource version is currently undergoing certification.</p>
 <hr>
-<p>We've had another couple of minor changes to make as a result of version 1.7, so a new minor version has been submitted to AppSource, to assist affected users. You can view what's included in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>.</p>
-<p>The <a href="https://deneb-viz.github.io/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
+<p>We've had another couple of minor changes to make as a result of version 1.7, so a new minor version has been submitted to AppSource, to assist affected users. You can view what's included in the <a href="https://deneb-viz.github.io/docs/changelog">Change Log</a>.</p>
+<p>The <a href="https://deneb-viz.github.io/docs/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
 <p>Thanks, as always,</p>
 <p>DM-P</p>]]></content:encoded>
             <category>releases</category>
@@ -34,8 +34,8 @@
 <hr>
 <p>The rollout of 1.7 seems to be going well, and thanks very much to you all for your fantastic feedback. It's great to hear how well you're progressing with the new changes!</p>
 <p>Thanks also to those who found and reported some minor issues. You provided excellent reproduction details and helped immensely with testing and validating these fixes, meaning that we could resolve them really quickly.</p>
-<p>I've taken the opportunity to incorporate some other quality-of-life improvements, plus an update to Vega-Lite, into this version 1.7.1. You can view what's included in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>.</p>
-<p>The <a href="https://deneb-viz.github.io/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
+<p>I've taken the opportunity to incorporate some other quality-of-life improvements, plus an update to Vega-Lite, into this version 1.7.1. You can view what's included in the <a href="https://deneb-viz.github.io/docs/changelog">Change Log</a>.</p>
+<p>The <a href="https://deneb-viz.github.io/docs/getting-started#standalone-version">standalone version</a> has already been published for anyone who wants to take advantage of this. As usual, the AppSource version takes a little longer to go through the certification process, but we expect this to be available within the normal timeline of a few weeks. I will provide an update on its status as soon as I can.</p>
 <p>Thanks, as always,</p>
 <p>DM-P</p>]]></content:encoded>
             <category>releases</category>
@@ -49,7 +49,7 @@
             <pubDate>Thu, 11 Jul 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[It's a big day - Deneb 1.7 has passed certification! 🎉🎉]]></description>
             <content:encoded><![CDATA[<p>It's a big day - Deneb 1.7 has passed certification! 🎉🎉</p>
-<p>It should take around two weeks for the new version to fully deploy to your reports. In the meantime, you can see the full list of changes in the <a href="https://deneb-viz.github.io/changelog">Change Log</a>. This has also been made available for users of the standalone (non-AppSource) version, so you can <a href="https://deneb.link/latest-release" target="_blank" rel="noopener noreferrer">download it from GitHub</a>.</p>
+<p>It should take around two weeks for the new version to fully deploy to your reports. In the meantime, you can see the full list of changes in the <a href="https://deneb-viz.github.io/docs/changelog">Change Log</a>. This has also been made available for users of the standalone (non-AppSource) version, so you can <a href="https://deneb.link/latest-release" target="_blank" rel="noopener noreferrer">download it from GitHub</a>.</p>
 <p>To help AppSource users with the wait, we've recorded some short videos to help you get to know the new features and will be releasing a new one each day. The first feature we're showcasing is dark mode 🌙 But we'll add new videos to the playlist below, so keep checking or like and subscribe (if that's your thing) to stay current.</p>
 <iframe width="600" height="325" src="https://www.youtube.com/embed/videoseries?list=PLenEqp5HifcRASUPYL6Nj-a2YtfCBmjz6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 <hr>
@@ -65,7 +65,7 @@
             <pubDate>Mon, 24 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Deneb 1.7 is a significant update, and we're excited to submit it to AppSource very soon! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.]]></description>
             <content:encoded><![CDATA[<p>Deneb 1.7 is a significant update, and we're excited to submit it to AppSource very soon! Before we do that, we're opening beta testing for the community so that we can ensure that the quality of the submitted version is as good as possible for all users.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-beta-testing">Why Beta Testing?<a class="hash-link" aria-label="Direct link to Why Beta Testing?" title="Direct link to Why Beta Testing?" href="https://deneb-viz.github.io/blog/1-7-beta#why-beta-testing">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-beta-testing">Why Beta Testing?<a href="https://deneb-viz.github.io/blog/1-7-beta#why-beta-testing" class="hash-link" aria-label="Direct link to Why Beta Testing?" title="Direct link to Why Beta Testing?">​</a></h2>
 <p>For Deneb, this is a critical phase of development that we can't do without broader assistance. Here are a few important reasons why:</p>
 <ul>
 <li>
@@ -81,9 +81,9 @@
 <p>Once we submit a new version of Deneb to AppSource, <strong>we're committed to the publication process</strong>: if someone finds a bug, we may be able to fix it very quickly, but it can take anywhere between <strong>3 and 5 weeks</strong> for a visual update to go through the certification process and fully deploy to all reports. This can be a long time for people to wait.</p>
 </li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="this-is-where-your-help-is-invaluable">This is where your help is invaluable.<a class="hash-link" aria-label="Direct link to This is where your help is invaluable." title="Direct link to This is where your help is invaluable." href="https://deneb-viz.github.io/blog/1-7-beta#this-is-where-your-help-is-invaluable">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="this-is-where-your-help-is-invaluable">This is where your help is invaluable.<a href="https://deneb-viz.github.io/blog/1-7-beta#this-is-where-your-help-is-invaluable" class="hash-link" aria-label="Direct link to This is where your help is invaluable." title="Direct link to This is where your help is invaluable.">​</a></h4>
 <p>If you have some time to dedicate to validating your existing specifications and checking the functionality of the new features, you're going to be (a) getting to play with new features and validating that they're going to help elevate your reports and your productivity processes when using Deneb, and (b) ensuring that not just you and your stakeholders are going to have continuity of service when the update deploys, but we can be confident that our wider community will, too 😀</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-changes-can-i-expect">What Changes Can I Expect?<a class="hash-link" aria-label="Direct link to What Changes Can I Expect?" title="Direct link to What Changes Can I Expect?" href="https://deneb-viz.github.io/blog/1-7-beta#what-changes-can-i-expect">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-changes-can-i-expect">What Changes Can I Expect?<a href="https://deneb-viz.github.io/blog/1-7-beta#what-changes-can-i-expect" class="hash-link" aria-label="Direct link to What Changes Can I Expect?" title="Direct link to What Changes Can I Expect?">​</a></h2>
 <p>We said that 1.7 is a big release, and we mean it! Here are the big-ticket items that may pique your interest further:</p>
 <ul>
 <li>
@@ -127,10 +127,10 @@
 <p>Many performance enhancements and bug fixes.</p>
 </li>
 </ul>
-<p>Check the <a href="https://deneb-viz.github.io/next/changelog">Change Log</a> for a more complete list and links to more detailed documentation.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-help">How Can I Help?<a class="hash-link" aria-label="Direct link to How Can I Help?" title="Direct link to How Can I Help?" href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-help">​</a></h2>
+<p>Check the <a href="https://deneb-viz.github.io/docs/next/changelog">Change Log</a> for a more complete list and links to more detailed documentation.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-help">How Can I Help?<a href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-help" class="hash-link" aria-label="Direct link to How Can I Help?" title="Direct link to How Can I Help?">​</a></h2>
 <p>As mentioned above, there are two key things we need to ensure:</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-everything-youve-already-made-continues-to-work">1. Everything you've already made continues to work.<a class="hash-link" aria-label="Direct link to 1. Everything you've already made continues to work." title="Direct link to 1. Everything you've already made continues to work." href="https://deneb-viz.github.io/blog/1-7-beta#1-everything-youve-already-made-continues-to-work">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="1-everything-youve-already-made-continues-to-work">1. Everything you've already made continues to work.<a href="https://deneb-viz.github.io/blog/1-7-beta#1-everything-youve-already-made-continues-to-work" class="hash-link" aria-label="Direct link to 1. Everything you've already made continues to work." title="Direct link to 1. Everything you've already made continues to work.">​</a></h4>
 <p>This is perhaps the most straightforward thing you can do, but it's the most important. Even if you do the following bare-minimum tests and everything looks good, this is incredibly helpful in validating things:</p>
 <ul>
 <li>
@@ -140,10 +140,10 @@
 <p>Update a Deneb visual to the latest version and ensure it continues working as you expect as a developer.</p>
 </li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-the-new-features-work-as-you-expect-them-to">2. The new features work as you expect them to.<a class="hash-link" aria-label="Direct link to 2. The new features work as you expect them to." title="Direct link to 2. The new features work as you expect them to." href="https://deneb-viz.github.io/blog/1-7-beta#2-the-new-features-work-as-you-expect-them-to">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="2-the-new-features-work-as-you-expect-them-to">2. The new features work as you expect them to.<a href="https://deneb-viz.github.io/blog/1-7-beta#2-the-new-features-work-as-you-expect-them-to" class="hash-link" aria-label="Direct link to 2. The new features work as you expect them to." title="Direct link to 2. The new features work as you expect them to.">​</a></h4>
 <p>Again, we try to cover as much as possible ahead of time, but beta testing helps us confirm that the features and fixes we're implementing cover your use cases. You might even find use cases we didn't think of that can make Deneb even better in the long run or might possibly cause some unintended side effects in the shorter term.</p>
 <p>With anything that comes up here, we can decide if a feature needs additional tweaks before submission (if it's simple), or we might learn that a feature isn't ready for all users. This is, again, all valuable feedback that is best to know before we begin the submission and certification process.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-download-and-use-the-beta-release">How Can I Download And Use the Beta Release?<a class="hash-link" aria-label="Direct link to How Can I Download And Use the Beta Release?" title="Direct link to How Can I Download And Use the Beta Release?" href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-download-and-use-the-beta-release">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-download-and-use-the-beta-release">How Can I Download And Use the Beta Release?<a href="https://deneb-viz.github.io/blog/1-7-beta#how-can-i-download-and-use-the-beta-release" class="hash-link" aria-label="Direct link to How Can I Download And Use the Beta Release?" title="Direct link to How Can I Download And Use the Beta Release?">​</a></h2>
 <div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Use a copy of any production reports!</div><div class="admonitionContent_BuS1"><p>If you are testing a production report, it is strongly suggested that you save a copy of your workbook and work with that for testing purposes before converting a visual over to a beta build instance. This means that you don’t have to worry about reverting your existing production visual back to 1.6 and losing any functionality that may be present in 1.7.</p></div></div>
 <p>The latest version is always published and available for download on our GitHub <a href="https://deneb.link/beta-build" target="_blank" rel="noopener noreferrer">repository's beta channel page</a>:</p>
 <ul>
@@ -161,7 +161,7 @@
 </li>
 </ul>
 <p><strong>Note that you should always exercise care when downloading and installing Power BI visual files from unknown/untrusted sources</strong>. Any visuals published and made available from Deneb's GitHub repository will conform to Deneb's <a href="https://deneb-viz.github.io/privacy-policy">privacy policy</a>.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="i-checked-and-somethings-not-right-what-now">I Checked, and Something's Not Right. What Now?<a class="hash-link" aria-label="Direct link to I Checked, and Something's Not Right. What Now?" title="Direct link to I Checked, and Something's Not Right. What Now?" href="https://deneb-viz.github.io/blog/1-7-beta#i-checked-and-somethings-not-right-what-now">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="i-checked-and-somethings-not-right-what-now">I Checked, and Something's Not Right. What Now?<a href="https://deneb-viz.github.io/blog/1-7-beta#i-checked-and-somethings-not-right-what-now" class="hash-link" aria-label="Direct link to I Checked, and Something's Not Right. What Now?" title="Direct link to I Checked, and Something's Not Right. What Now?">​</a></h2>
 <p>The best thing you can do is let us know. Don't assume someone else has already found it and told us! We can manage duplicate issues if they occur, but it's always good to check to see if the <a href="https://github.com/deneb-viz/deneb/issues" target="_blank" rel="noopener noreferrer">list of open issues</a> has what you're planning to tell us about.</p>
 <p>If you find a bug 🐛or have an enhancement 🌟 you'd like, you can <a href="https://github.com/deneb-viz/deneb/issues" target="_blank" rel="noopener noreferrer">create an issue in our GitHub repository</a> if it does not exist or add your voice to an existing issue if it's there.</p>
 <p>Because everyone's setup is always unique to them, a lot of the time we spend on bugs is spent understanding things that may be specific to the situation. Anything we can do to cut this time down means we can find and fix things faster. As such, the following information is always going to be helpful if you can provide it:</p>
@@ -196,11 +196,11 @@
 </li>
 </ul>
 <p>Note that enhancements will likely not be candidates for implementation during the beta testing phase but will help us understand what you need from Deneb and help us improve things in future releases.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource">When Will Beta Testing Be Finished and Deneb Submitted to AppSource?<a class="hash-link" aria-label="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?" title="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?" href="https://deneb-viz.github.io/blog/1-7-beta#when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource">When Will Beta Testing Be Finished and Deneb Submitted to AppSource?<a href="https://deneb-viz.github.io/blog/1-7-beta#when-will-beta-testing-be-finished-and-deneb-submitted-to-appsource" class="hash-link" aria-label="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?" title="Direct link to When Will Beta Testing Be Finished and Deneb Submitted to AppSource?">​</a></h2>
 <p>We want to get to AppSource as quickly as possible, but we want to be sure not to rush if things are not fully ready.</p>
 <p>The timeline will depend on what is found. We are planning an initial two-week phase of validation, identifying key issues and triaging them, which is due to be completed on <strong>Monday, July 8th</strong>.</p>
 <p>If no significant or blocking issues occur, we'll submit it as soon as possible after this date. If we have things to fix, we will issue a new beta release with a tighter time loop for feedback and continue this until we're ready to go. This should ideally be done and ready before the end of July. Assuming the normal AppSource submission and certification timelines apply, Deneb should be live in reports by the end of August.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you">Thank You<a class="hash-link" aria-label="Direct link to Thank You" title="Direct link to Thank You" href="https://deneb-viz.github.io/blog/1-7-beta#thank-you">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you">Thank You<a href="https://deneb-viz.github.io/blog/1-7-beta#thank-you" class="hash-link" aria-label="Direct link to Thank You" title="Direct link to Thank You">​</a></h2>
 <p>We say this a lot, but we rely incredibly on the Power BI and Deneb community to help promote, test, and support Deneb so everyone can benefit. We're also so fortunate that the Vega development team continues to support and update Vega and Vega-Lite, which provide a fantastic set of tools for bespoke data visualization. Without these people and their commitment to the community, we would not be where we are today. 🙏</p>
 <p>We look forward to bringing 1.7 to a Power BI near you soon!</p>]]></content:encoded>
             <category>releases</category>

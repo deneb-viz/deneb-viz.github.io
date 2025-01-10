@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeneb_doc=self.webpackChunkdeneb_doc||[]).push([[8947],{56600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Daniel Marsh-Patrick","title":"Program Manager & Developer","url":"https://github.com/dm-p","imageURL":"https://github.com/dm-p.png","key":"daniel","page":null,"count":4}]}')}}]);

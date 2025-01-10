@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdeneb_doc=self.webpackChunkdeneb_doc||[]).push([[8461],{21466:e=>{e.exports=JSON.parse('{"tag":{"label":"beta","permalink":"/blog/tags/beta","allTagsPath":"/blog/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/blog/tags/beta","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
