@@ -70,7 +70,7 @@ This would produce the following dataset (visualized using a table):
 ...and this dataset is supplied by Power BI into the visual. At this point, Deneb's logic will process the dataset and things continue as normal.
 
 :::tip
-Refer to the [Dataset](/dataset#grain--row-context) page if you want to see how this data would get represented internally.
+Refer to the [Dataset](/docs/dataset#grain--row-context) page if you want to see how this data would get represented internally.
 :::
 
 ### Signaling Back to Power BI
@@ -84,7 +84,7 @@ Now using the above as an example, we can talk about the following interactivity
 
 All of these situations require the visual to tell Power BI what data it needs to work with... but here's the thing: just like how visuals can't just read whatever they like from the data model, they _definitely_ can't send anything back.
 
-For these situations, Power BI provides APIs for a visual to request that Power BI try to do these things on its behalf. For Power BI to fulfil this, it needs to know which row(s) from the orginal dataset it has to resolve.
+For these situations, Power BI provides APIs for a visual to request that Power BI try to do these things on its behalf. For Power BI to fulfil this, it needs to know which row(s) from the original dataset it has to resolve.
 
 - If you have just taken the dataset as-is and created a mark using Vega or Vega-Lite, then a mark's datum still has the correct row context and identifying information that Power BI needs.
 
@@ -94,7 +94,7 @@ Any functionality we can deliver needs to bear these constraints in mind.
 
 #### Additional Datum Fields
 
-Provided that there are no such mutations, a Vega or Vega-Lite datum will contain the following additional fields for reconcilitation purposes. These field values represent the row of your dataset as a whole:
+Provided that there are no such mutations, a Vega or Vega-Lite datum will contain the following additional fields for reconciliation purposes. These field values represent the row of your dataset as a whole:
 
 - `__identity__` - this is the raw identity and true row context.
 
@@ -113,11 +113,11 @@ The following additional entries will get created for all measures in your datas
 
 - `[measure name]__highlight` - this is the highlight value for the measure, as opposed to its original value, which is stored in the regular measure field. This provides a way of being able to encode original vs. highlight.
 
-- `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context has a higlight applied or not (like the `__selected__` field, but more-specific).
+- `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context has a highlight applied or not (like the `__selected__` field, but more-specific).
 
 - `[measure_name]__highlightComparator` - this provides a pre-calculated way of determining if a highlight value is equal to its original value or not.
 
-These are covered in more detail on the [Cross-Highlighting](interactivity-highlight#special-__highlight__-fields) page.
+These are covered in more detail on the [Cross-Highlighting](interactivity-highlight#special-__highlight-fields) page.
 
 ### What About..?
 

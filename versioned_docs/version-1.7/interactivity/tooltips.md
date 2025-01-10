@@ -12,9 +12,9 @@ If you haven't read it already, it's worth reviewing the [preceding page](intera
 
 ## Tooltip Strategy
 
-[Vega](https://github.com/vega/vega-tooltip/blob/master/docs/creating_your_tooltip.md#step-4-define-your-tooltip-in-vega-or-vega-lite) and [Vega-Lite](https://vega.github.io/vega-lite/docs/tooltip.html) both provide the ability to customize how their tooltip events can be interpreted. Deneb contains a tooltip handler writen specifically for Power BI, which will display under the following conditions:
+[Vega](https://github.com/vega/vega-tooltip/blob/master/docs/creating_your_tooltip.md#step-4-define-your-tooltip-in-vega-or-vega-lite) and [Vega-Lite](https://vega.github.io/vega-lite/docs/tooltip.html) both provide the ability to customize how their tooltip events can be interpreted. Deneb contains a tooltip handler written specifically for Power BI, which will display under the following conditions:
 
-1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab). This is enabled by default.
+1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-pane). This is enabled by default.
 
 2. An appropriate `tooltip` property is assigned to a mark. Refer [below](#vega-lite-syntax) for the recommended syntax for each provider.
 
@@ -36,7 +36,7 @@ If there is no suitable report page for the current datum or you have specified 
 A default tooltip will display all values for the current mark's datum, including any other columns or measures bound to its particular row context.
 :::
 
-If the title of a tooltip field matches the name of a column or measure from the **Values** data role, Deneb will attempt to see if it has a format string set in the data model and apply this automatically. If this cannot be resolved, then you can consider [applying a format manually](/formatting).
+If the title of a tooltip field matches the name of a column or measure from the **Values** data role, Deneb will attempt to see if it has a format string set in the data model and apply this automatically. If this cannot be resolved, then you can consider [applying a format manually](/docs/formatting).
 
 If you have enabled [modern tooltip support](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-visual-tooltips) in your report, and a data point has a corresponding drill through page, this is resolved in the tooltip, e.g.:
 

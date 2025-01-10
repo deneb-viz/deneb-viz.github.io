@@ -21,7 +21,7 @@ Deneb 1.7 has passed certification and is currently undergoing deployment to you
 
 ### Minor Enhancements
 
-- The `pbiContainer` signal is now available abnd updated on scroll events for faceted and repeated specifications (#474)
+- The `pbiContainer` signal is now available and updated on scroll events for faceted and repeated specifications (#474)
 
 ### Bugs Fixed
 
@@ -137,7 +137,7 @@ This can also be used to monitor scrolling events in the visual container and yo
 
 - From this version, we have renamed the _Cross-filtering (selection) of data points_ setting to _Expose cross-filtering values for dataset rows_. With this enabled, you will now have two further options:
 
-  ![selection-mode-settings.png](interactivity/img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb present stwo additional modes for management: Simple (default) and Advanced.")
+  ![selection-mode-settings.png](interactivity/img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb presents two additional modes for management: Simple (default) and Advanced.")
 
   - _Simple:_
     - This is the functionality you will already have been using, and Deneb attempts to resolve data points from marks and delegates them to Power BI.
@@ -262,7 +262,7 @@ Deneb's Advanced Editor UI has been completely migrated from Fluent UI v8 to v9.
 
 ### Create New Specification Dialog and Packaged Template Changes
 
-![The 'Create or import new specification' dialog has been modified to provide some further resources for thos elooking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.](/img/changelog/1.6.0/new-create-dialog.png "The 'Create or import new specification' dialog has been modified to provide some further resources for thos elooking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.")
+![The 'Create or import new specification' dialog has been modified to provide some further resources for those looking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.](/img/changelog/1.6.0/new-create-dialog.png "The 'Create or import new specification' dialog has been modified to provide some further resources for those looking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.")
 
 As part of the UI changes, the **Create new specification** dialog has received some enhancements:
 
@@ -280,7 +280,7 @@ As part of the UI changes, the **Create new specification** dialog has received 
 
   - By default, templates no longer use Power BI theming for their look and feel, as this is not necessarily data visualization best practice.
   - A new template named _\[empty (with Power BI theming)]_ has been added for both Vega and Vega-Lite, which will include the relevant config to simulate the default Power BI look and feel.
-  - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivty can be set up.
+  - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivity can be set up.
   - The other simple templates have been removed.
 
 ### Generate JSON Template Changes
@@ -354,7 +354,7 @@ This is covered in more detail in the [Scrolling and Overflow](scrolling-overflo
 - The field name limit for template fields has been increased from 30 to 150 characters.
 
 :::danger Field name limit relaxations are not backwards compatible
-If exporting a template with > 30 characters in a field name, it cannot be imported into earler versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
+If exporting a template with > 30 characters in a field name, it cannot be imported into earlier versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
 :::
 
 - The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.

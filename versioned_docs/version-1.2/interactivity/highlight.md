@@ -114,7 +114,7 @@ Bear in mind that **we cannot control the default interactions in the visual hea
 
 If you don't want cross-highlighting support in your specification at all:
 
-- Ensure that the **Expose Cross-Highlight Values for Measures** property is disabled in the _Vega > Power BI Interactivity_ section of the [**Settings** pane](visual-editor#settings-tab) of the Visual Editor. This should be disabled by default, unless you have loaded a template that utilises it.
+- Ensure that the **Expose Cross-Highlight Values for Measures** property is disabled in the _Vega > Power BI Interactivity_ section of the [**Settings** pane](visual-editor#settings-tab) of the Visual Editor. This should be disabled by default, unless you have loaded a template that utilizes it.
 
 - Confirm that any other visuals that can interact with your visual are set to **Filter** your visual in the visual header.
 
@@ -132,7 +132,7 @@ Note that this may not be 100% reliable but is the best we can do due to custom 
 
 If you want to take-up cross-highlighting support in your specification:
 
-- Ensure that the **Expose Cross-Highlight Values for Measures** property is enabled in the _Vega > Power BI Interactivity_ section of the [**Settings** pane](visual-editor#settings-tab) of the Visual Editor. This should be disabled by default, unless you have loaded a template that utilises it.
+- Ensure that the **Expose Cross-Highlight Values for Measures** property is enabled in the _Vega > Power BI Interactivity_ section of the [**Settings** pane](visual-editor#settings-tab) of the Visual Editor. This should be disabled by default, unless you have loaded a template that utilizes it.
 
 - Confirm that any other visuals that can interact with your visual are set to **Highlight** your visual in the visual header.
 
@@ -165,11 +165,11 @@ Where [cross-filtering](interactivity-selection) works for the whole row, cross-
 
 - `[measure name]__highlight` - this is the highlight value for the measure, as opposed to its original value, which is stored in the regular measure field. This provides a way of being able to encode original vs. highlight.
 
-- `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context has a higlight applied or not (like the `__selected__` field, but more-specific). This can be one of the following values:
+- `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context has a highlight applied or not (like the `__selected__` field, but more-specific). This can be one of the following values:
 
   - **`on`**: the visual has an active cross-highlight state and the measure is actively highlighted
   - **`off`**: the visual has an active cross-highlight state, but the measure is not highlighted (this tends to be a likely scenario when using multiple measures rather than a single measure)
-  - **`neutral`**: there is no cross-highlight state applied to the visual. The orginal and highlight values will be equal to each other.
+  - **`neutral`**: there is no cross-highlight state applied to the visual. The original and highlight values will be equal to each other.
 
 - `[measure_name]__highlightComparator` - this provides a pre-calculated way of determining if a highlight value is equal to its original value or not and allow you to apply conditional encodings without the need to derive this separately in a `calculate` transform or similar. This can be one of the following values:
 
@@ -184,7 +184,7 @@ Using a similar example as our walkthrough above (using the same Product column 
 
 ![cross-highlight-dataset-01.png](./img/cross-highlight-dataset-01.png "A bar chart, showing Sales by Country, and an accompanying table visual showing Product and corresponding Sales amount. The table also shows Deneb's 'Highlights' version of the Sales field, which is the same as the original due to no active cross-highlight being applied. There is also a 'Highlight Status' field, which shows 'neutral', and a 'Highlight Comparator' field, which shows 'eq', again because there is no active cross-highlight applied.")
 
-Selecting a data point in our other visual will now cause Power BI to update our visual's higlight values, and Deneb will update the additional fields accordingly, e.g.:
+Selecting a data point in our other visual will now cause Power BI to update our visual's highlight values, and Deneb will update the additional fields accordingly, e.g.:
 
 ![cross-highlight-dataset-02.png](./img/cross-highlight-dataset-02.png "A bar chart, showing Sales by Country, and an accompanying table visual showing Product and corresponding Sales amount. The table also shows Deneb's 'Highlights' version of the Sales field, and the 'Highlight Status' and 'Highlight Comparator' fields.  The bar chart's US value is highlighted and the amounts in the table show the original Sales amount for all Products (irrespective of Country), as well as the values for the current highlight, which is the US. The 'Highlight Status' fields shows 'on', indicating the measure is actively highlighted. The 'Highlight Comparator' value shows 'lt', which specifies that the highlighted value is less than the original value.")
 
@@ -194,7 +194,7 @@ Much like for cross-filtering, you will need to ensure that you design your visu
 
 It's generally regarded to try and communicate where your highlights are vs. your original values, so that your readers can contextually resolve this information.
 
-The [Simple Worked Examples](#simple-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for cross-highlighting to help you get started.
+The [Simple Worked Examples](#simple-worked-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for cross-highlighting to help you get started.
 
 ## Limitations and Considerations
 
@@ -210,7 +210,7 @@ If you have found an alternative approach, or have a great idea on how to help u
 
 The following examples are for Vega-Lite but similar principles can be applied for Vega.
 
-This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample finanical data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__highlight` fields. A table is also visible to show what the highlight fields look like as the visual is being cross-highlighted from our core visual on the left. We'll provide basic example JSON for each underneath.
+This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample financial data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__highlight` fields. A table is also visible to show what the highlight fields look like as the visual is being cross-highlighted from our core visual on the left. We'll provide basic example JSON for each underneath.
 
 <iframe
     width="100%"
@@ -264,7 +264,7 @@ Here, we're altering the approach of our bar chart slightly, using [layers](http
 
 #### Example 2: Extending Design to Include Cross-Filtering
 
-Example 1 will work for cross-highlight only; in order to ensure that our design allows our visual to cross-filter other visuals _and_ handle incoming cross-highlight, we extend the `opacity` encoding in our highlights layer to effectively toggle visibility of the mark if the `__selected__` field is off. This will utilise the underlying mark for the orignal values for the 'dimmed' value, e.g.:
+Example 1 will work for cross-highlight only; in order to ensure that our design allows our visual to cross-filter other visuals _and_ handle incoming cross-highlight, we extend the `opacity` encoding in our highlights layer to effectively toggle visibility of the mark if the `__selected__` field is off. This will utilize the underlying mark for the original values for the 'dimmed' value, e.g.:
 
 ```json highlight={23-32} showLineNumbers
 {

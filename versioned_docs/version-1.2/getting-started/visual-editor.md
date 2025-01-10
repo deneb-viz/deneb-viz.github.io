@@ -35,7 +35,7 @@ Deneb captures the dimensions of your visual prior to opening the Visual Editor 
 
 The dashed line represents the boundaries of your visual in standard view. **Power BI does not allow visuals to resize themselves dynamically**, so if you wish to change the physical width and/or height of your visual in the report view, you will need to exit the advanced editor, resize and re-open the advanced editor.
 
-Your visual may not fit entirely into the preview area at 100% scale, so you can use the [zoom controls in the preview area toolbar](#the-preview-area-toolbar) to adjust this accordingly, [or resize (or minimize) the editor pane](#the-visual-editor-pane) to accommodate.
+Your visual may not fit entirely into the preview area at 100% scale, so you can use the [zoom controls in the preview area toolbar](#preview-area) to adjust this accordingly, [or resize (or minimize) the editor pane](#the-visual-editor-pane) to accommodate.
 
 If you would prefer to not see the boundary marker, you can disable this in the properties pane by selecting **Editor > Show Boundary Marker > OFF** in the Power BI Format pane:
 

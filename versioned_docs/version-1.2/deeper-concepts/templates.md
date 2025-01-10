@@ -67,7 +67,7 @@ Everyone's data is different, so it is highly likely that you'll need to make fu
 
 If you're happy with a specification and wish to share with others, or take a copy for re-use or source control, it is possible to 'export' a template.
 
-In the advanced editor, select the [Generate JSON Template](/visual-editor#generate-json-template-ctrl--alt--e) command. This will open the dialog.
+In the advanced editor, select the [Generate JSON Template](/docs/visual-editor#generate-json-template-ctrl--alt--e) command. This will open the dialog.
 
 ### Template Information
 

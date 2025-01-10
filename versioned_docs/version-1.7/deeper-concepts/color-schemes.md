@@ -39,7 +39,7 @@ pbiColor(index|name, shadePercent = 0)
 
 - `shadePercent` is optional, and is a decimal value between `-1` (-100%) and `1` (100%).
 
-  - If supplied, this will darken (< 0) or lighten (> 0) the color by the specificed amount.
+  - If supplied, this will darken (< 0) or lighten (> 0) the color by the specified amount.
   - This is to provide variants of the theme colors, much like how Power BI does in its color picker.
 
 For example, to specify a `bar` mark's `color` to use Theme color 1, you could use the following in your mark's properties:

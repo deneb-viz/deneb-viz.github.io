@@ -76,7 +76,8 @@ This results in something a little more human-readable:
 
 ![vega-lite-billions.png](./img/vega-lite-billions.png "After applying a Power BI format string and specifying our custom formatter, the axis becomes much more human readable. This updates to show tick values as $bn, to one decimal place.")
 
-<div id="object-example"></div>
+###### {#object-example}
+
 :::info Vega-Lite's format property is extensible
 The `format` property can also expect an object instead of a string. If you use an object for the `pbiFormat` or `pbiFormatAutoUnit` format types, you can use an object that can include any of the optional `ValueFormatterOptions` properties from [Microsoft's formatting library for custom visuals](https://learn.microsoft.com/en-us/power-bi/developer/visuals/utils-formatting?WT.mc_id=DP-MVP-5003712#valueformatteroptions). The following example is synonymous with the above one:
 
@@ -195,7 +196,7 @@ For example, we can view the live chart example from above _en français_ (fr-FR
 
 ### Overriding User Locale
 
-If you wish to specify a different local to Power BI's one (for example, you wish values to be norrmalized to the same currency for your users irrespective of location), you can either override this using the `locale` property of a specification's config ([V](https://vega.github.io/vega/docs/config/#:~:text=%22strokeWidth%22.-,locale,-Object) | [VL](https://vega.github.io/vega-lite/docs/config.html#aria-config)), or manually specify a valid Power BI locale within the `options.cultureSelector` property in an expression function for `pbiFormat` (more on this below).
+If you wish to specify a different local to Power BI's one (for example, you wish values to be normalized to the same currency for your users irrespective of location), you can either override this using the `locale` property of a specification's config ([V](https://vega.github.io/vega/docs/config/#:~:text=%22strokeWidth%22.-,locale,-Object) | [VL](https://vega.github.io/vega-lite/docs/config.html#aria-config)), or manually specify a valid Power BI locale within the `options.cultureSelector` property in an expression function for `pbiFormat` (more on this below).
 
 ## Auto Formatting with `pbiFormatAutoUnit`
 
@@ -247,7 +248,7 @@ pbiFormat(value, options = {})
     - `1e6` for values to be formatted as millions.
     - `1e9` for values to be formatted as billions.
     - `1e12` for values to be formatted as trillions.
-    - A dynamic value (e.g. that of your measure) to auto format to thouands, millions, etc., like Power BI does.
+    - A dynamic value (e.g. that of your measure) to auto format to thousands, millions, etc., like Power BI does.
 
   - `cultureSelector` - a valid Power BI culture code, which will enforce formatting to a specific locale, e.g. `en-GB`, `fr-FR`.
 

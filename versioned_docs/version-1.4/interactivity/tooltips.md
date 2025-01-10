@@ -14,7 +14,7 @@ If you haven't read it already, it's worth reviewing the [preceding page](intera
 
 [Vega](https://github.com/vega/vega-tooltip/blob/master/docs/creating_your_tooltip.md#step-4-define-your-tooltip-in-vega-or-vega-lite) and [Vega-Lite](https://vega.github.io/vega-lite/docs/tooltip.html) both provide the ability to customize how their tooltip events can be interpreted. Deneb contains a tooltip handler writen specifically for Power BI, which will display under the following conditions:
 
-1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab). This is enabled by default.
+1. **Tooltip Handler** is enabled in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-pane). This is enabled by default.
 
 2. An appropriate `tooltip` property is assigned to a mark. Refer [below](#vega-lite-syntax) for the recommended syntax for each provider.
 

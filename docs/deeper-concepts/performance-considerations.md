@@ -19,11 +19,11 @@ The following page has some recommendations for keeping performance optimal.
 
 ## Selection of Renderer
 
-You can specify the renderer to use [in the Settings panel of the Visual Editor](visual-editor#settings-tab).
+You can specify the renderer to use [in the Settings panel of the Visual Editor](visual-editor#settings-pane).
 
 **SVG** is the default , which will render your specification using vector graphics. You also have the option to select **Canvas**, which will use pixel graphics.
 
-- SVG is typically used for the lion's share of simple data visualizations and tyically produces "clearer" output that scales well at a variety of sizes.
+- SVG is typically used for the lion's share of simple data visualizations and typically produces "clearer" output that scales well at a variety of sizes.
 
 - However much like adding multiple visuals to a report page in Power BI can have an impact on performance, using SVG with a lot of data can have similar detrimental effects on performance.
 
@@ -35,9 +35,9 @@ For more details on Canvas vs. SVG, [there's a great article here at CSS-Tricks]
 
 ## Applying Changes as You Type vs. Manually
 
-The Visual Editor has the ability to [apply changes to your output as you type them](visual-editor#toggle-auto-apply-ctrl--shift--enter). Whilst this is pretty cool, it can really slow things down if you're making many changes to a particularly ambitious specification in a short space of time, as each change requires Vega or Vega-Lite to re-parse and render the output.
+The Visual Editor has the ability to [apply changes to your output as you type them](visual-editor#auto-apply-changes-as-you-type-ctrl--shift--enter. Whilst this is pretty cool, it can really slow things down if you're making many changes to a particularly ambitious specification in a short space of time, as each change requires Vega or Vega-Lite to re-parse and render the output.
 
-We already use some techinques to minimise unnecessary chatter if this option is enabled, such as [debouncing text input](https://css-tricks.com/debouncing-throttling-explained-examples/), but it's still recommended that you apply your changes manually when ready, if editing a complex or data-intensive specification.
+We already use some techniques to minimize unnecessary chatter if this option is enabled, such as [debouncing text input](https://css-tricks.com/debouncing-throttling-explained-examples/), but it's still recommended that you apply your changes manually when ready, if editing a complex or data-intensive specification.
 
 ## Include only Necessary Columns and Measures
 

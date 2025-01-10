@@ -63,7 +63,7 @@ This page is an archive of the change log from initial public preview (0.1) to t
   - This means that it is now possible to size single view or layered Vega-Lite specifications [by discrete step](https://vega.github.io/vega-lite/docs/size.html#specifying-width-and-height-per-discrete-step).
   - For Vega specifications, two additional signals - `pbiContainerHeight` and `pbiContainerWidth` - are available to use the desired container dimension. These are automatically patched into a Vega spec if the `height` and/or `width` properties are omitted.
 - New Specification and Export JSON Template dialogs now use more real-estate (#85).
-- Rather than creating a new line for and occurrence of each collection/object, list/array or property, the [Repair and Format JSON](../visual-editor#repair-and-format-json-ctrl--alt--r) command will now try to pretty-print JSON more effectively, i.e. only creating line breaks where sensible to do so. (#110)
+- Rather than creating a new line for and occurrence of each collection/object, list/array or property, the Repair and Format JSON command will now try to pretty-print JSON more effectively, i.e. only creating line breaks where sensible to do so. (#110)
 - Objects in tooltips are now more readable (#80).
   - For example, if using techniques to expose the full tooltip datum, e.g. using `{ "tooltip" { "content": "data" } }` for Vega-Lite, the tooltip handler would expose any nested objects as `[object Object]`.
   - These objects are now converted to a text representation of the object structure: ![0.5-previous-tooltip-object.png](/img/changelog/0.5-previous-tooltip-object.png)

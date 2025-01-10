@@ -65,7 +65,7 @@ We said that 1.7 is a big release, and we mean it! Here are the big-ticket items
 
 * Many performance enhancements and bug fixes.
 
-Check the [Change Log](/next/changelog) for a more complete list and links to more detailed documentation.
+Check the [Change Log](/docs/next/changelog) for a more complete list and links to more detailed documentation.
 
 ## How Can I Help?
 

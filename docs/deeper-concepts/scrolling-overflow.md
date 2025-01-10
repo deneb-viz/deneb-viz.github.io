@@ -60,12 +60,12 @@ Deneb adds a signal named `pbiContainer` to the Vega view, which provides access
   - `scrollHeight` - the scrollable height of the container.
   - `scrollWidth` - the scrollable width of the container.
   - `scrollTop` the current vertical scroll position.
-  - `scrollLeft` the current horizonal scroll position.
+  - `scrollLeft` the current horizontal scroll position.
 
 - If the generated visual overflows the preview area and enables scrolling, Deneb will update the `scrollHeight` and `scrollLeft` values as the user scrolls the visible area and re-run the view, meaning that you can assign these values to marks or expressions and they will update.
-- Scroll event monitoring has a defult throttle time of **5ms**. This can be changed in the _Rendered visual > Container scroll events > Throttle time_ property:
+- Scroll event monitoring has a default throttle time of **5ms**. This can be changed in the _Rendered visual > Container scroll events > Throttle time_ property:
 
-  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the intenral `pbiContainer` signal with new values.")
+  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the internal `pbiContainer` signal with new values.")
 
   This has a minimum value of **0ms** and a maximum of **1000ms**, and you can use this to tune the performance of scroll event updates as needed.
 

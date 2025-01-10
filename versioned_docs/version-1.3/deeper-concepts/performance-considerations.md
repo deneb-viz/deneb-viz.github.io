@@ -19,7 +19,7 @@ The following page has some recommendations for keeping performance optimal.
 
 ## Selection of Renderer
 
-You can specify the renderer to use [in the Settings panel of the Visual Editor](visual-editor#settings-tab).
+You can specify the renderer to use [in the Settings panel of the Visual Editor](visual-editor#settings-pane).
 
 **SVG** is the default , which will render your specification using vector graphics. You also have the option to select **Canvas**, which will use pixel graphics.
 

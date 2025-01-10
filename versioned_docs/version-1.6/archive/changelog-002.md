@@ -101,7 +101,7 @@ To assist with this, a **Performance Tuning** property menu has been made availa
 
 ![recalculate-during-resize.gif.](/img/changelog/1.2.0/recalculate-during-resize.gif "Our raincloud plot example contains many data points and calculations, which can be computationally expensive if resizing the visual container. By turning off the 'Recalculate during resize' property, you can delay any calculations until you have finished resizing your visual.")
 
-The documentation for this feature has also been added to the [Performance Considerations](../deeper-concepts/performance-considerations.md#recalculate-during-resize) page.
+The documentation for this feature has also been added to the Performance Considerations](../deeper-concepts/performance-considerations.md) page.
 
 ### Other Minor Enhancements
 

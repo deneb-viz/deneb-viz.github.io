@@ -178,7 +178,7 @@ This breaks down as follows:
 
     - The width (`x` encoding channel) of this bar is bound to our `Mean Temperature` measure (lines 13-15).
     - We're displaying a `tooltip` for this mark (line 10).
-    - This is used to display orginal values in the event of a cross-highlight from another visual (more on this below)
+    - This is used to display original values in the event of a cross-highlight from another visual (more on this below)
 
   - One `bar` mark for each data point that is bound to our `Mean Temperature` measure's cross-highlight values in the `x` encoding channel (lines 18-38).
 
@@ -206,7 +206,7 @@ One thing that's handy for Power BI - due to the ability to dynamically size vis
 
 By default, this template doesn't apply any config, so that you can learn what the defaults look like and build from there. Power BI does not always have sensible defaults for a lot of their core chart types, so you can learn a lot about what is available and how much you can customize by experimenting with this.
 
-## Intial Config for Our Visual
+## Initial Config for Our Visual
 
 We will make some changes to this config so that we can see how we might go about making a design look "at home" with the Power BI defaults. Modify the JSON as follows and click the **Apply** (▶️) button (or pressing [Ctrl + Enter]):
 
@@ -240,7 +240,7 @@ We will make some changes to this config so that we can see how we might go abou
 
 Our visual will update with these cosmetic changes:
 
-![config-inital-changes](img/config-inital-changes.png "Once we have applied our inital config, the visual updates to show the costmetic changes.")
+![config-inital-changes](img/config-inital-changes.png "Once we have applied our initial config, the visual updates to show the cosmetic changes.")
 
 A brief summary of what this has done to our visual:
 
@@ -343,7 +343,7 @@ Creators often have their visuals enabled for cross-highlighting, which means th
   If there is no cross-highlight applied, the data point values are the same as the original, and this obscures the mark behind it. This encoding uses the same measure, but with a `__highlight` suffix, which Deneb uses to supply the value we need to show this. The rest of the `encoding` section has been omitted as it's used for the next section.
 
 :::caution Cross-Highlight Takes A Bit Of Work
-It normally might be a bit much for a simple walkthrough, but it's likely that you're heare because you want to build your own visual that looks and feels at home in Power BI. Cross-highlighting is a part of this journey, so we want to give you a simple way in to this. You can read in more detail in the [Interactivity Features](interactivity-overview) or [Cross-Highlighting](interactivity-highlight) pages for further details.
+It normally might be a bit much for a simple walkthrough, but it's likely that you're here because you want to build your own visual that looks and feels at home in Power BI. Cross-highlighting is a part of this journey, so we want to give you a simple way in to this. You can read in more detail in the [Interactivity Features](interactivity-overview) or [Cross-Highlighting](interactivity-highlight) pages for further details.
 :::
 
 ### Cross-Filtering

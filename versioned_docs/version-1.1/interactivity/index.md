@@ -70,7 +70,7 @@ This would produce the following dataset (visualized using a table):
 ...and this dataset is supplied by Power BI into the visual. At this point, Deneb's logic will process the dataset and things continue as normal.
 
 :::tip
-Refer to the [Dataset](/dataset#grain--row-context) page if you want to see how this data would get represented internally.
+Refer to the [Dataset](/docs/dataset#grain--row-context) page if you want to see how this data would get represented internally.
 :::
 
 ### Signaling Back to Power BI

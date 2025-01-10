@@ -27,11 +27,11 @@ There is a lot of scope in this functionality, which will open up how cross-filt
 
 Vega allows you to control much more in terms of what happens with events inside a visual (known as [Event Streams](https://vega.github.io/vega/docs/event-streams/)). These Event Streams allow you to set signal values using [Expressions](https://vega.github.io/vega/docs/expressions/). As such, you are able to define all kinds of ways to define how a user can interact with your visual and this can create all kinds of interesting opportunities for how you can invoke cross-filtering from your visual to others on the page.
 
-- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Expose cross-filtering values for dataset rows** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab).
+- You can configure whether Deneb should attempt to [resolve data points](interactivity-selection#data-point-resolution) when clicking on marks, through the **Expose cross-filtering values for dataset rows** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-pane).
 
 - This setting is **disabled** by default.
 
-- For each row in the visual `"dataset"`, Deneb will generate a [special field for each row](#the-__selected__-field) called `"__selected__"`, and will update this based on click events, or eligible external events to your visual, such as restoring a bookmark with an active selection state.
+- For each row in the visual `"dataset"`, Deneb will generate a [special field for each row](interactivity-selection#the-__selected__-field) called `"__selected__"`, and will update this based on click events, or eligible external events to your visual, such as restoring a bookmark with an active selection state
 
 - The _Cross filtering management_ mode should be set to **Advanced**.
 

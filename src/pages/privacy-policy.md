@@ -16,7 +16,7 @@ The custom visual is designed solely for the purpose of visual representation of
 
 ### Standalone Version
 
-If the [standalone version](/getting-started#standalone-version) of the visual is downloaded from our GitHub repository, it allows users to access external services such as images and data URLs. However, no data is sent from the visual to any external servers.
+If the [standalone version](/docs/getting-started#standalone-version) of the visual is downloaded from our GitHub repository, it allows users to access external services such as images and data URLs. However, no data is sent from the visual to any external servers.
 
 ## Information Collected by Microsoft
 

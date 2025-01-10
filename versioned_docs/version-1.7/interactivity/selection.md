@@ -14,7 +14,7 @@ However, cross-filtering is a bit of a special case vs. [tooltips](interactivity
 
 Both [Vega](https://vega.github.io/vega/docs/event-streams/) (with Signals and Events) and [Vega-Lite](https://vega.github.io/vega-lite/docs/parameter.html) (with Parameters) both have their own ways of managing interactivity internally when it comes to clicking on marks. However we also have to think about [how Power BI manages selection state between visuals](https://docs.microsoft.com/en-us/power-bi/developer/visuals/selection-api?WT.mc_id=DP-MVP-5003712) and apply this in a generic manner, so Deneb again bridges this particular gap as much as possible. Therefore, cross-filtering works as follows:
 
-- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Expose cross-filtering values for dataset rows** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-tab).
+- You can configure whether Deneb should attempt to [resolve data points](#data-point-resolution) when clicking on marks, through the **Expose cross-filtering values for dataset rows** property in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-pane).
 
 - This setting is **disabled** by default.
 
@@ -24,7 +24,7 @@ Both [Vega](https://vega.github.io/vega/docs/event-streams/) (with Signals and E
 
 With the **Expose cross-filtering values for dataset rows** property enabled, Deneb will then display a **Cross-filtering management** setting, with two options:
 
-![selection-mode-settings.png](./img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb present stwo additional modes for management: Simple (default) and Advanced.")
+![selection-mode-settings.png](./img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb presents two additional modes for management: Simple (default) and Advanced.")
 
 :::caution 'Advanced' Really Means Advanced
 The documentation on this page continues under the assumption that you will be working with the _Simple_ (default) management mode. It is worth starting with this mode to allow Deneb to handle as much as it can for you, although you will still need to do some work. If you are using Vega and have a need to do more than the _Simple_ mode can offer (and are comfortable with how things work), then you can explore [Advanced Cross-Filtering](interactivity-selection-advanced).
@@ -45,7 +45,7 @@ With the **Expose cross-filtering values for dataset rows** property enabled, De
 ![selection-simple-single-point.png](./img/selection-simple-single-point.png "Enabling cross-filtering and clicking a resolvable data point will trigger selection in other visuals on the page.")
 
 :::caution You Must Manage Visual Effects and Encodings
-Note that the above is based on the visual produced [in the worked example](simple-example#adding-cross-filtering). As such this has an encoding applied to add an effect to marks that are in the current list of selected data points and is to help illustrate the concept. You will need to [manage such encodings yourself](#managing-selection-state-visually-through-encodings). The card to the right of the visual is merely for illustrative purposes: it helps us to re-state the selected values via another measure and confirm selections are propagated.
+Note that the above is based on the visual produced [in the worked example](simple-example#cross-filtering). As such this has an encoding applied to add an effect to marks that are in the current list of selected data points and is to help illustrate the concept. You will need to [manage such encodings yourself](#managing-selection-state-visually-through-encodings). The card to the right of the visual is merely for illustrative purposes: it helps us to re-state the selected values via another measure and confirm selections are propagated.
 :::
 
 Holding the Ctrl or Shift key and clicking additional marks that contain resolvable data points will add these to the current list and affect other visuals, e.g.:
@@ -57,7 +57,7 @@ Holding the Ctrl or Shift key and clicking additional marks that contain resolva
 For marks or layers that contain simple aggregates, Deneb can attempt to resolve and collect the individual data points, based on the unique values of grouped fields. This can be useful but there are a couple of considerations here:
 
 - Any columns and measures need to be aliased in this new data stream as the corresponding columns and measures they are derived from.
-- If you are applying filtering or additional transforms that remove the compent rows, this is not taken into account.
+- If you are applying filtering or additional transforms that remove the component rows, this is not taken into account.
 - As the data is a new stream, the granularity (and therefore the row context) is different to the base `"dataset"`. This means that there is no [corresponding `__selected__` field](#the-__selected__-field) to help manage selection state, but it is possible to be creative here and give the impression of selection at a higher level; there is an example of this below.
 
 ## Data Point Limit
@@ -91,16 +91,16 @@ Deneb will maintain the value of this field for each row in your dataset as foll
 - **`neutral`**: the visual has no current selection state and the data point should be displayed normally.
 
 :::tip Why 3 States?
-The reason we have three states rather than a simple **`on`**/**`off`**, or binary state, is to allow us the (optional) opportunity to style elements that are explicitly highlighted differently to those that are displayed regulary (**`neutral`**) and open up further possibilities for our readers.
+The reason we have three states rather than a simple **`on`**/**`off`**, or binary state, is to allow us the (optional) opportunity to style elements that are explicitly highlighted differently to those that are displayed regularly (**`neutral`**) and open up further possibilities for our readers.
 :::
 
-Some further examples of leveraging this state management are [detailed further below](#simple-examples).
+Some further examples of leveraging this state management are [detailed further below](#simple-worked-examples).
 
 ## Managing Selection State Visually through Encodings
 
 As mentioned higher up, if you want Cross-Filtering to work effectively for your readers, you will need to use the state of the `__selected__` field for each row and encode marks accordingly, so that your visuals communicate selected vs un-selected marks effectively. We'd recommend a similar approach to most other Power BI visuals in at least setting the opacity of effected marks accordingly, but the flexibility of the Vega languages gives you the ability to explore other possibilities.
 
-The [Simple Worked Examples](#simple-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for Cross-Filtering to help you get started.
+The [Simple Worked Examples](#simple-worked-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for Cross-Filtering to help you get started.
 
 ## Limitations and Considerations
 
@@ -118,7 +118,7 @@ If you have found an alternative approach, or have a great idea on how to help u
 
 The following examples are for Vega-Lite but similar principles can be applied for Vega.
 
-This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample finanical data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__selected__` field. We've also added some additional marks to the examples to show this value explicitly as interaction events occur. We'll provide basic example JSON for each underneath.
+This report shows the three examples below how they would be rendered in Power BI, using a model based on the sample financial data available in Power BI Desktop. In each case, the full tooltip data is exposed so that you can observe the state of the `__selected__` field. We've also added some additional marks to the examples to show this value explicitly as interaction events occur. We'll provide basic example JSON for each underneath.
 
 <iframe
     width="100%"

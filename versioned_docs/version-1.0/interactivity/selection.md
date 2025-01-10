@@ -31,7 +31,7 @@ With the **Cross-Filtering (Selection) of Data Points** property enabled, Deneb 
 ![selection-simple-single-point.png](./img/selection-simple-single-point.png "Enabling cross-filtering and clicking a resolvable data point will trigger selection in other visuals on the page.")
 
 :::caution You Must Manage Visual Effects and Encodings
-Note that the above is based on the visual produced [in the worked example](simple-example#adding-cross-filtering). As such this has an encoding applied to add an effect to marks that are in the current list of selected data points and is to help illustrate the concept. You will need to [manage such encodings yourself](#managing-selection-state-visually-through-encodings). The card to the right of the visual is merely for illustrative purposes: it helps us to re-state the selected values via another measure and confirm selections are propagated.
+Note that the above is based on the visual produced [in the worked example](simple-example#cross-filtering). As such this has an encoding applied to add an effect to marks that are in the current list of selected data points and is to help illustrate the concept. You will need to [manage such encodings yourself](#managing-selection-state-visually-through-encodings). The card to the right of the visual is merely for illustrative purposes: it helps us to re-state the selected values via another measure and confirm selections are propagated.
 :::
 
 Holding the Ctrl key and clicking additional marks that contain resolvable data points will add these to the current list and affect other visuals, e.g.:
@@ -80,13 +80,13 @@ Deneb will maintain the value of this field for each row in your dataset as foll
 The reason we have three states rather than a simple **`on`**/**`off`**, or binary state, is to allow us the (optional) opportunity to style elements that are explicitly highlighted differently to those that are displayed regulary (**`neutral`**) and open up further possibilities for our readers.
 :::
 
-Some further examples of leveraging this state management are [detailed further below](#simple-examples).
+Some further examples of leveraging this state management are [detailed further below](#simple-worked-examples).
 
 ## Managing Selection State Visually through Encodings
 
 As mentioned higher up, if you want Cross-Filtering to work effectively for your readers, you will need to use the state of the `__selected__` field for each row and encode marks accordingly, so that your visuals communicate selected vs un-selected marks effectively. We'd recommend a similar approach to most other Power BI visuals in at least setting the opacity of effected marks accordingly, but the flexibility of the Vega languages gives you the ability to explore other possibilities.
 
-The [Simple Worked Examples](#simple-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for Cross-Filtering to help you get started.
+The [Simple Worked Examples](#simple-worked-examples) section below shows how you may be able to get started with exploring this further. While these focus on Vega-Lite, both versions of the _Simple Bar Chart_ template available from the _New Specification_ dialog contain simple bindings for Cross-Filtering to help you get started.
 
 ## Limitations and Considerations
 
