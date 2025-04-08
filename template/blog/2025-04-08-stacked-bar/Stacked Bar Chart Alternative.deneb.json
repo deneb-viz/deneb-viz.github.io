@@ -1,0 +1,176 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "information": {
+      "uuid": "6e9efe82-3a26-4fc2-96ad-e48f78d00bd4",
+      "generated": "2025-04-08T04:48:47.741Z",
+      "previewImageBase64PNG": "data:image/png;base64,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",
+      "name": "Stacked Bar Chart Alternative",
+      "description": "An implementation of the \"Stacked Bar Chart Alternative\", as introduced on the Flerlage Twins blog: https://www.flerlagetwins.com/2025/04/the-best-alternative-to-stacked-bar.html",
+      "author": "Daniel Marsh-Patrick (inspired by Sebastine Amede, Darragh Murray and Kevin Flerlage)"
+    },
+    "deneb": {
+      "build": "1.7.2.1",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.20.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "config": "{\r\n  \"view\": {\r\n    \"stroke\": \"transparent\"\r\n  },\r\n  \"font\": \"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\"\r\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Group",
+        "description": "High-level grouping column (outer bar)",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "Series",
+        "description": "Lower-level grouping column (inner bars)",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__2__",
+        "name": "Measure",
+        "description": "The measure the visualize across all bars (will be aggregated using `sum` for the outer bars)",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "title": {
+    "text": "Country Revenue by Segment ($M)",
+    "anchor": "start"
+  },
+  "view": {
+    "stroke": "transparent"
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "transform": [
+    {
+      "calculate": "datum['__2__'] / 1000000",
+      "as": "Sales_M"
+    }
+  ],
+  "layer": [
+    {
+      "encoding": {
+        "y": {
+          "field": "__2__",
+          "aggregate": "sum"
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#d4d4d4"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "bottom",
+            "dy": -15
+          },
+          "encoding": {
+            "text": {
+              "field": "__0__"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "top",
+            "dy": -15
+          },
+          "encoding": {
+            "text": {
+              "field": "Sales_M",
+              "aggregate": "sum",
+              "format": ",d"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "encoding": {
+        "y": {
+          "field": "__2__"
+        },
+        "xOffset": {
+          "field": "__1__",
+          "sort": {
+            "field": "__2__",
+            "order": "descending"
+          },
+          "scale": {
+            "padding": 0.2
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "stroke": "white"
+          },
+          "encoding": {
+            "color": {
+              "field": "__1__",
+              "sort": {
+                "field": "__2__",
+                "order": "descending"
+              },
+              "legend": {
+                "orient": "top",
+                "title": null
+              }
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -7.5
+          },
+          "encoding": {
+            "text": {
+              "field": "Sales_M",
+              "format": ",d"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "sort": {
+        "field": "__2__",
+        "op": "sum",
+        "order": "descending"
+      },
+      "axis": null
+    },
+    "y": {
+      "type": "quantitative",
+      "axis": null
+    }
+  }
+}
