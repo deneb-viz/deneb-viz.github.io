@@ -1,0 +1,650 @@
+---
+title: "How-To: The Stacked Bar Alternative"
+description: Using Vega-Lite to replicate a more readable alternative to a stacked bar chart.
+slug: stacked-bar-alternative
+authors:
+  - daniel
+tags: [how-to, vega-lite]
+image: /img/blog/2025-04-08-stacked-bar/finished-recipe.png
+hide_table_of_contents: false
+---
+
+import { VegaLite } from "react-vega";
+
+I've become smitten with this stacked bar chart alternative, as [recently showcased on the Flerlage Twins blog](https://www.flerlagetwins.com/2025/04/the-best-alternative-to-stacked-bar.html). This article is a brilliant insight into a collaborative process between [Sebastine Amede](https://www.linkedin.com/in/sebastine-amede/), [Darragh Murray](https://www.linkedin.com/in/darraghmurray/) and [Kevin](https://www.linkedin.com/in/kevin-flerlage-20106a8), with a further spotlight on folks who have inspired their final design. It's a really brilliant way of keeping the part-to-whole idea of a stacked bar chart, while also making the individual segments much easier to compare.
+
+As always, when I see cool things (and because I enjoy using the tooling as well as developing it), I wonder how easy they might be to replicate in Power BI using Deneb. I thought it would be a fun exercise to try and replicate the example from the blog post using Vega-Lite. Fortunately, Vega-Lite has multiple encoding channels along each direction for Cartesian plots, which makes it a fairly straightforward process.
+
+{/* truncate */}
+
+## Finished Recipe
+
+This is how our final design will look:
+
+![finished-recipe](/img/blog/2025-04-08-stacked-bar/finished-recipe.png "An alternative to a stacked bar chart, first grouping the data by one dimension (Country) and then by another (Segment). Country has a bar representing the total sales, and Segment has a bar representing the total sales for each segment. The segments are then displayed as a separate bar chart within the bar for each country. Segment is color-coded and show in the legend. Each bar has labels showing the total sales represented by each mark. The consolidated bar representing country also has a label showing which country the mark is representing.")
+
+Although Deneb is a Power BI-specific tool, I'll produce the example using Vega-Lite natively, so we can visualize our progress on this post using embedded Vega-Lite visuals that you can open in the Vega Editor to further explore and/or remix. There may be some steps to make modifications if you have a preference for using Deneb-specific features like integrating your [Power BI theme](/docs/schemes) or [Power BI-specific number formatting](/docs/formatting), but they should be fairly straightforward.
+
+For those who just want to get started with the finished product, there are assets available [at the bottom of this article](#wrapping-up).
+
+## Our Data
+
+I'm going to start with the simple financial data that [you can download from MS Learn](https://learn.microsoft.com/en-us/power-bi/create-reports/sample-financial-download). For this example, I'm adding the **Country** and **Segment** columns, and the **$ Sales** measure, so we have a lower-level granularity than we might normally have for a simple bar chart:
+
+| Country                  | Segment          | Sales     |
+| ------------------------ | ---------------- | --------- |
+| Canada                   | Channel Partners | 19752468  |
+| Canada                   | Enterprise       | 144752736 |
+| Canada                   | Government       | 428829833 |
+| Canada                   | Midmarket        | 21616940  |
+| Canada                   | Small Business   | 361203792 |
+| France                   | Channel Partners | 15178124  |
+| France                   | Enterprise       | 150182723 |
+| France                   | Government       | 432792397 |
+| France                   | Midmarket        | 25395919  |
+| France                   | Small Business   | 274034856 |
+| Germany                  | Channel Partners | 9807620   |
+| Germany                  | Enterprise       | 146362549 |
+| Germany                  | Government       | 307773485 |
+| Germany                  | Midmarket        | 12452545  |
+| Germany                  | Small Business   | 281729079 |
+| Mexico                   | Channel Partners | 8887825   |
+| Mexico                   | Enterprise       | 130960356 |
+| Mexico                   | Government       | 413892255 |
+| Mexico                   | Midmarket        | 16428775  |
+| Mexico                   | Small Business   | 308830851 |
+| United States of America | Channel Partners | 12059458  |
+| United States of America | Enterprise       | 166894624 |
+| United States of America | Government       | 362146299 |
+| United States of America | Midmarket        | 21890524  |
+| United States of America | Small Business   | 463176030 |
+
+This produces the dataset for our Deneb visual and I'll add this to the **Values** data role, as I would for any project.
+
+## Thinking About Our Design
+
+While the finished recipe contains `text` marks to further annotate our chart, the solution itself can be approached at a high level as follows:
+
+1. Adding our highest-level grouping field (Country) to the `x` encoding channel and aggregating our measure (Sales) using `sum`.
+2. Adding our lower-level grouping field (Segment) to the `xOffset` encoding channel.
+
+Everything else will work within these constraints.
+
+## Step 1: Highest Level Grouping
+
+Here's how we produce a summarized bar chart for our highest-level grouping (Country):
+
+```json
+{
+  "data": { "name": "dataset" },
+  "layer": [
+    {
+      "encoding": { "y": { "field": "Sales", "aggregate": "sum" } },
+      "mark": { "type": "bar", "color": "#d4d4d4" }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "sort": { "field": "Sales", "op": "sum", "order": "descending" }
+    },
+    "y": { "type": "quantitative" }
+  }
+}
+```
+
+- Note that I'm already thinking about the above approach by using a `layer` rather than a `mark` at the top level..
+- As our `y` encoding channel is `quantitative`, I'm putting that at the top level, and adding a `y` encoding channel by an aggregate of **Sales** in the layer (due to granularity). This will inherit the top-level `type` and we won't need to repeat this, due to how Vega-Lite will union the y-scale.
+- The `x` encoding channel will be shared by all layers, so this is at the top level. I'm also sorting this in descending order of **Sales** (again aggregated).
+
+Our design looks pretty normal right now, but as we might expect:
+
+<VegaLite
+  spec={{
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    datasets: {
+      dataset: [
+        { Country: "Canada", Segment: "Channel Partners", Sales: 19752468 },
+        { Country: "Canada", Segment: "Enterprise", Sales: 144752736 },
+        { Country: "Canada", Segment: "Government", Sales: 428829833 },
+        { Country: "Canada", Segment: "Midmarket", Sales: 21616940 },
+        { Country: "Canada", Segment: "Small Business", Sales: 361203792 },
+        { Country: "France", Segment: "Channel Partners", Sales: 15178124 },
+        { Country: "France", Segment: "Enterprise", Sales: 150182723 },
+        { Country: "France", Segment: "Government", Sales: 432792397 },
+        { Country: "France", Segment: "Midmarket", Sales: 25395919 },
+        { Country: "France", Segment: "Small Business", Sales: 274034856 },
+        { Country: "Germany", Segment: "Channel Partners", Sales: 9807620 },
+        { Country: "Germany", Segment: "Enterprise", Sales: 146362549 },
+        { Country: "Germany", Segment: "Government", Sales: 307773485 },
+        { Country: "Germany", Segment: "Midmarket", Sales: 12452545 },
+        { Country: "Germany", Segment: "Small Business", Sales: 281729079 },
+        { Country: "Mexico", Segment: "Channel Partners", Sales: 8887825 },
+        { Country: "Mexico", Segment: "Enterprise", Sales: 130960356 },
+        { Country: "Mexico", Segment: "Government", Sales: 413892255 },
+        { Country: "Mexico", Segment: "Midmarket", Sales: 16428775 },
+        { Country: "Mexico", Segment: "Small Business", Sales: 308830851 },
+        {
+          Country: "United States of America",
+          Segment: "Channel Partners",
+          Sales: 12059458,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Enterprise",
+          Sales: 166894624,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Government",
+          Sales: 362146299,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Midmarket",
+          Sales: 21890524,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Small Business",
+          Sales: 463176030,
+        },
+      ],
+    },
+    width: 580,
+    height: 360,
+    data: { name: "dataset" },
+    layer: [
+      {
+        encoding: { y: { field: "Sales", aggregate: "sum" } },
+        mark: { type: "bar", color: "#d4d4d4" },
+      },
+    ],
+    encoding: {
+      x: {
+        field: "Country",
+        sort: { field: "Sales", op: "sum", order: "descending" },
+      },
+      y: { type: "quantitative" },
+    },
+  }}
+/>
+
+## Step 2: Lowest Level Grouping
+
+With our primary channels (`x` and `y`) worked out, we can add our second layer, which will perform the offset within each bar, based on the **Segment** field:
+
+```json
+{
+  "data": { "name": "dataset" },
+  "layer": [
+    ... // Our first layer
+    {
+      "encoding": {
+        "y": { "field": "Sales" },
+        "xOffset": {
+          "field": "Segment",
+          "sort": { "field": "Sales", "order": "descending" },
+          "scale": { "padding": 0.2 }
+        },
+        "color": {
+          "field": "Segment",
+          "sort": {"field": "Sales", "order": "descending" }
+        }
+      },
+      "mark": { "type": "bar", "stroke": "white" }
+    }
+  ],
+  "encoding": {
+    ... // Our original encoding
+  }
+}
+```
+
+- This layer has the `y` encoding channel set the the **Sales** field.
+- Because we're at our lowest level of granularity, we don't need to aggregate this.
+- The `xOffset` channel is set to the **Segment** field, and we're sorting this in descending order of **Sales**. This will produce individual bars within each bigger bar, sharing the top-level `x` encoding channel for their corresponding **Country**. Theres a small amount of `padding` here, to help space them out a bit better.
+- The `color` channel is set to the **Segment** field, which will also give us our legend. This is sorted in descending order of sales, to match the ordering of the `xOffset` channel and having each legend item match the order of the segments in the chart.
+- Each bar has a white `stroke`, just to help with contrast against the bar behind it.
+
+As this point, we should be able to see that the main challenge has been solved and we have our "bars within bars" design:
+
+<VegaLite
+  spec={{
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    datasets: {
+      dataset: [
+        { Country: "Canada", Segment: "Channel Partners", Sales: 19752468 },
+        { Country: "Canada", Segment: "Enterprise", Sales: 144752736 },
+        { Country: "Canada", Segment: "Government", Sales: 428829833 },
+        { Country: "Canada", Segment: "Midmarket", Sales: 21616940 },
+        { Country: "Canada", Segment: "Small Business", Sales: 361203792 },
+        { Country: "France", Segment: "Channel Partners", Sales: 15178124 },
+        { Country: "France", Segment: "Enterprise", Sales: 150182723 },
+        { Country: "France", Segment: "Government", Sales: 432792397 },
+        { Country: "France", Segment: "Midmarket", Sales: 25395919 },
+        { Country: "France", Segment: "Small Business", Sales: 274034856 },
+        { Country: "Germany", Segment: "Channel Partners", Sales: 9807620 },
+        { Country: "Germany", Segment: "Enterprise", Sales: 146362549 },
+        { Country: "Germany", Segment: "Government", Sales: 307773485 },
+        { Country: "Germany", Segment: "Midmarket", Sales: 12452545 },
+        { Country: "Germany", Segment: "Small Business", Sales: 281729079 },
+        { Country: "Mexico", Segment: "Channel Partners", Sales: 8887825 },
+        { Country: "Mexico", Segment: "Enterprise", Sales: 130960356 },
+        { Country: "Mexico", Segment: "Government", Sales: 413892255 },
+        { Country: "Mexico", Segment: "Midmarket", Sales: 16428775 },
+        { Country: "Mexico", Segment: "Small Business", Sales: 308830851 },
+        {
+          Country: "United States of America",
+          Segment: "Channel Partners",
+          Sales: 12059458,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Enterprise",
+          Sales: 166894624,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Government",
+          Sales: 362146299,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Midmarket",
+          Sales: 21890524,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Small Business",
+          Sales: 463176030,
+        },
+      ],
+    },
+    width: 580,
+    height: 360,
+    data: { name: "dataset" },
+    layer: [
+      {
+        encoding: { y: { field: "Sales", aggregate: "sum" } },
+        mark: { type: "bar", color: "#d4d4d4" },
+      },
+      {
+        encoding: {
+          y: { field: "Sales" },
+          xOffset: {
+            field: "Segment",
+            sort: { field: "Sales", order: "descending" },
+            scale: { padding: 0.2 },
+          },
+          color: {
+            field: "Segment",
+            sort: { field: "Sales", order: "descending" },
+          },
+        },
+        mark: { type: "bar", stroke: "white" },
+      },
+    ],
+    encoding: {
+      x: {
+        field: "Country",
+        sort: { field: "Sales", op: "sum", order: "descending" },
+      },
+      y: { type: "quantitative" },
+    },
+  }}
+/>
+
+## Step 3: Cleaning Up the Plot Area
+
+For a more clutter-free design, we will need to remove the redundant elements from our chart. We will add labels in step 4, but this will help us to understand how much space we have to work with.
+
+```json highlight={2-3,21,31,33}
+{
+  "title": { "text": "Country Revenue by Segment ($M)", "anchor": "start" },
+  "view": { "stroke": "transparent" },
+  "data": { "name": "dataset" },
+  "layer": [
+    {
+      "encoding": { "y": { "field": "Sales", "aggregate": "sum" } },
+      "mark": { "type": "bar", "color": "#d4d4d4" }
+    },
+    {
+      "encoding": {
+        "y": { "field": "Sales" },
+        "xOffset": {
+          "field": "Segment",
+          "sort": { "field": "Sales", "order": "descending" },
+          "scale": { "padding": 0.2 }
+        },
+        "color": {
+          "field": "Segment",
+          "sort": { "field": "Sales", "order": "descending" },
+          "legend": { "orient": "top", "title": null }
+        }
+      },
+      "mark": { "type": "bar", "stroke": "white" }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "sort": { "field": "Sales", "op": "sum", "order": "descending" },
+      "axis": null
+    },
+    "y": { "type": "quantitative", "axis": null }
+  }
+}
+```
+
+The changes have been highlighted in the code above but can be summarized as:
+
+- Adding a title and anchoring it to the left (start).
+- Setting the `view` to have a transparent stroke, so we don't have a border around the plot area.
+- Setting the `legend` for the **Segment** field to be at the top, and removing the title (as it is redundant).
+- Removing both axes (setting them to `null`), as they are not needed.
+
+Here is our refined design:
+
+<VegaLite
+  spec={{
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    datasets: {
+      dataset: [
+        { Country: "Canada", Segment: "Channel Partners", Sales: 19752468 },
+        { Country: "Canada", Segment: "Enterprise", Sales: 144752736 },
+        { Country: "Canada", Segment: "Government", Sales: 428829833 },
+        { Country: "Canada", Segment: "Midmarket", Sales: 21616940 },
+        { Country: "Canada", Segment: "Small Business", Sales: 361203792 },
+        { Country: "France", Segment: "Channel Partners", Sales: 15178124 },
+        { Country: "France", Segment: "Enterprise", Sales: 150182723 },
+        { Country: "France", Segment: "Government", Sales: 432792397 },
+        { Country: "France", Segment: "Midmarket", Sales: 25395919 },
+        { Country: "France", Segment: "Small Business", Sales: 274034856 },
+        { Country: "Germany", Segment: "Channel Partners", Sales: 9807620 },
+        { Country: "Germany", Segment: "Enterprise", Sales: 146362549 },
+        { Country: "Germany", Segment: "Government", Sales: 307773485 },
+        { Country: "Germany", Segment: "Midmarket", Sales: 12452545 },
+        { Country: "Germany", Segment: "Small Business", Sales: 281729079 },
+        { Country: "Mexico", Segment: "Channel Partners", Sales: 8887825 },
+        { Country: "Mexico", Segment: "Enterprise", Sales: 130960356 },
+        { Country: "Mexico", Segment: "Government", Sales: 413892255 },
+        { Country: "Mexico", Segment: "Midmarket", Sales: 16428775 },
+        { Country: "Mexico", Segment: "Small Business", Sales: 308830851 },
+        {
+          Country: "United States of America",
+          Segment: "Channel Partners",
+          Sales: 12059458,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Enterprise",
+          Sales: 166894624,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Government",
+          Sales: 362146299,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Midmarket",
+          Sales: 21890524,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Small Business",
+          Sales: 463176030,
+        },
+      ],
+    },
+    width: 580,
+    height: 360,
+    title: {
+      text: "Country Revenue by Segment ($M)",
+      anchor: "start",
+    },
+    view: { stroke: "transparent" },
+    data: { name: "dataset" },
+    layer: [
+      {
+        encoding: { y: { field: "Sales", aggregate: "sum" } },
+        mark: { type: "bar", color: "#d4d4d4" },
+      },
+      {
+        encoding: {
+          y: { field: "Sales" },
+          xOffset: {
+            field: "Segment",
+            sort: { field: "Sales", order: "descending" },
+            scale: { padding: 0.2 },
+          },
+          color: {
+            field: "Segment",
+            sort: { field: "Sales", order: "descending" },
+            legend: { orient: "top" },
+          },
+        },
+        mark: { type: "bar", stroke: "white" },
+      },
+    ],
+    encoding: {
+      x: {
+        field: "Country",
+        sort: { field: "Sales", op: "sum", order: "descending" },
+        axis: null,
+      },
+      y: { type: "quantitative", axis: null },
+    },
+  }}
+/>
+
+## Step 4: Labels
+
+For the last part of this walkthrough, I'm going to add labels for each bar using `text` marks. As our two-layer approach works well, we can use descendant layers so that these marks inherit what they need from the existing layout:
+
+```json highlight={5,9-21,32-47}
+{
+  "title": { "text": "Country Revenue by Segment ($M)", "anchor": "start" },
+  "view": { "stroke": "transparent" },
+  "data": { "name": "dataset" },
+  "transform": [{ "calculate": "datum.Sales / 1000000", "as": "Sales_M" }],
+  "layer": [
+    {
+      "encoding": { "y": { "field": "Sales", "aggregate": "sum" } },
+      "layer": [
+        { "mark": { "type": "bar", "color": "#d4d4d4" } },
+        {
+          "mark": { "type": "text", "baseline": "bottom", "dy": -15 },
+          "encoding": { "text": { "field": "Country" } }
+        },
+        {
+          "mark": { "type": "text", "baseline": "top", "dy": -15 },
+          "encoding": {
+            "text": { "field": "Sales_M", "aggregate": "sum", "format": ",d" }
+          }
+        }
+      ]
+    },
+    {
+      "encoding": {
+        "y": { "field": "Sales" },
+        "xOffset": {
+          "field": "Segment",
+          "sort": { "field": "Sales", "order": "descending" },
+          "scale": { "padding": 0.2 }
+        }
+      },
+      "layer": [
+        {
+          "mark": { "type": "bar", "stroke": "white" },
+          "encoding": {
+            "color": {
+              "field": "Segment",
+              "sort": { "field": "Sales", "order": "descending" },
+              "legend": { "orient": "top", "title": null }
+            }
+          }
+        },
+        {
+          "mark": { "type": "text", "dy": -7.5 },
+          "encoding": { "text": { "field": "Sales_M", "format": ",d" } }
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "sort": { "field": "Sales", "op": "sum", "order": "descending" },
+      "axis": null
+    },
+    "y": { "type": "quantitative", "axis": null }
+  }
+}
+```
+
+I've again highlighted the lines that have changed, but an overview of what I've done is as follows:
+
+- Added a `transform` to calculate the **Sales** measure in millions, and store it in a new field called **Sales_M**. This is used for the labels. We could do this using Power BI formatting against the **Sales** measure, but I'm trying to keep things replicable in Vega-Lite outside Power BI for this example.
+- Created a sub-layer in the first layer, for three marks:
+
+  - Our original `bar` mark, which is the grey bar for the **Country** field.
+  - A `text` mark for the **Country** field, offset by `dy` by -15 pixels (upwards).
+  - A `text` mark for the (aggregated) **Sales_M** field, offset by `dy` -by 15 pixels (upwards).
+
+  Both `text` marks have opposing `baseline` properties, so while they share the same `y` position and `offset`, they will be positioned above and below their resolved y-position accordingly.
+
+- The second layer has a similar approach to the first, where we create a sub-layer for two marks:
+
+  - The `bar` mark, which is the colored bar for the **Segment** field. We have also moved the `color` encoding for the layer into this sub-layer, so that the `text` marks do not inherit it.
+  - A `text` mark for the **Sales_M** field, offset by `dy` by -7.5 pixels (upwards).
+
+And now we have a visual that looks like what we intended:
+
+<VegaLite
+  spec={{
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    datasets: {
+      dataset: [
+        { Country: "Canada", Segment: "Channel Partners", Sales: 19752468 },
+        { Country: "Canada", Segment: "Enterprise", Sales: 144752736 },
+        { Country: "Canada", Segment: "Government", Sales: 428829833 },
+        { Country: "Canada", Segment: "Midmarket", Sales: 21616940 },
+        { Country: "Canada", Segment: "Small Business", Sales: 361203792 },
+        { Country: "France", Segment: "Channel Partners", Sales: 15178124 },
+        { Country: "France", Segment: "Enterprise", Sales: 150182723 },
+        { Country: "France", Segment: "Government", Sales: 432792397 },
+        { Country: "France", Segment: "Midmarket", Sales: 25395919 },
+        { Country: "France", Segment: "Small Business", Sales: 274034856 },
+        { Country: "Germany", Segment: "Channel Partners", Sales: 9807620 },
+        { Country: "Germany", Segment: "Enterprise", Sales: 146362549 },
+        { Country: "Germany", Segment: "Government", Sales: 307773485 },
+        { Country: "Germany", Segment: "Midmarket", Sales: 12452545 },
+        { Country: "Germany", Segment: "Small Business", Sales: 281729079 },
+        { Country: "Mexico", Segment: "Channel Partners", Sales: 8887825 },
+        { Country: "Mexico", Segment: "Enterprise", Sales: 130960356 },
+        { Country: "Mexico", Segment: "Government", Sales: 413892255 },
+        { Country: "Mexico", Segment: "Midmarket", Sales: 16428775 },
+        { Country: "Mexico", Segment: "Small Business", Sales: 308830851 },
+        {
+          Country: "United States of America",
+          Segment: "Channel Partners",
+          Sales: 12059458,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Enterprise",
+          Sales: 166894624,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Government",
+          Sales: 362146299,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Midmarket",
+          Sales: 21890524,
+        },
+        {
+          Country: "United States of America",
+          Segment: "Small Business",
+          Sales: 463176030,
+        },
+      ],
+    },
+    width: 580,
+    height: 360,
+    title: { text: "Country Revenue by Segment ($M)", anchor: "start" },
+    view: { stroke: "transparent" },
+    data: { name: "dataset" },
+    transform: [{ calculate: "datum.Sales / 1000000", as: "Sales_M" }],
+    layer: [
+      {
+        encoding: { y: { field: "Sales", aggregate: "sum" } },
+        layer: [
+          { mark: { type: "bar", color: "#d4d4d4" } },
+          {
+            mark: { type: "text", baseline: "bottom", dy: -15 },
+            encoding: { text: { field: "Country" } },
+          },
+          {
+            mark: { type: "text", baseline: "top", dy: -15 },
+            encoding: {
+              text: { field: "Sales_M", aggregate: "sum", format: ",d" },
+            },
+          },
+        ],
+      },
+      {
+        encoding: {
+          y: { field: "Sales" },
+          xOffset: {
+            field: "Segment",
+            sort: { field: "Sales", order: "descending" },
+            scale: { padding: 0.2 },
+          },
+        },
+        layer: [
+          {
+            mark: { type: "bar", stroke: "white" },
+            encoding: {
+              color: {
+                field: "Segment",
+                sort: { field: "Sales", order: "descending" },
+                legend: { orient: "top", title: null },
+              },
+            },
+          },
+          {
+            mark: { type: "text", dy: -7.5 },
+            encoding: { text: { field: "Sales_M", format: ",d" } },
+          },
+        ],
+      },
+    ],
+    encoding: {
+      x: {
+        field: "Country",
+        sort: { field: "Sales", op: "sum", order: "descending" },
+        axis: null,
+      },
+      y: { type: "quantitative", axis: null },
+    },
+  }}
+/>
+
+## Wrapping Up
+
+I'm really grateful for Sebastine, Darragh and Kevin for taking the time to write up such a wonderful study on this approach and sharing their techniques with the data visualization community, and I hope that this implementation does that some justice, and help folks to implement this design in other tools. Hopefully anyone reading may have learned a little bit more about what Vega-Lite can do (and how Deneb can help you to achieve similar results in Power BI).
+
+As promised, here are some links to the finished recipe:
+
+- [Power BI workbook (with visual)](/pbix/blog/2025-04-08-stacked-bar/Deneb%20-%20Stacked%20Bar%20Alternative.pbix)
+- [Deneb template](/template/blog/2025-04-08-stacked-bar/Stacked%20Bar%20Chart%20Alternative.deneb.json)
+- [Version in Vega Editor](https://vega.github.io/editor/#/url/vega-lite/N4IgJAzgxgFgpgWwIYgFwhgF0wBwqgegIDc4BzJAOjIEtMYBXAI0poHsDp5kTykBaADZ04JAGyUAVhDYA7EABoQAEySYkEOJghpQq9ZsxoA2qADCbBrMwAnAJ5oQZpLKSrFIAMrkEca47MYF1k4QQACAAUkG0wQmx0lTyRBOB1UAEYATgB2AFYAJgAWMQAOAF8Fc0trewCXNxREnz8jdABRazgbHBsaTQ8klLT0wsK8-OyAZjEKqqtbB3RnV3cmsl9-dABxNlIbWQ2jROTUtEL8kpL8zJLJydmnaoW6lcavZs2QAFkaZWQbADWWgGJzS+XSYghmUKAAYHhZ5rUlvVVu91i1HJ5kIJwgAhBgQGghCAJLygtDTdL5GGTbKZfLwp5IkAAMRsLigcAGH1aTiCshC4SiMTipMGpwyuXS2RKVMKjMRi1Z7NknO56M+HUwXR6fS5xyGaHSuRh6Su2Xy90qj0VjjZHP1aMOjh2ewOGINEsKkwm9MmOQVNSV9tVju8Gt5Pz+0SBRzJhtQ+Vy-tymSygee6BDarWzvQWOSeIJRNSYvJieysMmhRKuRm1oRQZdXWQsgcuYxS35gsi0ViXTLCZuMOyYmpGeZWxbLnbTs7IC1Ot6-U9w2K0yThUyE6VU5srdn4bzIFdXXd-lXFJH2SmNdyO+b+5n6uPUf+sZBCblBVyhXvDaZXdpzbF95wLHEwnxQliUHCULmla4R23ADbXQL44AADxoKA2FAz5AmCUJexFAdPwlS4ShlJMHzQzDsNwjtNU6bplzDct0kmGFMjEGk6xo746JwvDeVPfZnUvVBCg4kp6STf85ibWisKExjI1+d9gQkiFzkovJ+PQ5SGLnT5wKLaDSzItJOMuaypX4gBVWQRGUMJPHUbUIDCNgADMwgAQV8XooDeI95wIgUiOFft4kso1qVTP9yhQxSQEc5zXPc1IvN8gKumwkKeUcRcWL1WKMjEUpoTHeVkszVKnO1Fy3LULKfP8wL8uEl1djPcT4wlDcRjHTJkIUuq0sajKWs8trcqCgqI0cN8Y00-qwTNTIYQKGqxuZCa4CazKZpyjrgq6-NsTMksSTK9dpR4ziygAXQqEAAHdfnoNBchKGElHgGgyCwCkeKUTA6BSXQQG1DDeUbBYwgAJTgUhZAYOAwiYOxXJ5MIAAowC+ABKDwORgNgbEcCB1BiEBXuIGg4DeqHqZsNggUcWwXAgHBogxV79BQVBQFcXxHEFww6bBlUIG8imEBMUBgsEKAGEEFrxbUBgEEocVPIIMJ0hhY2TdJtI1oAfS+OmnqUdW7C6RWQD8HDlCJMgocWUBvMZwRlExcklCQMgyBsPhtSp7W6de+3HdQUwQHfKHMDsHAuXQJhog8HDBApxwAGJlEKIui+j60k+F6HU-T6HMLjTPNGEEJHCYNhsDYBWlGURZ+GNV6XbYN3ZA9yuYdab3ff9pZAOjh4K9AFO085uuPAb0IS05tgcA8bu0F7-9ndVQf3eTlfK590Ip8t62g5DsOKAj9AICjpQ5afXkFH9spv5e60B6HkeoAvYgAvn7AOhpXoYQAPLeW8pLc+k9MSFSUDIWmCDL7gNOEoCmyg44qFSJyWQACpYgGgCcKGvNlDENQDCSgDJv52yQA7Sm8dQDzyrkvDOWcUG2HZjXN6MARAkP-ifSuOc87oLAfmZBpCKbjxAYg-MgcQA4Lwbg6AfhiEx3IJoqGFNGafEwFvDw4NMCQ1QGjHE38GFsJjMnauy9YY7x7tkSgB8RHD1Pk4yRV89ZWw8G-ZAH8v4-2ekoDxgCQAYShqAq+8NagoLkTExRa0PDGKfi-FRNhcEsPwRoohJ9XpICwmkSxghXrAMXjXAAjgwFwpi1A0FIKTEpaAynWKAA)
+
+Thanks as always for reading!
+
+DM-P
