@@ -22,7 +22,7 @@ Deneb 1.7 has passed certification and is currently undergoing deployment to you
 ### Bugs Fixes
 
 - Internal Monaco `command://` hyperlinks no longer trigger the MS launch URL API (#491)
-- If you are running Deneb in an insecure (HTTP) environment, it wil now work (#488, #493)
+- If you are running Deneb in an insecure (HTTP) environment, it will now work (#488, #493)
 
 ## 1.7.1 (2024-08-05)
 
