@@ -11,10 +11,10 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 - Input widget styling matches that of Vega-Editor, improving their layout
 
-### Bugs Fixes
+### Bugs Fixed
 
 - Internal Monaco `command://` hyperlinks no longer trigger the MS launch URL API (#491)
-- If you are running Deneb in an insecure (HTTP) environment, it wil now work (#488, #493)
+- If you are running Deneb in an insecure (HTTP) environment, it will now work (#488, #493)
 
 ## 1.7.1 (2024-08-05)
 
