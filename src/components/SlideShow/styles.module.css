@@ -1,0 +1,16 @@
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.imageAlt {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
