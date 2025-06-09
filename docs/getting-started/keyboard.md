@@ -13,18 +13,17 @@ Please [create an issue in the GitHub repo with what you're missing](https://git
 
 ## Editor Pane
 
-| Function                         | Shortcut                         |
-| -------------------------------- | -------------------------------- |
-| Expand or collapse               | **Ctrl** + **Alt** + **Space**   |
-| Navigate to Specification pane   | **Ctrl** + **Alt** + **1**       |
-| Navigate to Config pane          | **Ctrl** + **Alt** + **2**       |
-| Navigate to Settings pane        | **Ctrl** + **Alt** + **3**       |
-| Apply Changes                    | **Ctrl** + **Enter**             |
-| Toggle Auto-Apply                | **Ctrl** + **Shift** + **Enter** |
-| Edit Specification Field Mapping | **Ctrl** + **Alt** + **F**       |
-| New Specification                | **Ctrl** + **Alt** + **N**       |
-| Generate JSON Template           | **Ctrl** + **Alt** + **E**       |
-| Help                             | **Ctrl** + **Alt** + **H**       |
+| Function                       | Shortcut                         |
+| ------------------------------ | -------------------------------- |
+| Expand or collapse             | **Ctrl** + **Alt** + **Space**   |
+| Navigate to Specification pane | **Ctrl** + **Alt** + **1**       |
+| Navigate to Config pane        | **Ctrl** + **Alt** + **2**       |
+| Navigate to Settings pane      | **Ctrl** + **Alt** + **3**       |
+| Apply Changes                  | **Ctrl** + **Enter**             |
+| Toggle Auto-Apply              | **Ctrl** + **Shift** + **Enter** |
+| New Specification              | **Ctrl** + **Alt** + **N**       |
+| Generate JSON Template         | **Ctrl** + **Alt** + **E**       |
+| Help                           | **Ctrl** + **Alt** + **H**       |
 
 ## In-Editor
 

@@ -13,6 +13,33 @@ Deneb 1.7 has been submitted to AppSource for certification and may take some ti
 Deneb 1.7 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
+:::info Regarding Support of 1.x Releases
+Deneb v1 is reaching the end of its natural life in terms of how we can continue to improve it. In order for us to do this, we need a better platform, and this is coming in the form of Deneb 2.0. A brief plan of what to expect is outlined in [this recent blog post](/blog/2024-2025-summary#so-whats-next), but more information will become available soon as version 2.0 gets closer to being ready.
+
+Because Power BI reports are (ideally!) intended to have a long lifetime once deployed, the plan is to keep Deneb 1.x available in AppSource, hopefully forever, to ensure continuity of service.
+
+However any development focus will be on the things we need to do to keep it highly available for existing implementations where you have visuals deployed. The only planned changes will be critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements.
+:::
+
+## 1.8.0 (In Development)
+
+### Vega Updates
+
+- Vega Updated to **6.1.2** (from 5.30.0)
+- Vega-Lite updated to **6.1.0** (from 5.19.0)
+
+Note that during tests by community members, we noticed an edge case where a visual failed to work. This was traced to that specification containing warnings, and some stricter validation introduced in Vega-Lite 5.21.0. If you experience a previously working specification failing, please check for warnings first, resolve those and re-test before creating an issue.
+
+### Removal of Edit Specification Field Mapping Functionality
+
+Since its introduction, field mapping has been problematic for some users, which gets in the way of the development process as the dataset is modified through changes made outside the visual (typically either removing or renaming a field in the Power BI portion of the UI). These issues appear to have increased in frequency recently and are not consistent for everyone, making them difficult to debug and support.
+
+Given that we have since introduced a more advanced JSON editor in 1.7, which has find and replace functionality (Ctrl + F / Ctrl + H), managing these situations is still fairly convenient, without the overhead of us having to maintain a UI feature that is obtrusive for many users rather than helpful. As we are also prepping v1.x of Deneb for deprecation (with a view to focus on long term stability once this happens), the decision to remove a potentially flaky feature has been taken.
+
+### Minor Enhancements
+
+- If using Power BI Desktop with the [on-object interaction](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-on-object-interaction) UI enabled, double-clicking a Deneb visual would force this into format mode. This action has been suppressed.
+
 ## 1.7.2 (2024-09-04)
 
 ### Minor Enhancements

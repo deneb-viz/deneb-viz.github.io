@@ -98,18 +98,6 @@ Using this in a specification's `field` encoding would need to substitute the `.
 
 It is recommended that if you're passing in measures or columns containing special characters and do not wish for this behavior to occur, then rename them in the **Values** data role so that they are not passed through to the dataset.
 
-### Edit Specification Field Mapping
-
-Measures or columns that are bound to specification encodings or expressions might be used all the way through. If you want to change this or you've renamed a field in the **Values** data role, it can be cumbersome to manually find and replace these values.
-
-To make this easier, you can click the **Edit Specification Field Mapping** command or press **\[ Ctrl + Alt + F ]** to open the dialog. This will display all fields from the dataset that have been detected in encodings or expressions and display them in a list, e.g.:
-
-![The Edit Specification Field Mapping dialog allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.](./img/edit-mapping.png "The Edit Specification Field Mapping dialog allows you to change the allocation of any fields from the dataset that are used in encodings or expressions within your specification.")
-
-Much like when you create a new specification from a template, you can add or remove fields from the **Values** data role and they will become available for selection/substitution.
-
-Similarly, the dialog will be automatically displayed if you remove a field from the **Values** data role, that is currently bound to an encoding or expression. This way, you can easily substitute an alternative column or measure from your data model.
-
 ## Augmenting Other Datasets
 
 In the case of a Vega specification, you can potentially add further `data` objects to the array, and Vega-Lite specifications can also contain layer-specific datasets (or multiple named ones) but bear the following in mind:
