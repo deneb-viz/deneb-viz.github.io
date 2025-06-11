@@ -116,7 +116,7 @@ Each field has an optional **Author's notes** field. In here, you can type more 
 
 ### Review and Export
 
-When you're happy to proceed, you can either download the template file, or copy it to the clipboard. If copying, you can paste into your editor of choice and save it with an extension if `.json`.
+When you're happy to proceed, you can either download the template file, or copy it to the clipboard. If copying, you can paste into your editor of choice and save it with an extension of `.json`.
 
 :::note Direct Downloads May Not Be Possible
 Power BI visuals are only permitted to download a file **if your tenant admin has enabled downloading from custom visuals**. [You can learn more about this here](https://learn.microsoft.com/en-us/power-bi/admin/organizational-visuals#export-data-to-file).
