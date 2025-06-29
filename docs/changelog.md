@@ -5,14 +5,6 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-<!-- :::info Submitted for certification
-Deneb 1.7 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-::: -->
-
-<!-- :::info Pending deployment to AppSource
-Deneb 1.7 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-::: -->
-
 :::info Regarding Support of 1.x Releases
 Deneb v1 is reaching the end of its natural life in terms of how we can continue to improve it. In order for us to do this, we need a better platform, and this is coming in the form of Deneb 2.0. A brief plan of what to expect is outlined in [this recent blog post](/blog/2024-2025-summary#so-whats-next), but more information will become available soon as version 2.0 gets closer to being ready.
 
@@ -22,6 +14,14 @@ However any development focus will be on the things we need to do to keep it hig
 :::
 
 ## 1.8.0 (In Development)
+
+<!-- :::info Pending deployment to AppSource
+Deneb 1.8 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+::: -->
+
+:::info Submitted for certification
+Deneb 1.8 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+:::
 
 ### Vega Updates
 
