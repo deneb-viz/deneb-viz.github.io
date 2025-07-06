@@ -40,6 +40,10 @@ Given that we have since introduced a more advanced JSON editor in 1.7, which ha
 
 - If using Power BI Desktop with the [on-object interaction](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-on-object-interaction) UI enabled, double-clicking a Deneb visual would force this into format mode. This action has been suppressed.
 
+### Bugs FIxed
+
+- If using a field containing a special character, this was still being included in auto-completion results (#548)
+
 ## 1.7.2 (2024-09-04)
 
 ### Minor Enhancements
