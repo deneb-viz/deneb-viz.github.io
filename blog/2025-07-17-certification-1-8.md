@@ -31,7 +31,7 @@ Because Power BI reports are intended to be stable for users once delivered, it'
 
 Therefore, the plan for v1 is to continue to provide critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements. However, no new features will be added to the v1 codebase unless there is a significant justification to do so.
 
-Because Deneb development is done in my free time, I'm always "a couple of months away" from having something tangible to show you, and it may feel like the wheels are spinning a bit, but a lot is happening: in the last 8 months, more commits have gone into the v2 codebase than have gone into the entirety of v1 since its inception nearly five years ago. There will be more news soon, but I wanted to provide this update to reassure you that Deneb is not going away, and that we are committed to providing a stable and reliable visual for the foreseeable future.
+Because Deneb development is done in my free time, I'm always "a couple of months away" from having something tangible to show you, and it may feel like the wheels are spinning a bit, but a lot is happening: in the last 8 months, more commits have gone into the v2 codebase than have gone into the entirety of v1 since its inception nearly five years ago. There will be more news soon, but I wanted to provide this update to keep you up to date with how things are progressing.
 
 ---
 
