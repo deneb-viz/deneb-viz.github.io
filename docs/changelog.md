@@ -13,22 +13,26 @@ Because Power BI reports are (ideally!) intended to have a long lifetime once de
 However any development focus will be on the things we need to do to keep it highly available for existing implementations where you have visuals deployed. The only planned changes will be critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements.
 :::
 
-## 1.8.0 (In Development)
+## 1.8.0 (2025-07-16)
 
-<!-- :::info Pending deployment to AppSource
+:::info Pending deployment to AppSource
 Deneb 1.8 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+:::
+
+<!-- :::info Submitted for certification
+Deneb 1.8 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
 ::: -->
 
-:::info Submitted for certification
-Deneb 1.8 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-:::
+### Platform Updates
+
+Microsoft has recently introduced more stringent certification requirements for custom visuals, so the necessary changes have been applied across Deneb's codebase, including security enhancements and updates to the latest visual APIs. There should be no visible changes to your visuals, but please [create an issue](https://github.com/deneb-viz/deneb/issues) for anything you believe may be a detrimental change stemming from these updates/
 
 ### Vega Updates
 
 - Vega Updated to **6.1.2** (from 5.30.0)
 - Vega-Lite updated to **6.1.0** (from 5.19.0)
 
-Note that during tests by community members, we noticed an edge case where a visual failed to work. This was traced to that specification containing warnings, and some stricter validation introduced in Vega-Lite 5.21.0. If you experience a previously working specification failing, please check for warnings first, resolve those and re-test before creating an issue.
+Note that during tests by community members, we noticed an edge case where a visual failed to work. This was traced to that specification containing warnings, and some stricter validation introduced in Vega-Lite 5.21.0. If you experience a previously working specification failing, please check for warnings first, resolve those and re-test before [creating an issue](https://github.com/deneb-viz/deneb/issues).
 
 ### Removal of Edit Specification Field Mapping Functionality
 
@@ -40,7 +44,7 @@ Given that we have since introduced a more advanced JSON editor in 1.7, which ha
 
 - If using Power BI Desktop with the [on-object interaction](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-on-object-interaction) UI enabled, double-clicking a Deneb visual would force this into format mode. This action has been suppressed.
 
-### Bugs FIxed
+### Bugs Fixed
 
 - If using a field containing a special character, this was still being included in auto-completion results (#548)
 
