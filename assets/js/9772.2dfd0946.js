@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdeneb_doc=self.webpackChunkdeneb_doc||[]).push([["9772"],{37527:function(e,c,n){n.d(c,{createArchitectureServices:()=>r.i});var r=n(98246);n(83653)}}]);
