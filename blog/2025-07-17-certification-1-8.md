@@ -9,7 +9,7 @@ image: /img/blog/blog-header-release-1-8.png
 hide_table_of_contents: false
 ---
 
-Version 1.8 is a maintenance update to Deneb, which brings Deneb up to the latest Microsoft APIs and certification standards and updates the current Vega and Vega-Lite runtimes. It also prepares the v1 codebase for the end of feature development and long-term continuity of service, while fixing several minor but long-standing bugs.
+Version 1.8 is a maintenance update to Deneb, which brings Deneb up to the latest Microsoft APIs and certification standards and updates the current Vega and Vega-Lite runtimes. It also prepares the v1 codebase for the end of feature development and long-term service continuity, while addressing several minor but long-standing bugs.
 
 <!-- truncate -->
 
