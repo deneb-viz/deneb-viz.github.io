@@ -13,9 +13,9 @@ Version 1.8 is a maintenance update, which brings Deneb up to the latest Microso
 
 <!-- truncate -->
 
-You can view all changes and their associated details starting with the change log [Change Log](/docs/changelog). And as always, this has also been made available for users of the standalone (non-AppSource) version, so you can [download it from GitHub](https://github.com/deneb-viz/deneb/releases/latest).
+You can view all changes and their associated details starting with the [Change Log](/docs/changelog). And as always, this has also been made available for users of the standalone (non-AppSource) version, so you can [download it from GitHub](https://github.com/deneb-viz/deneb/releases/latest).
 
-As always, I'm extremely grateful to our community, especially those who volunteer to help test the builds before we submit them to AppSource for everyone else to use. Deneb has become a little more than one person can completely handle in their free time, so any and all assistance from these folks is essential to keep our quality and stability as high as possible as we evolve. I hope that you appreciate and value their contributions as much as I do!
+Again, I'm extremely grateful to our community, especially those who volunteer to help test the builds before we submit them to AppSource for everyone else to use. Deneb has become a little more than one person can completely handle in their free time, so any and all assistance from these folks is essential to keep our quality and stability as high as possible as we evolve. I hope that you appreciate and value their contributions as much as I do!
 
 ### Readiness for v2 and the Future of v1
 
