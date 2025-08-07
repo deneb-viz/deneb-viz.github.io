@@ -31,7 +31,7 @@ Deneb 1.8.1 has been submitted to AppSource for certification and may take some 
 
 ### Platform Updates
 
-Microsoft has recently introduced more stringent certification requirements for custom visuals, so the necessary changes have been applied across Deneb's codebase, including security enhancements and updates to the latest visual APIs. There should be no visible changes to your visuals, but please [create an issue](https://github.com/deneb-viz/deneb/issues) for anything you believe may be a detrimental change stemming from these updates/
+Microsoft has recently introduced more stringent certification requirements for custom visuals, so the necessary changes have been applied across Deneb's codebase, including security enhancements and updates to the latest visual APIs. There should be no visible changes to your visuals, but please [create an issue](https://github.com/deneb-viz/deneb/issues) for anything you believe may be a detrimental change stemming from these updates.
 
 ### Vega Updates
 
