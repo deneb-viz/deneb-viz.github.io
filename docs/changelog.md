@@ -13,15 +13,21 @@ Because Power BI reports are (ideally!) intended to have a long lifetime once de
 However any development focus will be on the things we need to do to keep it highly available for existing implementations where you have visuals deployed. The only planned changes will be critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements.
 :::
 
-## 1.8.0 (2025-07-16)
+## 1.8.1 (2025-08-08)
 
 :::info Pending deployment to AppSource
-Deneb 1.8 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+Deneb 1.8.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 :::
 
 <!-- :::info Submitted for certification
-Deneb 1.8 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+Deneb 1.8.1 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
 ::: -->
+
+### Bugs Fixed
+
+- Auto-completion now updates correctly when typing ([#551](https://github.com/deneb-viz/deneb/issues/551)). Root cause was revised visual SDK updates in how visuals are packaged for certification. This should also alleviate some other observed slowness issues experienced while typing in the editor.
+
+## 1.8.0 (2025-07-16)
 
 ### Platform Updates
 
