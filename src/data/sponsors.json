@@ -19,6 +19,13 @@
             "image_sizing": "height"
         },
         {
+            "source": "repo",
+            "name": "DiscoverEI",
+            "url": "https://www.discoverei.com/",
+            "image_url": "/img/sponsors/discoverei.png",
+            "image_sizing": "height"
+        },
+        {
             "source": "github",
             "name": "AleksandraGodlewska",
             "url": "https://github.com/AleksandraGodlewska",
