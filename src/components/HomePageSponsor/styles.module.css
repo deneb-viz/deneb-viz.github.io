@@ -1,8 +1,8 @@
 :root {
   --sponsors-avatar-size-platinum: 75px;
-  --sponsors-avatar-size-gold: 65px;
-  --sponsors-avatar-size-silver: 60px;
-  --sponsors-avatar-size-bronze: 55px;
+  --sponsors-avatar-size-gold: 70px;
+  --sponsors-avatar-size-silver: 65px;
+  --sponsors-avatar-size-bronze: 60px;
 }
 
 .avatar {
