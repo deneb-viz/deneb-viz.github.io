@@ -13,7 +13,11 @@ Because Power BI reports are (ideally!) intended to have a long lifetime once de
 However any development focus will be on the things we need to do to keep it highly available for existing implementations where you have visuals deployed. The only planned changes will be critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements.
 :::
 
-## 1.8.2 (In Development)
+## 1.8.2
+
+:::info Under development 🚧
+Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
+:::
 
 <!-- :::info Pending deployment to AppSource
 Deneb 1.8.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
