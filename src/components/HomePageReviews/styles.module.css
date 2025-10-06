@@ -35,3 +35,44 @@
     margin-bottom: 0;
   }
 }
+
+/* Masonry layout to pack review cards tightly */
+.reviewMasonry {
+  column-gap: 1.5rem;
+  /* default to 1 column on narrow screens */
+  column-count: 1;
+}
+
+/* 2 columns on small/tablet */
+@media (min-width: 600px) {
+  .reviewMasonry {
+    column-count: 2;
+  }
+}
+
+/* 3 columns on desktop */
+@media (min-width: 996px) {
+  .reviewMasonry {
+    column-count: 3;
+  }
+}
+
+/* Each item must be inline-block to work with CSS columns, and avoid being split */
+.reviewItem {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Hide beyond 6 on mobile; show on larger screens */
+.hideOnMobile {
+  display: none;
+}
+@media (min-width: 600px) {
+  .hideOnMobile {
+    display: inline-block;
+  }
+}

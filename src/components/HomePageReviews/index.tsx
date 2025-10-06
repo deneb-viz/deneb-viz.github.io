@@ -7,20 +7,17 @@ import { useEffect, useState } from "react";
 import { shuffleArray } from "@site/src/utils/shuffleArray";
 import Link from "@docusaurus/Link";
 
+const RANDOM_REVIEW_SLICE = 9;
+const MOBILE_SLICE = 6;
+
 export function HomePageReviews() {
-  const [reviews, setReviews] = useState<IReview[][]>([[], [], []]);
+  // Use a single list; layout is handled by CSS masonry columns
+  const [reviews, setReviews] = useState<IReview[]>([]);
   useEffect(() => {
     const shuffledReviews = shuffleArray(reviewData as IReview[])
       .filter((review) => review.title && review.content)
-      .slice(0, 9);
-    shuffledReviews.forEach((review, i) => {
-      const index = i % 3;
-      setReviews((prev) => {
-        const newReviews = [...prev];
-        newReviews[index].push(review);
-        return newReviews;
-      });
-    });
+      .slice(0, RANDOM_REVIEW_SLICE);
+    setReviews(shuffledReviews);
   }, []);
   return (
     <div className={clsx(styles.section, styles.sectionAlt)}>
@@ -33,40 +30,40 @@ export function HomePageReviews() {
             If you love Deneb, please help us out with an AppSource review!
           </Link>
         </div>
-        <div className={clsx("row", styles.reviewSection)}>
-          {reviews.map((reviewItems, i) => (
-            <div className="col col--4" key={i}>
-              {reviewItems.map((review) => (
-                <div key={review.id}>
-                  <div className={clsx("card", styles.review)}>
-                    <div className="card__header">
-                      <div className={clsx("avatar__intro", styles.reviewMeta)}>
-                        <strong className="avatar__name">{review.title}</strong>
-                      </div>
-                    </div>
-
-                    <div className={clsx("card__body", styles.review)}>
-                      {review.content}
-                    </div>
-
-                    <div className={clsx("card__footer", styles.reviewFooter)}>
-                      <div
-                        className={clsx(styles.reviewMeta, styles.reviewDate)}
-                      >
-                        {new Date(Date.parse(review.created_at)).toLocaleString(
-                          undefined,
-                          {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                          }
-                        )}
-                      </div>
-                      <div>{"⭐".repeat(review.rating)}</div>
-                    </div>
+        <div className={clsx(styles.reviewMasonry)}>
+          {reviews.map((review, i) => (
+            <div
+              key={review.id}
+              className={clsx(
+                styles.reviewItem,
+                i >= MOBILE_SLICE && styles.hideOnMobile
+              )}
+            >
+              <div className={clsx("card", styles.review)}>
+                <div className="card__header">
+                  <div className={clsx("avatar__intro", styles.reviewMeta)}>
+                    <strong className="avatar__name">{review.title}</strong>
                   </div>
                 </div>
-              ))}
+
+                <div className={clsx("card__body", styles.review)}>
+                  {review.content}
+                </div>
+
+                <div className={clsx("card__footer", styles.reviewFooter)}>
+                  <div className={clsx(styles.reviewMeta, styles.reviewDate)}>
+                    {new Date(Date.parse(review.created_at)).toLocaleString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
+                  </div>
+                  <div>{"⭐".repeat(review.rating)}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
