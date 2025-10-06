@@ -90,3 +90,14 @@
     max-width: 100%;
   }
 }
+
+/* Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .heroBanner,
+  .bannerOptions,
+  :global(.button) {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

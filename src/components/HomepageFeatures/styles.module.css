@@ -4,8 +4,63 @@
 }
 
 .featureSvg {
-  height: 120px;
   width: 120px;
+  height: auto;
+}
+
+/* Responsive feature column: 1 per row on mobile, 2 on tablet, 4 on desktop */
+.featureCol {
+  /* Infima uses a flexbox grid; ensure basis and max-width cooperate */
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Tablet and up: 2 columns */
+@media screen and (min-width: 768px) {
+  .featureCol {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Large screens: 4 columns (align closer to Infima lg) */
+@media screen and (min-width: 992px) {
+  .featureCol {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+
+/* Prevent SVG icon clipping and keep them centered when wrapping */
+.featureSvg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible; /* ensure strokes/shadows are visible beyond viewBox */
+}
+
+/* Fine-tune icon sizes at breakpoints for visual balance */
+@media screen and (max-width: 768px) {
+  .featureSvg {
+    width: 80px;
+    height: auto;
+  }
+}
+
+/* Icon wrapper to ensure no clipping and consistent spacing */
+.featureIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px; /* Reserve vertical space so icon + title don't collide */
+  overflow: visible; /* allow svg overflow to render */
+}
+
+@media screen and (max-width: 768px) {
+  .featureIcon {
+    min-height: 120px;
+  }
 }
 
 /* Mobile responsiveness */
@@ -15,7 +70,7 @@
   }
 
   .featureSvg {
-    height: 80px;
     width: 80px;
+    height: auto;
   }
 }
