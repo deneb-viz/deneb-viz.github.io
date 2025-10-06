@@ -17,7 +17,11 @@ export function HomePageSponsors() {
   return (
     <div className={styles.section}>
       <div className="container">
-        <Heading as="h2" className={clsx("margin-bottom--lg", "text--center")}>
+        <Heading
+          as="h2"
+          id="our-sponsors"
+          className={clsx("margin-bottom--lg", "text--center")}
+        >
           Our sponsors
         </Heading>
         <div className={styles.sponsorsLink}>
