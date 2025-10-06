@@ -1,6 +1,4 @@
 .features {
-  display: flex;
-  align-items: center;
   padding: 2rem 0;
   width: 100%;
 }
@@ -8,4 +6,16 @@
 .featureSvg {
   height: 120px;
   width: 120px;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .features {
+    padding: 1rem 0;
+  }
+
+  .featureSvg {
+    height: 80px;
+    width: 80px;
+  }
 }

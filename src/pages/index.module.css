@@ -22,6 +22,14 @@
   }
 }
 
+/* Ensure the AppSource badge doesn't force horizontal scroll on narrow screens */
+@media screen and (max-width: 480px) {
+  .bannerOptions img[title*="AppSource"] {
+    max-width: 150px;
+    height: auto;
+  }
+}
+
 .buttons {
   display: flex;
   align-items: center;
@@ -32,7 +40,53 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  /* Allow items (buttons, badges, iframe) to wrap onto new lines on smaller widths */
+  flex-wrap: wrap;
+  gap: 24px;
   justify-content: center;
   margin-top: 2rem;
+}
+
+/* Tighter spacing and centered items on small screens */
+@media screen and (max-width: 996px) {
+  .bannerOptions {
+    gap: 16px 12px;
+  }
+  /* Keep each child centered; allow them to flow naturally without forcing full width */
+  .bannerOptions > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Stack actions vertically and make buttons full-width on narrow screens */
+@media screen and (max-width: 768px) {
+  .bannerOptions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .bannerOptions > div {
+    width: 100%;
+  }
+  /* Make Infima buttons full-width when stacked */
+  :global(.button) {
+    width: 100%;
+  }
+  /* Center media elements when stacked */
+  .bannerOptions img,
+  .bannerOptions iframe {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Optional: ensure GitHub stars iframe and wrapper behave nicely */
+  .indexCtasGitHubButtonWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .indexCtasGitHubButton {
+    max-width: 100%;
+  }
 }
