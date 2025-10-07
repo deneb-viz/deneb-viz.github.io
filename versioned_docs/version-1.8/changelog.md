@@ -15,17 +15,17 @@ However any development focus will be on the things we need to do to keep it hig
 
 ## 1.8.2
 
-:::info Under development 🚧
+<!-- :::info Under development 🚧
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
-:::
+::: -->
 
 <!-- :::info Pending deployment to AppSource
 Deneb 1.8.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
-<!-- :::info Submitted for certification
+:::info Submitted for certification
 Deneb 1.8.1 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-::: -->
+:::
 
 ### Vega Updates
 
