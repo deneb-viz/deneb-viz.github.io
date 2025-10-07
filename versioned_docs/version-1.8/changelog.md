@@ -32,6 +32,10 @@ Deneb 1.8.1 has been submitted to AppSource for certification and may take some 
 - Vega updated to **6.2.0** (from 6.1.2)
 - Vega-Lite updated to **6.4.1** (from 6.1.0)
 
+### Sample Workbook
+
+- Many examples have been updated with comments in the specification JSON, to help further clarify decisions and language features used to achieve designs. Thanks, Imran Haq!
+
 ### QoL Enhancements
 
 - The cursor has been set to `auto` when inside the visual container, to provide clearer intent of visual elements ([#552](https://github.com/deneb-viz/deneb/issues/552))
