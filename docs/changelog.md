@@ -13,15 +13,39 @@ Because Power BI reports are (ideally!) intended to have a long lifetime once de
 However any development focus will be on the things we need to do to keep it highly available for existing implementations where you have visuals deployed. The only planned changes will be critical bug fixes, Vega language updates (providing they remain compatible with the v1 architecture) and Power BI visual API compatibility, to comply with certification requirements.
 :::
 
-## 1.8.1 (2025-08-08)
+## 1.8.2
 
-:::info Pending deployment to AppSource
+<!-- :::info Under development 🚧
+Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
+::: -->
+
+<!-- :::info Pending deployment to AppSource
 Deneb 1.8.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-:::
+::: -->
 
 <!-- :::info Submitted for certification
 Deneb 1.8.1 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
 ::: -->
+
+### Vega Updates
+
+- Vega updated to **6.2.0** (from 6.1.2)
+- Vega-Lite updated to **6.4.1** (from 6.1.0)
+
+### Sample Workbook
+
+- Many examples have been updated with comments in the specification JSON, to help further clarify decisions and language features used to achieve designs. Thanks, Imran Haq!
+
+### QoL Enhancements
+
+- The cursor has been set to `auto` when inside the visual container, to provide clearer intent of visual elements ([#552](https://github.com/deneb-viz/deneb/issues/552))
+
+### Bugs Fixed
+
+- Deneb should no longer report a _'Remote resources cannot be loaded'_ message for images using data URLs in the AppSource (certified) version ([#555](https://github.com/deneb-viz/deneb/issues/555))
+- If you're setting `width`, `height` or `autosize` in the config that potentially conflict with Deneb's internal patching, this no longer causes visuals to hang when parsed/resized ([#514](https://github.com/deneb-viz/deneb/issues/514))
+
+## 1.8.1 (2025-08-08)
 
 ### Bugs Fixed
 
