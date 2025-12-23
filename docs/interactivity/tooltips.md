@@ -88,12 +88,7 @@ If you're using an approach to display the underlying data point ([e.g. Vega-Lit
 
 ![tooltip-datum-full.png](./img/tooltip-datum-full.png "The raw underlying tooltip datum exposes additional properties.")
 
-This can be useful to understand what additional fields or calculations may be applied to a datum for usage in expressions. It can also help to understand if a mark still [has row context](interactivity-overview/#reconciliation-of-data-andor-row-context) and can be reconciled back to Power BI for interactivity purposes. If a tooltip's `datum` contains the following properties, then this is a slam-dunk:
-
-- `__identity__`
-- `__key__`
-- `identityIndex`
-- `__selected__`
+This can be useful to understand what additional fields or calculations may be applied to a datum for usage in expressions. It can also help to understand if a mark still [has row context](interactivity-overview/#reconciliation-of-data-andor-row-context) and can be reconciled back to Power BI for interactivity purposes. If a tooltip's `datum` contains the `__row__` field, then this is a slam-dunk:
 
 Please refer to the [interactivity documentation](interactivity-overview/#additional-datum-fields) for a further explanation of what these mean.
 

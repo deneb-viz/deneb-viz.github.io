@@ -134,29 +134,3 @@ The `pbiColorLinear` scheme will produce an interpolated gradient from the Min d
 The `pbiColorDivergent` scheme will produce an interpolated gradient from the Min divergent Color to the Max divergent color from the current Power BI theme (including Middle color), e.g.:
 
 ![Example of applying the pbiColorDivergent scheme in a specification.](./img/divergent-scheme-example.png "Example of applying the pbiColorDivergent scheme in a specification.")
-
-### Discrete Ordinal Colors
-
-As mentioned higher-up, we only have a limited number of colors in an ordinal palette as they are manually specified values, rather than a linear ramp. We could potentially see issues like the following examples if we don't get this right. The functionality to mitigate these issues follows on afterwards.
-
-#### Issue #1: Not Enough Discrete Colors = "Wrapping"
-
-If we were to allocate, say, 5 discrete colors to our palette but had more values than this, we get a "Wrapping" effect, e.g.:
-
-![An ordinal palette with less discrete colors that there are values of an ordinal variable can produce a 'color wrapping' effect, where after the last value has been reached, the next mark will start from the first value.](./img/ordinal-scheme-wrapping-effect.png "An ordinal palette with less discrete colors that there are values of an ordinal variable can produce a 'color wrapping' effect, where after the last value has been reached, the next mark will start from the first value.")
-
-#### Issue #2: Not Enough Discrete Values = Indistinct Gradient
-
-If we try to mitigate this by guessing a hypothetical number of colors - say, 50 - then we perhaps don't get desired results at a lower cardinality than that, e.g.:
-
-![Providing too may colors in an ordinal palette can mean that lower cardinality series do not have enough distinction between them, as all assigned colors are at the lower end of this spectrum.](./img/ordinal-scheme-inadequate-gradient.png "Providing too may colors in an ordinal palette can mean that lower cardinality series do not have enough distinction between them, as all assigned colors are at the lower end of this spectrum.")
-
-#### Managing via Properties
-
-The **Report Theme Integration** menu in the Power BI Format pane allows you to configure the number of values using the **Discrete Ordinal Colors** property, e.g.:
-
-![The 'Discrete Ordinal Colors' property in the Power BI format pane allows us to specify the number of values to use when computing the intervening colors.](./img/discrete-ordinal-property-static.png "The 'Discrete Ordinal Colors' property in the Power BI format pane allows us to specify the number of values to use when computing the intervening colors.")
-
-As you may not know what this number is going to be, the property supports [Conditional Formatting](https://docs.microsoft.com/en-us/power-bi/visuals/service-tips-and-tricks-for-color-formatting?WT.mc_id=DP-MVP-5003712#conditional-formatting-for-visualizations), so that you could bind a measure that could count the number of distinct category values. This would then allow dynamic assignment (and calculation) of the intervening colors, e.g.:
-
-![The 'Discrete Ordinal Colors' property also supports Conditional Formatting, so the number of discrete colors can be supplied via a measure.](./img/ordinal-scheme-conditional-formatting.gif "The 'Discrete Ordinal Colors' property also supports Conditional Formatting, so the number of discrete colors can be supplied via a measure.")
