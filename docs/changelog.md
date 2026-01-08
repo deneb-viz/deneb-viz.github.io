@@ -11,17 +11,38 @@ description: Deneb Change Log - high-level details of new features and fixes for
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
 :::
 
+<!-- :::info In Beta Testing
+Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
+::: -->
+
+<!-- :::info Pending deployment to AppSource
+Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+::: -->
+
+<!-- :::info Submitted for certification
+Deneb 1.9.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+::: -->
+
 This version is a concerted effort to improve the underlying code structure in preparation for new features and easier maintenance - of which there is still a lot to do but this gives us a better platform to continue making these changes.
 
 A _lot_ of refactoring has been done but the user-facing experience and functionality of Deneb should be exactly the same as before. Despite this, there have been some opportunities to improve performance and squish some bugs along the way and these are detailed below.
 
-<!-- :::info Pending deployment to AppSource
-Deneb 1.8.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-::: -->
+### Advanced Editor Interface Changes
 
-<!-- :::info Submitted for certification
-Deneb 1.8.1 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-::: -->
+Some of the performance changes include underlying logic for how the editor works, including layout calculations. This will improve performance of the transition process between viewer and editor and has resulted in some visible changes (and hopefully a more responsive experience) when using the Advanced Editor:
+
+- To help with discoverability, the Advanced Editor now has two trigger states:
+
+  - When clicking _Edit..._ from the visual header
+  - When triggering focus mode (if you are editing in Desktop or the Power BI Service).
+
+- Resizing functionality of the editor, debug and preview panes has been replaced with a modern (and better supported) component, which cleans up the borders between areas and improves responsiveness when resizing.
+
+### Minor Enhancements
+
+- The **Discrete ordinal colors** property is no longer required when using an ordinal scale with the `pbiColorOrdinal`, `pbiColorLinear` or `pbiColorDivergent` [schemes](schemes#power-bi-schemes) and has been removed. Deneb will automatically interpolate the colors based on the distinct values in the scale.
+- The default order for the signal viewer has been changed to natural order, to mirror Vega Editor's behavior ([#490](https://github.com/deneb-viz/deneb/issues/490)). You are still able to sort by signal name in ascending/descending order by clicking the column header.
+- Completion item documentation in the editor (triggered by clicking '>' if present) will now correctly render markdown content ([#569](https://github.com/deneb-viz/deneb/issues/569)).
 
 ### Performance and Stability
 
@@ -35,18 +56,12 @@ Deneb 1.8.1 has been submitted to AppSource for certification and may take some 
 
 - Packaged visual is now **5% smaller** than last release (and 12% smaller than 1.7), improving download and initialization times.
 
-### Minor Enhancements
-
-- The **Discrete ordinal colors** property is no longer required when using an ordinal scale with the `pbiColorOrdinal`, `pbiColorLinear` or `pbiColorDivergent` [schemes](schemes#power-bi-schemes) and has been removed. Deneb will automatically interpolate the colors based on the distinct values in the scale.
-- The default order for the signal viewer has been changed to natural order, to mirror Vega Editor's behavior ([#490](https://github.com/deneb-viz/deneb/issues/490)). You are still able to sort by signal name in ascending/descending order by clicking the column header.
-- To help with discoverability, the Advanced Editor now has two trigger states:
-
-  - When clicking _Edit..._ from the visual header
-  - When triggering focus mode (if you are editing in Desktop or the Power BI Service).
+- The UI has been updated from React 17 to use React 19.2. This will provide some transient performance updates but will allow us to leverage modern React performance enhancements in future releases.
 
 ### Bug Fixes
 
 - When generating a template, if the dataset fields were not aliased, they would be shown (and exported) as blank strings ([#564](https://github.com/deneb-viz/deneb/issues/564)).
+- Opening the signal viewer for specifications with signals containing methods would cause a fatal crash ([#570](https://github.com/deneb-viz/deneb/issues/570)).
 
 ## 1.8.2
 
