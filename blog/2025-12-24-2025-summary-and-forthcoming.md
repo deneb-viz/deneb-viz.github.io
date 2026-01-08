@@ -57,7 +57,7 @@ Due to some of the work to unravel a lot of the Power BI-specific stuff from the
 
 This release is undergoing internal and limited alpha testing by some community members as I write this. Results are, so far, good 🤞. Anyone else who wants to is, of course, welcome to download the latest alpha build and take things for a spin - we need as much validation as possible! If you find anything, please add details (+ reproduction information) to [the issue I'm using to track any remediation](https://github.com/deneb-viz/deneb/issues/566).
 
-Once we're confident enough (probably early new year), I'll be doing a short beta testing phase, so if other folks are able to help out with that, then this will help a lot in confirming stability before we submit to AppSource for certification. Submission will happen as soon as we can after that, but I'm aiming fro the end of January 2026 at this time (pending testing outcomes).
+Once we're confident enough (probably early new year), I'll be doing a short beta testing phase, so if other folks are able to help out with that, then this will help a lot in confirming stability before we submit to AppSource for certification. Submission will happen as soon as we can after that, but I'm aiming for the end of January 2026 at this time (pending testing outcomes).
 
 ### After That
 

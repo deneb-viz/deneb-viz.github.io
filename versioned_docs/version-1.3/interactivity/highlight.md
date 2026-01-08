@@ -102,7 +102,7 @@ Therefore, Deneb's approach to cross-highlighting assumes the following:
 
 3. When you do understand, you're aware of what this might entail and are ready to opt-in.
 
-Therefore, we want to try and meet you halfway. As such, we assume that cross-highlighting functionality should not be on by default if you want to op-in to add cross-highlight functionality in your visual, it's a 2-stage process. This is detailed further below.
+Therefore, we want to try and meet you halfway. As such, we assume that cross-highlighting functionality should not be on by default if you want to opt-in to add cross-highlight functionality in your visual, it's a 2-stage process. This is detailed further below.
 
 ## Recommended Approaches
 
