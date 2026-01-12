@@ -7,13 +7,13 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 ## 1.9.0
 
-:::info Under development 🚧
+<!-- :::info Under development 🚧
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
-:::
-
-<!-- :::info In Beta Testing
-Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
 ::: -->
+
+:::info In Beta Testing
+Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
+:::
 
 <!-- :::info Pending deployment to AppSource
 Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
