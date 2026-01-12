@@ -2,11 +2,116 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://deneb-viz.github.io/blog</id>
     <title>Deneb Blog</title>
-    <updated>2025-12-24T00:00:00.000Z</updated>
+    <updated>2026-01-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://deneb-viz.github.io/blog"/>
     <subtitle>Deneb Blog</subtitle>
     <icon>https://deneb-viz.github.io/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Deneb 1.9 Available for Beta Testing]]></title>
+        <id>https://deneb-viz.github.io/blog/1-9-beta</id>
+        <link href="https://deneb-viz.github.io/blog/1-9-beta"/>
+        <updated>2026-01-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Deneb 1.9 brings substantial performance improvements and a more maintainable codebase. We need your help to ensure this release is solid before submission to AppSource.]]></summary>
+        <content type="html"><![CDATA[<p>Happy New Year! 🎉 Deneb 1.9 represents a significant step in preparing the codebase for future development, bringing substantial performance improvements and enhanced stability. Before we submit to AppSource, we need your help to validate this release with real-world use cases and ensure that it meets the high standards our community expects.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-beta-testing-matters">Why Beta Testing Matters<a href="https://deneb-viz.github.io/blog/1-9-beta#why-beta-testing-matters" class="hash-link" aria-label="Direct link to Why Beta Testing Matters" title="Direct link to Why Beta Testing Matters">​</a></h2>
+<p>As mentioned in <a href="https://deneb-viz.github.io/blog/2025-summary">my last post</a>, 1.9 is the result of intensive refactoring work and re-testing to get the existing codebase into better shape for ongoing maintenance and feature development. While the focus has been on internal improvements rather than flashy new features, the changes run deep throughout the entire application.</p>
+<p>Deneb is used in a vast array of scenarios by a diverse community. No single developer can possibly cover all the edge cases, data shapes, and usage patterns that exist out there. I'm currently also solely responsible for planning, development, documentation, and support, which limits the amount of time I can dedicate to exhaustive testing.</p>
+<div class="theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>This is where things get critical</div><div class="admonitionContent_BuS1"><p><strong>Once we submit to AppSource, we're locked into a 3-5 week certification cycle</strong>. If a bug slips through that affects your reports, that's potentially 3-5 weeks before a fix reaches you and your readers. This is why your involvement in beta testing (if you can spare it) is not just helpful, it's essential for the entire Deneb community.</p></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-makes-this-release-different">What Makes This Release Different<a href="https://deneb-viz.github.io/blog/1-9-beta#what-makes-this-release-different" class="hash-link" aria-label="Direct link to What Makes This Release Different" title="Direct link to What Makes This Release Different">​</a></h3>
+<p>Unlike feature releases where we're testing new functionality, 1.9 is about ensuring nothing breaks while everything gets faster, more stable and extensible. The refactoring touches virtually every part of how Deneb works internally:</p>
+<ul>
+<li>Core application architecture has been restructured for better maintainability</li>
+<li>Power BI interactivity handling has been completely rewritten</li>
+<li>Initialization and data processing pipelines have been optimized</li>
+<li>Editor layout calculation and display logic has been improved</li>
+<li>Numerous third-party libraries have been updated to their latest versions, including major updates to React, which manages much of the visual's UI</li>
+</ul>
+<p>Any one of these changes could potentially introduce issues that only surface with specific combinations of features, datasets, or use cases that I haven't been able to test. This is the reality of developing on your own with limited time and resources.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-performance-gains">The Performance Gains<a href="https://deneb-viz.github.io/blog/1-9-beta#the-performance-gains" class="hash-link" aria-label="Direct link to The Performance Gains" title="Direct link to The Performance Gains">​</a></h2>
+<p>While you shouldn't notice any functional differences (if everything's gone to plan), you should see some meaningful performance improvements:</p>
+<ul>
+<li><strong>15%-40% faster initialization</strong> when loading visuals in reports (depending on visual and dataset complexity)</li>
+<li><strong>200-300% faster dataset processing</strong> once Power BI has supplied the query result</li>
+<li><strong>5% smaller packaged visual</strong> size (12% smaller than 1.7), improving download and initialization times</li>
+<li>More responsive editor experience with improved layout calculations</li>
+</ul>
+<p>Unfortunately due to how custom visuals are sandboxed, we'll never hit performance parity with core visuals, but these improvements should make a noticeable difference in many scenarios, particularly where you're using larger datasets or multiple instances of Deneb on a report page.</p>
+<p>Some of these improvements may have also fixed minor bugs and resulted in some minor UI changes, as well as being able to clean up some technical and operational debt. <a href="https://deneb-viz.github.io/docs/next/changelog#190">Please refer to the Change Log</a> for full details.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-we-need-from-you">What We Need From You<a href="https://deneb-viz.github.io/blog/1-9-beta#what-we-need-from-you" class="hash-link" aria-label="Direct link to What We Need From You" title="Direct link to What We Need From You">​</a></h2>
+<p>Your participation in beta testing directly impacts the quality of the release that reaches AppSource. Here's what would be most valuable:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-validate-your-existing-specifications">1. Validate Your Existing Specifications<a href="https://deneb-viz.github.io/blog/1-9-beta#1-validate-your-existing-specifications" class="hash-link" aria-label="Direct link to 1. Validate Your Existing Specifications" title="Direct link to 1. Validate Your Existing Specifications">​</a></h3>
+<p>This is the most critical testing you can do:</p>
+<ul>
+<li>Open reports containing Deneb visuals and update them to the beta version.</li>
+<li>Verify that everything works exactly as it did before: no visual differences, no broken functionality, no performance regressions.</li>
+<li>Test both as a viewer (consumption) and as a developer (editing).</li>
+<li>Pay particular attention to visuals using interactivity features (cross-filtering, cross-highlighting, tooltips, etc.).</li>
+<li>Confirm the workflow for creating a new visual from scratch also works as expected, and generation of a template (if this is part of your process).</li>
+</ul>
+<p>Even if you just update one visual and confirm it works, that's valuable confirmation of stability across different use cases.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="2-test-edge-cases-and-complex-scenarios">2. Test Edge Cases and Complex Scenarios<a href="https://deneb-viz.github.io/blog/1-9-beta#2-test-edge-cases-and-complex-scenarios" class="hash-link" aria-label="Direct link to 2. Test Edge Cases and Complex Scenarios" title="Direct link to 2. Test Edge Cases and Complex Scenarios">​</a></h3>
+<p>If you have specifications that:</p>
+<ul>
+<li>Use advanced interactivity features</li>
+<li>Have complex data transformations</li>
+<li>Include dynamic signals and parameters</li>
+<li>Rely on Power BI formatting functions</li>
+<li>Use the debug pane extensively</li>
+</ul>
+<p>...these are exactly the scenarios we need tested, as they're most likely to surface issues from the refactoring work.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-provide-detailed-feedback-if-somethings-wrong">3. Provide Detailed Feedback if Something's Wrong<a href="https://deneb-viz.github.io/blog/1-9-beta#3-provide-detailed-feedback-if-somethings-wrong" class="hash-link" aria-label="Direct link to 3. Provide Detailed Feedback if Something's Wrong" title="Direct link to 3. Provide Detailed Feedback if Something's Wrong">​</a></h3>
+<p>When something doesn't work as expected, detailed information is essential for rapid diagnosis and fixes. The following makes an enormous difference:</p>
+<ul>
+<li><strong>Version/build number</strong> (<a href="https://deneb-viz.github.io/community/early-access#providing-feedback-on-early-access-builds">instructions here</a>)</li>
+<li><strong>Steps to reproduce</strong> the issue</li>
+<li><strong>Expected vs. actual behavior</strong> and ideally how this differs from previous versions (which will help to further triage problems)</li>
+<li><strong>Screenshots or short videos</strong> showing the problem</li>
+<li><strong>Specification and/or sample workbook</strong> (with public/anonymized data)</li>
+</ul>
+<p>The more detail you can provide, the faster we can identify and resolve issues. As I'm doing everything, development-wise, as much detail as possible will help me reproduce and find the problem means much more time available for fixing and turning around updates. Please don't assume someone else has already reported it. If you see it, please <a href="https://github.com/deneb-viz/deneb/issues" target="_blank" rel="noopener noreferrer">create an issue</a> or add to an existing one.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-access-the-beta">How to Access the Beta<a href="https://deneb-viz.github.io/blog/1-9-beta#how-to-access-the-beta" class="hash-link" aria-label="Direct link to How to Access the Beta" title="Direct link to How to Access the Beta">​</a></h2>
+<p>The latest beta build is available now from the <a href="https://deneb.link/beta-build" target="_blank" rel="noopener noreferrer">Beta Channel page</a> on GitHub, e.g.:</p>
+<p><img decoding="async" loading="lazy" alt="The GitHub repository contains a Beta Release page, where you can download the Power BI visual file (.pbiviz) for the latest beta version." src="https://deneb-viz.github.io/assets/images/beta-download-page-github-e996a0dd2de204ac1490bc1a03f86c9d.png" title="The GitHub repository contains a Beta Release page, where you can download the Power BI visual file (.pbiviz) for the latest beta version." width="744" height="383" class="img_ev3q"></p>
+<ul>
+<li>Download the .pbiviz file from the Assets section</li>
+<li><a href="https://learn.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals?WT.mc_id=DP-MVP-5003712#custom-visual-files" target="_blank" rel="noopener noreferrer">Manually import it into your report</a></li>
+<li>The beta version installs alongside the AppSource version with a distinct icon</li>
+</ul>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>YOLO..? NO!</div><div class="admonitionContent_BuS1"><p>Test with copies of production reports, not the originals. This way you can easily revert if needed without losing any work.</p></div></div>
+<p>For complete details on the beta process, feedback mechanisms, and version identification, see the <a href="https://deneb-viz.github.io/community/early-access">Early Access page</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="timeline-and-next-steps">Timeline and Next Steps<a href="https://deneb-viz.github.io/blog/1-9-beta#timeline-and-next-steps" class="hash-link" aria-label="Direct link to Timeline and Next Steps" title="Direct link to Timeline and Next Steps">​</a></h2>
+<p>As mentioned in the <a href="https://deneb-viz.github.io/blog/2025-summary">recent update</a>, we've had some very successful alpha testing cycles for 1.9 with some of our <a href="https://deneb-viz.github.io/support#community-experts">community experts</a>. The feedback from those tests has been invaluable in identifying and fixing issues early. Now it's time to open up testing to the broader community to ensure we catch any remaining issues before submission:</p>
+<ul>
+<li><strong>Beta testing period:</strong> Starting now, aiming for 2-3 weeks of community validation</li>
+<li><strong>Submission to AppSource:</strong> End of January 2026 (assuming no blocking issues)</li>
+<li><strong>General availability:</strong> Depending on Microsoft's certification timeline, likely late February to early March</li>
+</ul>
+<p>If critical issues are discovered, we'll release updated beta builds and continue testing until we're confident the release is solid.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="your-impact-on-the-community">Your Impact on the Community<a href="https://deneb-viz.github.io/blog/1-9-beta#your-impact-on-the-community" class="hash-link" aria-label="Direct link to Your Impact on the Community" title="Direct link to Your Impact on the Community">​</a></h2>
+<p>I say this a lot, but I want to be clear about how valuable your contribution is here. Every visual you test, every edge case you verify, every issue you report: these directly benefit thousands of other Deneb users who may not have the time or opportunity to participate in beta testing.</p>
+<p>You're not just helping me fix bugs; you're ensuring that:</p>
+<ul>
+<li>Developers can continue to rely on Deneb for their visualization needs</li>
+<li>End users don't experience disruptions in their reports</li>
+<li>The community maintains confidence in Deneb's stability and quality</li>
+<li>We can continue to build on this platform with new features in future releases</li>
+</ul>
+<p>The reality of being a free, community-supported project means we don't have the resources of a commercial product team. We rely on people like you to help ensure quality. This is what makes our community special, and why I'm continually grateful for the support and engagement from everyone involved 🫶.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="did-i-say-thanks">Did I Say, "Thanks"?<a href="https://deneb-viz.github.io/blog/1-9-beta#did-i-say-thanks" class="hash-link" aria-label="Direct link to Did I Say, &quot;Thanks&quot;?" title="Direct link to Did I Say, &quot;Thanks&quot;?">​</a></h2>
+<p>Once 1.9 is stable and submitted, the next phase continues the refactoring work to prepare for some final (albeit much more minor) refinements and we can start to bring in new features. But first, we need to ensure this foundation is rock solid.</p>
+<p>If you can spare some time to help test, it would be enormously appreciated. Your involvement now will help the entire community benefit from a stable, performant release.</p>
+<p>Thank you, as always, for your continued support of Deneb.</p>
+<p>Until next time,</p>
+<p>DM-P</p>]]></content>
+        <author>
+            <name>Daniel Marsh-Patrick</name>
+            <uri>https://github.com/dm-p</uri>
+        </author>
+        <category label="releases" term="releases"/>
+        <category label="testing" term="testing"/>
+        <category label="beta" term="beta"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Finishing up 2025 and Looking Ahead]]></title>
         <id>https://deneb-viz.github.io/blog/2025-summary</id>
