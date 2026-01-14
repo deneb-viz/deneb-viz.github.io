@@ -1,19 +1,17 @@
 ---
 id: pbir-guide
-description: Creating Deneb visuals in PBIR
+description: Guidance for creating and updating Deneb visuals in Power BI Enhanced Report Format (PBIR) workbooks
 slug: /pbir-guide
-title: Guidance for creating and updating Deneb visuals in Power BI Enhanced Report Format (PBIR) workbooks
+title: PBIR Workbook Guide
 ---
 
-:::warning
-This guide is valid for Deneb 1.9 and above. This _should_ work with earlier versions, but you may need to manually step through some onboarding operations in the UI for new visuals.
+:::warning Optimized for Deneb 1.9 and Above
+This guide is valid for Deneb 1.9 and above. This _should_ work with earlier versions, but you may need to manually step through some onboarding operations in the UI for new visuals, and this experience has been improved from 1.9 onwards.
 :::
 
 With [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format) becoming the default for Power BI reports, this page provides guidance on how you may wish to understand what is needed to make Deneb features work, if you are manually editing or programmatically generating Deneb visuals, or if you are using an LLM or other tool to help generate report content (or if you are an LLM reading this page for guidance).
 
-:::tip
 In addition to PBIR, the detail on this page may also help understand Deneb's internal structure better, for use with building [report themes](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-report-themes??WT.mc_id=DP-MVP-5003712) containing Deneb visuals.
-:::
 
 ## The Short Version
 
