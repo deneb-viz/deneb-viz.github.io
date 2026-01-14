@@ -2,7 +2,7 @@
 id: pbir-guide
 description: Creating Deneb visuals in PBIR
 slug: /pbir-guide
-title: Using with PBIR
+title: Guidance for creating and updating Deneb visuals in Power BI Enhanced Report Format (PBIR) workbooks
 ---
 
 :::warning
