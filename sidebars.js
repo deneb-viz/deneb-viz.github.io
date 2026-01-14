@@ -42,6 +42,7 @@ const sidebars = {
         "deeper-concepts/schemes",
         "deeper-concepts/pattern-fills",
         "deeper-concepts/templates",
+        "deeper-concepts/pbir-guide",
         "deeper-concepts/performance-considerations",
       ],
     },
