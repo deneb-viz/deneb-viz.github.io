@@ -4,10 +4,39 @@
         <title>Deneb Blog</title>
         <link>https://deneb-viz.github.io/blog</link>
         <description>Deneb Blog</description>
-        <lastBuildDate>Mon, 12 Jan 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Mar 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Deneb 1.9 Released]]></title>
+            <link>https://deneb-viz.github.io/blog/1-9-release</link>
+            <guid>https://deneb-viz.github.io/blog/1-9-release</guid>
+            <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Deneb 1.9 has passed AppSource certification checks and is pending deployment to your reports]]></description>
+            <content:encoded><![CDATA[<p>Deneb 1.9 has passed AppSource certification and is on its way to your reports! This release is the result of extensive refactoring and optimization work, delivering meaningful performance improvements while keeping everything you rely on working exactly as it should.</p>
+<p><strong>ETA is (approximately) 26th March 2026</strong> for the new version to be fully deployed to your reports, but this may vary based on location, so it will be helpful to read further and determine if any additional preparation is needed on your end to ensure a smooth transition.</p>
+<p>As usual, you can view all changes and their associated details starting with the <a href="https://deneb-viz.github.io/docs/changelog">Change Log</a>. And you can always <a href="https://github.com/deneb-viz/deneb/releases/latest" target="_blank" rel="noopener noreferrer">download the packaged visual (+ standalone version) from GitHub</a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="whats-in-this-release">What's in This Release<a href="https://deneb-viz.github.io/blog/1-9-release#whats-in-this-release" class="hash-link" aria-label="Direct link to What's in This Release" title="Direct link to What's in This Release">​</a></h3>
+<p>As covered in the <a href="https://deneb-viz.github.io/blog/1-9-beta">beta testing post</a> and the <a href="https://deneb-viz.github.io/blog/2025-summary">2025 summary</a>, 1.9 has been focused on restructuring and optimizing the codebase to set us up for future development. This will result in very little in the way of visible change to your experience, but you should notice some tangible performance gains:</p>
+<ul>
+<li><strong>15%-40% faster initialization</strong> when loading visuals in reports, depending on visual and dataset complexity</li>
+<li><strong>200-300% faster dataset processing</strong> once Power BI has supplied the query result, thanks to a complete rewrite of how selection IDs are generated and managed</li>
+<li><strong>5% smaller packaged visual</strong> (12% smaller than 1.7), improving download and initialization times</li>
+</ul>
+<p>Beyond the performance work, there are some opportunities for minor enhancements and bug fixes that came out of the refactoring. The <a href="https://deneb-viz.github.io/docs/changelog">Change Log</a> has the full details on everything.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Improving Experience with PBIR</div><div class="admonitionContent_BuS1"><p>A key goal of the refactoring was to also make Deneb's front end a bit more forgiving with how folks may be looking to use <a href="https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&amp;tabs=v2%2Cdesktop#pbir-format" target="_blank" rel="noopener noreferrer">Power BI Enhanced Report Format (PBIR)</a>.</p><p>One notable addition to the documentation is to help with those who are looking to use PBIR more readily in their workflow and may also be interested in how they can potentially automate Deneb, either through their own efforts, or in conjunction with an LLM. The <a href="https://deneb-viz.github.io/docs/pbir-guide">PBIR Implementation Guide</a> has been published to advise on how to consider working with Deneb using PBIR, and includes a comprehensive list of how Deneb's internal property system works (and how properties affect the rendered output).</p></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="looking-ahead">Looking Ahead<a href="https://deneb-viz.github.io/blog/1-9-release#looking-ahead" class="hash-link" aria-label="Direct link to Looking Ahead" title="Direct link to Looking Ahead">​</a></h3>
+<p>With 1.9 out the door, the next phase continues the work to get the codebase ready for new features. The goal is to complete the remaining refactoring and architecture changes needed so that we can start bringing in tangible improvements that you've been asking for. I'll share more on this as things take shape.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="thank-you">Thank You<a href="https://deneb-viz.github.io/blog/1-9-release#thank-you" class="hash-link" aria-label="Direct link to Thank You" title="Direct link to Thank You">​</a></h3>
+<p>For a visual like Deneb and for how much it has evolved over the last 5 years, it really does take a village to get it to where it is today, and to keep it moving forward. As always, we can't keep going without the vital support of the community, once again, thank-you, everyone who has been involved in testing, providing feedback, sharing ideas, and just being part of the journey. Your contributions are what make Deneb what it is, and I'm excited for what's ahead as we continue to build together :)</p>
+<hr>
+<p>All the best,</p>
+<p>DM-P</p>]]></content:encoded>
+            <category>releases</category>
+            <category>certification</category>
+            <category>production</category>
+        </item>
         <item>
             <title><![CDATA[Deneb 1.9 Available for Beta Testing]]></title>
             <link>https://deneb-viz.github.io/blog/1-9-beta</link>
