@@ -5,7 +5,7 @@ slug: 1-9-release
 authors:
   - daniel
 tags: [releases, certification, production]
-image: /img/blog/launch-simple.png
+image: /img/blog/launch-simple.jpg
 hide_table_of_contents: false
 ---
 
