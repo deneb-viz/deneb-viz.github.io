@@ -11,16 +11,16 @@ description: Deneb Change Log - high-level details of new features and fixes for
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
 ::: -->
 
-:::info In Beta Testing
+<!-- :::info In Beta Testing
 Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
-:::
-
-<!-- :::info Pending deployment to AppSource
-Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
 <!-- :::info Submitted for certification
 Deneb 1.9.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+::: -->
+
+<!-- :::info Pending deployment to AppSource
+Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
 This version is a concerted effort to improve the underlying code structure in preparation for new features and easier maintenance - of which there is still a lot to do but this gives us a better platform to continue making these changes.
@@ -32,7 +32,6 @@ A _lot_ of refactoring has been done but the user-facing experience and function
 Some of the performance changes include underlying logic for how the editor works, including layout calculations. This will improve performance of the transition process between viewer and editor and has resulted in some visible changes (and hopefully a more responsive experience) when using the Advanced Editor:
 
 - To help with discoverability, the Advanced Editor now has two trigger states:
-
   - When clicking _Edit..._ from the visual header
   - When triggering focus mode (if you are editing in Desktop or the Power BI Service).
 
@@ -49,14 +48,21 @@ Some of the performance changes include underlying logic for how the editor work
 - While custom visuals can't get parity with core visual in how quickly they can be displayed, significant improvements have been made to the initialization process, resulting in Deneb loading much more quickly for end users viewing reports (**typically between 15%-40% faster** depending on visual and dataset complexity).
 
 - The process of generating and managing Power BI selection IDs (for interactivity) has been re-written and improved:
-
   - IDs are now no longer added to the base dataset (and obfuscated from it in the front-end).
   - This removes deep objects from each row and thereby reduces memory overhead and improves performance when compiling specifications.
   - Overall dataset processing has also been significantly optimized and in some cases improvements of **200-300%** have been observed once Power BI has finished supplying the query result for processing.
+    <br/><br/>
+    :::warning Potential Breaking Change
+    If you ever relied on the `__identity__` or `__key__` fields from a datum in your specification, these were always intended to be for internal use and Deneb previously tried to obfuscate them to discourage this. You should change to the [supported (and recommended) `__row__` field](interactivity-overview#additional-datum-fields) for inspection, reference and validation of interactivity features.
+    :::
 
 - Packaged visual is now **5% smaller** than last release (and 12% smaller than 1.7), improving download and initialization times.
 
 - The UI has been updated from React 17 to use React 19.2. This will provide some transient performance updates but will allow us to leverage modern React performance enhancements in future releases.
+
+### Documentation
+
+- The [PBIR Implementation Guide](pbir-guide) is intended help with understanding how to use Deneb with [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format). This includes a comprehensive list of how Deneb's internal property system works (and how properties affect the rendered output), which should be helpful for those looking to automate Deneb visual creation, either through their own efforts, or in conjunction with an LLM.
 
 ### Bug Fixes
 
@@ -156,7 +162,6 @@ Given that we have since introduced a more advanced JSON editor in 1.7, which ha
 You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
 
 - This can be changed by either:
-
   - Clicking the theme button in the top-right of the Advanced Editor toolbar.
   - Using the [Ctrl + Shift + Alt + T] keyboard shortcut.
   - Setting the _Advanced editor > Interface > Theme_ property in the format pane.
@@ -252,7 +257,6 @@ This can also be used to monitor scrolling events in the visual container and yo
 - From this version, we have renamed the _Cross-filtering (selection) of data points_ setting to _Expose cross-filtering values for dataset rows_. With this enabled, you will now have two further options:
 
   ![selection-mode-settings.png](interactivity/img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb presents two additional modes for management: Simple (default) and Advanced.")
-
   - _Simple:_
     - This is the functionality you will already have been using, and Deneb attempts to resolve data points from marks and delegates them to Power BI.
     - This option supported for both Vega and Vega-Lite, and is recommended if you just want simple management of cross-filtering.
@@ -262,7 +266,6 @@ This can also be used to monitor scrolling events in the visual container and yo
     - The option cannot be selected for Vega-Lite specifications.
 
 - With the _Advanced_ mode enabled, there are two new expression functions available in Vega signals:
-
   - `pbiCrossFilterApply(event, filter?, options?)`: for the current event target, filter the original dataset (as sent from Power BI) as instructed and ask Power BI to apply cross-filtering based on this result set.
   - `pbiCrossFilterClear()`: explicitly tell Power BI to clear the current cross-filter selection.
 
@@ -340,7 +343,6 @@ The key impacts on creators and viewers are as follows:
 - Transition time between the report canvas and the Advanced Editor (and back again) has significantly improved.
 
 - In conjunction with the visual dataset, specifications and config are memoized, so they are only (re)parsed when a suitable change occurs. The full list of events that can affect memoization are:
-
   - Specification or Config content is applied (and is different to the last saved values).
   - Changes to the visual dataset, including adding and removing columns or measures and filters being applied (essentially anything that causes the visual to be re-queried, resulting in a change of resulting dataset).
   - Enabling or disabling cross-filtering of data points or cross-highlight values (as these affect the visual dataset).
@@ -383,7 +385,6 @@ As part of the UI changes, the **Create new specification** dialog has received 
 - The layout has changed to allow more room on the right for template content when it is selected or loaded.
 - Using an existing template is the default option.
 - For an existing template, the import button has been swapped for a drop zone:
-
   - You can click this to manually select a template file, or you can drag and drop a valid file to this area for Deneb to import it (if WebView2 is enabled).
   - This will also support copy and paste for files and clipboard text, providing that they are valid Deneb templates.
   - For Vega and Vega-Lite specifications without Deneb metadata, it's recommended that you create a blank specification for the appropriate language and paste these into the editor.
@@ -391,7 +392,6 @@ As part of the UI changes, the **Create new specification** dialog has received 
 - Links to Deneb's [community page](/community/resources), the Vega examples gallery and the Vega-Lite examples gallery have been added to the initial screen, to assist with discoverability of existing examples or ideas.
 
 - Packaged templates have been refactored:
-
   - By default, templates no longer use Power BI theming for their look and feel, as this is not necessarily data visualization best practice.
   - A new template named _\[empty (with Power BI theming)]_ has been added for both Vega and Vega-Lite, which will include the relevant config to simulate the default Power BI look and feel.
   - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivity can be set up.
@@ -480,9 +480,7 @@ If exporting a template with > 30 characters in a field name, it cannot be impor
   ![The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.](deeper-concepts/img/pbiColor-named.png "The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.")
 
   Color names should be surrounded with single quotes and valid values are as follows:
-
   - Divergent colors:
-
     - `min`
     - `middle`
     - `max`

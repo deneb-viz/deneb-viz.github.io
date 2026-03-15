@@ -104,7 +104,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "right",
             dropdownActiveClassDisabled: true,
-            versions: ["current", "1.8", "1.7"],
+            versions: ["current", "1.9", "1.8"],
           },
           {
             href: "https://github.com/sponsors/deneb-viz",
