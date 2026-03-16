@@ -5,7 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.9.0
+## 1.9.0 (2026-03-16)
 
 <!-- :::info Under development 🚧
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
@@ -69,7 +69,7 @@ Some of the performance changes include underlying logic for how the editor work
 - When generating a template, if the dataset fields were not aliased, they would be shown (and exported) as blank strings ([#564](https://github.com/deneb-viz/deneb/issues/564)).
 - Opening the signal viewer for specifications with signals containing methods would cause a fatal crash ([#570](https://github.com/deneb-viz/deneb/issues/570)).
 
-## 1.8.2
+## 1.8.2 (2025-10-08)
 
 ### Vega Updates
 
