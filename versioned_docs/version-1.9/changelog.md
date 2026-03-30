@@ -19,9 +19,9 @@ Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test
 Deneb 1.9.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
 ::: -->
 
-:::info Pending deployment to AppSource
+<!-- :::info Pending deployment to AppSource
 Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-:::
+::: -->
 
 This version is a concerted effort to improve the underlying code structure in preparation for new features and easier maintenance - of which there is still a lot to do but this gives us a better platform to continue making these changes.
 
