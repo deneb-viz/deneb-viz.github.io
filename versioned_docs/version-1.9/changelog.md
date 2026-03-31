@@ -5,23 +5,29 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.9.0 (2026-03-16)
+## 1.9.1
 
 <!-- :::info Under development 🚧
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
 ::: -->
 
 <!-- :::info In Beta Testing
-Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
+Deneb 1.9.1 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
 ::: -->
 
-<!-- :::info Submitted for certification
-Deneb 1.9.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-::: -->
+:::info Submitted for certification
+Deneb 1.9.1 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+:::
 
 <!-- :::info Pending deployment to AppSource
-Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+Deneb 1.9.1 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
+
+### Bugs Fixed
+
+- The focus mode behavior introduced in 1.9.0 (triggering the editor state in report editing mode) has been reverted to its original workflow ([#603](https://github.com/deneb-viz/deneb/issues/603)).
+
+## 1.9.0 (2026-03-16)
 
 This version is a concerted effort to improve the underlying code structure in preparation for new features and easier maintenance - of which there is still a lot to do but this gives us a better platform to continue making these changes.
 
