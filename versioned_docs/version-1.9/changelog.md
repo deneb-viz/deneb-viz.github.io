@@ -5,7 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.9.1
+## 1.9.1 (2025-04-08)
 
 <!-- :::info Under development 🚧
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
