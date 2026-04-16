@@ -72,7 +72,11 @@ const sidebars = {
         type: "doc",
         id: "changelog",
       },
-      items: ["archive/changelog-002", "archive/changelog-001"],
+      items: [
+        "archive/changelog-003",
+        "archive/changelog-002",
+        "archive/changelog-001",
+      ],
     },
     {
       type: "category",
