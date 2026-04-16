@@ -61,5 +61,15 @@
             "D",
             "VL"
         ]
+    },
+    {
+        "name": "Harsh Joshi",
+        "imageSrc": "/img/support/community-expert-harsh-joshi.jpg",
+        "channelName": "GitHub",
+        "channelExpertSrc": "https://github.com/HarshJoshi1997/Deneb_Custom_Visualizations",
+        "contributionAreas": [
+            "D",
+            "V"
+        ]
     }
 ]
