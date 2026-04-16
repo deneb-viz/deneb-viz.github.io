@@ -28,7 +28,7 @@ Some of the performance changes include underlying logic for how the editor work
 
 ### Minor Enhancements
 
-- The **Discrete ordinal colors** property is no longer required when using an ordinal scale with the `pbiColorOrdinal`, `pbiColorLinear` or `pbiColorDivergent` [schemes](schemes#power-bi-schemes) and has been removed. Deneb will automatically interpolate the colors based on the distinct values in the scale.
+- The **Discrete ordinal colors** property is no longer required when using an ordinal scale with the `pbiColorOrdinal`, `pbiColorLinear` or `pbiColorDivergent` [schemes](../schemes#power-bi-schemes) and has been removed. Deneb will automatically interpolate the colors based on the distinct values in the scale.
 - The default order for the signal viewer has been changed to natural order, to mirror Vega Editor's behavior ([#490](https://github.com/deneb-viz/deneb/issues/490)). You are still able to sort by signal name in ascending/descending order by clicking the column header.
 - Completion item documentation in the editor (triggered by clicking '>' if present) will now correctly render markdown content ([#569](https://github.com/deneb-viz/deneb/issues/569)).
 
@@ -42,7 +42,7 @@ Some of the performance changes include underlying logic for how the editor work
   - Overall dataset processing has also been significantly optimized and in some cases improvements of **200-300%** have been observed once Power BI has finished supplying the query result for processing.
     <br/><br/>
     :::warning Potential Breaking Change
-    If you ever relied on the `__identity__` or `__key__` fields from a datum in your specification, these were always intended to be for internal use and Deneb previously tried to obfuscate them to discourage this. You should change to the [supported (and recommended) `__row__` field](interactivity-overview#additional-datum-fields) for inspection, reference and validation of interactivity features.
+    If you ever relied on the `__identity__` or `__key__` fields from a datum in your specification, these were always intended to be for internal use and Deneb previously tried to obfuscate them to discourage this. You should change to the [supported (and recommended) `__row__` field](../interactivity-overview#additional-datum-fields) for inspection, reference and validation of interactivity features.
     :::
 
 - Packaged visual is now **5% smaller** than last release (and 12% smaller than 1.7), improving download and initialization times.
@@ -51,7 +51,7 @@ Some of the performance changes include underlying logic for how the editor work
 
 ### Documentation
 
-- The [PBIR Implementation Guide](pbir-guide) is intended help with understanding how to use Deneb with [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format). This includes a comprehensive list of how Deneb's internal property system works (and how properties affect the rendered output), which should be helpful for those looking to automate Deneb visual creation, either through their own efforts, or in conjunction with an LLM.
+- The [PBIR Implementation Guide](../pbir-guide) is intended help with understanding how to use Deneb with [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format). This includes a comprehensive list of how Deneb's internal property system works (and how properties affect the rendered output), which should be helpful for those looking to automate Deneb visual creation, either through their own efforts, or in conjunction with an LLM.
 
 ### Bug Fixes
 
@@ -225,11 +225,11 @@ Previously, any specific editor changes you'd made, such as folding/collapsing s
 
 ### `pbiFormat` Changes
 
-As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the [Formatting Values](formatting#object-example) page for further details.
+As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the [Formatting Values](../formatting#object-example) page for further details.
 
 ### `pbiFormatAutoUnit` Format Type
 
-This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the [Formatting Values](formatting#auto-formatting-with-pbiformatautounit) page for further details.
+This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the [Formatting Values](../formatting#auto-formatting-with-pbiformatautounit) page for further details.
 
 ### `pbiContainer` Signal
 
@@ -237,7 +237,7 @@ The Vega view now has a new signal named `pbiContainer`, which provides access t
 
 ![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
 
-This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](scrolling-overflow#using-pbicontainer-to-track-scrolling-events) page for more details on the internals of this feature.
+This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](../scrolling-overflow#using-pbicontainer-to-track-scrolling-events) page for more details on the internals of this feature.
 
 ### Advanced Cross-Filtering
 
@@ -249,7 +249,7 @@ This can also be used to monitor scrolling events in the visual container and yo
   - _Simple:_
     - This is the functionality you will already have been using, and Deneb attempts to resolve data points from marks and delegates them to Power BI.
     - This option supported for both Vega and Vega-Lite, and is recommended if you just want simple management of cross-filtering.
-    - However, [the limitations still apply](interactivity-selection#limitations-and-considerations), as this is a fairly simple modification applied to the Vega view by Deneb.
+    - However, [the limitations still apply](../interactivity-selection#limitations-and-considerations), as this is a fairly simple modification applied to the Vega view by Deneb.
   - _Advanced:_
     - This will not attempt to help you by monitoring marks for clicks and all cross-filter events must be managed by you.
     - The option cannot be selected for Vega-Lite specifications.
@@ -258,7 +258,7 @@ This can also be used to monitor scrolling events in the visual container and yo
   - `pbiCrossFilterApply(event, filter?, options?)`: for the current event target, filter the original dataset (as sent from Power BI) as instructed and ask Power BI to apply cross-filtering based on this result set.
   - `pbiCrossFilterClear()`: explicitly tell Power BI to clear the current cross-filter selection.
 
-- This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
+- This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](../interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
 
 ### Other Enhancements
 
@@ -335,7 +335,7 @@ The key impacts on creators and viewers are as follows:
   - Specification or Config content is applied (and is different to the last saved values).
   - Changes to the visual dataset, including adding and removing columns or measures and filters being applied (essentially anything that causes the visual to be re-queried, resulting in a change of resulting dataset).
   - Enabling or disabling cross-filtering of data points or cross-highlight values (as these affect the visual dataset).
-  - A change to the [Discrete ordinal colors](schemes#discrete-ordinal-colors) property in the _Report theme integration_ menu (as this requires re-generation of the custom Vega ordinal scale that is bound to that value).
+  - A change to the [Discrete ordinal colors](../schemes#discrete-ordinal-colors) property in the _Report theme integration_ menu (as this requires re-generation of the custom Vega ordinal scale that is bound to that value).
   - Enabling or disabling the Power BI tooltip handler.
   - Changing the provider (e.g. from _Vega-Lite_ to _Vega_).
   - Changing the render mode (e.g. from _SVG_ to _Canvas_).
@@ -418,7 +418,7 @@ Deneb has always been able to accommodate calculation groups in its dataset, but
 
 In this release, new fields are introduced into the dataset to provide additional access to these values if they are present in the query result from Power BI.
 
-See the section in the [Formatting Values](formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups) page for a detailed explanation as to how these work.
+See the section in the [Formatting Values](../formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups) page for a detailed explanation as to how these work.
 
 ### Scrollbar Appearance Configuration
 
@@ -430,7 +430,7 @@ Some new properties have been introduced to the **Rendered visual** menu in the 
 
 Additionally, there is a **Show scrollbars on overflow** in the **Advanced editor** menu, that will allow you to preview the scrollbars in the advanced editor, if your visual will overflow the boundaries of the viewport.
 
-This is covered in more detail in the [Scrolling and Overflow](scrolling-overflow) page.
+This is covered in more detail in the [Scrolling and Overflow](../scrolling-overflow) page.
 
 ### Other Enhancements
 
@@ -462,7 +462,7 @@ If exporting a template with > 30 characters in a field name, it cannot be impor
 
 - The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.
 
-  Please refer to the [Formatting Values](formatting#pbiformat-expression-function-full-implementation-details) page for more information.
+  Please refer to the [Formatting Values](../formatting#pbiformat-expression-function-full-implementation-details) page for more information.
 
 - The `pbiColor` expression function now supports the following named color values:
 
@@ -479,7 +479,7 @@ If exporting a template with > 30 characters in a field name, it cannot be impor
     - `neutral`
     - `positive` (or `good`)
 
-  Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for more information.
+  Please refer to the [Theme Colors & Schemes](../schemes#expression-based-access-using-pbicolor) page for more information.
 
 ### Bugs Fixed
 
