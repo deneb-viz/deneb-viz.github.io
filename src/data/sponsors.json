@@ -1,13 +1,5 @@
 {
-    "platinum": [
-        {
-            "source": "repo",
-            "name": "PowerBI.Tips",
-            "url": "https://powerbi.tips/",
-            "image_url": "/img/sponsors/powerbi.tips.svg",
-            "image_sizing": "height"
-        }
-    ],
+    "platinum": [],
     "gold": [],
     "silver": [],
     "bronze": [
