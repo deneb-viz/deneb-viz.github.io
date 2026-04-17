@@ -12,7 +12,7 @@ The context menu is managed by the main Power BI window, so Deneb handles integr
 
 ## Context Menu Settings
 
-Deneb provides two settings that control the Power BI context menu, available in the _Vega > Power BI Interactivity_ section of the [Settings pane in the Visual editor](visual-editor#settings-pane). Both are enabled by default.
+Deneb provides two settings that control the Power BI context menu, available in the _Context menu_ section of the [**Project setup** pane in the Visual editor](visual-editor#settings-pane). Both are enabled by default.
 
 - **Show context menu on right-click**: controls whether the Power BI context menu appears when right-clicking the visual canvas (or within the boundary representing the visual viewport in the Advanced Editor's [Preview Area](visual-editor/#preview-area)).
 
