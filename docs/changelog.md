@@ -8,7 +8,9 @@ description: Deneb Change Log - high-level details of new features and fixes for
 ## 2.0.0 (Under Development)
 
 :::info Under development 🚧
-Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
+
+<!-- Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete. -->
+
 :::
 
 <!-- :::info In Beta Testing
@@ -41,6 +43,22 @@ Disabling the context menu will still allow context events from the Vega view to
 :::tip Migration path for existing projects
 If your current project was created in an earlier version (or you import a template created in an earlier version), Deneb will automatically migrate context menu settings to the new structure. Projects that had data point resolution disabled will be migrated to: context menu shown + data point resolution off, preserving the author's original intent.
 :::
+
+### Internal Signal Changes
+
+The parsing and rendering pipeline changes have given us a chance to reflect upon the naming convention of internally-generated signals that we use to support Deneb and integration with Power BI features. These are now intended to be prefixed with their intended purpose.
+
+The legacy `pbi`-prefixed signals are now deprecated. To ensure continuity, Deneb will re-map these signals internally when your spec is parsed. However, you will see a warning in the logs to switch to the new `deneb`-prefixed signal names, e.g.:
+
+![denebContainer-migration-log-warning.png](/img/changelog/2.0.0/denebContainer-migration-log-warning.png "A warning message in the logs indicating that legacy signal names have been detected and re-mapped.")
+
+It is recommended that you adjust your specifications to match the new names at the earliest possible opportunity, and the suggested migration strategy for each signal is as follows:
+
+| Signal Name          | Migration Strategy      |
+| -------------------- | ----------------------- |
+| `pbiContainer`       | `denebContainer`        |
+| `pbiContainerHeight` | `denebContainer.height` |
+| `pbiContainerWidth`  | `denebContainer.width`  |
 
 ### PBIR and Templating Changes
 

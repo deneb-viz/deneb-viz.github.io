@@ -47,11 +47,11 @@ With this property enabled, Deneb will apply the scrollbars to the viewport mark
 
 The displayed scrollbars will also use the [appearance configuration](#configuring-scrollbar-appearance) from the **Scrollbars** formatting card, so you can use this option to test this within the editor if so desired.
 
-## Using `pbiContainer` to Track Scrolling Events
+## Using `denebContainer` to Track Scrolling Events
 
-Deneb adds a signal named `pbiContainer` to the Vega view, which provides access to information about the visual container in expressions:
+Deneb adds a signal named `denebContainer` to the Vega view, which provides access to information about the visual container in expressions:
 
-![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
+![denebContainer-signal.png](img/denebContainer-signal.png "The `denebContainer` signal provides information about the visual container that can be used in expressions.")
 
 - This is an object with 6 properties:
   - `height` - the height of the visual container.
@@ -64,9 +64,12 @@ Deneb adds a signal named `pbiContainer` to the Vega view, which provides access
 - If the generated visual overflows the preview area and enables scrolling, Deneb will update the `scrollTop` and `scrollLeft` values as the user scrolls the visible area and re-run the view, meaning that you can assign these values to marks or expressions and they will update.
 - Scroll event monitoring has a default throttle time of **5ms**. This can be changed in the _Rendered visual > Container scroll events > Throttle time_ property:
 
-  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the internal `pbiContainer` signal with new values.")
+  ![throttle-time-property.png](/img/changelog/1.7.0/throttle-time-property.png "The `Throttle time` property lets you control how frequently scroll events will update the internal `denebContainer` signal with new values.")
 
   This has a minimum value of **0ms** and a maximum of **1000ms**; you can use it to tune scroll event update performance as needed.
 
 - To be able to develop using this feature in the Advanced Editor, it's recommended that you enable [Show scrollbars on overflow](#confirming-and-configuring-scrollbar-report-canvas-appearance-in-the-editor), to apply this, otherwise the scroll event is not fired.
-- For backward compatibility purposes, the `pbiContainerHeight` and `pbiContainerWidth` signals that Deneb adds for Vega specifications will remain available, but if you rely on these signals, it's recommended that you move to `pbiContainer.height` and `pbiContainer.width` accordingly, as these values will update on container changes rather than when the specification is parsed.
+
+:::tip Migration from legacy signal names
+If your specification uses the legacy `pbiContainer`, `pbiContainerHeight`, or `pbiContainerWidth` signal names, Deneb will automatically re-map these when your spec is parsed. However, it is recommended that you update to `denebContainer`, `denebContainer.height`, and `denebContainer.width` respectively at the earliest opportunity. Refer to the [2.0 changelog](/changelog#internal-signal-changes) for full details.
+:::

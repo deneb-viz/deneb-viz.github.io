@@ -349,7 +349,7 @@ Properties in this group are displayed in the _Rendered visual_ property menu in
 | `scrollbarColor`      | `#000000`                  | [color](#color)     | The color of the [container scrollbar](scrolling-overflow#configuring-scrollbar-appearance) when it is shown.                                                                                                                                      |
 | `scrollbarOpacity`    | `20D`                      | [integer](#integer) | The opacity of the [container scrollbar](scrolling-overflow#configuring-scrollbar-appearance) when it is shown. Values are converted to decimal percentage by Deneb, and valid values are `0D` to `100D`.                                          |
 | `scrollbarRadius`     | `0D`                       | [integer](#integer) | The border radius of the [container scrollbar](scrolling-overflow#configuring-scrollbar-appearance) in px when it is shown. Valid values are `0D` to `3D`; anything higher than `3D` will be artificially capped due to the scrollbar's thickness. |
-| `scrollEventThrottle` | `5D`                       | [integer](#integer) | The throttle delay in ms for updating the container scroll position values [in the `pbiContainer` signal](scrolling-overflow#using-pbicontainer-to-track-scrolling-events). Valid values are `0D` to `1000D`.                                      |
+| `scrollEventThrottle` | `5D`                       | [integer](#integer) | The throttle delay in ms for updating the container scroll position values [in the `denebContainer` signal](scrolling-overflow#using-denebcontainer-to-track-scrolling-events). Valid values are `0D` to `1000D`.                                   |
 
 ### `objects.dataLimit`
 

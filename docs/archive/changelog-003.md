@@ -237,7 +237,7 @@ The Vega view now has a new signal named `pbiContainer`, which provides access t
 
 ![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
 
-This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](../scrolling-overflow#using-pbicontainer-to-track-scrolling-events) page for more details on the internals of this feature.
+This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](../scrolling-overflow#using-denebcontainer-to-track-scrolling-events) page for more details on the internals of this feature.
 
 ### Advanced Cross-Filtering
 
