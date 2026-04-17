@@ -5,7 +5,7 @@ slug: /keyboard
 title: Keyboard Shortcuts
 ---
 
-Most operations in the Visual Editor have corresponding keyboard shortcuts, and a number are mentioned in their corresponding area. However, its always good to see them in one place!
+Most operations in the Visual Editor have keyboard shortcuts, and many are listed in their respective areas. However, it's always good to see them in one place!
 
 :::info Need A Specific Shortcut?
 Please [create an issue in the GitHub repo with what you're missing](https://github.com/deneb-viz/deneb/issues) and we'll see if we can get it added :)
@@ -27,7 +27,7 @@ Please [create an issue in the GitHub repo with what you're missing](https://git
 
 ## In-Editor
 
-Deneb utilizes Monaco Editor for JSON editing, which comes with its own keyboard shortcuts and can help you quite considerably in-terms of productivity. You can view a list of shortcut keys by accessing the command palette, either from the context menu (right-clicking the editor), or pressing **Ctrl + F1**, e.g.:
+Deneb uses Monaco Editor for JSON editing, which comes with its own keyboard shortcuts and can significantly improve your productivity. You can view a list of shortcut keys by accessing the command palette, either from the context menu (right-clicking the editor), or pressing **Ctrl + F1**, e.g.:
 
 ##### Context menu
 
