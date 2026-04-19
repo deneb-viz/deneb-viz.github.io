@@ -25,6 +25,14 @@ Deneb 2.0.0 has been submitted to AppSource for certification and may take some 
 Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
+### View Compiled Vega + Conversion (for Vega-Lite)
+
+One of the most useful features of Vega Editor was that, if working with Vega-Lite, you could see the generated Vega specification directly in the UI. This was great for understanding how to 'think in Vega' and for taking the generated output and immediately using it as the basis for a Vega spec, without needing to start from scratch. This has been requested for Deneb for a long time, and thanks to the new parsing pipeline, it's exciting to finally make it available.
+
+Much like the Vega Editor implementation, **this action is irreversible**, and will replace your current specification with the generated Vega output. It is recommended that you save a copy of your Vega-Lite specification before using this action, in case you want to revert to it.
+
+You can read more about the feature and how to use it in the [Visual Editor documentation](visual-editor#compiled-vega-pane).
+
 ### Better Context Menu Control
 
 Deneb now provides two-level control over the Power BI context menu (right-click). Both settings default to enabled, matching the previous default behavior:

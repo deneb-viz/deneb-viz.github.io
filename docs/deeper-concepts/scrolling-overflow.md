@@ -71,5 +71,5 @@ Deneb adds a signal named `denebContainer` to the Vega view, which provides acce
 - To be able to develop using this feature in the Advanced Editor, it's recommended that you enable [Show scrollbars on overflow](#confirming-and-configuring-scrollbar-report-canvas-appearance-in-the-editor), to apply this, otherwise the scroll event is not fired.
 
 :::tip Migration from legacy signal names
-If your specification uses the legacy `pbiContainer`, `pbiContainerHeight`, or `pbiContainerWidth` signal names, Deneb will automatically re-map these when your spec is parsed. However, it is recommended that you update to `denebContainer`, `denebContainer.height`, and `denebContainer.width` respectively at the earliest opportunity. Refer to the [2.0 changelog](/changelog#internal-signal-changes) for full details.
+If your specification uses the legacy `pbiContainer`, `pbiContainerHeight`, or `pbiContainerWidth` signal names, Deneb will automatically re-map these when your spec is parsed. However, it is recommended that you update to `denebContainer`, `denebContainer.height`, and `denebContainer.width` respectively at the earliest opportunity. Refer to the [2.0 changelog](changelog#internal-signal-changes) for full details.
 :::
