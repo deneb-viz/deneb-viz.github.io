@@ -68,6 +68,20 @@ It is recommended that you adjust your specifications to match the new names at 
 | `pbiContainerHeight` | `denebContainer.height` |
 | `pbiContainerWidth`  | `denebContainer.width`  |
 
+### `$schema` Usage Warning (and Quick Fix Action)
+
+If you generate or find a specification elsewhere, it may (for good reasons) have the `$schema` property, which is important for validation of a Vega or Vega-Lite specification.
+
+However, this is an overload in the context of Deneb, because if you try to use a spec with this property in the editor, it will try to resolve the schema from that URL, which will fail, because external requests are not permitted in a certified Power BI Visual. This prevents features such as auto-completion, inline documentation, and validation from working.
+
+For consistency with the language specification, Deneb will manually add the appropriate `$schema` URL when generating an exportable template and ensure that it is stripped out when you import a template through the _Create new specification_ dialog, but doesn't make any decisions around the content you add to the JSON editor. All of this hasn't been documented, so the documentation has been updated to provide better guidance on this behavior.
+
+In this release, there's also a more prominent warning for this occurrence, which can be inspected further on hover, e.g.:
+
+![schema_warning_message.png](../docs/getting-started/img/schema-warning-message.png "A warning message shown inline in the Specification editor for a root-level $schema property, with the Quick Fix action available to remove it.")
+
+If you so wish, clicking the _Quick Fix..._ button will remove the affected `$schema` property from the editor for you.
+
 ### PBIR and Templating Changes
 
 Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:

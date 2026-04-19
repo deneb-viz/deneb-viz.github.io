@@ -151,6 +151,14 @@ This property specifies the interval (in milliseconds) at which the editor check
 
 ![The Specification editor will validate your JSON against the Vega or Vega-Lite language schema, as appropriate.](./img/schema-validation-example.png "The Specification editor will validate your JSON against the Vega or Vega-Lite language schema, as appropriate.")
 
+:::warning Deneb flags root-level `$schema` properties
+If your specification contains a root-level `$schema` property (for example, after pasting in a spec from an external tool), the Specification editor will mark it with a warning. Deneb resolves Vega and Vega-Lite schemas internally - leaving `$schema` in place forces the editor to try to fetch it from that URL, which isn't permitted in the certified AppSource version and prevents auto-completion, inline documentation, and validation from working.
+
+![The Specification editor flags root-level $schema properties with a warning.](./img/schema-warning-message.png "The Specification editor flags root-level $schema properties with a warning.")
+
+Hover the marker for the full explanation, then use the Monaco **Quick Fix** action - either click the lightbulb that appears on the line, or press **Ctrl + .** with the cursor on the line — to remove the property. The check only runs at the root level of the Specification editor; `$schema` values elsewhere (including in the Config editor) are not flagged.
+:::
+
 ### Config Editor Pane
 
 :::note Keyboard shortcut

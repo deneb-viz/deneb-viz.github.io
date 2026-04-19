@@ -39,13 +39,14 @@ Deneb uses Monaco Editor for JSON editing, which comes with its own keyboard sho
 
 Some useful commands are:
 
-| Function             | Shortcut            |
-| -------------------- | ------------------- |
-| Format document      | **Ctrl + Alt + R**  |
-| Toggle line comment  | **Ctrl + /**        |
-| Toggle block comment | **Shift + Alt + A** |
-| Find                 | **Ctrl + F**        |
-| Replace              | **Ctrl + H**        |
+| Function                 | Shortcut            |
+| ------------------------ | ------------------- |
+| Format document          | **Ctrl + Alt + R**  |
+| Toggle line comment      | **Ctrl + /**        |
+| Toggle block comment     | **Shift + Alt + A** |
+| Find                     | **Ctrl + F**        |
+| Replace                  | **Ctrl + H**        |
+| Quick Fix / Code Action  | **Ctrl + .**        |
 
 ## Debug Pane
 

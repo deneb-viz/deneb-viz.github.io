@@ -27,6 +27,12 @@ If you have the content of your Deneb template copied to your clipboard (either 
 Deneb templates contain [special metadata](#template-structure) that are typically not present in Vega or Vega-Lite examples you may find elsewhere. For these examples, it's better to create an empty specification for your desired language, then paste the JSON into the editor.
 :::
 
+:::note `$schema` is stripped on template import
+When a template is imported through the _Create New Specification_ dialog, Deneb removes any root-level `$schema` property from the specification before loading it into the editor. This is so the editor can use Deneb's internally-resolved schema for auto-completion, inline documentation, and validation, rather than attempting an external fetch that would be blocked in the AppSource build.
+
+If you paste a specification directly into the editor (rather than importing it as a template), `$schema` is left in place and the editor will surface a [dedicated warning with a Quick Fix action](visual-editor#specification-editor-pane) so you can remove it.
+:::
+
 ### Dataset Placeholders
 
 The selected file's JSON will be validated, and if successful, the placeholder information will be displayed:
@@ -117,6 +123,10 @@ Each field has an optional **Author's notes** field. In here, you can add more i
 ### Review and Export
 
 When you're happy to proceed, you can either download the template file or copy it to the clipboard. If copying, you can paste into your editor of choice and save it with the `.json` extension.
+
+:::note Exported templates include `$schema`
+The template file produced here has the appropriate `$schema` URL for your provider added to the specification, so the output validates cleanly when opened in external tools such as the [Vega Editor](https://vega.github.io/editor/). Deneb strips `$schema` out again if the template is later imported through the _Create New Specification_ dialog.
+:::
 
 :::note Direct Downloads May Not Be Possible
 Power BI visuals can only download a file **if your tenant admin has enabled downloading from custom visuals**. [You can learn more about this here](https://learn.microsoft.com/en-us/power-bi/admin/organizational-visuals#export-data-to-file).
