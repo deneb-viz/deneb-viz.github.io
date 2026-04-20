@@ -237,6 +237,7 @@ A couple of things are worth noting about the compiled output:
   - _Canvas_ renders your design as pixel graphics.
   - _SVG_ creates your design from vector graphics, resulting in a number of component elements within the visual to produce the output.
   - Please refer to the [Performance Considerations](performance#selection-of-renderer) page for further details on potential risks and mitigation approaches when it comes to selecting a renderer.
+  - **Scale to report zoom level** (off by default) can be enabled when Canvas is selected, to compensate for the blurriness Canvas produces at non-100% zoom. When enabled, Deneb multiplies the canvas resolution by the current report zoom level - and, when viewed in the editor, also by the [preview zoom level](#zoom-controls) - so the output stays sharper at higher zoom levels. This won't reach full SVG crispness, but it is a meaningful improvement. The toggle is disabled when SVG is selected.
 - The **Vega > Power BI interactivity** section specifies which interactivity features to enable.
   - As these require some additional setup in your specification, as well as some internal logic to link everything together, you are able to specify whether they should be set up or not.
   - Please refer to the [Interactivity Features](interactivity-overview) and related pages ([Tooltips](interactivity-tooltips) | [Context-Menu](interactivity-context-menu) | [Cross-Filtering](interactivity-selection) | [Cross-Highlighting](interactivity-highlight)) for further details on how to configure these for your specification.

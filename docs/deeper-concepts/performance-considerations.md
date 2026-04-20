@@ -26,6 +26,7 @@ You can specify the renderer to use [in the Settings panel of the Visual Editor]
 - If you want to use SVG and you're working with a lot of data, consider if you can use elements that consolidate many data points into a single item on-screen, such as a `line` rather than a `point`, as this helps reduce the number of moving parts. Other techniques, such as binning or aggregation, can also help keep mark count down.
 
 - If you can't get around needing a lot of marks on screen, then Canvas is likely to be a better option, as it is optimized for this kind of scenario. However, bear in mind that Canvas does not scale as well as SVG and can look blurry at larger sizes.
+  - The [**Scale to report zoom level**](visual-editor#settings-pane) option in the Settings pane mitigates this by adjusting the canvas resolution to match the current report zoom (and editor preview zoom). It won't match SVG crispness, but it produces noticeably sharper output at higher zoom levels. It is off by default and only applies when Canvas is selected.
 
 For more details on Canvas vs. SVG, [there's a great article here at CSS-Tricks](https://css-tricks.com/when-to-use-svg-vs-when-to-use-canvas) that consolidates a lot of useful info and summarizes a number of pros and cons.
 

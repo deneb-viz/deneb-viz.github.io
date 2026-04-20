@@ -5,7 +5,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 2.0.0 (Under Development)
+## 2.0.0
 
 :::info Under development 🚧
 
@@ -24,6 +24,20 @@ Deneb 2.0.0 has been submitted to AppSource for certification and may take some 
 <!-- :::info Pending deployment to AppSource
 Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
+
+### Canvas Renderer: Report Zoom Level Scaling
+
+The Vega canvas renderer offers many performance benefits over SVG for rendering large datasets, but it has downsides, such as not scaling with the report's zoom level due to its raster-based nature. This can make the visual appear blurry when the report is zoomed in.
+
+In this release, there is now a **Scale to report zoom level** option when the **Canvas** renderer is selected. This is set to **off** by default:
+
+![canvas-scale-setting.png](../static/img/changelog/2.0.0/canvas-scale-setting.png "When the `Canvas` renderer is selected, a new option appears to allow scaling to the report zoom level. This is turned off by default.")
+
+When enabled, this will use the current report zoom level (or preview zoom level) to calculate the appropriate scaling when rendering your visual. While this will not provide 100% parity with SVG in terms of crispness, it provides significantly improved fidelity of a rendered visual at different zoom levels.
+
+:::warning Why make this switchable at all?
+This is currently implemented as a switchable setting, so we can identify any use cases where this may cause issues before we consider making it the default behavior in a future release. If this works well, we will likely enable it by default before general availability, but we want to give authors the option to test it in their reports and provide feedback.
+:::
 
 ### View Compiled Vega + Conversion (for Vega-Lite)
 
@@ -86,9 +100,10 @@ If you so wish, clicking the _Quick Fix..._ button will remove the affected `$sc
 
 Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:
 
-| Feature                                              | Visual property changes                                                                                                                                                           | Template changes                                                                                                                                                                                                                 |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Context menu control](#better-context-menu-control) | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility. | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility. |
+| Feature                                                      | Visual property changes                                                                                                                                                           | Template changes                                                                                                                                                                                                                 |
+| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Context menu control](#better-context-menu-control)         | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility. | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility. |
+| [Canvas scaling](#canvas-renderer-report-zoom-level-scaling) | New property for canvas scaling: `objects.stateManagement.scaleToZoom`                                                                                                            | No changes to template structure.                                                                                                                                                                                                |
 
 ### Bug Fixes
 
