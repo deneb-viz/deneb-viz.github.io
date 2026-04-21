@@ -25,6 +25,12 @@ Deneb 2.0.0 has been submitted to AppSource for certification and may take some 
 Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
+### A New Parsing and Rendering Pipeline
+
+From the beginning, Deneb's spec parsing and embed process was always a case of "however it could be gotten to work in Power BI," and has been somewhat of an architectural weak point. In this update, the whole process - from submission of your spec through to its embedding has been rewritten and optimized.
+
+In conjunction with the architectural improvements made in 1.9, this now opens the way for many features that were too hard to deliver without complicating things further. And, we're getting some of these features into this release, too! Read on for details on what else you have to enjoy.
+
 ### Canvas Renderer: Scale to Report Zoom
 
 The Vega canvas renderer offers many performance benefits over SVG for rendering large datasets, but it has downsides, such as not scaling with the report's zoom level due to its raster-based nature. This can make the visual appear blurry when the report is zoomed in.
@@ -131,6 +137,20 @@ Many of the above changes introduce considerations for building visuals using [P
 | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Context menu control](#better-context-menu-control)         | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility. | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility. |
 | [Canvas scaling](#canvas-renderer-report-zoom-level-scaling) | New property for canvas scaling: `objects.stateManagement.scaleToZoom`                                                                                                            | No changes to template structure.                                                                                                                                                                                                |
+
+### Performance and Stability
+
+- The separation of editor-specific assets and functionality, such as Monaco editor initialization and warming up of Vega JSON schemas, has been more tightly gated. This includes less 'locking' of the UI when moving between the viewer and editor states [(#581)](https://github.com/deneb-viz/deneb/issues/581).
+
+- Only the locales [supported by MS](https://learn.microsoft.com/en-us/power-bi/developer/visuals/localization?tabs=English#supported-languages) are now included, which improves the packaged visual size [(#593)](https://github.com/deneb-viz/deneb/issues/593).
+
+  :::warning If your locale is missing, please let us know!
+  Whilst your locale may be on the unsupported list, if it previously worked for you with `pbiFormat`, please [create an issue](https://github.com/deneb-viz/deneb/issues/new), and we'll add it back in for you.
+  :::
+
+- Internal JSON schema validation dependencies have been normalized, removing duplicated code ([#595](https://github.com/deneb-viz/deneb/issues/595)).
+
+The resulting changes have reduced the package size to **1.75 MB**: a reduction of **4%** vs. 1.9.0 and **19%** vs. 1.7.0.
 
 ### Bug Fixes
 
