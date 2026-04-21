@@ -25,7 +25,7 @@ Deneb 2.0.0 has been submitted to AppSource for certification and may take some 
 Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
-### Canvas Renderer: Report Zoom Level Scaling
+### Canvas Renderer: Scale to Report Zoom
 
 The Vega canvas renderer offers many performance benefits over SVG for rendering large datasets, but it has downsides, such as not scaling with the report's zoom level due to its raster-based nature. This can make the visual appear blurry when the report is zoomed in.
 
@@ -39,7 +39,7 @@ When enabled, this will use the current report zoom level (or preview zoom level
 This is currently implemented as a switchable setting, so we can identify any use cases where this may cause issues before we consider making it the default behavior in a future release. If this works well, we will likely enable it by default before general availability, but we want to give authors the option to test it in their reports and provide feedback.
 :::
 
-### View Compiled Vega + Conversion (for Vega-Lite)
+### View and Convert Compiled Vega
 
 One of the most useful features of Vega Editor was that, if working with Vega-Lite, you could see the generated Vega specification directly in the UI. This was great for understanding how to 'think in Vega' and for taking the generated output and immediately using it as the basis for a Vega spec, without needing to start from scratch. This has been requested for Deneb for a long time, and thanks to the new parsing pipeline, it's exciting to finally make it available.
 
@@ -82,7 +82,7 @@ It is recommended that you adjust your specifications to match the new names at 
 | `pbiContainerHeight` | `denebContainer.height` |
 | `pbiContainerWidth`  | `denebContainer.width`  |
 
-### `$schema` Usage Warning (and Quick Fix Action)
+### $schema: Warning and Quick Fix
 
 If you generate or find a specification elsewhere, it may (for good reasons) have the `$schema` property, which is important for validation of a Vega or Vega-Lite specification.
 
