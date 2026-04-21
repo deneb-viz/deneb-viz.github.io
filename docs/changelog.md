@@ -96,6 +96,20 @@ In this release, there's also a more prominent warning for this occurrence, whic
 
 If you so wish, clicking the _Quick Fix..._ button will remove the affected `$schema` property from the editor for you.
 
+### Cell Inspection in Debug Pane
+
+The **Data** and **Signals** viewers in the debug pane have been rebuilt around a click-to-inspect model. Previously, long or complex values were truncated with an ellipsis (`...`) and only partially available via a hover tooltip.
+
+Now every cell is inspectable:
+
+- Clicking (or pressing **Enter** / **Space** when focused) opens a read-only Monaco editor with the full value.
+- Scalar values open in a compact popover using plain text; objects and arrays open in a larger popover with JSON formatting, syntax highlighting, and code folding.
+- For large or complex objects, a shallow copy of the value is displayed, which should be enough to give you an idea of the structure and content without overwhelming the editor or causing performance issues.
+
+  ![A complex value in a table cell, truncated inline and opened in the value inspector.](../docs/getting-started/img/editor-interface-data-pane-object-inspector.png "A complex value in a table cell, truncated inline and opened in the value inspector.")
+
+The viewer tables are also now keyboard-navigable as a grid: **arrow keys** / **Home** / **End** to move, **Enter** / **Space** to inspect, **Escape** to close, **Tab** to leave the grid.
+
 ### PBIR and Templating Changes
 
 Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:

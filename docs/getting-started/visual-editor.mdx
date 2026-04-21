@@ -303,23 +303,33 @@ From left to right, the components of the pane are as follows:
 
 The Data Pane displays information about data sets in the Vega view and is the default view in the Debug Pane. Assuming your visual parses correctly, this will provide a dropdown to select the desired data stream to inspect, and the details will then be shown in the table below.
 
-- The default selection is the `dataset` entry, which is the data supplied to Deneb from your data model. This includes [any additional fields](interactivity-overview#additional-datum-fields) Deneb adds to assist you with interactivity, so you can inspect their values much more easily than [using tooltips to expose a mark's datum](interactivity-tooltips#debugging-with-tooltips).
+- The default selection is the `dataset` entry, which is the data supplied to Deneb from your data model. This includes [any additional fields](interactivity-overview#additional-datum-fields) that Deneb adds to assist you with interactivity, so you can inspect their values much more easily than [using tooltips to expose a mark's datum](interactivity-tooltips#debugging-with-tooltips).
 
-- Complex objects will only render if they are small enough; larger ones will be truncated with `{...}` (but can be inspected further in a tooltip by hovering over the placeholder value):
+- Any cell can be inspected in depth by clicking it, or by pressing **Enter** / **Space** when the cell is focused. This opens a read-only Monaco editor showing the full value:
+  - For **scalar values** (strings, numbers, booleans), the inspector appears as a compact popover rendering the value as plain text.
+  - For **objects and arrays**, the inspector appears as a larger popover with JSON formatting, syntax highlighting, and code folding, which is useful for drilling into deeply-nested structures or the [additional datum fields](interactivity-overview#additional-datum-fields) Deneb adds to assist with interactivity.
+  - To close the inspector, press **Escape**, click outside the popover, or **Tab** out of the grid.
 
-  ![If a table cell is too complex to display, Deneb will attempt to prettify its contents in a tooltip if hovered-over.](img/editor-interface-data-pane-complex-tooltip.png "If a table cell is too complex to display, Deneb will attempt to prettify its contents in a tooltip if hovered-over.")
+- Long or complex values are truncated in the table cell itself, with a `{...}` placeholder for complex structures. Hovering on a truncated cell shows a tooltip noting that you can view a shallow representation in the inspector.
 
-- Tooltips for interactivity values and headers are also contextual, to better assist you with what things might mean:
+  ![A complex value in a table cell, truncated inline and opened in the value inspector.](img/editor-interface-data-pane-object-inspector.png "A complex value in a table cell, truncated inline and opened in the value inspector.")
 
-  ![If a table cell is too complex to display, Deneb will attempt to prettify its contents in a tooltip if hovered-over.](img/editor-interface-data-pane-interactivity-tooltip.png "If a table cell is too complex to display, Deneb will attempt to prettify its contents in a tooltip if hovered-over.")
+- Tooltips for interactivity values and column headers are also contextual, to better assist you with what things might mean:
 
-- For performance reasons with rendering (mainly because a data stream can contain complex objects), the number of visible rows is capped at 10 per page. You may therefore need to navigate the table using the pagination controls below to view specific records; however, columns can be sorted by clicking the appropriate header.
+  ![Contextual tooltips on interactivity-related columns and headers explain what each value represents.](img/editor-interface-data-pane-interactivity-tooltip.png "Contextual tooltips on interactivity-related columns and headers explain what each value represents.")
+
+- The table is keyboard-navigable as a grid: **arrow keys** move the focused cell, **Home** / **End** jump to the start or end of a row, and **Tab** leaves the grid entirely.
+
+- For performance reasons with rendering (mainly because a data stream can contain complex objects), the number of visible rows is capped at a fixed amount per page (configurable using the _Rows per page_ dropdown). You may therefore need to navigate the table using the pagination controls below to view specific records; however, columns can be sorted by clicking the appropriate header.
 
 ### Signals Pane
 
 The Signals Pane can be used to inspect the state of [signals](https://vega.github.io/vega/docs/signals/) from the Vega view. Signals are often auto-generated for features in Vega-Lite, such as [parameters](https://vega.github.io/vega-lite/docs/parameter.html).
 
-The functionality of the table is very similar to that of the Data Pane.
+The functionality of the table is very similar to that of the Data Pane, with two differences:
+
+- The `key` column is not inspectable; only the `value` column opens the inspector on click or keyboard activation.
+- When the inspector is open for a signal, it refreshes in place as the signal updates.
 
 ### Logs Pane
 

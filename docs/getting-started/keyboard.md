@@ -60,3 +60,13 @@ Some useful commands are:
 | Zoom preview in by 10%              | **Ctrl** + **Alt** + **Plus(+)**  |
 | Zoom preview to actual size         | **Ctrl** + **Alt** + **0**        |
 | Zoom preview to fit available space | **Ctrl** + **Alt** + **\***       |
+
+## Debug Viewer Tables (Data and Signals)
+
+| Function                                     | Shortcut          |
+| -------------------------------------------- | ----------------- |
+| Move focus between cells                     | **Arrow keys**    |
+| Move focus to start / end of the current row | **Home** / **End** |
+| Open the value inspector for the focused cell | **Enter** / **Space** |
+| Close the value inspector                    | **Escape**        |
+| Leave the grid                               | **Tab**           |
