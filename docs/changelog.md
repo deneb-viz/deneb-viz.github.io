@@ -96,6 +96,19 @@ In this release, there's also a more prominent warning for this occurrence, whic
 
 If you so wish, clicking the _Quick Fix..._ button will remove the affected `$schema` property from the editor for you.
 
+### Report Canvas Keyboard Focus Integration
+
+Power BI custom visuals don't support keyboard focus when tabbing around visuals on the canvas without some additional work. In this release, you'll be able to press [Enter] when the visual has tab focus from the canvas to set focus to the internal portion of the Deneb visual. This will then allow you to tab through any focusable elements in the editor or viewer, and interact with them using the keyboard as expected.
+
+This will also work when using the Editor interface, but you may need to remember that if focus is set to the JSON editor, you'll need to press **[Ctrl + M]** on Windows or **[Ctrl + Shift + M]** on Mac to toggle Tab trapping and allow you to tab around Deneb's UI.
+
+- When viewing a visual, pressing **[Esc]** will return focus to the canvas, allowing you to continue tabbing to the next visual.
+- In the editor interface (if focus is outside the Monaco editor), the **[Esc]** key will set focus to Power BI's _Back to report_ action so that you can return to the canvas.
+
+:::warning Vega views are not keyboard-tabbable
+Vega and Vega-Lite don't currently surface their rendered marks, axes, or legends as focusable elements, so in view mode, the only things that can receive Tab focus inside the visual are **parameter inputs bound to HTML elements**. Everything else in your specification is reachable only via the mouse pointer and screen reader (if the marks have been set up accordingly).
+:::
+
 ### Cell Inspection in Debug Pane
 
 The **Data** and **Signals** viewers in the debug pane have been rebuilt around a click-to-inspect model. Previously, long or complex values were truncated with an ellipsis (`...`) and only partially available via a hover tooltip.
