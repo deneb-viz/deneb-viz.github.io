@@ -25,7 +25,11 @@ The **Scrollbars** formatting card in the **Rendered visual** menu in Power BI's
 
 - **Scrollbar opacity (%)** allows you to tailor the opacity of the scrollbar.
 
-- **Scrollbar radius (px)** allows you to tailor the border radius of the scrollbar handle.
+- **Scrollbar radius (px)** allows you to tailor the border radius of the scrollbar handle. Valid values are `0` to `8`.
+
+- **Scrollbar width (px)** allows you to tailor the width of the scrollbar. The minimum is `8` (widths below this are not usable for interactive handles); the default is `10,` and the maximum is `16`.
+
+All four settings apply as overlay scrollbars - they are drawn on top of the visual's content rather than reserving gutter space alongside it, so a fitted visual shows no scrollbar-related gap at its edges.
 
 ## In the Visual Editor
 
@@ -33,7 +37,7 @@ When viewing your specification in the Visual Editor's preview area, this is sho
 
 ![scrolling-editor-overflow-default](img/scrolling-editor-overflow-default.png "The preview area in the Visual Editor will show the full extent of the rendered output")
 
-The preview area will have its own scrollbars as needed, and they also take effect when you zoom the output to a larger footprint than the available space in the editor.
+The preview area has its own scrollbars as needed, using the same appearance settings you have configured for the report canvas. They also take effect when you zoom the output to a larger footprint than the available space in the editor, so the editor preview matches the styling that end users will see.
 
 ### Confirming and Configuring Scrollbar Report Canvas Appearance in the Editor
 

@@ -102,6 +102,16 @@ In this release, there's also a more prominent warning for this occurrence, whic
 
 If you so wish, clicking the _Quick Fix..._ button will remove the affected `$schema` property from the editor for you.
 
+### Scrollbar Configuration and Placement
+
+Scrollbars on the report canvas and in the editor's preview area have been rebuilt. The visible improvements:
+
+- **No more background bleed on fitted visuals.** The previous scroll container reserved a few pixels of gutter space even when the content fit exactly, causing a strip of the report background to leak along the edge of the visual. The new scrollbars overlay the content and reserve no gutter.
+- There is also a new **Scrollbar width** setting in the _Scrollbars_ formatting card (default `10px`, minimum `8px`, maximum `16px`)
+- The **Scrollbar radius** maximum has been widened to `8px` (previously `3px`) to complement it.
+
+Refer to the [Scrolling and Overflow](scrolling-overflow#configuring-scrollbar-appearance) page for more details on these settings.
+
 ### Report Canvas Keyboard Focus Integration
 
 Power BI custom visuals don't support keyboard focus when tabbing around visuals on the canvas without some additional work. In this release, you'll be able to press [Enter] when the visual has tab focus from the canvas to set focus to the internal portion of the Deneb visual. This will then allow you to tab through any focusable elements in the editor or viewer, and interact with them using the keyboard as expected.
