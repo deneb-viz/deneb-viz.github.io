@@ -31,6 +31,25 @@ From the beginning, Deneb's spec parsing and embed process was always a case of 
 
 In conjunction with the architectural improvements made in 1.9, this now opens the way for many features that were too hard to deliver without complicating things further. And, we're getting some of these features into this release, too! Read on for details on what else you have to enjoy.
 
+### Continuous View
+
+To date, any changes external to Deneb on the canvas that affect the generated dataset - slicing, cross-filtering from other visuals, filter pane changes - would trigger a full re-render, effectively resetting the view back to its initial state each time. The changes to the parse and render pipeline described above have enabled a long-requested capability: a **continuous view** that stays durable across dataset updates, provided the dataset is eligible.
+
+When enabled, Deneb patches the updated data into the existing Vega view rather than recompiling the specification. This preserves:
+
+- **Current view state** - zoom, pan, facet page, and anything else driven by Vega signals.
+- **User input values** - signals bound to form widgets (dropdowns, sliders, etc.) retain whatever the user has selected.
+- **Selection state** - marks selected before the update remain selected after it, as long as their datum is still present in the new data.
+
+Eligibility is driven by two things:
+
+- **Row count**. Patching is intended for datasets that are not too large. By default it applies up to **500 rows**, configurable up to a hard ceiling of **5,000 rows** - beyond this point the main thread cannot safely support patching and you would notice severe performance degradation. Beyond either value, Deneb falls back to the standard recompile-and-re-init path.
+- **Spec compatibility**. Some spec shapes - for example, force transforms involving aggregates - cannot be patched reliably. In those cases Deneb also falls back to a full recompile and writes a warning to the [Logs pane](visual-editor#logs-pane) so you know why.
+
+The feature is **off by default** while it goes through real-world testing, and can be enabled via the **Enable patching for hosted datasets** option in the _Continuous view_ section of the [Project setup pane](visual-editor#settings-pane). That section will also tell you whether patching is currently _active_ or _inactive_ for your present dataset, so you can see at a glance whether updates are being patched or recompiled.
+
+Refer to [Dataset](dataset#continuous-view-data-patching) for further guidance.
+
 ### Canvas Renderer: Scale to Report Zoom
 
 The Vega canvas renderer offers many performance benefits over SVG for rendering large datasets, but it has downsides, such as not scaling with the report's zoom level due to its raster-based nature. This can make the visual appear blurry when the report is zoomed in.

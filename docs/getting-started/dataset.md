@@ -57,6 +57,23 @@ If you're used to working with JSON, a representation similar to the following J
 }
 ```
 
+## Continuous View (Data Patching)
+
+When Deneb receives a dataset update from Power BI - for example, after a slicer, cross-filter, or filter-pane change - the default behavior is to recompile the specification and re-initialize the Vega view from scratch. This resets the view state, such as zoom, pan, facet page, and any signal values driven by form widgets.
+
+From 2.0, you can enable the **Enable patching for hosted datasets** option, available in the _Continuous view_ section of the [**Project setup** pane in the Visual editor](visual-editor#settings-pane), which updates the existing Vega view with new data instead, preserving view state across dataset updates. The setting is **off by default**. A companion **Row threshold for patching** setting controls the upper row count at which patching will be used.
+
+![The Continuous view section of the Project setup pane, showing the Enable patching for hosted datasets and Row threshold for patching options.](./img/continuous-view-enabled.png "The Continuous view section of the Project setup pane, showing the Enable patching for hosted datasets and Row threshold for patching options.")
+
+Limits and considerations:
+
+- Patching applies only when the updated dataset has no more than the configured row threshold (default: `500` rows). Above the threshold, Deneb will recompile and re-initialize as usual.
+- There is a hard upper ceiling of `5,000` rows, above which patching is always bypassed, regardless of the configured threshold - the main thread cannot safely support patching above certain points, and you may notice severe [performance](performance#continuous-view-thresholds) degradation at higher cardinality or complexity.
+- If patching fails for reasons other than row count (for example, on specs with force transforms that involve aggregates), Deneb will fall back to a full recompile and log a warning in the [Logs pane](visual-editor#logs-pane) explaining the fallback reason.
+- The _Continuous view_ section in the **Project setup** pane will indicate whether patching is currently _active_ or _inactive_ for your dataset, so you can see at a glance whether updates are being patched or recompiled.
+
+As this is a new feature under active evaluation, it is recommended to enable it only after confirming that your visual behaves as expected under realistic dataset updates (slicing, cross-filtering, and so on). If you notice inconsistent behavior, disable the setting and [open an issue](https://github.com/deneb-viz/deneb/issues/new) so we can reproduce and harden the feature accordingly.
+
 ## Referencing Columns and Measures
 
 Wherever you need to reference a column or a measure in your specification, you should use its **display name** from the **Values** data role rather than those from the data model.
@@ -114,19 +131,19 @@ In the case of a Vega specification, you can potentially add further `data` obje
 
 Both [Vega](https://vega.github.io/vega/docs/transforms/) and [Vega-Lite](https://vega.github.io/vega-lite/docs/transform.html) support the concept of transforms, which ultimately mutate the data from its initial state. Whilst this approach may be necessary to produce particular types of visuals, this changes the row context, and some features may no longer be available (particularly those that leverage interactivity). Please refer to the pages in the [Interactivity Features](interactivity-overview) section for more details.
 
-## Data Row Limits
+## Query (Row) Limits
 
 To keep performance usable in most cases, the visual caps the row count at **10,000** by default.
 
-It is, however, possible to override this if you so wish, but the number of rows returned will be subject to resource limits and entirely at Power BI's discretion. If you wish to override this, you can find the _Data Limit Options_ menu in the Power BI Format pane:
+It is, however, possible to override this if you so wish, but the number of rows returned will be subject to resource limits and entirely at Power BI's discretion. If you wish to override this, you can find the _Data management_ menu in the Power BI Format pane:
 
-![The Data Limit Options menu in the Format pane.](./img/data-limit-options-initial.png "The Data Limit Options menu in the Format pane.")
+![The Data management menu in the Format pane.](./img/data-limit-options-initial.png "The Data management menu in the Format pane.")
 
-Switching on the **Override Row Limit** property will ask Power BI to load more rows into the dataset, in batches of 10,000:
+Switching on the **Override row limit** property will ask Power BI to load more rows into the dataset, in batches of 10,000:
 
-![Enabling the Override Row Limit property will display status information while Power BI is fetching additional data from the data model.](./img/data-limit-override-enabled.png "Enabling the Override Row Limit property will display status information while Power BI is fetching additional data from the data model.")
+![Enabling the `Override row limit` property will display status information while Power BI is fetching additional data from the data model.](./img/data-limit-override-enabled.png "Enabling the `Override row limit` property will display status information while Power BI is fetching additional data from the data model.")
 
-Because there's a lot to consider when enabling this property, the **Show Data Loading Notes** property is enabled by default to provide creators or developers with a bit more detail on the caveats of using this feature in a condensed space.
+Because there's a lot to consider when enabling this property, the **Show data loading notes** property is enabled by default to provide creators or developers with a bit more detail on the caveats of using this feature in a condensed space.
 
 Whilst the information can probably be seen in the screenshot, the important details are listed here too for you to bear in mind:
 

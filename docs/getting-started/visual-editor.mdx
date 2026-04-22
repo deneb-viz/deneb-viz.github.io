@@ -236,7 +236,9 @@ A couple of things are worth noting about the compiled output:
 - The **Provider** section allows you to specify whether to use Vega or Vega-Lite for your Specification and Config.
   - Vega-Lite is much simpler for newcomers as it is much more concise and abstracts away a lot of the things that you would normally need to prescribe when using Vega.
   - Vega does provide a lot more in the way of control over your visualization at the cost of a higher learning curve.
-
+- The **Continuous view** section controls whether Deneb patches dataset updates into the existing Vega view rather than recompiling the specification from scratch each time.
+  - Enabling the **Enable patching for hosted datasets** option lets the view stay durable across dataset updates (slicing, cross-filtering, etc.), preserving zoom/pan, signal values, and selection state. It is off by default and only applies when the updated dataset is within the configured **Row threshold for patching**. Refer to [Continuous View (Data Patching)](dataset#continuous-view-data-patching) for eligibility rules and caveats.
+  - The section also displays whether patching is currently _active_ or _inactive_ for your dataset, so you can see at a glance whether updates are being patched or recompiled.
 - The **Render mode** section specifies whether to use either Vega's SVG renderer or Canvas renderer when compiling, parsing, and producing your design.
   - _Canvas_ renders your design as pixel graphics.
   - _SVG_ creates your design from vector graphics, resulting in a number of component elements within the visual to produce the output.

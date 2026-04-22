@@ -47,3 +47,9 @@ Any data that you add to the visual will have performance implications, specific
 - Creating a row context with lower granularity than you actually need, which can make producing the desired output more challenging.
 
 Therefore, only add the columns and measures (and filter context) that your visual needs to communicate its message.
+
+## Continuous View Thresholds
+
+The [continuous view](dataset#continuous-view-data-patching) option can preserve view state across dataset updates by patching data into the existing Vega view rather than recompiling from scratch. The **Row threshold for patching** gates when this is attempted, but row count alone is not always a reliable proxy for how expensive a patch actually is - the shape of your dataset (wide rows, nested values, complex transforms) can dominate.
+
+If a patching operation is sufficiently expensive, Power BI may suspend the visual if it takes too long to respond. When you enable the continuous view, test it under realistic data volumes; if you see responsiveness issues, lower the **Row threshold for patching** so more updates fall back to a full recompile, or disable the setting entirely.
