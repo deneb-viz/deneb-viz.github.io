@@ -8,6 +8,7 @@ description: Deneb Change Log - high-level details of new features and fixes for
 ## 2.0.0
 
 :::info Under development 🚧
+Documentation is being written ahead of starting alpha testing, so the features described below are subject to change as testing and feedback is received. We will update this page and other pertinent areas in this version's documentation with any changes to the planned features, and will also add more details on each feature as they are finalized.
 
 <!-- Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete. -->
 
