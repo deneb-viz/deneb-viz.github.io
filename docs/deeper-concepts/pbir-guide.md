@@ -354,11 +354,11 @@ Properties in this group are displayed in the _Rendered visual_ property menu in
 
 ### `objects.dataLimit`
 
-Properties in this group are displayed in the _Data management_ menu and determine how Deneb handles [data row limits](dataset#data-row-limits) imposed by Power BI, as well as [continuous view](dataset#continuous-view-data-patching) settings.
+Properties in this group are displayed in the _Data management_ menu and determine how Deneb handles [data row limits](dataset#query-row-limits) imposed by Power BI, as well as [continuous view](dataset#continuous-view-data-patching) settings.
 
 | Property                       | Default Value (if Omitted) | Type                | Remarks                                                                                                                                                                                                                                                                                                              |
 | ------------------------------ | -------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `override`                     | `false`                    | [boolean](#boolean) | When `true`, this will enable the[ _Override row limit_ property](dataset#data-row-limits), instructing Deneb to fetch more data when the standard 10,000 row limit is reached.                                                                                                                                      |
+| `override`                     | `false`                    | [boolean](#boolean) | When `true`, this will enable the[ _Override row limit_ property](dataset#query-row-limits), instructing Deneb to fetch more data when the standard 10,000 row limit is reached.                                                                                                                                     |
 | `showCustomVisualNotes`        | `true`                     | [boolean](#boolean) | When `true`, this will show the _Custom visual notes_ section in the editor's data panel when data is being fetched.                                                                                                                                                                                                 |
 | `enableIncrementalDataUpdates` | `false`                    | [boolean](#boolean) | When `true`, enables the [continuous view](dataset#continuous-view-data-patching) feature, patching dataset updates into the existing Vega view rather than recompiling the specification. Only applies when the updated dataset is within the configured `incrementalUpdateThreshold` and the spec is eligible.     |
 | `incrementalUpdateThreshold`   | `500D`                     | [integer](#integer) | The maximum row count at which dataset updates will be patched rather than trigger a full recompile. Valid values are `5D` to `5000D`; the `5000D` ceiling is a hard limit imposed by Deneb (the main thread cannot safely support patching above this). Only applies when `enableIncrementalDataUpdates` is `true`. |
@@ -375,12 +375,14 @@ Properties in this group are intended for internal use.
 
 Properties in this group are intended for internal use and transient state management between sessions.
 
-| Property           | Default Value (if Omitted) | Type                | Remarks                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ------------------ | -------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `viewportHeight`   | `null` [managed by Deneb]  | [integer](#integer) | The last known height of the visual viewport when viewing normally (in px). If omitted, Deneb will calculate this and update it whenever the visual is updated, ensuring it matches the visual container on the canvas. It is only needed to ensure that the preview is correctly sized in the Advanced Editor and is not necessary for any automation. Details have only been included for completeness. |
-| `viewportWidth`    | `null` [managed by Deneb]  | [integer](#integer) | The last known width of the visual viewport when viewing normally (in px). If omitted, Deneb will calculate this and update it whenever the visual is updated, ensuring it matches the visual container on the canvas. It is only needed to ensure that the preview is correctly sized in the Advanced Editor and is not necessary for any automation. Details have only been included for completeness.  |
-| `denebMetaVersion` | `""` [managed by Deneb]    | [text](#text)       | Records the version of Deneb's internal metadata schema that was in effect when the project was last saved, so that migrations can be applied when the project is opened in a newer version of the visual. Managed automatically by Deneb and not necessary for any automation; details have only been included for completeness.                                                                         |
-| `scaleToZoom`      | `false`                    | [boolean](#boolean) | When `true`, the canvas renderer scales its resolution to match the current report zoom level (multiplied by the editor preview zoom, when viewing in the Advanced Editor) to reduce blurriness at non-100% zoom. Only applies when the Canvas renderer is selected; has no effect under SVG. Refer to the [Settings Pane](visual-editor#settings-pane) for more details.                                 |
+| Property                     | Default Value (if Omitted) | Type                                                                      | Remarks                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------------------- | -------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `viewportHeight`             | `null` [managed by Deneb]  | [integer](#integer)                                                       | The last known height of the visual viewport when viewing normally (in px). If omitted, Deneb will calculate this and update it whenever the visual is updated, ensuring it matches the visual container on the canvas. It is only needed to ensure that the preview is correctly sized in the Advanced Editor and is not necessary for any automation. Details have only been included for completeness. |
+| `viewportWidth`              | `null` [managed by Deneb]  | [integer](#integer)                                                       | The last known width of the visual viewport when viewing normally (in px). If omitted, Deneb will calculate this and update it whenever the visual is updated, ensuring it matches the visual container on the canvas. It is only needed to ensure that the preview is correctly sized in the Advanced Editor and is not necessary for any automation. Details have only been included for completeness.  |
+| `denebMetaVersion`           | `""` [managed by Deneb]    | [text](#text)                                                             | Records the version of Deneb's internal metadata schema that was in effect when the project was last saved, so that migrations can be applied when the project is opened in a newer version of the visual. Managed automatically by Deneb and not necessary for any automation; details have only been included for completeness.                                                                         |
+| `scaleToZoom`                | `false`                    | [boolean](#boolean)                                                       | When `true`, the canvas renderer scales its resolution to match the current report zoom level (multiplied by the editor preview zoom, when viewing in the Advanced Editor) to reduce blurriness at non-100% zoom. Only applies when the Canvas renderer is selected; has no effect under SVG. Refer to the [Settings Pane](visual-editor#settings-pane) for more details.                                 |
+| `supportFieldConfiguration`  | `""`                       | [`supportFieldConfiguration`](#supportfieldconfiguration) ([text](#text)) | JSON-serialized map of per-field [supporting field](dataset#supporting-fields) flags (e.g. whether `__highlight`, `__format`, `__names`, etc. should be generated for each column or measure). Managed automatically by Deneb as you adjust the _Supporting Fields: dataset_ section of the Project setup pane, and stored here for session persistence.                                                  |
+| `consolidateFieldParameters` | `false`                    | [boolean](#boolean)                                                       | When `true`, Deneb consolidates [Power BI field parameter](field-parameters) components into a single array-valued column named after the parameter. New projects initialize this to `true`; projects migrated from pre-2.0 Deneb are left at `false` for compatibility with existing [community workarounds](field-parameters#pass-through-mode).                                                        |
 
 ### `objects.editor`
 
@@ -500,3 +502,29 @@ Text properties should be enclosed in single quotes (`'`) to indicate that they 
 ```
 
 Any JSON objects or arrays that need to be stored as text (such as the Vega specification) should be stringified and escaped accordingly, as shown in the earlier examples.
+
+### `supportFieldConfiguration`
+
+The [`supportFieldConfiguration`](#objectsstatemanagement) property on `objects.stateManagement` is stored as a [text](#text) property, but its content is a JSON-serialized map of per-field supporting-field flags. Deneb manages it automatically when you adjust the _Supporting Fields: dataset_ section of the Project setup pane; the structure is documented here for programmatic authoring or template tooling.
+
+Within the serialized JSON:
+
+- **Top-level keys** are the display names of the columns and measures in the visual's **Values** data role.
+- **Values** are objects keyed by flag name (`highlight`, `highlightStatus`, `highlightComparator`, `format`, `formatted`, `names`, `treatAsParameter`), each with a `true` / `false` setting.
+- The configuration is **sparse** - only explicitly-configured flags need to be present. Anything omitted falls back to Deneb's defaults for the field's role, as documented in the [Supporting Fields](dataset#supporting-fields) reference.
+
+For example, to enable the _Format string_ supporting field on a `[Product]` column and the _Highlight value_ supporting field on a `[$ Sales]` measure:
+
+```json title="supportFieldConfiguration structure in visual.json"
+{
+  "supportFieldConfiguration": {
+    "expr": {
+      "Literal": {
+        "Value": "'{\"Product\":{\"format\":true},\"$ Sales\":{\"highlight\":true}}'"
+      }
+    }
+  }
+}
+```
+
+Note the outer single quotes wrapping the JSON string and the inner double-quote escaping - this is the standard PBIR pattern for text literals containing structured content.

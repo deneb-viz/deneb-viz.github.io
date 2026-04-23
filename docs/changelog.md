@@ -31,6 +31,67 @@ From the beginning, Deneb's spec parsing and embed process was always a case of 
 
 In conjunction with the architectural improvements made in 1.9, this now opens the way for many features that were too hard to deliver without complicating things further. And, we're getting some of these features into this release, too! Read on for details on what else you have to enjoy.
 
+### Field Parameters
+
+Field parameter support has been a tricky one to solve. [We've had an idea about how to do it for a while](https://github.com/deneb-viz/deneb/issues/238#issuecomment-2190392568), but this has been dependent on some changes to the Power BI visuals API, and having the necessary data processing pre-requisites in place for Deneb. As such, folks [have had workarounds available](https://github.com/deneb-viz/deneb/issues/238#issuecomment-1501033734) for some time, which haven't been supported, but we want to try and help with this as much as we can.
+
+- When columns or measures belonging to a field parameter are added to the **Values** data role, Deneb can consolidate them into a single array-valued column named after the parameter, with optional companion fields for names, format strings, and cross-highlight state.
+  - Consolidation is controlled via the **Consolidate field parameters** toggle in the _Semantic model integration_ section of the **Project setup** pane, and is **on by default for new projects**.
+  - Projects migrated from earlier versions default to **off** to preserve compatibility with existing workarounds; you can opt in at any time.
+
+- A per-field **Treat as field parameter** override is also available for flagging a regular column or measure as a parameter.
+  - This is useful for template compatibility or for testing `flatten` transforms with non-parameter data.
+  - Templates are aware of the new structure: assigning a regular field to a slot exported as a parameter auto-sets this flag and enables consolidation, so your spec's transforms continue to work without manual intervention.
+
+- Autocomplete in the JSON editor has also been extended to suggest the companion fields currently enabled for each dataset entry (for example, `__names`, `__highlight`, `__format`), making them easier to discover as you build your specification.
+
+For full details on how to work with field parameters, [we have a dedicated page for them](field-parameters) in our documentation.
+
+### Supporting Fields Configuration
+
+To date, Deneb has been very eager and opinionated about adding [supporting fields](dataset#supporting-fields) to the dataset. These range from values that help manage selection state to those that support formatting and cross-highlighting.
+
+A popular request has been to allow developers to configure these fields, particularly in advanced cases where they aren't desired and can create unnecessary noise downstream during debugging or transformation work. In this release, you are now able to configure which fields are included on a per-field basis and to enable formatting strings and values for columns, if you need them.
+
+![supporting-fields-assignment.png](./getting-started/img/supporting-fields-settings-pane.png "The Supporting Fields: dataset section of the Project setup pane. This shows a [Product] column and a [$ Sales] measure. The [$ Sales] measure has a dot indicator, showing that it is producing at least one supporting field.")
+
+The [main section of the dataset documentation](dataset#supporting-fields) has been updated with more details, but here's a high-level overview of what you can expect:
+
+#### For new projects
+
+Supporting fields default as follows, where _Unavailable_ indicates the field type cannot carry that supporting field:
+
+| Supporting field         | Column      | Measure     | Field parameter |
+| ------------------------ | ----------- | ----------- | --------------- |
+| Highlight value          | Unavailable | Enabled \*  | Disabled \*     |
+| Highlight status         | Unavailable | Disabled \* | Disabled \*     |
+| Highlight comparator     | Unavailable | Disabled \* | Disabled \*     |
+| Format string            | Disabled    | Disabled    | Disabled        |
+| Formatted value          | Disabled    | Disabled    | Disabled        |
+| Field names              | Unavailable | Unavailable | Disabled        |
+| Treat as field parameter | Disabled †  | Disabled †  | Unavailable     |
+
+> \* Only visible if cross-highlight is enabled.
+
+> † Only visible if [field parameter consolidation](#field-parameters) is enabled; used to manually flag a regular column or measure as a field parameter.
+
+- Each supporting field is toggled **individually** from its row in the tree.
+- A small accent dot on a field's header indicates the field is currently producing at least one supporting field in the dataset, whether by default or by explicit configuration.
+- The **Reset** button in each field header is enabled only when you have explicitly configured that field. Clicking it removes the explicit configuration and reverts the field to the defaults above.
+
+![supporting-fields-assignment.png](./getting-started/img/supporting-fields-assignment.png "Showing the column and measure from above, with the tree expanded. The [Product] column `Format string` option is checked; because this is not default, the `Reset` icon is enabled in the field header. The [$ Sales] measure has the default supporting fields, and the accent dot on its field header indicates it is producing at least one supporting field.")
+
+Two warnings are surfaced via the Settings pane's message bar when supporting-field configuration drifts from cross-highlight expectations:
+
+- If cross-highlight is **enabled** but no measure has a highlight companion selected, the visual will not receive highlight values to encode against.
+- If cross-highlight is **disabled** but at least one measure has a highlight companion selected, the selection is redundant and will produce no visible effect.
+
+#### Existing projects and v1 templates
+
+- All fields will remain as they have been managed previously (i.e., you get all of them, except for the new format-related fields for columns, which default off).
+- When you are ready (and if you want to), you can navigate to the **Supporting fields: dataset** section of the **Project setup** pane to configure them as you want. At this point, your settings will remain in place for the lifetime of your project.
+- Importing a v1 template will produce the same results as an in-place migration, due to this feature not being present at the time. Again, you can tailor these after importing the template, and any subsequent export will retain the preferred supporting field assignments.
+
 ### Continuous View
 
 To date, any changes external to Deneb on the canvas that affect the generated dataset - slicing, cross-filtering from other visuals, filter pane changes - would trigger a full re-render, effectively resetting the view back to its initial state each time. The changes to the parse and render pipeline described above have enabled a long-requested capability: a **continuous view** that stays durable across dataset updates, provided the dataset is eligible.
@@ -162,11 +223,13 @@ The viewer tables are also now keyboard-navigable as a grid: **arrow keys** / **
 
 Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:
 
-| Feature                                                      | Visual property changes                                                                                                                                                           | Template changes                                                                                                                                                                                                                 |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Context menu control](#better-context-menu-control)         | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility. | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility. |
-| [Canvas scaling](#canvas-renderer-scale-to-report-zoom)      | New property for canvas scaling: `objects.stateManagement.scaleToZoom`                                                                                                            | No changes to template structure.                                                                                                                                                                                                |
-| [Continuous view](#continuous-view)                          | Two new properties: `objects.dataLimit.enableIncrementalDataUpdates` (toggles patching) and `objects.dataLimit.incrementalUpdateThreshold` (upper row count at which patching is attempted). | No changes to template structure.                                                                                                                                                                                                |
+| Feature                                                             | Visual property changes                                                                                                                                                                                                         | Template changes                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Field parameters](#field-parameters)                               | New property `objects.stateManagement.consolidateFieldParameters` (bool); controls whether field parameter components are grouped into array-valued columns.                                                                    | New `kind: 'parameter'` entries in the template's `dataset[]` metadata to track exported field parameters. Assigning a regular column or measure to a parameter slot on import auto-enables consolidation and flags the field.   |
+| [Supporting fields configuration](#supporting-fields-configuration) | Two new properties: `objects.stateManagement.supportFieldConfiguration` (text, JSON-serialized per-field flag map) and `objects.stateManagement.denebMetaVersion` (text, used to detect legacy projects and trigger migration). | Template `deneb.metaVersion` has been bumped to `2`. Per-field `supportFieldConfiguration` is embedded inside each `dataset[]` entry.                                                                                            |
+| [Continuous view](#continuous-view)                                 | Two new properties: `objects.dataLimit.enableIncrementalDataUpdates` (toggles patching) and `objects.dataLimit.incrementalUpdateThreshold` (upper row count at which patching is attempted).                                    | No changes to template structure.                                                                                                                                                                                                |
+| [Canvas scaling](#canvas-renderer-scale-to-report-zoom)             | New property for canvas scaling: `objects.stateManagement.scaleToZoom`                                                                                                                                                          | No changes to template structure.                                                                                                                                                                                                |
+| [Context menu control](#better-context-menu-control)                | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility.                                               | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility. |
 
 ### Performance and Stability
 
