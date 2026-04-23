@@ -250,7 +250,7 @@ The resulting changes have reduced the package size to **1.75 MB**: a reduction 
 - Creating custom `height` and/or `width` signals will break compilation [(#417)](https://github.com/deneb-viz/deneb/issues/417).
 - "View mode" viewport not being correctly used when opening visual editor from within a report page group ([#620](https://github.com/deneb-viz/deneb/issues/620)).
 
-### PBIR and Templating Changes Recap
+### What Affects PBIR and Templating
 
 Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:
 
