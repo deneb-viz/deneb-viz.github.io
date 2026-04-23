@@ -510,8 +510,9 @@ The [`supportFieldConfiguration`](#objectsstatemanagement) property on `objects.
 Within the serialized JSON:
 
 - **Top-level keys** are the display names of the columns and measures in the visual's **Values** data role.
-- **Values** are objects keyed by flag name (`highlight`, `highlightStatus`, `highlightComparator`, `format`, `formatted`, `names`, `treatAsParameter`), each with a `true` / `false` setting.
-- The configuration is **sparse** - only explicitly-configured flags need to be present. Anything omitted falls back to Deneb's defaults for the field's role, as documented in the [Supporting Fields](dataset#supporting-fields) reference.
+- **Values** are objects describing the flag state for that field.
+- The map is **sparse at the field level** - an entry is only included for fields whose configuration differs from Deneb's role-based defaults. Fields without an entry inherit those defaults on load (see the [Supporting Fields](dataset#supporting-fields) reference for the role-based defaults).
+- When an entry is present, all five of the base flags - `highlight`, `highlightStatus`, `highlightComparator`, `format`, `formatted` - must be specified as explicit `true` or `false` values. The two parameter-specific flags (`names`, `treatAsParameter`) are optional and typically only appear for fields flagged as field parameters.
 
 For example, to enable the _Format string_ supporting field on a `[Product]` column and the _Highlight value_ supporting field on a `[$ Sales]` measure:
 
@@ -520,7 +521,7 @@ For example, to enable the _Format string_ supporting field on a `[Product]` col
   "supportFieldConfiguration": {
     "expr": {
       "Literal": {
-        "Value": "'{\"Product\":{\"format\":true},\"$ Sales\":{\"highlight\":true}}'"
+        "Value": "'{\"Product\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":false},\"$ Sales\":{\"highlight\":true,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false}}'"
       }
     }
   }
@@ -528,3 +529,7 @@ For example, to enable the _Format string_ supporting field on a `[Product]` col
 ```
 
 Note the outer single quotes wrapping the JSON string and the inner double-quote escaping - this is the standard PBIR pattern for text literals containing structured content.
+
+:::info Shape in templates
+The same flag shape is used inside [templates](templates#datasets), but with two differences: it is embedded inline within each `datasets[<name>][]` field entry (so there is no outer map keyed by display name), and it does not require the PBIR text-literal wrapping - the flag object appears as a regular nested JSON object.
+:::
