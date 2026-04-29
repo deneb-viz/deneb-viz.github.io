@@ -71,5 +71,15 @@
             "D",
             "V"
         ]
+    },
+    {
+        "name": "Ben Ferry",
+        "imageSrc": "/img/support/community-expert-ben-ferry.jpg",
+        "channelName": "LinkedIn",
+        "channelExpertSrc": "https://www.linkedin.com/in/powerbiferrytales",
+        "contributionAreas": [
+            "D",
+            "VL"
+        ]
     }
 ]
