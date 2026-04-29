@@ -305,11 +305,21 @@ The Debug Pane provides you with additional tooling to inspect and debug your vi
 
 From left to right, the components of the pane are as follows:
 
+### Source Pane
+
+The Source Pane displays the dataset Deneb hands to Vega - that is, the data your visual receives _before_ any Vega-side transforms are applied. It is the default view in the Debug Pane, since it is typically the most useful starting point for checking that fields are bound and that [supporting fields](dataset#supporting-fields) are configured as you expect.
+
+- Rows include any [additional datum fields](interactivity-overview#additional-datum-fields) Deneb has added to support interactivity (for example `__highlight__`, `__selected__`, `__format__`, `__formatted__`), so you can inspect their values directly without going via [tooltips on a mark's datum](interactivity-tooltips#debugging-with-tooltips).
+- The table behaves the same way as the [Data Pane](#data-pane) - cells are inspectable on click or via **Enter** / **Space**, and the grid is keyboard-navigable.
+- If Deneb cannot produce a source dataset (for example, no fields are bound yet), an explicit empty-state message is shown.
+
 ### Data Pane
 
-The Data Pane displays information about data sets in the Vega view and is the default view in the Debug Pane. Assuming your visual parses correctly, this will provide a dropdown to select the desired data stream to inspect, and the details will then be shown in the table below.
+The Data Pane displays information about the named datasets produced by the Vega view _after_ its transforms have run. This will provide a dropdown to select the desired data stream to inspect, and the details will then be shown in the table below.
 
-- The default selection is the `dataset` entry, which is the data supplied to Deneb from your data model. This includes [any additional fields](interactivity-overview#additional-datum-fields) that Deneb adds to assist you with interactivity, so you can inspect their values much more easily than [using tooltips to expose a mark's datum](interactivity-tooltips#debugging-with-tooltips).
+- The default selection is the first dataset Vega lists in its view. If you want to see what Deneb handed Vega _before_ any transforms - including the supporting fields used for interactivity - use the [Source Pane](#source-pane) instead.
+
+- If the Vega view is unavailable (for example, while the spec has a compile error) or the selected named dataset cannot be resolved, an explicit empty-state message is shown that points you at the [Logs Pane](#logs-pane) for details.
 
 - Any cell can be inspected in depth by clicking it, or by pressing **Enter** / **Space** when the cell is focused. This opens a read-only Monaco editor showing the full value:
   - For **scalar values** (strings, numbers, booleans), the inspector appears as a compact popover rendering the value as plain text.

@@ -153,6 +153,25 @@ Disabling the context menu will still allow context events from the Vega view to
 If your current project was created in an earlier version (or you import a template created in an earlier version), Deneb will automatically migrate context menu settings to the new structure. Projects that had data point resolution disabled will be migrated to: context menu shown + data point resolution off, preserving the author's original intent.
 :::
 
+### Data View Split: Source vs. Vega Datasets
+
+In the debug pane, we previously tried to merge the source data (what Deneb processed and passed into Vega) and the Vega-produced datasets into a single view with a dropdown to select between them. It wasn't always obvious what was happening here, which made it tricky to debug inputs vs. outputs. In this release, the source data and Vega datasets have been split into separate tabs:
+
+- **Source**: the dataset Deneb hands to Vega, _before_ any Vega-side transforms, with [supporting fields](dataset#supporting-fields) intact. This is now the default tab when the debug pane opens, since it's typically the most useful starting point for checking that fields and supporting field configuration are correct.
+- **Data**: the named datasets produced by the Vega view _after_ transforms, still accessed through the existing dataset selector.
+
+The tabs are independent: each remembers its own column sort and current page across tab switches.
+
+A new keyboard shortcut, **[Ctrl + Alt + 6]**, activates the Source tab. Existing shortcuts for Data (**[Ctrl + Alt + 7]**), Signals (**[Ctrl + Alt + 8]**) and Logs (**[Ctrl + Alt + 9]**) are unchanged.
+
+Alongside the split, the debug pane has had some additional polish:
+
+- Tooltips on each tab carry definition-style copy plus the keyboard hotkey hint.
+- No more "loading flicker" on fast operations such as sorting, paging, or cross-filter updates - the "processing" message is now suppressed for short jobs (< 150ms).
+- Accessibility improvements - `aria-keyshortcuts` is now exposed on each tab so the shortcut is discoverable by assistive technology, and the loading container reports `aria-busy` while a processing task is in-flight.
+
+Refer to [Debug Pane](visual-editor#debug-pane) for the updated layout and behavior.
+
 ### Internal Signal Changes
 
 The parsing and rendering pipeline changes have given us a chance to reflect upon the naming convention of internally-generated signals that we use to support Deneb and integration with Power BI features. These are now intended to be prefixed with their intended purpose.

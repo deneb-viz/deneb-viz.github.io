@@ -79,6 +79,7 @@ Some useful commands are:
 
 | Function                            | Shortcut                          |
 | ----------------------------------- | --------------------------------- |
+| Set view to Source Pane             | **Ctrl** + **Alt** + **6**        |
 | Set view to Data Pane               | **Ctrl** + **Alt** + **7**        |
 | Set view to Signals Pane            | **Ctrl** + **Alt** + **8**        |
 | Set view to Logs Pane               | **Ctrl** + **Alt** + **9**        |
@@ -88,7 +89,7 @@ Some useful commands are:
 | Zoom preview to actual size         | **Ctrl** + **Alt** + **0**        |
 | Zoom preview to fit available space | **Ctrl** + **Alt** + **\***       |
 
-## Debug Viewer Tables (Data and Signals)
+## Debug Viewer Tables (Source, Data and Signals)
 
 | Function                                      | Shortcut              |
 | --------------------------------------------- | --------------------- |
