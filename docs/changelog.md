@@ -167,8 +167,8 @@ A new keyboard shortcut, **[Ctrl + Alt + 6]**, activates the Source tab. Existin
 Alongside the split, the debug pane has had some additional polish:
 
 - Tooltips on each tab carry definition-style copy plus the keyboard hotkey hint.
-- No more "loading flicker" on fast operations such as sorting, paging, or cross-filter updates - the "processing" message is now suppressed for short jobs (< 150ms).
-- Accessibility improvements - `aria-keyshortcuts` is now exposed on each tab so the shortcut is discoverable by assistive technology, and the loading container reports `aria-busy` while a processing task is in-flight.
+- No more "loading flicker" for quick updates to data (< 150ms).
+- Accessibility improvements - suitable `aria` attributes are now exposed on each tab so the shortcut is discoverable by assistive technology, and the loading container reports `aria-busy` while a processing task is in-flight.
 
 Refer to [Debug Pane](visual-editor#debug-pane) for the updated layout and behavior.
 
@@ -194,7 +194,7 @@ If you generate or find a specification elsewhere, it may (for good reasons) hav
 
 However, this is an overload in the context of Deneb, because if you try to use a spec with this property in the editor, it will try to resolve the schema from that URL, which will fail, because external requests are not permitted in a certified Power BI Visual. This prevents features such as auto-completion, inline documentation, and validation from working.
 
-For consistency with the language specification, Deneb will manually add the appropriate `$schema` URL when generating an exportable template and ensure that it is stripped out when you import a template through the _Create new specification_ dialog, but doesn't make any decisions around the content you add to the JSON editor. All of this hasn't been documented, so the documentation has been updated to provide better guidance on this behavior.
+For consistency with the language specification, Deneb will manually add the appropriate `$schema` URL when generating an exportable template and ensure that it is stripped out when you import a template through the _Create new specification_ dialog, but doesn't make any decisions around the content you add to the JSON editor. This has been quite a sizable gap in the documentation to date, so [it has been updated](visual-editor#specification-editor-pane) to provide better guidance on this behavior.
 
 In this release, there's also a more prominent warning for this occurrence, which can be inspected further on hover, e.g.:
 
@@ -248,6 +248,10 @@ The template metadata schema has been updated to v2. The serialized template JSO
 - The change applies only to the serialized template JSON. The visual's UI, PBIR capabilities, and runtime behavior are unaffected.
 
 Refer to the [Templates](templates#datasets) page for the full structure.
+
+### Vega Updates
+
+- Vega-Lite updated to **6.4.3** (from 6.4.1)
 
 ### Performance and Stability
 
