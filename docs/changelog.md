@@ -136,7 +136,7 @@ You can read more about the feature and how to use it in the [Visual Editor docu
 
 ### Better Context Menu Control
 
-Deneb now provides two-level control over the Power BI context menu (right-click). Both settings default to enabled, matching the previous default behavior:
+Deneb now provides two-level control over the [Power BI context menu](interactivity-context-menu) (right-click). Both settings default to enabled, matching the previous default behavior:
 
 - **Show context menu on right-click**: controls whether the Power BI context menu appears on right-click.
   - When disabled, right-click events are silently consumed, and no menu is displayed.
@@ -145,7 +145,7 @@ Deneb now provides two-level control over the Power BI context menu (right-click
 - **Attempt to resolve data point-specific actions**: When the context menu is enabled, this controls whether Deneb attempts to resolve the clicked data point for drill-through and other data-specific menu options.
   - This option is only available when the context menu is enabled.
 
-Both settings are portable via templates ([see below](#pbir-and-templating-changes)).
+Both settings are portable via templates ([see below](#what-affects-pbir-and-templating)).
 
 Disabling the context menu will still allow context events from the Vega view to be used, so if you wanted to, for example, create a custom context menu in Vega, this will work as expected.
 
