@@ -8,14 +8,14 @@ slug: /pattern-fills
 # Pattern Fills
 
 :::caution Pattern fills are not a Vega feature
-They are only supported for the SVG renderer and will not work for Canvas. Please bear these points in mind if looking to port a specification elsewhere.
+They are supported only by the SVG renderer and will not work with Canvas. Please bear these points in mind if looking to port a specification elsewhere.
 :::
 
 ## Overview
 
-There are a range of SVG fill patterns available wherever a `color`, `stroke` or `fill` can be used in a mark's property. These are based on [the excellent work of Irene Ros](https://iros.github.io/patternfills/).
+A range of SVG fill patterns is available wherever a `color`, `stroke`, or `fill` can be used in a mark's properties. These are based on [the excellent work of Irene Ros](https://iros.github.io/patternfills/).
 
-Because SVG patterns have to be explicitly defined inside a web page, we can't add all possible combinations of colors and patterns without significant performance reduction. Therefore the functionality is split into two components:
+Because SVG patterns must be explicitly defined within a web page, we can't include all possible combinations of colors and patterns without a significant performance hit. Therefore, the functionality is split into two components:
 
 1. **Default Patterns**: pre-defined monochrome patterns, which are a good starting point for many data visualization use cases.
 2. **Dynamic Variations**: a custom expression function to generate variations of the default patterns with a specific foreground and/or background color.
@@ -34,7 +34,7 @@ For example, if we want to use the `diagonal-stripe-1` pattern, we would refer t
 url(#diagonal-stripe-1)
 ```
 
-So, instead of shading our example bar chart from the formatting page with a color, we could use this instead, e.g.:
+So, instead of shading our example bar chart from the formatting page with a color, we could use this instead:
 
 ```json {5} showLineNumbers
 {
@@ -58,9 +58,9 @@ So, instead of shading our example bar chart from the formatting page with a col
 
 And instead of a solid fill, we would now get the following rendered visual:
 
-![vega-lite-diagonal-stripe-1.png](./img/vega-lite-diagonal-stripe-1.png "Simple bar chart using Financial sample dataset (with [$ Sales] as a measure). The measure axis displays raw values, with a maximum of 1,000,000,000. We have specified the 'diagonal-stripe-1' pattern fill to fill the bars with a pattern instead of a solid color.")
+![vega-lite-diagonal-stripe-1.png](./img/vega-lite-diagonal-stripe-1.png "Simple bar chart using Financial sample dataset (with [$ Sales] as a measure). The measure axis displays raw values up to 1,000,000,000. We have specified the 'diagonal-stripe-1' pattern fill to fill the bars with a pattern instead of a solid color.")
 
-We could augment this with a `stroke` to provide a boundary to the mark, e.g.:
+We could augment this with a `stroke` to provide a boundary to the mark:
 
 ```json highlight={6} showLineNumbers
 {
@@ -87,7 +87,7 @@ We could augment this with a `stroke` to provide a boundary to the mark, e.g.:
 
 ### Backgrounds
 
-Default patterns have a transparent background, and this can be observed in the above example with the x-axis gridlines. If you want to provide a solid background, you can either use the [dynamic pattern variation expression](#dynamic-variations), or layer a mark behind it with a solid fill, e.g.:
+Default patterns have a transparent background, as shown in the above example with the x-axis gridlines. If you want to provide a solid background, you can either use the [dynamic pattern variation expression](#dynamic-variations), or layer a mark behind it with a solid fill:
 
 ```json highlight={3-10,16-17} showLineNumbers
 {
@@ -126,7 +126,7 @@ Default patterns have a transparent background, and this can be observed in the 
 
 Default patterns also have a modifier suffix that can be added to reduce the intensity of the stroke from `black (#000000)` to a softer color. These are in intervals of 10, from `10` to `90`, and also at the 1st and 3rd quartiles (`25` and `75`).
 
-So, for our above example, if we wish to reduce the stroke intensity down to 30%, we can use `url(#diagonal-stripe-1-30)`, e.g.:
+So, for our above example, if we wish to reduce the stroke intensity down to 30%, we can use `url(#diagonal-stripe-1-30)`:
 
 ```json highlight={13} showLineNumbers
 {
@@ -174,7 +174,7 @@ The following Power BI report shows all available pre-defined patterns and their
     src="https://app.powerbi.com/view?r=eyJrIjoiMWY0NTdlYjQtYzVlZS00ZjJmLWExMGItNzIxNmYyMjk4ZjAxIiwidCI6IjUzYmJlMGQ3LTU0NzItNGQ0NS04NGY0LWJiNzJiYjFjMjI4OSJ9"
     frameborder="0"
     allowFullScreen="true"
-/>
+>If the embedded report does not load, the patterns and their IDs are listed in the sections above.</iframe>
 
 ## Dynamic Variations
 
@@ -191,18 +191,15 @@ pbiPatternSVG(pattern, foreground, background)
 Where:
 
 - `pattern` is one of the pre-defined pattern IDs above, enclosed with single quotes.
-
   - The `#` used in the SVG URL should not be included here.
   - If an unknown (or invalid) `pattern` is provided, then this will result in no fill being applied.
 
 - `foreground` is a valid CSS color name or hex value, enclosed with single quotes.
-
   - If `foreground` is omitted (or `null`), Deneb will resolve this back to the value used by the default pattern (`black`).
   - `transparent` is a permitted value, and this will effectively hide the pattern stroke from the reader.
-  - `foreground` overrides the intensity modifier, if this is supplied in `pattern`.
+  - `foreground` overrides the intensity modifier if this is supplied in `pattern`.
 
 - `background` is a valid CSS color name or hex value, enclosed with single quotes.
-
   - If `background` is omitted, then Deneb will produce a transparent background for the generated pattern.
 
 ### Simple Example - Mark Properties

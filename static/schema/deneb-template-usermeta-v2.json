@@ -1,0 +1,298 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/UsermetaTemplate",
+  "definitions": {
+    "UsermetaTemplate": {
+      "type": "object",
+      "properties": {
+        "deneb": {
+          "$ref": "#/definitions/UsermetaDeneb",
+          "description": "Deneb Information"
+        },
+        "information": {
+          "$ref": "#/definitions/UsermetaInformation",
+          "description": "High-level information or metadata about the template."
+        },
+        "datasets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/UsermetaDatasetField"
+            }
+          },
+          "description": "Named datasets used by the template. Each key is a dataset name (e.g., 'dataset') and each value is an array of field definitions the end-user will need to supply for it to work."
+        },
+        "interactivity": {
+          "$ref": "#/definitions/UsermetaInteractivity",
+          "description": "Any interactivity settings that we want to explicitly set."
+        },
+        "config": {
+          "type": "string",
+          "description": "The config editor content for the template. For versions prior to 1.7, this is merged into the top-level spec and split back out when the template is imported. With the introduction of JSONC support, we need to keep the spec and config separate. Anything stored in here is regarded as JSONC upon import also."
+        }
+      },
+      "required": [
+        "deneb",
+        "information",
+        "datasets"
+      ],
+      "additionalProperties": false,
+      "description": "Main template definition."
+    },
+    "UsermetaDeneb": {
+      "type": "object",
+      "properties": {
+        "build": {
+          "type": "string",
+          "description": "Which version the visual was built with. Uses semantic versioning internally, but we don't want to enforce this when validating as it's for information only. Can be spoofed but might be handy at some point."
+        },
+        "metaVersion": {
+          "type": "number",
+          "description": "Template metadata version. Will be capped to the version matching this definition.",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "provider": {
+          "$ref": "#/definitions/SpecProvider",
+          "description": "Provider details for the template."
+        },
+        "providerVersion": {
+          "type": "string",
+          "description": "Which version of the provider library was used to create the specification."
+        }
+      },
+      "required": [
+        "build",
+        "metaVersion",
+        "provider",
+        "providerVersion"
+      ],
+      "additionalProperties": false
+    },
+    "SpecProvider": {
+      "type": "string",
+      "enum": [
+        "vega",
+        "vegaLite"
+      ],
+      "description": "Valid providers for language specifications."
+    },
+    "UsermetaInformation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of template.",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "More detailed (but still short!) description of the template's purpose.",
+          "maxLength": 300
+        },
+        "author": {
+          "type": "string",
+          "description": "The author of the template, for follow-up... or kudos!",
+          "maxLength": 100
+        },
+        "uuid": {
+          "type": "string",
+          "description": "Unique identifier of template.",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "generated": {
+          "type": "string",
+          "description": "Generation date and time of template.",
+          "format": "date-time"
+        },
+        "videoUri": {
+          "type": "string",
+          "description": "Valid URI for a sample or instructional video.",
+          "format": "uri"
+        },
+        "supportUri": {
+          "type": "string",
+          "description": "Valid URI for a descriptive reference, e.g. blog post/support site etc.",
+          "format": "uri"
+        },
+        "previewImageBase64PNG": {
+          "type": "string",
+          "description": "Base64-encoded image/png string, representing a preview image for the template in external tools. Should be a maximum of 150 x 150 pixels."
+        }
+      },
+      "required": [
+        "name",
+        "author",
+        "uuid",
+        "generated"
+      ],
+      "additionalProperties": false
+    },
+    "UsermetaDatasetField": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Field identifier. In exported templates, this is a dataset-scoped placeholder matching the `@pattern` below (e.g., `__dataset.0__`). In runtime tracking contexts, this is the field's actual identifier (e.g., queryName or record key).",
+          "pattern": "^__[a-zA-Z0-9_]+\\.\\d+__$",
+          "maxLength": 30
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the field when presenting the template to the end user.",
+          "maxLength": 150
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional assistive text to display to the end-user when adding fields to the template.",
+          "maxLength": 300
+        },
+        "kind": {
+          "$ref": "#/definitions/UsermetaDatasetFieldKind",
+          "description": "Specifies whether a column or measure (or either) should be used for this placeholder. Optional - purely informational, not used for filtering during import."
+        },
+        "type": {
+          "$ref": "#/definitions/UsermetaDatasetFieldType",
+          "description": "The list of data types that can be used for this placeholder, for any columns or measures in the data model."
+        },
+        "suppliedObjectKey": {
+          "type": "string",
+          "description": "Used internally by Deneb for import reconcilitation purposes once user supplies object from their own visual via the UI. This is the `queryName` of a supplied field from the data view."
+        },
+        "suppliedObjectName": {
+          "type": "string",
+          "description": "Used internally by Deneb for import reconcilitation purposes once user supplies object from their own visual via the UI. This is the `displayName` of a supplied field from the data view."
+        },
+        "namePlaceholder": {
+          "type": "string",
+          "description": "Used internally by Deneb for export reconcilitation purposes."
+        },
+        "supportFieldConfiguration": {
+          "$ref": "#/definitions/SupportFieldFlags",
+          "description": "Per-field support field configuration captured at export time. Optional — only present for fields with explicit (non-default) configuration."
+        }
+      },
+      "required": [
+        "key",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false,
+      "description": "Definitions for individual fields within the dataset."
+    },
+    "UsermetaDatasetFieldKind": {
+      "type": "string",
+      "enum": [
+        "column",
+        "measure",
+        "parameter",
+        "any"
+      ],
+      "description": "The type of field that should ideally be applied to a placeholder."
+    },
+    "UsermetaDatasetFieldType": {
+      "$ref": "#/definitions/DatasetFieldDataType",
+      "description": "The list of data types that can be used for this placeholder, for any columns or measures in the data model. Alias for DatasetFieldDataType to ensure consistency between internal and export formats."
+    },
+    "DatasetFieldDataType": {
+      "type": "string",
+      "enum": [
+        "bool",
+        "text",
+        "numeric",
+        "dateTime",
+        "other"
+      ],
+      "description": "The data type of a field in the dataset."
+    },
+    "SupportFieldFlags": {
+      "type": "object",
+      "properties": {
+        "highlight": {
+          "type": "boolean"
+        },
+        "highlightStatus": {
+          "type": "boolean"
+        },
+        "highlightComparator": {
+          "type": "boolean"
+        },
+        "format": {
+          "type": "boolean"
+        },
+        "formatted": {
+          "type": "boolean"
+        },
+        "names": {
+          "type": "boolean",
+          "description": "When true, emit the __names companion field for this parameter."
+        },
+        "treatAsParameter": {
+          "type": "boolean",
+          "description": "When true, this field is wrapped in a single-element array to simulate a field parameter."
+        }
+      },
+      "required": [
+        "highlight",
+        "highlightStatus",
+        "highlightComparator",
+        "format",
+        "formatted"
+      ],
+      "additionalProperties": false,
+      "description": "Per-field flags controlling which support fields are generated. When all flags for a field are written (user has configured), the entry is present in the sparse configuration. Absent entries fall through to defaults."
+    },
+    "UsermetaInteractivity": {
+      "type": "object",
+      "properties": {
+        "tooltip": {
+          "type": "boolean",
+          "description": "Enable tooltip handler."
+        },
+        "contextMenu": {
+          "type": "boolean",
+          "description": "Enable context menu for data points."
+        },
+        "contextMenuSelector": {
+          "type": "boolean",
+          "description": "Enable data point resolution in the context menu."
+        },
+        "selection": {
+          "type": "boolean",
+          "description": "Enable cross-filtering from data point click events."
+        },
+        "selectionMode": {
+          "$ref": "#/definitions/SelectionMode",
+          "description": "The cross-filtering mode to use for the visual."
+        },
+        "highlight": {
+          "type": "boolean",
+          "description": "Enable highlighting of measure values from other visuals."
+        },
+        "dataPointLimit": {
+          "type": "number",
+          "description": "Maximum number of data points to allow when selecting.",
+          "minimum": 1,
+          "maximum": 250
+        }
+      },
+      "required": [
+        "tooltip",
+        "contextMenu",
+        "selection",
+        "dataPointLimit"
+      ],
+      "additionalProperties": false,
+      "description": "Interactivity properties for specification."
+    },
+    "SelectionMode": {
+      "type": "string",
+      "enum": [
+        "simple",
+        "advanced"
+      ],
+      "description": "Indicates the type of selection mode that is currently active. `simple` = legacy selection mode (let Deneb do it for me); `advanced` = advanced selection mode (let me do it for Deneb)."
+    }
+  }
+}

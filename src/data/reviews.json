@@ -1,5 +1,19 @@
 [
     {
+        "id": "ebdc3573-8680-4040-9ad6-b932547faea8",
+        "rating": 4,
+        "title": "Best visual",
+        "content": "this is the best free visual aviable in pbi. if thisis  extend to be compatible with vega then it would benifit users more",
+        "created_at": "2025-08-20T03:00:27.7383331Z"
+    },
+    {
+        "id": "118dfaba-0b59-4e1b-869f-7ccaa61a5dc1",
+        "rating": 5,
+        "title": "Flexible and effective Gantt-style visualization",
+        "content": "This component is an excellent way to turn project data into a clear, professional timeline. It’s flexible enough to adapt to specific business needs, while staying easy to configure. With the help of AI tools, generating the required JSON/Vega code becomes much faster, making customization even more accessible. Highly recommended.",
+        "created_at": "2025-08-19T07:49:50.2399442Z"
+    },
+    {
         "id": "78281592-335d-44ca-b701-272829d1b12c",
         "rating": 5,
         "title": "State-of-the-art for custom visuals",
@@ -40,6 +54,27 @@
         "title": "Fantastic Tool for Unique Visuals",
         "content": "This is a great tool to allow you to expand beyond the basic visuals without having to mess with Python or R.",
         "created_at": "2024-06-20T13:05:16.5285812Z"
+    },
+    {
+        "id": "c3cb6639-5800-41bf-9523-b88ad0d6c515",
+        "rating": 5,
+        "title": "awesome!!!",
+        "content": "",
+        "created_at": "2024-06-10T20:23:13.6074046Z"
+    },
+    {
+        "id": "9a6ddc7c-6bf4-4402-ba69-335ce497892f",
+        "rating": 5,
+        "title": "Amazing",
+        "content": "",
+        "created_at": "2024-06-08T17:21:26.2831034Z"
+    },
+    {
+        "id": "81d453cc-d453-4117-ad94-215607e196c0",
+        "rating": 5,
+        "title": "De los mejores Objetos Visuales que he probado",
+        "content": "",
+        "created_at": "2024-03-19T17:52:55.5393539Z"
     },
     {
         "id": "36967590-4a4a-4602-99fd-a89680be0b9a",

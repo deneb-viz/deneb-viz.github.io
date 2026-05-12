@@ -59,6 +59,9 @@ const config = {
           trackingID: "UA-143608567-3",
           anonymizeIP: true,
         },
+        sitemap: {
+          ignorePatterns: ["/docs/next/**"],
+        },
       }),
     ],
   ],
@@ -104,7 +107,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "right",
             dropdownActiveClassDisabled: true,
-            versions: ["current", "1.9", "1.8"],
+            versions: ["1.9", "1.8"],
           },
           {
             href: "https://github.com/sponsors/deneb-viz",

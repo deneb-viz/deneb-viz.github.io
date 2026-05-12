@@ -34,13 +34,13 @@ export function HomePageSponsors() {
           </Link>
           .
         </div>
-        <fieldset className={clsx(styles.sponsorsContainer, styles.platinum)}>
+        {/* <fieldset className={clsx(styles.sponsorsContainer, styles.platinum)}>
           <legend>Platinum Sponsors</legend>
           {platinum.map((sponsor: SponsorInformation, si) => (
             <HomePageSponsor key={si} sponsor={sponsor} tier="platinum" />
           ))}
         </fieldset>
-        {/* <fieldset className={clsx(styles.sponsorsContainer, styles.gold)}>
+        <fieldset className={clsx(styles.sponsorsContainer, styles.gold)}>
           <legend>Gold Sponsors</legend>
           {gold.map((sponsor: SponsorInformation, si) => (
             <HomePageSponsor key={si} sponsor={sponsor} tier="gold" />

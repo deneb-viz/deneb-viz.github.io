@@ -15,7 +15,7 @@ export function HomePageReviews() {
   const [reviews, setReviews] = useState<IReview[]>([]);
   useEffect(() => {
     const shuffledReviews = shuffleArray(reviewData as IReview[])
-      .filter((review) => review.title && review.content)
+      .filter((review) => review.title)
       .slice(0, RANDOM_REVIEW_SLICE);
     setReviews(shuffledReviews);
   }, []);
@@ -36,7 +36,7 @@ export function HomePageReviews() {
               key={review.id}
               className={clsx(
                 styles.reviewItem,
-                i >= MOBILE_SLICE && styles.hideOnMobile
+                i >= MOBILE_SLICE && styles.hideOnMobile,
               )}
             >
               <div className={clsx("card", styles.review)}>
@@ -58,7 +58,7 @@ export function HomePageReviews() {
                         year: "numeric",
                         month: "short",
                         day: "numeric",
-                      }
+                      },
                     )}
                   </div>
                   <div>{"⭐".repeat(review.rating)}</div>

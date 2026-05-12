@@ -31,8 +31,19 @@
   background-color: var(--ifm-background-color);
 }
 
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --ifm-background-color: #1b1b1d;
+  --ifm-link-color: #e8559e;
+  --docusaurus-highlighted-code-line-bg: rgb(80, 80, 84);
+}
+
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .social-links a {
+  color: #e3e3e3;
 }
 
 .prism-code .token-line::marker {

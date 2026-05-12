@@ -5,502 +5,283 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 # Change Log
 
-## 1.9.0 (2026-03-16)
+## 2.0.0
 
-<!-- :::info Under development 🚧
-Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
-::: -->
+:::info Under development 🚧
+Documentation is being written ahead of starting alpha testing, so the features described below are subject to change as testing and feedback is received. We will update this page and other pertinent areas in this version's documentation with any changes to the planned features, and will also add more details on each feature as they are finalized.
+
+<!-- Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete. -->
+
+:::
 
 <!-- :::info In Beta Testing
-Deneb 1.9.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
+Deneb 2.0.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
 ::: -->
 
 <!-- :::info Submitted for certification
-Deneb 1.9.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
+Deneb 2.0.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
 ::: -->
 
-:::info Pending deployment to AppSource
-Deneb 1.9.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+<!-- :::info Pending deployment to AppSource
+Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
+::: -->
+
+### A New Parsing and Rendering Pipeline
+
+From the beginning, Deneb's spec parsing and embed process was always a case of "however it could be gotten to work in Power BI," and has been somewhat of an architectural weak point. In this update, the whole process - from submission of your spec through to its embedding has been rewritten and optimized.
+
+In conjunction with the architectural improvements made in 1.9, this now opens the way for many features that were too hard to deliver without complicating things further. And, we're getting some of these features into this release, too! Read on for details on what else you have to enjoy.
+
+### Field Parameters
+
+Field parameter support has been a tricky one to solve. [We've had an idea about how to do it for a while](https://github.com/deneb-viz/deneb/issues/238#issuecomment-2190392568), but this has been dependent on some changes to the Power BI visuals API, and having the necessary data processing pre-requisites in place for Deneb. As such, folks [have had workarounds available](https://github.com/deneb-viz/deneb/issues/238#issuecomment-1501033734) for some time, which haven't been supported, but we want to try and help with this as much as we can.
+
+- When columns or measures belonging to a field parameter are added to the **Values** data role, Deneb can consolidate them into a single array-valued column named after the parameter, with optional companion fields for names, format strings, and cross-highlight state.
+  - Consolidation is controlled via the **Consolidate field parameters** toggle in the _Semantic model integration_ section of the **Project setup** pane, and is **on by default for new projects**.
+  - Projects migrated from earlier versions default to **off** to preserve compatibility with existing workarounds; you can opt in at any time.
+
+- A per-field **Treat as field parameter** override is also available for flagging a regular column or measure as a parameter.
+  - This is useful for template compatibility or for testing `flatten` transforms with non-parameter data.
+  - Templates are aware of the new structure: assigning a regular field to a slot exported as a parameter auto-sets this flag and enables consolidation, so your spec's transforms continue to work without manual intervention.
+
+- Autocomplete in the JSON editor has also been extended to suggest the companion fields currently enabled for each dataset entry (for example, `__names`, `__highlight`, `__format`), making them easier to discover as you build your specification.
+
+For full details on how to work with field parameters, [we have a dedicated page for them](field-parameters) in our documentation.
+
+### Supporting Fields Configuration
+
+To date, Deneb has been very eager and opinionated about adding [supporting fields](dataset#supporting-fields) to the dataset. These range from values that help manage selection state to those that support formatting and cross-highlighting.
+
+A popular request has been to allow developers to configure these fields, particularly in advanced cases where they aren't desired and can create unnecessary noise downstream during debugging or transformation work. In this release, you are now able to configure which fields are included on a per-field basis and to enable formatting strings and values for columns, if you need them.
+
+![supporting-fields-assignment.png](./getting-started/img/supporting-fields-settings-pane.png "The Supporting Fields: dataset section of the Project setup pane. This shows a [Product] column and a [$ Sales] measure. The [$ Sales] measure has a dot indicator, showing that it is producing at least one supporting field.")
+
+The [main section of the dataset documentation](dataset#supporting-fields) has been updated with more details, but here's a high-level overview of what you can expect:
+
+#### For new projects
+
+Supporting fields default as follows, where _Unavailable_ indicates the field type cannot carry that supporting field:
+
+| Supporting field         | Column      | Measure     | Field parameter |
+| ------------------------ | ----------- | ----------- | --------------- |
+| Highlight value          | Unavailable | Enabled \*  | Disabled \*     |
+| Highlight status         | Unavailable | Disabled \* | Disabled \*     |
+| Highlight comparator     | Unavailable | Disabled \* | Disabled \*     |
+| Format string            | Disabled    | Disabled    | Disabled        |
+| Formatted value          | Disabled    | Disabled    | Disabled        |
+| Field names              | Unavailable | Unavailable | Disabled        |
+| Treat as field parameter | Disabled †  | Disabled †  | Unavailable     |
+
+> \* Only visible if cross-highlight is enabled.
+
+> † Only visible if [field parameter consolidation](#field-parameters) is enabled; used to manually flag a regular column or measure as a field parameter.
+
+- Each supporting field is toggled **individually** from its row in the tree.
+- A small accent dot on a field's header indicates the field is currently producing at least one supporting field in the dataset, whether by default or by explicit configuration.
+- The **Reset** button in each field header is enabled only when you have explicitly configured that field. Clicking it removes the explicit configuration and reverts the field to the defaults above.
+
+![supporting-fields-assignment.png](./getting-started/img/supporting-fields-assignment.png "Showing the column and measure from above, with the tree expanded. The [Product] column `Format string` option is checked; because this is not default, the `Reset` icon is enabled in the field header. The [$ Sales] measure has the default supporting fields, and the accent dot on its field header indicates it is producing at least one supporting field.")
+
+Two warnings are surfaced via the Settings pane's message bar when supporting-field configuration drifts from cross-highlight expectations:
+
+- If cross-highlight is **enabled** but no measure has a highlight companion selected, the visual will not receive highlight values to encode against.
+- If cross-highlight is **disabled** but at least one measure has a highlight companion selected, the selection is redundant and will produce no visible effect.
+
+#### Existing projects and v1 templates
+
+- All fields will remain as they have been managed previously (i.e., you get all of them, except for the new format-related fields for columns, which default off).
+- When you are ready (and if you want to), you can navigate to the **Supporting fields: dataset** section of the **Project setup** pane to configure them as you want. At this point, your settings will remain in place for the lifetime of your project.
+- Importing a v1 template will produce the same results as an in-place migration, due to this feature not being present at the time. Again, you can tailor these after importing the template, and any subsequent export will retain the preferred supporting field assignments.
+
+### Continuous View
+
+To date, any changes external to Deneb on the canvas that affect the generated dataset - slicing, cross-filtering from other visuals, filter pane changes - would trigger a full re-render, effectively resetting the view back to its initial state each time. The changes to the parse and render pipeline described above have enabled a long-requested capability: a **continuous view** that stays durable across dataset updates, provided the dataset is eligible.
+
+When enabled, Deneb patches the updated data into the existing Vega view rather than recompiling the specification. This preserves:
+
+- **Current view state** - zoom, pan, facet page, and anything else driven by Vega signals.
+- **User input values** - signals bound to form widgets (dropdowns, sliders, etc.) retain whatever the user has selected.
+- **Selection state** - marks selected before the update remain selected after it, as long as their datum is still present in the new data.
+
+Eligibility is driven by two things:
+
+- **Row count**. Patching is intended for datasets that are not too large. By default it applies up to **500 rows**, configurable up to a hard ceiling of **5,000 rows** - beyond this point the main thread cannot safely support patching and you would notice severe performance degradation. Beyond either value, Deneb falls back to the standard recompile-and-re-init path.
+- **Spec compatibility**. Some spec shapes - for example, force transforms involving aggregates - cannot be patched reliably. In those cases Deneb also falls back to a full recompile and writes a warning to the [Logs pane](visual-editor#logs-pane) so you know why.
+
+The feature is **off by default** while it goes through real-world testing, and can be enabled via the **Enable patching for hosted datasets** option in the _Continuous view_ section of the [Project setup pane](visual-editor#settings-pane). That section will also tell you whether patching is currently _active_ or _inactive_ for your present dataset, so you can see at a glance whether updates are being patched or recompiled.
+
+Refer to [Dataset](dataset#continuous-view-data-patching) for further guidance.
+
+### Canvas Renderer: Scale to Report Zoom
+
+The Vega canvas renderer offers many performance benefits over SVG for rendering large datasets, but it has downsides, such as not scaling with the report's zoom level due to its raster-based nature. This can make the visual appear blurry when the report is zoomed in.
+
+In this release, there is now a **Scale to report zoom level** option when the **Canvas** renderer is selected. This is set to **off** by default:
+
+![canvas-scale-setting.png](../static/img/changelog/2.0.0/canvas-scale-setting.png "When the `Canvas` renderer is selected, a new option appears to allow scaling to the report zoom level. This is turned off by default.")
+
+When enabled, this will use the current report zoom level (or preview zoom level) to calculate the appropriate scaling when rendering your visual. While this will not provide 100% parity with SVG in terms of crispness, it provides significantly improved fidelity of a rendered visual at different zoom levels.
+
+:::warning Why make this switchable at all?
+This is currently implemented as a switchable setting, so we can identify any use cases where this may cause issues before we consider making it the default behavior in a future release. If this works well, we will likely enable it by default before general availability, but we want to give authors the option to test it in their reports and provide feedback.
 :::
 
-This version is a concerted effort to improve the underlying code structure in preparation for new features and easier maintenance - of which there is still a lot to do but this gives us a better platform to continue making these changes.
+### View and Convert Compiled Vega
 
-A _lot_ of refactoring has been done but the user-facing experience and functionality of Deneb should be exactly the same as before. Despite this, there have been some opportunities to improve performance and squish some bugs along the way and these are detailed below.
+One of the most useful features of Vega Editor was that, if working with Vega-Lite, you could see the generated Vega specification directly in the UI. This was great for understanding how to 'think in Vega' and for taking the generated output and immediately using it as the basis for a Vega spec, without needing to start from scratch. This has been requested for Deneb for a long time, and thanks to the new parsing pipeline, it's exciting to finally make it available.
 
-### Advanced Editor Interface Changes
+Much like the Vega Editor implementation, **this action is irreversible**, and will replace your current specification with the generated Vega output. It is recommended that you save a copy of your Vega-Lite specification before using this action, in case you want to revert to it.
 
-Some of the performance changes include underlying logic for how the editor works, including layout calculations. This will improve performance of the transition process between viewer and editor and has resulted in some visible changes (and hopefully a more responsive experience) when using the Advanced Editor:
+You can read more about the feature and how to use it in the [Visual Editor documentation](visual-editor#compiled-vega-pane).
 
-- To help with discoverability, the Advanced Editor now has two trigger states:
-  - When clicking _Edit..._ from the visual header
-  - When triggering focus mode (if you are editing in Desktop or the Power BI Service).
+### Better Context Menu Control
 
-- Resizing functionality of the editor, debug and preview panes has been replaced with a modern (and better supported) component, which cleans up the borders between areas and improves responsiveness when resizing.
+Deneb now provides two-level control over the [Power BI context menu](interactivity-context-menu) (right-click). Both settings default to enabled, matching the previous default behavior:
 
-### Minor Enhancements
+- **Show context menu on right-click**: controls whether the Power BI context menu appears on right-click.
+  - When disabled, right-click events are silently consumed, and no menu is displayed.
+  - This allows authors to use right-click for their own Vega/Vega-Lite event handlers without the Power BI context menu appearing.
 
-- The **Discrete ordinal colors** property is no longer required when using an ordinal scale with the `pbiColorOrdinal`, `pbiColorLinear` or `pbiColorDivergent` [schemes](schemes#power-bi-schemes) and has been removed. Deneb will automatically interpolate the colors based on the distinct values in the scale.
-- The default order for the signal viewer has been changed to natural order, to mirror Vega Editor's behavior ([#490](https://github.com/deneb-viz/deneb/issues/490)). You are still able to sort by signal name in ascending/descending order by clicking the column header.
-- Completion item documentation in the editor (triggered by clicking '>' if present) will now correctly render markdown content ([#569](https://github.com/deneb-viz/deneb/issues/569)).
+- **Attempt to resolve data point-specific actions**: When the context menu is enabled, this controls whether Deneb attempts to resolve the clicked data point for drill-through and other data-specific menu options.
+  - This option is only available when the context menu is enabled.
+
+Both settings are portable via templates ([see below](#what-affects-pbir-and-templating)).
+
+Disabling the context menu will still allow context events from the Vega view to be used, so if you wanted to, for example, create a custom context menu in Vega, this will work as expected.
+
+:::tip Migration path for existing projects
+If your current project was created in an earlier version (or you import a template created in an earlier version), Deneb will automatically migrate context menu settings to the new structure. Projects that had data point resolution disabled will be migrated to: context menu shown + data point resolution off, preserving the author's original intent.
+:::
+
+### Data View Split: Source vs. Vega Datasets
+
+In the debug pane, we previously tried to merge the source data (what Deneb processed and passed into Vega) and the Vega-produced datasets into a single view with a dropdown to select between them. It wasn't always obvious what was happening here, which made it tricky to debug inputs vs. outputs. In this release, the source data and Vega datasets have been split into separate tabs:
+
+- **Source**: the dataset Deneb hands to Vega, _before_ any Vega-side transforms, with [supporting fields](dataset#supporting-fields) intact. This is now the default tab when the debug pane opens, since it's typically the most useful starting point for checking that fields and supporting field configuration are correct.
+- **Data**: the named datasets produced by the Vega view _after_ transforms, still accessed through the existing dataset selector.
+
+The tabs are independent: each remembers its own column sort and current page across tab switches.
+
+A new keyboard shortcut, **[Ctrl + Alt + 6]**, activates the Source tab. Existing shortcuts for Data (**[Ctrl + Alt + 7]**), Signals (**[Ctrl + Alt + 8]**) and Logs (**[Ctrl + Alt + 9]**) are unchanged.
+
+Alongside the split, the debug pane has had some additional polish:
+
+- Tooltips on each tab carry definition-style copy plus the keyboard hotkey hint.
+- No more "loading flicker" for quick updates to data (< 150ms).
+- Accessibility improvements - suitable `aria` attributes are now exposed on each tab so the shortcut is discoverable by assistive technology, and the loading container reports `aria-busy` while a processing task is in-flight.
+
+Refer to [Debug Pane](visual-editor#debug-pane) for the updated layout and behavior.
+
+### Internal Signal Changes
+
+The parsing and rendering pipeline changes have given us a chance to reflect upon the naming convention of internally-generated signals that we use to support Deneb and integration with Power BI features. These are now intended to be prefixed with their intended purpose.
+
+The legacy `pbi`-prefixed signals are now deprecated. To ensure continuity, Deneb will re-map these signals internally when your spec is parsed. However, you will see a warning in the logs to switch to the new `deneb`-prefixed signal names, e.g.:
+
+![denebContainer-migration-log-warning.png](/img/changelog/2.0.0/denebContainer-migration-log-warning.png "A warning message in the logs indicating that legacy signal names have been detected and re-mapped.")
+
+It is recommended that you adjust your specifications to match the new names at the earliest possible opportunity, and the suggested migration strategy for each signal is as follows:
+
+| Signal Name          | Migration Strategy      |
+| -------------------- | ----------------------- |
+| `pbiContainer`       | `denebContainer`        |
+| `pbiContainerHeight` | `denebContainer.height` |
+| `pbiContainerWidth`  | `denebContainer.width`  |
+
+### $schema: Warning and Quick Fix
+
+If you generate or find a specification elsewhere, it may (for good reasons) have the `$schema` property, which is important for validation of a Vega or Vega-Lite specification.
+
+However, this is an overload in the context of Deneb, because if you try to use a spec with this property in the editor, it will try to resolve the schema from that URL, which will fail, because external requests are not permitted in a certified Power BI Visual. This prevents features such as auto-completion, inline documentation, and validation from working.
+
+For consistency with the language specification, Deneb will manually add the appropriate `$schema` URL when generating an exportable template and ensure that it is stripped out when you import a template through the _Create new specification_ dialog, but doesn't make any decisions around the content you add to the JSON editor. This has been quite a sizable gap in the documentation to date, so [it has been updated](visual-editor#specification-editor-pane) to provide better guidance on this behavior.
+
+In this release, there's also a more prominent warning for this occurrence, which can be inspected further on hover, e.g.:
+
+![schema_warning_message.png](../docs/getting-started/img/schema-warning-message.png "A warning message shown inline in the Specification editor for a root-level $schema property, with the Quick Fix action available to remove it.")
+
+If you so wish, clicking the _Quick Fix..._ button will remove the affected `$schema` property from the editor for you.
+
+### Scrollbar Configuration and Placement
+
+Scrollbars on the report canvas and in the editor's preview area have been rebuilt. The visible improvements:
+
+- **No more background bleed on fitted visuals.** The previous scroll container reserved a few pixels of gutter space even when the content fit exactly, causing a strip of the report background to leak along the edge of the visual. The new scrollbars overlay the content and reserve no gutter.
+- There is also a new **Scrollbar width** setting in the _Scrollbars_ formatting card (default `10px`, minimum `8px`, maximum `16px`)
+- The **Scrollbar radius** maximum has been widened to `8px` (previously `3px`) to complement it.
+
+Refer to the [Scrolling and Overflow](scrolling-overflow#configuring-scrollbar-appearance) page for more details on these settings.
+
+### Report Canvas Keyboard Focus
+
+Power BI custom visuals don't support keyboard focus when tabbing around visuals on the canvas without some additional work. In this release, you'll be able to press [Enter] when the visual has tab focus from the canvas to set focus to the internal portion of the Deneb visual. This will then allow you to tab through any focusable elements in the editor or viewer, and interact with them using the keyboard as expected.
+
+This will also work when using the Editor interface, but you may need to remember that if focus is set to the JSON editor, you'll need to press **[Ctrl + M]** on Windows or **[Ctrl + Shift + M]** on Mac to toggle Tab trapping and allow you to tab around Deneb's UI.
+
+- When viewing a visual, pressing **[Esc]** will return focus to the canvas, allowing you to continue tabbing to the next visual.
+- In the editor interface (if focus is outside the Monaco editor), the **[Esc]** key will set focus to Power BI's _Back to report_ action so that you can return to the canvas.
+
+:::warning Vega views are not keyboard-tabbable
+Vega and Vega-Lite don't currently surface their rendered marks, axes, or legends as focusable elements, so in view mode, the only things that can receive Tab focus inside the visual are **parameter inputs bound to HTML elements**. Everything else in your specification is reachable only via the mouse pointer and screen reader (if the marks have been set up accordingly).
+:::
+
+### Cell Inspection in Debug Pane
+
+The **Data** and **Signals** viewers in the debug pane have been rebuilt around a click-to-inspect model. Previously, long or complex values were truncated with an ellipsis (`...`) and only partially available via a hover tooltip.
+
+Now every cell is inspectable:
+
+- Clicking (or pressing **Enter** / **Space** when focused) opens a read-only Monaco editor with the full value.
+- Scalar values open in a compact popover using plain text; objects and arrays open in a larger popover with JSON formatting, syntax highlighting, and code folding.
+- For large or complex objects, a shallow copy of the value is displayed, which should be enough to give you an idea of the structure and content without overwhelming the editor or causing performance issues.
+
+  ![A complex value in a table cell, truncated inline and opened in the value inspector.](../docs/getting-started/img/editor-interface-data-pane-object-inspector.png "A complex value in a table cell, truncated inline and opened in the value inspector.")
+
+The viewer tables are also now keyboard-navigable as a grid: **arrow keys** / **Home** / **End** to move, **Enter** / **Space** to inspect, **Escape** to close, **Tab** to leave the grid.
+
+### Template Schema v2
+
+The template metadata schema has been updated to v2. The serialized template JSON now uses `usermeta.datasets` (a record keyed by dataset name) in place of `usermeta.dataset` (a flat array), and placeholder keys include their owning dataset name (for example, `__dataset.0__` rather than `__0__`).
+
+- Templates produced by earlier versions of Deneb continue to import cleanly - Deneb rewrites the structure to v2 on load, so no action is required from end users.
+- New templates must follow the v2 shape. Placeholder keys are validated against the pattern `__<dataset>.<index>__`; custom names like `__myField__` (valid in v1) are no longer accepted. The published [v2 JSON schema](templates#additional-considerations-for-developers) can be used to validate templates before import.
+- The change applies only to the serialized template JSON. The visual's UI, PBIR capabilities, and runtime behavior are unaffected.
+
+Refer to the [Templates](templates#datasets) page for the full structure.
+
+### Vega Updates
+
+- Vega-Lite updated to **6.4.3** (from 6.4.1)
 
 ### Performance and Stability
 
-- While custom visuals can't get parity with core visual in how quickly they can be displayed, significant improvements have been made to the initialization process, resulting in Deneb loading much more quickly for end users viewing reports (**typically between 15%-40% faster** depending on visual and dataset complexity).
+- The separation of editor-specific assets and functionality, such as Monaco editor initialization and warming up of Vega JSON schemas, has been more tightly gated. This includes less 'locking' of the UI when moving between the viewer and editor states [(#581)](https://github.com/deneb-viz/deneb/issues/581).
 
-- The process of generating and managing Power BI selection IDs (for interactivity) has been re-written and improved:
-  - IDs are now no longer added to the base dataset (and obfuscated from it in the front-end).
-  - This removes deep objects from each row and thereby reduces memory overhead and improves performance when compiling specifications.
-  - Overall dataset processing has also been significantly optimized and in some cases improvements of **200-300%** have been observed once Power BI has finished supplying the query result for processing.
-    <br/><br/>
-    :::warning Potential Breaking Change
-    If you ever relied on the `__identity__` or `__key__` fields from a datum in your specification, these were always intended to be for internal use and Deneb previously tried to obfuscate them to discourage this. You should change to the [supported (and recommended) `__row__` field](interactivity-overview#additional-datum-fields) for inspection, reference and validation of interactivity features.
-    :::
+- Only the locales [supported by MS](https://learn.microsoft.com/en-us/power-bi/developer/visuals/localization?tabs=English#supported-languages) are now included, which improves the packaged visual size [(#593)](https://github.com/deneb-viz/deneb/issues/593).
 
-- Packaged visual is now **5% smaller** than last release (and 12% smaller than 1.7), improving download and initialization times.
+  :::warning If your locale is missing, please let us know!
+  Whilst your locale may be on the unsupported list, if it previously worked for you with `pbiFormat`, please [create an issue](https://github.com/deneb-viz/deneb/issues/new), and we'll add it back in for you.
+  :::
 
-- The UI has been updated from React 17 to use React 19.2. This will provide some transient performance updates but will allow us to leverage modern React performance enhancements in future releases.
+- Internal JSON schema validation dependencies have been normalized, removing duplicated code ([#595](https://github.com/deneb-viz/deneb/issues/595)).
 
-### Documentation
-
-- The [PBIR Implementation Guide](pbir-guide) is intended help with understanding how to use Deneb with [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format). This includes a comprehensive list of how Deneb's internal property system works (and how properties affect the rendered output), which should be helpful for those looking to automate Deneb visual creation, either through their own efforts, or in conjunction with an LLM.
+The resulting changes have reduced the package size to **1.75 MB**: a reduction of **4%** vs. 1.9.0 and **19%** vs. 1.7.0.
 
 ### Bug Fixes
 
-- When generating a template, if the dataset fields were not aliased, they would be shown (and exported) as blank strings ([#564](https://github.com/deneb-viz/deneb/issues/564)).
-- Opening the signal viewer for specifications with signals containing methods would cause a fatal crash ([#570](https://github.com/deneb-viz/deneb/issues/570)).
-
-## 1.8.2 (2025-10-08)
-
-### Vega Updates
-
-- Vega updated to **6.2.0** (from 6.1.2)
-- Vega-Lite updated to **6.4.1** (from 6.1.0)
-
-### Sample Workbook
-
-- Many examples have been updated with comments in the specification JSON, to help further clarify decisions and language features used to achieve designs. Thanks, Imran Haq!
-
-### QoL Enhancements
-
-- The cursor has been set to `auto` when inside the visual container, to provide clearer intent of visual elements ([#552](https://github.com/deneb-viz/deneb/issues/552))
-
-### Bugs Fixed
-
-- Deneb should no longer report a _'Remote resources cannot be loaded'_ message for images using data URLs in the AppSource (certified) version ([#555](https://github.com/deneb-viz/deneb/issues/555))
-- If you're setting `width`, `height` or `autosize` in the config that potentially conflict with Deneb's internal patching, this no longer causes visuals to hang when parsed/resized ([#514](https://github.com/deneb-viz/deneb/issues/514))
-
-## 1.8.1 (2025-08-08)
-
-### Bugs Fixed
-
-- Auto-completion now updates correctly when typing ([#551](https://github.com/deneb-viz/deneb/issues/551)). Root cause was revised visual SDK updates in how visuals are packaged for certification. This should also alleviate some other observed slowness issues experienced while typing in the editor.
-
-## 1.8.0 (2025-07-16)
-
-### Platform Updates
-
-Microsoft has recently introduced more stringent certification requirements for custom visuals, so the necessary changes have been applied across Deneb's codebase, including security enhancements and updates to the latest visual APIs. There should be no visible changes to your visuals, but please [create an issue](https://github.com/deneb-viz/deneb/issues) for anything you believe may be a detrimental change stemming from these updates.
-
-### Vega Updates
-
-- Vega Updated to **6.1.2** (from 5.30.0)
-- Vega-Lite updated to **6.1.0** (from 5.19.0)
-
-Note that during tests by community members, we noticed an edge case where a visual failed to work. This was traced to that specification containing warnings, and some stricter validation introduced in Vega-Lite 5.21.0. If you experience a previously working specification failing, please check for warnings first, resolve those and re-test before [creating an issue](https://github.com/deneb-viz/deneb/issues).
-
-### Removal of Edit Specification Field Mapping Functionality
-
-Since its introduction, field mapping has been problematic for some users, which gets in the way of the development process as the dataset is modified through changes made outside the visual (typically either removing or renaming a field in the Power BI portion of the UI). These issues appear to have increased in frequency recently and are not consistent for everyone, making them difficult to debug and support.
-
-Given that we have since introduced a more advanced JSON editor in 1.7, which has find and replace functionality (Ctrl + F / Ctrl + H), managing these situations is still fairly convenient, without the overhead of us having to maintain a UI feature that is obtrusive for many users rather than helpful. As we are also prepping v1.x of Deneb for deprecation (with a view to focus on long term stability once this happens), the decision to remove a potentially flaky feature has been taken.
-
-### Minor Enhancements
-
-- If using Power BI Desktop with the [on-object interaction](https://learn.microsoft.com/en-us/power-bi/create-reports/power-bi-on-object-interaction) UI enabled, double-clicking a Deneb visual would force this into format mode. This action has been suppressed.
-
-### Bugs Fixed
-
-- If using a field containing a special character, this was still being included in auto-completion results (#548)
-
-## 1.7.2 (2024-09-04)
-
-### Minor Enhancements
-
-- Input widget styling matches that of Vega-Editor, improving their layout
-
-### Bugs Fixed
-
-- Internal Monaco `command://` hyperlinks no longer trigger the MS launch URL API (#491)
-- If you are running Deneb in an insecure (HTTP) environment, it will now work (#488, #493)
-
-## 1.7.1 (2024-08-05)
-
-### Vega Updates
-
-- Vega-Lite updated to **5.20.1** (from 5.19.0)
-
-### Minor Enhancements
-
-- The `pbiContainer` signal is now available and updated on scroll events for faceted and repeated specifications (#474)
-
-### Bugs Fixed
-
-- `pbiFormat` not resolving correctly for some numeric tooltip fields (#483)
-- Viewport not updating in focus mode for Vega specifications (#481)
-- Monospaced hyperlinks not opening in documentation tooltips (#473)
-- `pbiContainer` signal height and width getting set to scroll height/width on scroll (#475)
-
-## 1.7.0 (2024-07-10)
-
-### Vega Updates
-
-- Vega updated to **5.30.0** (from 5.26.1).
-- Vega-Lite updated to **5.19.0** (from 5.16.3).
-
-### Dark Mode
-
-You now have the choice of the Deneb Advanced Editor UI to be displayed in light (default) or dark mode.
-
-- This can be changed by either:
-  - Clicking the theme button in the top-right of the Advanced Editor toolbar.
-  - Using the [Ctrl + Shift + Alt + T] keyboard shortcut.
-  - Setting the _Advanced editor > Interface > Theme_ property in the format pane.
-
-- Setting the _Theme_ to _Dark_ will update the interface appearance, e.g.:
-
-  ![You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.](/img/changelog/1.7.0/dark-theme-standard.png "You can now set the theme to [Dark], to convert the editor into dark mode. This will display all components (except for the preview area) with darker colors.")
-
-- The preview area in this example is still white, because this is the current report background, and it is intended for you to see how your visual design will look on the report canvas.
-
-- If you wish for the preview area to be dark also - **bearing in mind that this may potentially cause accessibility issues while editing** - you can change this behavior by setting _Advanced editor > Preview area > Apply background settings to preview area_ to **Off**, e.g.:
-
-  ![You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.](/img/changelog/1.7.0/dark-theme-background-off.png "You can disable the report background being passed through to the preview area by setting the [Apply background settings to preview area] property to OFF. This will apply dark mode styling to the entire interface. Note that this may cause issues with viewing your design as intended on the canvas.")
-
-### Monaco Editor for JSON
-
-Power BI custom visuals have some very challenging constraints in terms of what can be integrated. The work done in 1.6 and this release now allows us to include [Monaco Editor](https://microsoft.github.io/monaco-editor/) (the component from [Vega Editor](https://vega.github.io/editor), [Visual Studio Code](https://code.visualstudio.com/) and many parts of Power BI Desktop) for JSON editing! 🚀
-
-This will now give us many of the benefits that Vega Editor has for editing specifications, including, some key benefits which are highlighted below.
-
-#### Commenting
-
-The editor and template system now supports **JSON with comments** (JSONC)! 🎉🎉
-
-![JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor.](/img/changelog/1.7.0/json-comments.png "JavaScript-style block (/* */) and line (//) comments are now valid in the JSON editor.")
-
-- You can now use comments to either document your specifications or disable portions for debugging purposes.
-- You can use single line (`//`) or block (`/* */`) comment format.
-- The editor also has shortcuts for these operations:
-  - [Ctrl + /] to toggle a line comment.
-  - [Shift + Alt + A] to toggle a block comment.
-
-#### Auto-Completion
-
-The JSON schemas for Vega and Vega-Lite have been integrated into the editor's autocompletion function, making discovery of the correct properties much more straightforward. Completion will trigger when typing, or when you press [Ctrl + Space] to invoke manually.
-
-![Valid matching entries for language keywords are now available via auto-completion.](/img/changelog/1.7.0/auto-completion.png "Valid matching entries for language keywords are now available via auto-completion.")
-
-#### Inline Documentation
-
-For Vega-Lite, the developers have built-in a lot of additional support for language keywords. You can now hover your mouse over any item that contains such documentation and see this rendered in a pop-up, e.g.:
-
-![Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation.](/img/changelog/1.7.0/doc-on-hover.png "Hovering your mouse over language keywords (in Vega-Lite) will display any relevant documentation.")
-
-Any links in the displayed documentation can be clicked, top open the destination in a browser tab.
-
-#### Improved Highlighting
-
-Any schema warnings and/or errors are now more directly annotated in the editor, e.g.:
-
-![The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.](/img/changelog/1.7.0/json-editor-highlighting.png "The position of errors and warnings is now better highlighted, so that you can track down JSON parsing issues more quickly.")
-
-You can also hover the mouse over any such annotation to see the details of the issue.
-
-:::warning Errors need to be fixed for some operations
-As errors do not produce valid JSON, you cannot export your work as a template until any issues are corrected and re-parsed successfully.
-:::
-
-#### Formatting Has Moved
-
-Formatting was previously available via the toolbar - this has now moved to use Monaco's own formatter, available in the context menu, or with the existing keyboard shortcut of [Ctrl + Alt + R]:
-
-![JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using the existing keyboard shortcut of [Ctrl + Alt + R].](/img/changelog/1.7.0/format-context-menu.png "JSON formatting has moved to use the native Monaco Editor version, available in the context menu or using the existing keyboard shortcut of [Ctrl + Alt + R].")
-
-#### 'Escape Hatch' for UI Navigation
-
-In the editor you can change tab key behavior from standard tabbing to UI navigation (allowing you to tab out to other parts of the UI) by using [Ctrl + M].
-
-### Improved Editor State Preservation
-
-Previously, any specific editor changes you'd made, such as folding/collapsing sections to better organize your work, these would be forgotten when you exited the editor, or performed a format operation on your JSON. These are now remembered for the life of the current session (until you leave the current report page and reinitialize the visual or close and re-open the workbook).
-
-### `pbiFormat` Changes
-
-As Vega-Lite provides some flexibility in the `format` property for custom format types, you can now supply an object or the desired format string. Refer to the [Formatting Values](formatting#object-example) page for further details.
-
-### `pbiFormatAutoUnit` Format Type
-
-This format type has been added as a convenience to emulate _Auto_ units, commonly used in other Power BI visuals. This will use the same logic that Power BI uses to convert values to K, M, Bn, etc. Refer to the [Formatting Values](formatting#auto-formatting-with-pbiformatautounit) page for further details.
-
-### `pbiContainer` Signal
-
-The Vega view now has a new signal named `pbiContainer`, which provides access to information about the visual container in expressions, e.g.:
-
-![pbiContainer-signal.png](/img/changelog/1.7.0/pbiContainer-signal.png "The `pbiContainer` signal provides information about the visual container that can be used in expressions.")
-
-This can also be used to monitor scrolling events in the visual container and you can refer to the [Scrolling and Overflow](scrolling-overflow#using-pbicontainer-to-track-scrolling-events) page for more details on the internals of this feature.
-
-### Advanced Cross-Filtering
-
-- Advanced cross-filtering provides developers using **Vega** to have more control over cross-filtering behavior between their specification and Power BI.
-
-- From this version, we have renamed the _Cross-filtering (selection) of data points_ setting to _Expose cross-filtering values for dataset rows_. With this enabled, you will now have two further options:
-
-  ![selection-mode-settings.png](interactivity/img/selection-mode-settings.png "With the `Expose cross-filtering values for dataset rows` property enabled, Deneb presents two additional modes for management: Simple (default) and Advanced.")
-  - _Simple:_
-    - This is the functionality you will already have been using, and Deneb attempts to resolve data points from marks and delegates them to Power BI.
-    - This option supported for both Vega and Vega-Lite, and is recommended if you just want simple management of cross-filtering.
-    - However, [the limitations still apply](interactivity-selection#limitations-and-considerations), as this is a fairly simple modification applied to the Vega view by Deneb.
-  - _Advanced:_
-    - This will not attempt to help you by monitoring marks for clicks and all cross-filter events must be managed by you.
-    - The option cannot be selected for Vega-Lite specifications.
-
-- With the _Advanced_ mode enabled, there are two new expression functions available in Vega signals:
-  - `pbiCrossFilterApply(event, filter?, options?)`: for the current event target, filter the original dataset (as sent from Power BI) as instructed and ask Power BI to apply cross-filtering based on this result set.
-  - `pbiCrossFilterClear()`: explicitly tell Power BI to clear the current cross-filter selection.
-
-- This is a complex topic that is tempting to include in more detail in the release notes, but benefits from having more detailed documentation to unpack. Refer to the [Advanced Cross-Filtering](interactivity-selection-advanced) page for more details on how to set this up, and how to get the most out of it.
-
-### Other Enhancements
-
-- Signal names in the Debug Pane now have more proportional space and are less likely to truncate when viewing. If a signal name does truncate, you can now hover over it to see the full name in a tooltip (#400).
-
-### Performance and Stability
-
-- Schema validation against the specification is now only performed when the editor is open. This typically improves initial render time in the report canvas view by 400-500ms for Vega-Lite visuals and 200-300ms for Vega visuals.
-- Some recursive functions were identified as not needing to run for each dataset row during dataset processing. These have been refactored and hoisted to only run when necessary, improving overall processing time.
-
-### Bug fixes
-
-- If you have multiple fields starting with the same characters (e.g. _Sales PY_, _Sales FC_) they should be uniquely identified when generating a template (#276)
-- The Power BI tooltip provider will incorrectly show `false` instead of a number, if that number should be text (#429)
-- The scrollbar color reverts when changing the visual container padding (#384)
-- Re-importing a template with auto field assignment does not correctly verify assignment state (#445)
-- `null` values for `datetime` fields are not being casted correctly when processed (#446)
-
-## 1.6.2 (2023-12-08)
-
-### Vega Updates
-
-- Vega updated to **5.26.1** (from 5.25.0).
-- Vega-Lite updated to **5.16.3** (from 5.16.1).
-
-### Debug Pane Changes
-
-- The _Rows per page_ value in the status bar is now persisted, meaning that it will remain across editing sessions, and when navigating between different datasets or the Signals view.
-- The value is also available in the **Editor > Debug pane** formatting card in Power BI's properties pane.
-- The default number of _Rows per page_ has been increased to **50**.
-- Further options for **100** and **200** rows per page has been added to the _Rows per page_ list.
-
-### Bugs Fixed
-
-- Power BI tooltips will now show again, due to a packaging/publication issue in 1.6.1 (#407)
-- If a dataset emits too many updates, this can cause UI issues while they are processed (#391)
-- Enabling or disabling cross-filtering doesn't update the dataset in the debug view (#396)
-- Datasets in the debug area with a `vega_id` crash the editor (#397)
-
-## 1.6.1 (2023-11-27)
-
-### Bugs Fixed
-
-- 'Initializing' message shows when dataset has columns or measures, but no data (#393)
-
-## 1.6.0 (2023-11-01)
-
-This update concentrates on making changes that improve performance and architecture for the next planned updates. A lot of these were slated for version 2, but this has become too large of a task to do in one go. As such, version 2's scope will change to focus on features that may result in breaking changes for templates and the next few updates will focus on delivering long-awaited or commonly requested features that will improve the UI and productivity experience for creators.
-
-### Supported Power BI Versions
-
-In order to improve visual loading time and access new features, the Power BI Visuals API has been updated to 5.3.0. This will require a minimum of **April 2023** of Power BI Desktop (or **May 2023** of Power BI Desktop for Report Server).
-
-For older versions Power BI Desktop, you can install previous versions of Deneb as an [organizational visual in your Power BI tenant](https://learn.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-organization). Builds of Deneb are included as assets under the appropriate release [in the GitHub repository](https://github.com/deneb-viz/deneb/releases) and follow the pattern `Deneb_AppSource*.pbiviz`.
-
-### Vega Updates
-
-- Vega updated to **5.25.0** (from 5.23.0).
-- Vega-Lite updated to **5.16.1** (from 5.6.1).
-
-### Parsing and Validation Workflow Changes
-
-These would normally be listed under _Performance and Stability_, but there have been significant changes to how Deneb parses the editor content and renders specifications. This will result in much faster output, improve synchronization between the Debug Pane and the rendered output, and stop superfluous rendering of specifications in the UI in-general.
-
-:::caution Please check your specs!
-It is anticipated that changes will have a positive effect. However, if you find a use case that is negatively impacted, then please let us know so that we can investigate as soon as possible.
-:::
-
-The key impacts on creators and viewers are as follows:
-
-- Transition time between the report canvas and the Advanced Editor (and back again) has significantly improved.
-
-- In conjunction with the visual dataset, specifications and config are memoized, so they are only (re)parsed when a suitable change occurs. The full list of events that can affect memoization are:
-  - Specification or Config content is applied (and is different to the last saved values).
-  - Changes to the visual dataset, including adding and removing columns or measures and filters being applied (essentially anything that causes the visual to be re-queried, resulting in a change of resulting dataset).
-  - Enabling or disabling cross-filtering of data points or cross-highlight values (as these affect the visual dataset).
-  - A change to the [Discrete ordinal colors](schemes#discrete-ordinal-colors) property in the _Report theme integration_ menu (as this requires re-generation of the custom Vega ordinal scale that is bound to that value).
-  - Enabling or disabling the Power BI tooltip handler.
-  - Changing the provider (e.g. from _Vega-Lite_ to _Vega_).
-  - Changing the render mode (e.g. from _SVG_ to _Canvas_).
-  - Changing the log level in the _Logs_ viewer.
-  - When you have finished resizing the visual container in the report canvas.
-
-- If any errors are encountered when parsing (or by the Vega view post-render), the visual is no longer replaced with an error status and shows as blank. All issues will be present in the _Logs_ viewer (providing the level is not set to _None_).
-
-- Vega parsing would not previously catch errors in the _Logs_ viewer. This has been fixed.
-
-:::info Parsing Changes and Effect on Vega Lite Specifications
-If you created a visual from the previous internal templates, you may see warnings in the **Logs** viewer. This is due to an issue with the way that the previous templates were configured. If you wish to remove these warnings, remove the following objects from your Config (as they relate to Vega only):
-
-- `path`
-- `shape`
-- `symbol`
-
-:::
-
-### General UI Changes
-
-![Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.](/img/changelog/1.6.0/new-ui-layout.png "Deneb's Advanced Editor UI has been updated to use the latest Fluent UI libraries from Microsoft. This image shows the main editor view with the new changes.")
-
-Deneb's Advanced Editor UI has been completely migrated from Fluent UI v8 to v9. Some of these changes will be detailed in below sections where necessary, but the overview is as follows:
-
-- The menu in the settings pane has been moved out to the top of the visual and encompasses the entire width. This provides ~11% more vertical space for the JSON editor at the cost of a bit less vertical space for the visual preview.
-- The landing page has been redesigned to provide more detailed onboarding for new users.
-- Theme brand color has been updated to match Power BI's recent changes.
-
-### Create New Specification Dialog and Packaged Template Changes
-
-![The 'Create or import new specification' dialog has been modified to provide some further resources for those looking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.](/img/changelog/1.6.0/new-create-dialog.png "The 'Create or import new specification' dialog has been modified to provide some further resources for those looking for templates. Templates can also be pasted from the clipboard or dragged and dropped into the dialog.")
-
-As part of the UI changes, the **Create new specification** dialog has received some enhancements:
-
-- The layout has changed to allow more room on the right for template content when it is selected or loaded.
-- Using an existing template is the default option.
-- For an existing template, the import button has been swapped for a drop zone:
-  - You can click this to manually select a template file, or you can drag and drop a valid file to this area for Deneb to import it (if WebView2 is enabled).
-  - This will also support copy and paste for files and clipboard text, providing that they are valid Deneb templates.
-  - For Vega and Vega-Lite specifications without Deneb metadata, it's recommended that you create a blank specification for the appropriate language and paste these into the editor.
-
-- Links to Deneb's [community page](/community/resources), the Vega examples gallery and the Vega-Lite examples gallery have been added to the initial screen, to assist with discoverability of existing examples or ideas.
-
-- Packaged templates have been refactored:
-  - By default, templates no longer use Power BI theming for their look and feel, as this is not necessarily data visualization best practice.
-  - A new template named _\[empty (with Power BI theming)]_ has been added for both Vega and Vega-Lite, which will include the relevant config to simulate the default Power BI look and feel.
-  - The bar chart templates have been split into two versions: (1) a standard one with basic encodings only, and (2) an interactive one to show how simple Power BI interactivity can be set up.
-  - The other simple templates have been removed.
-
-### Generate JSON Template Changes
-
-![The 'Generate JSON template' dialog has now been condensed into a single pane and has the option to download templates to files directly (provided that your tenant administrator has enabled this).](/img/changelog/1.6.0/new-export-dialog.png "The 'Generate JSON template' dialog has now been condensed into a single pane and has the option to download templates to files directly (provided that your tenant administrator has enabled this).")
-
-- The dialog for this operation has been consolidated into a single pane, rather than having three panes as part of the workflow to export a template.
-- You can also download the template directly to a `.deneb.json` file, provided that your tenant administrator has allowed [downloads from custom visuals](https://learn.microsoft.com/en-us/power-bi/admin/organizational-visuals#export-data-to-file).
-- If you aren't permitted to download, you can still copy the template to the clipboard.
-
-### Debug Pane Enhancements
-
-In conjunction with the parsing and rendering changes above, the Debug Pane has been re-written with updated logic and UI.
-
-![The Debug Pane has undergone many enhancements, including space optimization, a pagination toolbar for data tables and increased zoom capabilities.](/img/changelog/1.6.0/new-debug-pane.png "The Debug Pane has undergone many enhancements, including space optimization, a pagination toolbar for data tables and increased zoom capabilities.")
-
-Key changes are as follows:
-
-- The option to select the data set (Data viewer) or the log level (Logs viewer) has been moved to the bottom status bar of the debug pane, which frees up some vertical space.
-- Tables in the Data and Signals viewers use a new component, have improved pagination, plus the ability to choose from either 10, 25, 50 or 100 rows per page.
-- The algorithm for monitoring changes of the data and signals in the Vega view has been improved and this should result in Data and Signal values being correctly up to date (in some cases they might previously have been one update behind).
-- The maximum zoom level has been increased to **400%**.
-- The _Reset Zoom_ button has been removed and replaced with a popover on the zoom level - this allows you to choose a pre-defined or custom zoom level:
-
-  ![The zoom level indicator on the toolbar allows more finer-grained setting of zoom level of the visual preview.](/img/changelog/1.6.0/new-zoom-popover.png "The zoom level indicator on the toolbar allows more finer-grained setting of zoom level of the visual preview.")
-
-  Note that the 'reset zoom to 100%' hotkey ([Ctrl+Alt+0]) will still work as intended.
-
-### Dynamic Format String Support Fields for Calculation Groups and Measures
-
-Deneb has always been able to accommodate calculation groups in its dataset, but access to dynamic format strings has not been part of its feature set. As Power BI now introduces dynamic format string support [for measures as of April 2023](https://powerbi.microsoft.com/en-cy/blog/power-bi-april-2023-feature-summary/#post-23001-_Toc433340751), then this is now becoming less niche and more commonplace.
-
-In this release, new fields are introduced into the dataset to provide additional access to these values if they are present in the query result from Power BI.
-
-See the section in the [Formatting Values](formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups) page for a detailed explanation as to how these work.
-
-### Scrollbar Appearance Configuration
-
-Some new properties have been introduced to the **Rendered visual** menu in the formatting pane, which give you a bit more control over the display of scrollbars in the rendered output:
-
-- Scrollbar color: allows you to adjust the displayed color of the scrollbar. This is black (_#000000_) by default.
-- Scrollbar opacity (%): allows you to adjust the opacity of the scrollbar. This is _20%_ by default, to ensure that the underlying visual can still be seen through the overlaid scrollbar.
-- Scrollbar radius (px): allows you to change the curvature of the end of the scrollbars. This is _0_ (square) by default.
-
-Additionally, there is a **Show scrollbars on overflow** in the **Advanced editor** menu, that will allow you to preview the scrollbars in the advanced editor, if your visual will overflow the boundaries of the viewport.
-
-This is covered in more detail in the [Scrolling and Overflow](scrolling-overflow) page.
-
-### Other Enhancements
-
-- The properties pane has been converted to use the new formatting cards that were recently introduced in core visuals.
-- The DIN font has had a more sensible alias assigned (this is known internally as `wf_standard-font`) and can now be specified as 'DIN' wherever you're using it.
-
-### Bugs Fixed
-
-- Tooltip with signal of `item` will no longer cause call 'stack size exceeded' errors (#273)
-- Vega specifications are restored with the correct visual dimensions upon exiting the Advanced Editor (#286)
-- The landing page will no longer be temporarily displayed when a visual is initialized in the Service (#325)
-- Handler for keyboard shortcuts should no longer trigger modal dialogs when Alt+F or Alt+N are used in Czech locales (#262)
-
-### Performance and Stability
-
-- The Data viewer in the debug pane now processes data asynchronously. This prevents the whole UI waiting for the processing to complete and will again improve the responsiveness of the editor UI overall.
-- Data and Signals viewers now use a monospace font. This is to improve readability of the content, but also to improve performance of calculating the table content (as column widths need to be computed each time the content changes).
-- The **Performance Tuning** and **Recalculate during resize** property have been removed from the formatting pane, due to the above enhancements.
-
-## 1.5.0 (2023-03-29)
-
-### Enhancements
-
-- The field name limit for template fields has been increased from 30 to 150 characters.
-
-:::danger Field name limit relaxations are not backwards compatible
-If exporting a template with > 30 characters in a field name, it cannot be imported into earlier versions and will require you to manually correct the field name in the template JSON if you wish for this to work.
-:::
-
-- The `pbiFormat` expression function has an optional third parameter that can be used to specify additional options that are available to custom visual developers.
-
-  Please refer to the [Formatting Values](formatting#pbiformat-expression-function-full-implementation-details) page for more information.
-
-- The `pbiColor` expression function now supports the following named color values:
-
-  ![The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.](deeper-concepts/img/pbiColor-named.png "The pbiColor function has been extended to allow access to named colors from the Power BI theme. These are detailed below.")
-
-  Color names should be surrounded with single quotes and valid values are as follows:
-  - Divergent colors:
-    - `min`
-    - `middle`
-    - `max`
-
-  - Sentiment colors:
-    - `negative` (or `bad`)
-    - `neutral`
-    - `positive` (or `good`)
-
-  Please refer to the [Theme Colors & Schemes](schemes#expression-based-access-using-pbicolor) page for more information.
-
-### Bugs Fixed
-
-- When importing templates created using Vega, the provider would be incorrectly set to Vega-Lite (#278).
-- The theme color binding for "middle" divergent color was actually using "neutral" (#283).
-
-### Performance and Stability
-
-- Vega has been updated to version **5.23.0** (from 5.22.1). You can read more about the changes in the [Vega release notes](https://github.com/vega/vega/releases/tag/v5.23.0).
-
-- Vega-Lite has been updated to version **5.6.1** (from 5.4.0). As there have been many small and incremental changes between these versions, it may be easier to review [the commit history for this span](https://github.com/vega/vega-lite/compare/v5.4.0...v5.6.1) rather than inspecting each individual release if you wish to catch up on what's new.
-
-- Published visual size reduced by 8% (down from 1.42MB to 1.32MB).
+- The background for the debug pane toolbar and log viewer was incorrectly set to transparent, making them difficult to read in dark mode ([#604](https://github.com/deneb-viz/deneb/issues/604))
+- Creating custom `height` and/or `width` signals will break compilation [(#417)](https://github.com/deneb-viz/deneb/issues/417).
+- "View mode" viewport not being correctly used when opening visual editor from within a report page group ([#620](https://github.com/deneb-viz/deneb/issues/620)).
+
+### What Affects PBIR and Templating
+
+Many of the above changes introduce considerations for building visuals using [Power BI Enhanced Report Format (PBIR)](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-report?WT.mc_id=DP-MVP-5003712&tabs=v2%2Cdesktop#pbir-format), as well as template construction. Rather than detail this information in each feature, each documentation page has been updated accordingly, but a condensed summary of areas to check and update if you have tooling around this are as follows:
+
+| Feature                                                             | Visual property changes                                                                                                                                                                                                         | Template changes                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Template schema v2](#template-schema-v2)                           | No changes to visual properties.                                                                                                                                                                                                | `usermeta.dataset` (flat array) replaced by `usermeta.datasets` (record keyed by dataset name). Placeholder key format tightened to `__<dataset>.<index>__`. V1 templates are migrated automatically on import.                         |
+| [Field parameters](#field-parameters)                               | New property `objects.stateManagement.consolidateFieldParameters` (bool); controls whether field parameter components are grouped into array-valued columns.                                                                    | New `kind: 'parameter'` entries in the template's `datasets[<name>][]` metadata to track exported field parameters. Assigning a regular column or measure to a parameter slot on import auto-enables consolidation and flags the field. |
+| [Supporting fields configuration](#supporting-fields-configuration) | Two new properties: `objects.stateManagement.supportFieldConfiguration` (text, JSON-serialized per-field flag map) and `objects.stateManagement.denebMetaVersion` (text, used to detect legacy projects and trigger migration). | Template `deneb.metaVersion` has been bumped to `2`. Per-field `supportFieldConfiguration` is embedded inside each `datasets[<name>][]` entry.                                                                                          |
+| [Continuous view](#continuous-view)                                 | Two new properties: `objects.dataLimit.enableIncrementalDataUpdates` (toggles patching) and `objects.dataLimit.incrementalUpdateThreshold` (upper row count at which patching is attempted).                                    | No changes to template structure.                                                                                                                                                                                                       |
+| [Canvas scaling](#canvas-renderer-scale-to-report-zoom)             | New property for canvas scaling: `objects.stateManagement.scaleToZoom`                                                                                                                                                          | No changes to template structure.                                                                                                                                                                                                       |
+| [Context menu control](#better-context-menu-control)                | New property for context menu control: `objects.interactivity.enableContextMenuSelector`; existing `enableContextMenu` property is re-purposed to toggle context menu visibility.                                               | A new `interactivity.contextMenuSelector` property is available to track whether to use selectors in the context menu. The existing `interactivity.enableContextMenu` property is re-purposed to toggle context menu visibility.        |
