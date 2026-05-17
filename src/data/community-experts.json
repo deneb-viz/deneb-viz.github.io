@@ -45,8 +45,8 @@
     {
         "name": "Greg Philps",
         "imageSrc": "/img/support/community-expert-greg-philips.jpeg",
-        "channelName": "Enterprise DNA Forum",
-        "channelExpertSrc": "https://forum.enterprisedna.co/u/greg/summary",
+        "channelName": "Stack Overflow",
+        "channelExpertSrc": "https://stackoverflow.com/users/23201036/greg-philps",
         "contributionAreas": [
             "D",
             "VL"
