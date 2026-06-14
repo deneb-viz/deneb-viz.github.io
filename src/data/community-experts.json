@@ -81,5 +81,16 @@
             "D",
             "VL"
         ]
+    },
+    {
+        "name": "Juan Bohorquez",
+        "imageSrc": "/img/support/community-expert-juan-bohorquez.jpeg",
+        "channelName": "LinkedIn",
+        "channelExpertSrc": "https://www.linkedin.com/in/juan-david-bohorquez-giraldo-b37b8517b/",
+        "contributionAreas": [
+            "D",
+            "VL",
+            "V"
+        ]
     }
 ]
