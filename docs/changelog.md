@@ -26,6 +26,12 @@ Deneb 2.0.0 has been submitted to AppSource for certification and may take some 
 Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
 ::: -->
 
+### Dataset Row Limit Changes
+
+If using the [Override row limit](dataset/#query-row-limits) feature, Microsoft no longer guarantees support for fetching additional data beyond the initial dataset in scenarios where you wish to export a visual to PDF or PowerPoint; it is recommended for report viewing only.
+
+To provide a better initial ceiling for authors, the initial dataset row limit has been increased to the maximum **30,000** rows that custom visuals can request.
+
 ### A New Parsing and Rendering Pipeline
 
 From the beginning, Deneb's spec parsing and embed process was always a case of "however it could be gotten to work in Power BI," and has been somewhat of an architectural weak point. In this update, the whole process - from submission of your spec through to its embedding has been rewritten and optimized.

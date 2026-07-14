@@ -115,7 +115,17 @@ Both [Vega](https://vega.github.io/vega/docs/transforms/) and [Vega-Lite](https:
 
 In order to try and keep performance usable for most cases, the visual caps the row count at **10,000** by default.
 
-It is however possible to override this if you so wish, but the number of rows returned will be subject to resource limits and entirely up to Power BI. If you wish to override this, you can find the _Data Limit Options_ menu in the Power BI Format pane:
+It is however possible to override this if you so wish, but the number of rows returned will be subject to resource limits and entirely up to Power BI.
+
+:::danger Not Supported for Export to PDF/PPT
+Microsoft no longer guarantees support for fetching additional data beyond the initial dataset in scenarios where you wish to export a visual to PDF or PowerPoint; it is recommended for report viewing only.
+
+This feature is still present and supported for exploratory data analysis scenarios, or for cases where the trade-off between a larger dataset and a reliable export can be accepted, and the risks are understood.
+
+If you wish to ensure reliable output in export scenarios, you should not use this feature and should work to keep your dataset within the above limit.
+:::
+
+If you wish to override this, you can find the _Data Limit Options_ menu in the Power BI Format pane:
 
 ![The Data Limit Options menu in the Format pane.](./img/data-limit-options-initial.png "The Data Limit Options menu in the Format pane.")
 
