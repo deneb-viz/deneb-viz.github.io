@@ -12,7 +12,6 @@ const config = {
   url: "https://deneb-viz.github.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.png",
   organizationName: "deneb-viz",
   projectName: "deneb-viz.github.io",
@@ -24,7 +23,20 @@ const config = {
   themes: ["@docusaurus/theme-mermaid"],
   future: {
     v4: true,
-    experimental_faster: true,
+    faster: true,
+  },
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+    // ponytail: v4 disables MDX v1 compat by default; keep legacy <!-- --> and
+    // {#id} syntax working. Migrate content (write-heading-ids --syntax
+    // mdx-comment --migrate) before Docusaurus v5 removes these options.
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
   },
   presets: [
     [
