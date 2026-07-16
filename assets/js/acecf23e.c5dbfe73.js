@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdeneb_doc=self.webpackChunkdeneb_doc||[]).push([["7627"],{47548:function(e){e.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog","authorsListPath":"/blog/authors"}')}}]);
