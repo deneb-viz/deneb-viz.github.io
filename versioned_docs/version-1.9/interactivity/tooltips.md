@@ -22,7 +22,7 @@ If you haven't read it already, it's worth reviewing the [preceding page](intera
 
 ## Data Point Resolution
 
-Provided that your mark's datum is not transformed or mutated away from the `"dataset"` and represents the _"pure"_ row context passed-in, Deneb can resolve this back to Power BI for delegation.
+Provided that your mark's datum is not transformed or mutated away from the `"dataset"` and represents the _"pure"_ row context passed-in, Deneb can resolve this back to Power BI for delegation. Note that row context is only required for resolving report page tooltips; default tooltips are rendered from the tooltip data as plain key/value pairs and will work with any datum.
 
 If a report page exists with at least one of the columns in the current datum, then Power BI will display it for the current row context, e.g.:
 
@@ -82,6 +82,16 @@ With Vega, you need to specify the `tooltip` signal in your mark's `encode` prop
 }
 ```
 
+## Sentence Template Support
+
+[Sentence templates for tooltips were introduced to Power BI in June 2026](https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/Power-BI-June-2026-Feature-Summary/ba-p/5193264#toc-hId-1475394710). These allow you to add free text to the standard tooltip, using brace-enclosed tokens to denote where field values should be inserted.
+
+Deneb supports this integration, with one important caveat: **any field referenced in a sentence template must be an explicit component of the tooltip datum** that Deneb resolves for the hovered mark. If a field isn't present, its placeholder is left as-is in the rendered sentence. The simplest way to guarantee this is an explicit `tooltip` encoding channel (Vega-Lite) or `tooltip` encode entry (Vega) that enumerates all required fields.
+
+Note that the _Tooltips_ menu is a standard container property owned by Power BI, so the sentence itself cannot be read, set, or changed from within your specification, and will not travel with a [Deneb template](/docs/templates) - it needs to be configured on the visual itself.
+
+For a full worked example - including the common pitfalls and how to surface specification-only fields (such as transform output) into your sentences - see the blog post: [How-To: Power BI Sentence Tooltips with Deneb](/blog/sentence-tooltips).
+
 ## 'Debugging' with Tooltips
 
 If you're using an approach to display the underlying data point ([e.g. Vega-Lite](https://vega.github.io/vega-lite/docs/tooltip.html#data)) rather than the resolved tooltip info that Vega provides by setting to `true`, we're able to see a bit further under the hood, .e.g:
@@ -94,7 +104,7 @@ Please refer to the [interactivity documentation](interactivity-overview/#additi
 
 ## Limitations and Considerations
 
-- Tooltip integration with Power BI is wholly dependent on the correct row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-overview) page for more information about ensuring this is preserved.
+- Report page tooltip integration with Power BI is wholly dependent on the correct row context, as the datum must be reconciled back to a row of the visual dataset. Default tooltips (including sentence templates) are rendered from the tooltip data as plain key/value pairs and do not require row context. [Refer above](#data-point-resolution), or to the [Overview](interactivity-overview) page for more information about ensuring row context is preserved.
 
 - Adding a tooltip does not automatically add visual feedback or effects. If you want to track the position of the resolved data point more visually (e.g. like for a line chart), you will need to add a suitable set of marks to do this. Both [Vega](https://vega.github.io/vega/examples/) and [Vega-Lite](https://vega.github.io/vega-lite/examples/) have examples you can refer to.
 
