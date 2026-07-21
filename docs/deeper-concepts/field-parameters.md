@@ -136,7 +136,7 @@ FPTest = {
 }
 ```
 
-The new fourth column (renamed from `Value4` to something meaningful) is used in the slicer instead of the original. The first column — now always `"Series"` — is added to the Deneb visual's **Values** data role and can be referenced in your specification by that constant name regardless of slicer selection.
+The new fourth column (renamed from `Value4` to something meaningful) is used in the slicer instead of the original. The first column - now always `"Series"` - is added to the Deneb visual's **Values** data role and can be referenced in your specification by that constant name regardless of slicer selection.
 
 :::caution
 This workaround requires modifying the Power BI field parameter's DAX definition and relies on implementation details of how Power BI generates field parameter tables. It may be subject to change if Microsoft changes their field parameter implementation. For new work, [consolidation mode](#consolidation-mode) is the recommended approach.

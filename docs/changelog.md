@@ -34,7 +34,7 @@ To provide a better initial ceiling for authors, the initial dataset row limit h
 
 ### A New Parsing and Rendering Pipeline
 
-From the beginning, Deneb's spec parsing and embed process was always a case of "however it could be gotten to work in Power BI," and has been somewhat of an architectural weak point. In this update, the whole process - from submission of your spec through to its embedding has been rewritten and optimized.
+From the beginning, Deneb's spec parsing and embed process was always a case of "however it could be gotten to work in Power BI," and has been somewhat of an architectural weak point. In this update, the whole process - from submission of your spec through to its embedding - has been rewritten and optimized.
 
 In conjunction with the architectural improvements made in 1.9, this now opens the way for many features that were too hard to deliver without complicating things further. And, we're getting some of these features into this release, too! Read on for details on what else you have to enjoy.
 
@@ -52,6 +52,10 @@ Field parameter support has been a tricky one to solve. [We've had an idea about
 
 - Autocomplete in the JSON editor has also been extended to suggest the companion fields currently enabled for each dataset entry (for example, `__names`, `__highlight`, `__format`), making them easier to discover as you build your specification.
 
+:::info How your existing visuals (or v1 templates) migrate
+For projects migrated from earlier versions of Deneb (prior to 2.0), pass-through is the default in order to preserve backward compatibility and avoid breaking existing specifications. You will need to manually enable **Consolidate field parameters** in an upgraded visual if you want to work with them. For a brand new visual, the consolidation of fields for field parameters will be enabled by default.
+:::
+
 For full details on how to work with field parameters, [we have a dedicated page for them](field-parameters) in our documentation.
 
 ### Supporting Fields Configuration
@@ -62,9 +66,7 @@ A popular request has been to allow developers to configure these fields, partic
 
 ![supporting-fields-assignment.png](./getting-started/img/supporting-fields-settings-pane.png "The Supporting Fields: dataset section of the Project setup pane. This shows a [Product] column and a [$ Sales] measure. The [$ Sales] measure has a dot indicator, showing that it is producing at least one supporting field.")
 
-The [main section of the dataset documentation](dataset#supporting-fields) has been updated with more details, but here's a high-level overview of what you can expect:
-
-#### For new projects
+The [main section of the dataset documentation](dataset#supporting-fields) has been updated with more details, but here's a high-level overview of what you can expect for new projects:
 
 Supporting fields default as follows, where _Unavailable_ indicates the field type cannot carry that supporting field:
 
@@ -93,11 +95,11 @@ Two warnings are surfaced via the Settings pane's message bar when supporting-fi
 - If cross-highlight is **enabled** but no measure has a highlight companion selected, the visual will not receive highlight values to encode against.
 - If cross-highlight is **disabled** but at least one measure has a highlight companion selected, the selection is redundant and will produce no visible effect.
 
-#### Existing projects and v1 templates
-
+:::info How your existing visuals (or v1 templates) migrate
 - All fields will remain as they have been managed previously (i.e., you get all of them, except for the new format-related fields for columns, which default off).
 - When you are ready (and if you want to), you can navigate to the **Supporting fields: dataset** section of the **Project setup** pane to configure them as you want. At this point, your settings will remain in place for the lifetime of your project.
 - Importing a v1 template will produce the same results as an in-place migration, due to this feature not being present at the time. Again, you can tailor these after importing the template, and any subsequent export will retain the preferred supporting field assignments.
+:::
 
 ### Continuous View
 
@@ -114,7 +116,7 @@ Eligibility is driven by two things:
 - **Row count**. Patching is intended for datasets that are not too large. By default it applies up to **500 rows**, configurable up to a hard ceiling of **5,000 rows** - beyond this point the main thread cannot safely support patching and you would notice severe performance degradation. Beyond either value, Deneb falls back to the standard recompile-and-re-init path.
 - **Spec compatibility**. Some spec shapes - for example, force transforms involving aggregates - cannot be patched reliably. In those cases Deneb also falls back to a full recompile and writes a warning to the [Logs pane](visual-editor#logs-pane) so you know why.
 
-The feature is **off by default** while it goes through real-world testing, and can be enabled via the **Enable patching for hosted datasets** option in the _Continuous view_ section of the [Project setup pane](visual-editor#settings-pane). That section will also tell you whether patching is currently _active_ or _inactive_ for your present dataset, so you can see at a glance whether updates are being patched or recompiled.
+Because this feature needs nuance in how it works and is understood, it is **off by default** and can be enabled via the **Enable patching for hosted datasets** option in the _Continuous view_ section of the [Project setup pane](visual-editor#settings-pane). That section will also tell you whether patching is currently _active_ or _inactive_ for your present dataset, so you can see at a glance whether updates are being patched or recompiled.
 
 Refer to [Dataset](dataset#continuous-view-data-patching) for further guidance.
 
@@ -155,7 +157,7 @@ Both settings are portable via templates ([see below](#what-affects-pbir-and-tem
 
 Disabling the context menu will still allow context events from the Vega view to be used, so if you wanted to, for example, create a custom context menu in Vega, this will work as expected.
 
-:::tip Migration path for existing projects
+:::info How your existing visuals (or v1 templates) migrate
 If your current project was created in an earlier version (or you import a template created in an earlier version), Deneb will automatically migrate context menu settings to the new structure. Projects that had data point resolution disabled will be migrated to: context menu shown + data point resolution off, preserving the author's original intent.
 :::
 
@@ -271,7 +273,7 @@ Refer to the [Templates](templates#datasets) page for the full structure.
 
 - Internal JSON schema validation dependencies have been normalized, removing duplicated code ([#595](https://github.com/deneb-viz/deneb/issues/595)).
 
-The resulting changes have reduced the package size to **1.75 MB**: a reduction of **4%** vs. 1.9.0 and **19%** vs. 1.7.0.
+The resulting changes have reduced the package size to **1.74 MB**: a reduction of **5%** vs. 1.9.0 and **19%** vs. 1.7.0.
 
 ### Bug Fixes
 
