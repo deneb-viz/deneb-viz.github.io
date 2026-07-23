@@ -259,6 +259,7 @@ Refer to the [Templates](templates#datasets) page for the full structure.
 
 ### Vega Updates
 
+- Vega updated to **6.3.0** (from 6.2.0)
 - Vega-Lite updated to **6.4.3** (from 6.4.1)
 
 ### Performance and Stability
