@@ -49,7 +49,7 @@ const config = {
             "https://github.com/deneb-viz/deneb-viz.github.io/edit/source/",
           versions: {
             current: {
-              label: "Canary 🚧",
+              label: "2.0 🚧",
             },
           },
         },
@@ -119,7 +119,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "right",
             dropdownActiveClassDisabled: true,
-            versions: ["1.9", "1.8"],
+            versions: ["current", "1.9", "1.8"],
           },
           {
             href: "https://github.com/sponsors/deneb-viz",

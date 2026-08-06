@@ -7,16 +7,15 @@ description: Deneb Change Log - high-level details of new features and fixes for
 
 ## 2.0.0
 
-:::info Under development 🚧
-<!-- Documentation is being written ahead of starting alpha testing, so the features described below are subject to change as testing and feedback is received. We will update this page and other pertinent areas in this version's documentation with any changes to the planned features, and will also add more details on each feature as they are finalized. -->
+<!-- :::info Under development 🚧
+Documentation is being written ahead of starting alpha testing, so the features described below are subject to change as testing and feedback is received. We will update this page and other pertinent areas in this version's documentation with any changes to the planned features, and will also add more details on each feature as they are finalized.
 
 Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
-
-:::
-
-<!-- :::info In Beta Testing
-Deneb 2.0.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
 ::: -->
+
+:::info In Beta Testing
+Deneb 2.0.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
+:::
 
 <!-- :::info Submitted for certification
 Deneb 2.0.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
@@ -96,10 +95,11 @@ Two warnings are surfaced via the Settings pane's message bar when supporting-fi
 - If cross-highlight is **disabled** but at least one measure has a highlight companion selected, the selection is redundant and will produce no visible effect.
 
 :::info How your existing visuals (or v1 templates) migrate
+
 - All fields will remain as they have been managed previously (i.e., you get all of them, except for the new format-related fields for columns, which default off).
 - When you are ready (and if you want to), you can navigate to the **Supporting fields: dataset** section of the **Project setup** pane to configure them as you want. At this point, your settings will remain in place for the lifetime of your project.
 - Importing a v1 template will produce the same results as an in-place migration, due to this feature not being present at the time. Again, you can tailor these after importing the template, and any subsequent export will retain the preferred supporting field assignments.
-:::
+  :::
 
 ### Continuous View
 
