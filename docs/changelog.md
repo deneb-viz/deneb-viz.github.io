@@ -264,6 +264,8 @@ Refer to the [Templates](templates#datasets) page for the full structure.
 
 ### Performance and Stability
 
+- Core row processing is **~20% faster than 1.9** after data has been received from Power BI.
+
 - The separation of editor-specific assets and functionality, such as Monaco editor initialization and warming up of Vega JSON schemas, has been more tightly gated. This includes less 'locking' of the UI when moving between the viewer and editor states [(#581)](https://github.com/deneb-viz/deneb/issues/581).
 
 - Only the locales [supported by MS](https://learn.microsoft.com/en-us/power-bi/developer/visuals/localization?tabs=English#supported-languages) are now included, which improves the packaged visual size [(#593)](https://github.com/deneb-viz/deneb/issues/593).
