@@ -259,7 +259,7 @@ Refer to the [Templates](templates#datasets) page for the full structure.
 
 ### Vega Updates
 
-- Vega updated to **6.3.0** (from 6.2.0)
+- Vega updated to **6.4.0** (from 6.2.0)
 - Vega-Lite updated to **6.4.3** (from 6.4.1)
 
 ### Performance and Stability
@@ -283,6 +283,7 @@ The resulting changes have reduced the package size to **1.74 MB**: a reduction 
 - The background for the debug pane toolbar and log viewer was incorrectly set to transparent, making them difficult to read in dark mode ([#604](https://github.com/deneb-viz/deneb/issues/604))
 - Creating custom `height` and/or `width` signals will break compilation [(#417)](https://github.com/deneb-viz/deneb/issues/417).
 - "View mode" viewport not being correctly used when opening visual editor from within a report page group ([#620](https://github.com/deneb-viz/deneb/issues/620)).
+- Tokenization was skipping field names when they were being used as string literals in expressions ([#521](https://github.com/deneb-viz/deneb/issues/521)).
 
 ### What Affects PBIR and Templating
 
