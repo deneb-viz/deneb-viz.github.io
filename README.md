@@ -1,41 +1,31 @@
-# Website
+# deneb-viz.github.io (deneb.guide)
 
-This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
+Source for [deneb-viz.github.io](https://deneb-viz.github.io) - the documentation site for [Deneb](https://github.com/deneb-viz/deneb), a certified Power BI custom visual that lets you build visuals with the declarative JSON syntax of [Vega](https://vega.github.io/vega/) and [Vega-Lite](https://vega.github.io/vega-lite/).
 
-### Installation
+The site is built with [Docusaurus 3](https://docusaurus.io/) and contains:
 
-```
-$ yarn
-```
+- **Docs** - getting started, deeper concepts, interactivity features and the change log, versioned per Deneb release.
+- **Blog** - release announcements, how-tos and project updates.
+- **Community & Resources** - community links, early access builds and contributors.
 
-### Local Development
+The visual's source code, issues and feature requests live in the [main Deneb repo](https://github.com/deneb-viz/deneb). This repo is for the website only.
 
-```
-$ yarn start
-```
+## Running Locally
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Requires Node 20+.
 
-### Build
-
-```
-$ yarn build
+```bash
+corepack enable
+yarn
+yarn start
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+`yarn build` produces the static site in `build/` and is what CI runs on every PR.
 
-### Deployment
+## Contributing
 
-Using SSH:
+Content fixes and additions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how the repo is laid out, how to add a page, and the writing conventions (style, terminology, images, change log and blog formats). It applies to AI agents working in this repo too.
 
-```
-$ USE_SSH=true yarn deploy
-```
+## Deployment
 
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Pushes to `source` are built and published to the `master` branch (GitHub Pages) by the [Docusaurus Publish](.github/workflows/docusaurus_publish.yml) workflow. No manual deploy step is needed.
