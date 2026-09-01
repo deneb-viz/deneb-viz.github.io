@@ -3,27 +3,13 @@ id: changelog
 description: Deneb Change Log - high-level details of new features and fixes for each version
 ---
 
+import ReleaseStatus from "@site/src/components/ReleaseStatus";
+
 # Change Log
 
 ## 2.0.0
 
-<!-- :::info Under development 🚧
-Documentation is being written ahead of starting alpha testing, so the features described below are subject to change as testing and feedback is received. We will update this page and other pertinent areas in this version's documentation with any changes to the planned features, and will also add more details on each feature as they are finalized.
-
-Changes are currently only available in [alpha builds](/community/early-access), but we'll release and submit soon once testing is complete.
-::: -->
-
-:::info In Beta Testing
-Deneb 2.0.0 is currently in a beta testing phase. If you would like to help test this release prior to general availability, please visit the [early access community page](/community/early-access) to download the beta build and provide feedback.
-:::
-
-<!-- :::info Submitted for certification
-Deneb 2.0.0 has been submitted to AppSource for certification and may take some time to reach your reports. If you need to leverage any features or fixes from this release, you can download and use the [standalone version](getting-started#standalone-version).
-::: -->
-
-<!-- :::info Pending deployment to AppSource
-Deneb 2.0.0 has passed certification and is currently undergoing deployment to your reports. This can take a couple of weeks from the publish date.
-::: -->
+<ReleaseStatus version="2.0.0" stage="beta" />
 
 ### Dataset Row Limit Changes
 
