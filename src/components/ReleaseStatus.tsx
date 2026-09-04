@@ -52,11 +52,10 @@ const ReleaseStatus = ({ version, stage = "ga" }: IReleaseStatusProps) => {
       return (
         <Admonition type="info" title="Submitted for certification">
           <p>
-            Deneb {version} has been submitted to AppSource for certification
-            and may take some time to reach your reports. If you need to
-            leverage any features or fixes from this release, you can download
-            and use the{" "}
-            <a href="getting-started#standalone-version">standalone version</a>.
+            Deneb {version} has been submitted to AppSource for certification.
+            Approval is dependent on the <a href="https://learn.microsoft.com/en-us/power-bi/developer/visuals/power-bi-custom-visuals-certified">
+            certification rules</a>, and may require additional changes (and
+            resubmission) before the update is accepted.
           </p>
         </Admonition>
       );
