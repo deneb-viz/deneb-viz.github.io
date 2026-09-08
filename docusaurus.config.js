@@ -17,15 +17,13 @@ const config = {
   projectName: "deneb-viz.github.io",
   trailingSlash: false,
   staticDirectories: ["static"],
-  markdown: {
-    mermaid: true,
-  },
   themes: ["@docusaurus/theme-mermaid"],
   future: {
     v4: true,
     faster: true,
   },
   markdown: {
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: "warn",
     },
@@ -49,7 +47,7 @@ const config = {
             "https://github.com/deneb-viz/deneb-viz.github.io/edit/source/",
           versions: {
             current: {
-              label: "2.0 🚧",
+              label: "2.1 🚧",
             },
           },
         },
@@ -119,7 +117,7 @@ const config = {
             type: "docsVersionDropdown",
             position: "right",
             dropdownActiveClassDisabled: true,
-            versions: ["current", "1.9", "1.8"],
+            versions: ["current", "2.0", "1.9"],
           },
           {
             href: "https://github.com/sponsors/deneb-viz",
