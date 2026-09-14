@@ -130,6 +130,11 @@ const config = {
             position: "right",
           },
           {
+            href: "/enterprise",
+            label: "Enterprise FAQ",
+            position: "right",
+          },
+          {
             href: "https://github.com/deneb-viz/deneb",
             label: "GitHub",
             position: "right",
@@ -174,6 +179,10 @@ const config = {
               {
                 label: "Privacy Policy",
                 href: "/privacy-policy",
+              },
+              {
+                label: "Enterprise & Security FAQ",
+                href: "/enterprise",
               },
               {
                 label: "Blog",
