@@ -9,7 +9,7 @@ import ReleaseStatus from "@site/src/components/ReleaseStatus";
 
 ## 2.0.0 (2026-09-08)
 
-<ReleaseStatus version="2.0.0" stage="deploying" />
+<ReleaseStatus version="2.0.0" stage="" />
 
 ### Dataset Row Limit Changes
 
