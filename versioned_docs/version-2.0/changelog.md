@@ -7,6 +7,16 @@ import ReleaseStatus from "@site/src/components/ReleaseStatus";
 
 # Change Log
 
+## 2.0.1 (TBD)
+
+<ReleaseStatus version="2.0.1" stage="submitted" />
+
+### Bug Fixes
+
+- Vega specifications that position marks in `encode.enter` no longer render too tall and clip content outside the plot area (such as axis labels), and size correctly within the visual [(#773)](https://github.com/deneb-viz/deneb/issues/773)
+- Date fields no longer show their UTC offset in the debug pane data/signal viewers or in tooltips that display raw values, and resolve to midnight [(#775)](https://github.com/deneb-viz/deneb/issues/775)
+- Cross-highlight status fields (`__highlightStatus`) no longer report `on` for every row when another visual cross-highlights, and return `off` for rows outside the highlight [(#753)](https://github.com/deneb-viz/deneb/issues/753)
+
 ## 2.0.0 (2026-09-08)
 
 <ReleaseStatus version="2.0.0" stage="" />
