@@ -20,7 +20,7 @@ To help AppSource users with the wait, we've recorded some short videos to help 
   <iframe
     width="600"
     height="325"
-    src="https://www.youtube.com/embed/videoseries?list=PLenEqp5HifcRASUPYL6Nj-a2YtfCBmjz6"
+    src="https://www.youtube-nocookie.com/embed/videoseries?list=PLenEqp5HifcRASUPYL6Nj-a2YtfCBmjz6"
     title="YouTube video player"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -1,4 +1,8 @@
+import { resetConsent } from "@site/src/analytics";
+
 # Deneb Privacy Policy
+
+_Last updated: October 13, 2026_
 
 Deneb and its developers are committed to protecting and respecting your privacy. This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information for anyone who chooses to use the Deneb custom visual for Power BI.
 
@@ -34,21 +38,58 @@ For any significant details regarding data collection and usage, please refer to
 
 ## Use of Google Analytics
 
-Our website uses Google Analytics, a web analytics service provided by Google Inc. ("Google"). Google Analytics uses cookies to help us understand how visitors interact with our site, monitor traffic, and improve our services.
+With your consent, our website uses Google Analytics 4 to understand how visitors use the site, monitor traffic, and improve our documentation. Google Analytics is provided by Google LLC, or by Google Ireland Limited for visitors in the European Economic Area, the UK and Switzerland.
 
-### Anonymized Data Collection
+### Consent {#consent}
 
-We are committed to protecting your privacy and ensuring that your data is handled in a secure manner. As part of our use of Google Analytics:
+Google Analytics is only loaded if you select **Accept** on the banner shown on your first visit. If you select **Decline**, or make no choice, the Google Analytics script is not loaded, no analytics cookies are set, and no data is sent to Google. Where the GDPR applies, consent is our legal basis for this processing.
 
-- **IP Anonymization**: We anonymize IP addresses as part of our data collection process. This means that your IP address is shortened and cannot be used to identify you personally. This anonymization occurs before your data is sent to Google Analytics.
+Your choice is saved in your browser's local storage, not in a cookie. To change it, use the button below. This clears your choice and any Google Analytics cookies, then reloads the page so the banner shows again.
 
-- **Non-Personally Identifiable Information**: The data collected through Google Analytics is aggregated and anonymous. It is used solely for the purpose of analyzing site traffic and usage patterns. We do not use this data to identify individual visitors.
+<p><button className="button button--secondary" onClick={resetConsent}>Change cookie preferences</button></p>
+
+### What Is Collected
+
+If you accept, Google Analytics sets two cookies on this site, `_ga` and `_ga_<ID>`. They hold a random identifier so that repeat visits can be recognized, and they expire after up to two years. Google Analytics also collects:
+
+- the pages you view and the page that referred you;
+- your browser, device type, screen size and language;
+- your approximate location (country and city).
+
+Google Analytics 4 does not log or store IP addresses. Your IP address is used to estimate your location and is then discarded.
+
+The identifier is random and is not linked to your name, email address or any account. Because it is unique to your browser, however, data linked to it counts as personal data under the GDPR. We use this data only in aggregate to understand site traffic. We do not use it for advertising, and Google's advertising features are turned off.
+
+### Retention and Transfers
+
+Google Analytics keeps event-level data for the period set in our Google Analytics settings, which is at most 14 months. After that, only aggregated reports remain. Google may process this data in the United States. Google LLC is certified under the EU-U.S. Data Privacy Framework.
 
 ### Opt-Out
 
-If you prefer not to have your data collected by Google Analytics, you can opt-out by installing the [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
+You can also block Google Analytics on every website by installing the [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
 
 For more information about how Google handles data collected for Google Analytics, please review Google's [Privacy Policy](https://policies.google.com/privacy).
+
+## Embedded Content
+
+Some pages embed YouTube videos and Power BI reports.
+
+- **YouTube**: videos are embedded in YouTube's privacy-enhanced mode (youtube-nocookie.com). In this mode, YouTube says it does not store information about you unless you play the video. Once you do, Google's [Privacy Policy](https://policies.google.com/privacy) applies.
+- **Power BI**: embedded reports are loaded from Microsoft and are covered by Microsoft's [Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement).
+
+## Hosting
+
+This website is hosted on GitHub Pages. GitHub logs the IP addresses of visitors to GitHub Pages sites for security purposes. Please see the [GitHub General Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) for details.
+
+## Preferences Stored in Your Browser
+
+The site saves a few preferences in your browser's local storage: your light or dark theme, your preferred documentation version, and your cookie choice. These stay on your device and are not sent to us or anyone else.
+
+## Your Rights
+
+If you are in the European Economic Area, the UK or Switzerland, you have the right to access, correct or delete your personal data, to restrict or object to its processing, and to complain to your local data protection authority.
+
+Analytics data is tied to a random identifier rather than to who you are. The simplest way to stop further data being linked to you is to withdraw consent using the **Change cookie preferences** button in the [Consent](#consent) section, which deletes that identifier from your browser. For any other request, please [contact us](/community/contributors#active-team).
 
 ## Links to Other Sites
 

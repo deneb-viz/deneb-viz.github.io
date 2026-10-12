@@ -65,15 +65,15 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        gtag: {
-          trackingID: "G-TLTRMQ5148",
-        },
+        // No `gtag` preset option: GA loads only after consent, from
+        // src/analytics.ts (banner in src/theme/Root.js).
         sitemap: {
           ignorePatterns: ["/docs/next/**"],
         },
       }),
     ],
   ],
+  clientModules: [require.resolve("./src/analytics.ts")],
   plugins: [
     [
       "@docusaurus/plugin-content-docs",
