@@ -66,8 +66,7 @@ const config = {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
-          trackingID: "UA-143608567-3",
-          anonymizeIP: true,
+          trackingID: "G-TLTRMQ5148",
         },
         sitemap: {
           ignorePatterns: ["/docs/next/**"],
