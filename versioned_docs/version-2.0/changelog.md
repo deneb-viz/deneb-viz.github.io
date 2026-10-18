@@ -7,9 +7,9 @@ import ReleaseStatus from "@site/src/components/ReleaseStatus";
 
 # Change Log
 
-## 2.0.1 (TBD)
+## 2.0.1 (2026-10-18)
 
-<ReleaseStatus version="2.0.1" stage="submitted" />
+<ReleaseStatus version="2.0.1" stage="deploying" />
 
 ### Bug Fixes
 
