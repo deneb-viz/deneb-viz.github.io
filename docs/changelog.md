@@ -71,6 +71,14 @@ Nothing changes until you format a spec. The first time you do, expect a lot of 
 
 For more details, see [Formatting Your JSON](visual-editor#formatting-your-json).
 
+### Build Security
+
+- Every GitHub Action in Deneb's build and release workflows is now pinned to an exact commit, and Dependabot proposes updates to them for review. A third-party action that is compromised, or whose version tag is moved, can no longer change what a release build runs [(#652)](https://github.com/deneb-viz/deneb/issues/652).
+
+### Bug Fixes
+
+- Turning cross-highlighting off now removes highlight fields from the dataset for every measure, including those with their own supporting-field configuration, such as from an imported template, a migrated visual, or edits in the Dataset settings. Your configuration is kept and applies again when you turn cross-highlighting back on [(#771)](https://github.com/deneb-viz/deneb/issues/771)
+- Hover text in the Spec editor no longer suggests a `markdownDescription` property at the root of a spec
 
 ## 2.0.1 (2026-10-18)
 
