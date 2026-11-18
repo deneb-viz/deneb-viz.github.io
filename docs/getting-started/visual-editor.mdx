@@ -139,6 +139,10 @@ By default, the editor will show line numbers in the left-hand gutter. You can d
 
 This property specifies the interval (in milliseconds) at which the editor checks for changes. By default, this is set to 700ms. It's recommended that you don't change this setting unless you're experiencing performance issues with the editor.
 
+#### Maximum Line Length When Formatting
+
+When you format your JSON, objects and arrays that fit within this many characters are kept on one line. It can be from 40 to 200, and the default is 80. Refer to [Formatting Your JSON](#formatting-your-json) for details.
+
 ### Specification Editor Pane
 
 :::note Keyboard shortcut
@@ -175,6 +179,12 @@ Hover the marker for the full explanation, then use the Monaco **Quick Fix** act
 - To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-apply changes as you type** is enabled.
 - The JSON must produce a valid config for your selected provider (either Vega or Vega-Lite).
 - It's generally advised to try to use the config for anything that can "theme" your chart and keep this separate from the specification. This makes it easier to port across to other instances of the visual.
+
+### Formatting Your JSON
+
+To tidy up the JSON in either editor, right-click and choose **Format Document**, or select some JSON and choose **Format Selection**. **Ctrl + Alt + R** does either: it formats your selection if you have one, and the whole document if you don't.
+
+Short objects and arrays are kept on one line, as in the Vega Editor, and your comments are kept. You can change how long a line can be with the [Maximum Line Length When Formatting](#maximum-line-length-when-formatting) property. If the JSON has errors, it won't be formatted until they're fixed.
 
 ### Status Bar
 

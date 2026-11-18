@@ -7,9 +7,74 @@ import ReleaseStatus from "@site/src/components/ReleaseStatus";
 
 # Change Log
 
+## 2.1.0 (Under Development)
+
+<ReleaseStatus version="2.1.0" stage="development" />
+
+### Compact JSON Formatting
+
+When we introduced commenting support in 1.7, we couldn't carry over the compact formatting because it couldn't preserve comments. As a result, everything moved onto its own line, which could make specs longer and harder to read quickly. This release brings back the more compact formatting while preserving comments, plus a couple of additional goodies:
+
+- **Format Selection** is now in the editor's context menu, and **Ctrl + Alt + R** formats your selection if you have one.
+- A new **Maximum line length when formatting** property, in **Advanced editor > JSON editor**, sets how long a line can be. The default is 80, as in the Vega Editor.
+- Exported templates and imported specs use the same layout.
+
+For example, here's the same spec formatted before and after this change:
+
+```json title="Before"
+{
+  "data": {
+    "name": "dataset"
+  },
+  // keep bars thin
+  "mark": {
+    "type": "bar",
+    "width": 4,
+    "tooltip": true
+  },
+  "encoding": {
+    "y": {
+      "field": "Product",
+      "type": "nominal",
+      "sort": "-x"
+    },
+    "x": {
+      "field": "$ Sales",
+      "type": "quantitative",
+      "axis": {
+        "format": "$,.0f"
+      }
+    }
+  }
+}
+```
+
+```json title="After"
+{
+  "data": { "name": "dataset" },
+  // keep bars thin
+  "mark": { "type": "bar", "width": 4, "tooltip": true },
+  "encoding": {
+    "y": { "field": "Product", "type": "nominal", "sort": "-x" },
+    "x": {
+      "field": "$ Sales",
+      "type": "quantitative",
+      "axis": { "format": "$,.0f" }
+    }
+  }
+}
+```
+
+:::info How your existing visuals migrate
+Nothing changes until you format a spec. The first time you do, expect a lot of lines to change: only the layout changes, not the content, but bear this in mind if your report is under source control.
+:::
+
+For more details, see [Formatting Your JSON](visual-editor#formatting-your-json).
+
+
 ## 2.0.1 (2026-10-18)
 
-<ReleaseStatus version="2.0.1" stage="deploying" />
+<ReleaseStatus version="2.0.1" stage="" />
 
 ### Bug Fixes
 
@@ -19,7 +84,7 @@ import ReleaseStatus from "@site/src/components/ReleaseStatus";
 
 ## 2.0.0 (2026-09-08)
 
-<ReleaseStatus version="2.0.0" stage="deploying" />
+<ReleaseStatus version="2.0.0" stage="" />
 
 ### Dataset Row Limit Changes
 
