@@ -70,6 +70,9 @@ Nothing changes until you format a spec. The first time you do, expect a lot of 
 :::
 
 For more details, see [Formatting Your JSON](visual-editor#formatting-your-json).
+### Vega Updates
+
+- Vega-Lite updated to **6.5.0** (from 6.4.3).
 
 ### Build Security
 
