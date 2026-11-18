@@ -103,7 +103,7 @@ These may become visible to you when [inspecting a datum using tooltips](interac
 
 #### Additional Cross-Highlighting Fields for Measures
 
-The following additional entries will get created for all measures in your dataset in the event of having [cross-highlighting](interactivity-highlight) enabled on your visual:
+The following additional entries can be created for measures in your dataset when [cross-highlighting](interactivity-highlight) is enabled on your visual. Which ones you get for each measure depends on its [supporting fields](dataset#cross-highlight-management) configuration, and none are created while cross-highlighting is off:
 
 - `[measure name]__highlight` - this is the highlight value for the measure, as opposed to its original value, which is stored in the regular measure field. This provides a way to encode original vs. highlight.
 

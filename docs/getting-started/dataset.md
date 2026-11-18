@@ -118,6 +118,8 @@ These options are only available if [Cross-Highlighting](interactivity-highlight
 
 By default, only **Highlight value** is enabled for measures. Columns do not support cross-highlight values and are not available as an option.
 
+Turning cross-highlighting off removes every highlight field from the dataset, including those you have configured yourself or that came from a template. Your choices are kept (you'll see them disabled in the tree), and they apply again when you turn cross-highlighting back on. Formatting fields are not affected.
+
 #### Field Formatting Information (from Semantic Model)
 
 All columns and measures contain formatting information in the semantic model. A value for a column or measure is always its raw value, because this is the easiest to work with from the ground up. However if you want access to the format string (particularly if it is [dynamic at a row level](formatting#working-with-dynamic-format-strings-for-measures-and-calculation-groups)), or get access to the formatted value, these are selectable.

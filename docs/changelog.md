@@ -70,6 +70,20 @@ Nothing changes until you format a spec. The first time you do, expect a lot of 
 :::
 
 For more details, see [Formatting Your JSON](visual-editor#formatting-your-json).
+
+### Cross-Highlight Comparator Changes
+
+2.0.1 fixed `__highlightStatus`, so it reports `off` for rows outside an active cross-highlight. 2.1 makes the matching fix to `__highlightComparator`:
+
+- For a row outside the highlight, where the `__highlight` value is `null`, the comparator is now `neq`. Before, it was `lt` if the row's original value was positive, `gt` if it was negative, and `neq` if it was zero or text.
+- Rows inside the highlight are unchanged.
+
+:::info How your existing visuals migrate
+If your spec tests `__highlightComparator` for `lt` or `gt` to find rows outside the highlight, it will no longer match them. Test `__highlightStatus` for `off` instead, and turn on **Highlight status** for the measure in [supporting fields](dataset#cross-highlight-management) if it isn't already.
+:::
+
+Refer to [Cross-Highlighting](interactivity-highlight#special-__highlight-fields) for what each value means.
+
 ### Vega Updates
 
 - Vega-Lite updated to **6.5.0** (from 6.4.3).

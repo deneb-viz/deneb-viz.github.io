@@ -166,14 +166,20 @@ Where [cross-filtering](interactivity-selection) works for the whole row, cross-
 
 - `[measure_name]__highlightStatus` - this provides additional state about this specific measure for this particular row context, indicating whether a highlight has been applied or not (like the `__selected__` field, but more specific). This can be one of the following values:
   - **`on`**: the visual has an active cross-highlight state, and the measure is actively highlighted
-  - **`off`**: the visual has an active cross-highlight state, but the measure is not highlighted (this tends to be a likely scenario when using multiple measures rather than a single measure)
+  - **`off`**: the visual has an active cross-highlight state, but the measure is not highlighted for this row. This is the case for any row outside the highlight, where the highlight value is `null`.
   - **`neutral`**: there is no cross-highlight state applied to the visual. The original and highlight values will be equal.
+
+  This is the most direct way to tell highlighted rows from the rest, e.g., `datum['$ Sales__highlightStatus'] === 'off'`.
 
 - `[measure_name]__highlightComparator` - this provides a pre-calculated way of determining if a highlight value is equal to its original value or not, and allows you to apply conditional encodings without the need to derive this separately in a `calculate` transform or similar. This can be one of the following values:
   - **`eq`**: the original and highlight values are equal to each other
   - **`lt`**: the highlight value is less than the original value
   - **`gt`**: the highlight value is greater than the original value
-  - **`neq`**: the highlight value and original value are not equal, or not directly comparable (this will typically be used for text-based measures)
+  - **`neq`**: the highlight value and original value are not equal, or not directly comparable. This is used for text-based measures, and for rows outside the highlight, where the highlight value is `null`.
+
+  :::info Changed in 2.1
+  Before 2.1, a row outside the highlight reported `lt` if its original value was positive, or `gt` if it was negative. If your spec tests for `lt` or `gt` to find these rows, change it to test `__highlightStatus` for `off` instead.
+  :::
 
 #### Simple Example of How Fields Respond to Cross-Highlighting from Other Visuals
 
