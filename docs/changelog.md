@@ -4,12 +4,46 @@ description: Deneb Change Log - high-level details of new features and fixes for
 ---
 
 import ReleaseStatus from "@site/src/components/ReleaseStatus";
+import ReactPlayer from "react-player";
 
 # Change Log
 
 ## 2.1.0 (Under Development)
 
 <ReleaseStatus version="2.1.0" stage="development" />
+
+### Bindings Pane
+
+Until now, signals and parameters with an input `bind` were rendered by Vega as a plain HTML form below the chart. It couldn't be positioned or styled, and the chart didn't account for its size.
+
+Deneb now renders these controls itself, in a **bindings pane** beside the chart:
+
+- Controls match the look of Power BI: slider, checkbox, radio group, dropdown, text inputs and the browser's native color picker. Each signal is displayed on a separate row, with labels and controls lined up.
+- By default, the pane sits below the chart, and the chart is sized to the space remaining above it.
+- A toggle collapses the pane so the chart can use the full visual area if needed.
+- A bound value is now kept when the visual is resized or its data updates, whether or not continuous view is on. Before, it went back to the spec's default. Values still reset when the visual starts again, such as when a reader leaves the page and comes back.
+- A spec with no bound signals gets no pane, and no change in layout.
+
+You can place and style the pane with a new `deneb.bindings` config key, in the Config editor or in a spec's `config` object if preferred. It covers the edge it sits on, whether it floats over the chart, how much of the visual it can take, and its fonts and colors.
+
+<ReactPlayer
+controls
+url="/mp4/2.1.0/bindings-changelog-demo.mp4"
+style={{ margin: "0 auto var(--ifm-paragraph-margin-bottom)" }}
+/>
+
+:::info How your existing visuals migrate
+
+- The pane is always on, with no opt-in. Existing specs with input bindings will use it as soon as the visual updates.
+- If your spec reserved room for Vega's form (for example, by reducing its `height` by a fixed amount), you'll see an empty band until you remove that workaround.
+- A binding that uses `element` without `input` is ignored, as there's no element in the visual for it to target.
+  :::
+
+For details on the controls, layout options and settings, see [Input Bindings](interactivity-bindings).
+
+### Config Editor Completion
+
+The Config editor now has schema completion. The new `deneb` key completes level by level, with each setting's default, and hovering a setting shows what it does. For Vega-Lite, completion covers the whole config. For Vega, it covers only the `deneb` key.
 
 ### Compact JSON Formatting
 

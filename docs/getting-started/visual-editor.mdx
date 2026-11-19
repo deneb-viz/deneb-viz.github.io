@@ -178,6 +178,9 @@ Hover the marker for the full explanation, then use the Monaco **Quick Fix** act
   - The Vega-Lite JSON config reference [can be found here](https://vega.github.io/vega-lite/docs/config.html).
 - To view the results of your changes, you can either **Apply** your changes, or ensure that **Auto-apply changes as you type** is enabled.
 - The JSON must produce a valid config for your selected provider (either Vega or Vega-Lite).
+- The editor offers completion as you type, shows what a property does when you hover over it, and underlines invalid values:
+  - For Vega-Lite, this covers the whole config.
+  - For Vega, this covers only the `deneb` key, which holds Deneb's own settings, such as those for the [bindings pane](interactivity-bindings#configuring-the-pane).
 - It's generally advised to try to use the config for anything that can "theme" your chart and keep this separate from the specification. This makes it easier to port across to other instances of the visual.
 
 ### Formatting Your JSON

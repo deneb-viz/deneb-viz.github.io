@@ -62,6 +62,7 @@ const sidebars = {
         "interactivity/selection",
         "interactivity/selection-advanced",
         "interactivity/highlight",
+        "interactivity/bindings",
       ],
     },
     {
